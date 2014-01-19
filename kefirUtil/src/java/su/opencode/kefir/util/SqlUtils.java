@@ -230,9 +230,13 @@ public class SqlUtils
 
 	private static String str = "null";
 
+	public static final String SPACE = " ";
 	public static final String SELECT_OPERATOR = "select";
 	public static final String SELECT_OPERATOR_WITH_SPACE = "select ";
 	public static final String SELECT_OPERATOR_WITH_SPACES = " select ";
+	public static final String FROM_OPERATOR = "from";
+	public static final String FROM_OPERATOR_WITH_SPACE = "from ";
+	public static final String FROM_OPERATOR_WITH_SPACES = " from ";
 	public static final String AS_OPERATOR = "as";
 	public static final String AS_OPERATOR_WITH_SPACES = " as ";
 	public static final String DISTINCT_OPERATOR = "distinct";
@@ -242,6 +246,8 @@ public class SqlUtils
 	public static final String OR_OPERATOR_WITH_SPACES = " or ";
 	public static final String WHERE_OPERATOR = "where";
 	public static final String WHERE_OPERATOR_WITH_SPACES = " where ";
+	public static final String LIKE_OPERATOR = "like";
+	public static final String LIKE_OPERATOR_WITH_SPACES = " like ";
 	public static final String EXISTS_OPERATOR = "exists";
 	public static final String EXISTS_OPERATOR_WITH_SPACES = " exists ";
 	public static final String JOIN_OPERATOR = "join";
@@ -256,6 +262,10 @@ public class SqlUtils
 	public static final String ON_OPERATOR_WITH_SPACES = " on ";
 	public static final String ORDER_BY_OPERATOR = "order by";
 	public static final String ORDER_BY_OPERATOR_WITH_SPACES = " order by ";
+	public static final String ASC_OPERATOR = "asc";
+	public static final String ASC_OPERATOR_WITH_SPACES = " asc ";
+	public static final String DESC_OPERATOR = "desc";
+	public static final String DESC_OPERATOR_WITH_SPACES = " desc ";
 	public static final String EQUALS_OPERATOR = "=";
 	public static final String EQUALS_OPERATOR_WITH_SPACES = " = ";
 	public static final String NOT_EQUALS_OPERATOR = "<>";
