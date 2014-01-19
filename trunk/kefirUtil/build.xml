@@ -3,8 +3,8 @@
 
 	<property file="../build.properties"/>
 	<property file="../deploy.properties"/>
-	<property name="src" location="src"/>
-	<property name="test" location="test"/>
+	<property name="src" location="src/main"/>
+	<property name="test" location="src/test"/>
 	<property name="build" location="build"/>
 	<property name="dist" location="dist"/>
 	<property name="lib" location="./lib"/>
