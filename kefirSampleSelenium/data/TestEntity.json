@@ -1,0 +1,87 @@
+[
+	{
+		"createEntityData":{
+			"strField":"Строка",
+			"intField":111,
+			"intSpinnerField":22,
+			"doubleField":11.33,
+			"dateField":"12.12.2012",
+			"booleanField":true,
+			"enumField":"plum",
+			"ogrn":1111111111110,
+			"inn":1111111117,
+			"kpp":111111111,
+			"comboBoxEntity":{
+				"cadastralNumber":"0987654"
+			},
+			"chooseEntity":{
+				"name":"name1234567890",
+				"shortName":"shortName1234567890",
+				"correspondentAccount":"correspondentAccount"
+			},
+			"attachmentsField":[
+				{
+					"fileName":"d:\\111.txt"
+				},
+				{
+					"fileName":"d:\\222.txt"
+				}
+			],
+			"otherAttachmentsField":[
+				{
+					"fileName":"d:\\111.txt"
+				}
+			],
+			"juridicalAddress":{
+				"zipCode":123456,
+				"subject":"Самарская обл"
+			},
+			"physicalAddress":{
+				"zipCode":654321,
+				"subject":"Самарская обл"
+			}
+		},
+
+		"updateEntityData":{
+			"strField":"Измененная Строка",
+			"intField":222,
+			"intSpinnerField":33,
+			"doubleField":44.55,
+			"dateField":"01.01.2011",
+			"booleanField":false,
+			"enumField":"fairy",
+			"ogrn":1111111111110,
+			"inn":1111111117,
+			"kpp":222222222,
+			"comboBoxEntity":{
+				"cadastralNumber":"0987654"
+			},
+			"chooseEntity":{
+				"name":"name1234567890",
+				"shortName":"shortName1234567890",
+				"correspondentAccount":"correspondentAccount"
+			},
+			"attachmentsField":[
+				{
+					"fileName":"d:\\111.txt"
+				},
+				{
+					"fileName":"d:\\222.txt"
+				}
+			],
+			"otherAttachmentsField":[
+				{
+					"fileName":"d:\\111.txt"
+				}
+			],
+			"juridicalAddress":{
+				"zipCode":987654,
+				"subject":"Самарская область"
+			},
+			"physicalAddress":{
+				"zipCode":134679,
+				"subject":"Самарская область"
+			}
+		}
+	}
+]

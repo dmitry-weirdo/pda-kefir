@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+        version="1.0">
+	<description>Definition of DynamicGrid orm mappings</description>
+	<access>PROPERTY</access>
+
+	<!-- DYNAMIC_GRID -->
+	<entity class="su.opencode.kefir.srv.dynamicGrid.DynamicGridPK">
+		<table name="DYNAMIC_GRID"/>
+		<attributes>
+			<id name="login"><column length="32" nullable="false"/></id>
+			<id name="entityName"><column name="ENTITY_NAME" length="255" nullable="false"/></id>
+			<id name="columnName"><column name="COLUMN_NAME" length="100" nullable="false"/></id>
+		</attributes>
+	</entity>
+
+	<entity class="su.opencode.kefir.srv.dynamicGrid.DynamicGrid">
+		<table name="DYNAMIC_GRID"/>
+		<id-class class="su.opencode.kefir.srv.dynamicGrid.DynamicGridPK"/>
+		<named-query name="listByLoginAndEntityName">
+			<query>select d from DynamicGrid d where d.login = :login and d.entityName = :entityName order by d.order</query>
+		</named-query>
+		<named-query name="listSortByLoginAndEntityName">
+			<query>select d from DynamicGrid d where d.login = :login and d.entityName = :entityName order by d.sortOrder</query>
+		</named-query>
+		<named-query name="deleteByLoginAndEntityName">
+			<query>delete from DynamicGrid d where d.login = :login and d.entityName = :entityName</query>
+		</named-query>
+		<attributes>
+			<id name="login"><column length="32" nullable="false"/></id>
+			<id name="entityName"><column name="ENTITY_NAME" length="255" nullable="false"/></id>
+			<id name="columnName"><column name="COLUMN_NAME" length="100" nullable="false"/></id>
+			<basic name="order"><column name="&quot;order&quot;" nullable="false"/></basic>
+			<basic name="sortDir"><column name="SORT_DIR"/><enumerated>STRING</enumerated></basic>
+			<basic name="sortOrder"><column name="SORT_ORDER"/></basic>
+			<basic name="groupId"><column name="GROUP_ID" length="255"/></basic>
+		</attributes>
+	</entity>
+	<!-- END DYNAMIC_GRID -->
+
+	<entity class="su.opencode.kefir.srv.attachment.Attachment">
+		<sequence-generator name="attachmentGenerator" sequence-name="attachment_gen"/>
+		<attributes>
+			<id name="id"><generated-value strategy="AUTO" generator="attachmentGenerator"/></id>
+			<basic name="entityName"><column name="entity_name"/></basic>
+			<basic name="entityFieldName"><column name="entity_field_name"/></basic>
+			<basic name="entityId"><column name="entity_id"/></basic>
+			<basic name="fileName"><column name="file_name"/></basic>
+			<basic name="fileSize"><column name="file_size"/></basic>
+			<basic name="contentType"><column name="content_type"/></basic>
+			<basic name="data"><lob/></basic>
+		</attributes>
+	</entity>
+
+</entity-mappings>

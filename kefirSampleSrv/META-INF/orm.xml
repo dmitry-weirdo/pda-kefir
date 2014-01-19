@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" version="1.0">
+	<description>Definition of kefirSample orm mappings</description>
+	<access>PROPERTY</access>
+
+	<entity class="su.opencode.kefir.sampleSrv.Address">
+		<sequence-generator name="addressGenerator" sequence-name="address_gen"/>
+		<attributes>
+			<id name="id"><generated-value strategy="AUTO" generator="addressGenerator"/></id>
+			<basic name="zipCode"><column name="zip_code"/></basic>
+			<basic name="cityDistrict"><column name="city_district"/></basic>
+		</attributes>
+	</entity>
+
+	<entity class="su.opencode.kefir.sampleSrv.ComboBoxEntity">
+		<table name="Combo_box_entity"/>
+		<sequence-generator name="comboBoxEntityGenerator" sequence-name="combo_box_entity_gen"/>
+		<attributes>
+			<id name="id"><generated-value strategy="AUTO" generator="comboBoxEntityGenerator"/></id>
+			<basic name="cadastralNumber"><column name="cadastral_number"/></basic>
+		</attributes>
+	</entity>
+
+	<entity class="su.opencode.kefir.sampleSrv.ChooseEntity">
+		<table name="Choose_entity"/>
+		<sequence-generator name="chooseEntityGenerator" sequence-name="choose_entity_gen"/>
+		<attributes>
+			<id name="id"><generated-value strategy="AUTO" generator="chooseEntityGenerator"/></id>
+			<basic name="shortName"><column name="short_name"/></basic>
+			<basic name="correspondentAccount"><column name="correspondent_account"/></basic>
+		</attributes>
+	</entity>
+
+	<entity class="su.opencode.kefir.sampleSrv.TestEntity">
+		<table name="Test_entity"/>
+		<sequence-generator name="testEntityGenerator" sequence-name="test_entity_gen"/>
+		<attributes>
+			<id name="id"><generated-value strategy="AUTO" generator="testEntityGenerator"/></id>
+			<basic name="strField"><column name="str_field"/></basic>
+			<basic name="intField"><column name="int_field"/></basic>
+			<basic name="intSpinnerField"><column name="int_spinner_field"/></basic>
+			<basic name="doubleField"><column name="double_field"/></basic>
+			<basic name="dateField"><column name="date_field"/></basic>
+			<basic name="booleanField"><column name="boolean_field"/></basic>
+			<basic name="enumField"><column name="enum_field"/><enumerated>STRING</enumerated></basic>
+			<basic name="excludedField"><column name="excluded_field"/></basic>
+
+			<many-to-one name="comboBoxEntity"><join-column name="combo_box_entity_id"/></many-to-one>
+			<many-to-one name="chooseEntity"><join-column name="choose_entity_id"/></many-to-one>
+
+			<one-to-one name="juridicalAddress"><join-column name="juridical_address_id"/></one-to-one>
+			<one-to-one name="physicalAddress"><join-column name="physical_address_id"/></one-to-one>
+		</attributes>
+	</entity>
+
+	<!-- ${APPEND_ENTITY_MAPPING} -->
+</entity-mappings>

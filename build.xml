@@ -1,0 +1,68 @@
+<project name="kefirDistAll" default="distAll" basedir=".">
+	<description>kefir distAll build file</description>
+
+	<property file="./build.properties"/>
+	<property file="./deploy.properties"/>
+	<property name="_dist" location="dist"/>
+	<property name="_json.dist" value="./json/dist"/>
+	<property name="_kefirStatic.dist" value="./kefirStatic/dist"/>
+	<property name="_kefirUtil.dist" value="./kefirUtil/dist"/>
+	<property name="_kefirSrv.dist" value="./kefirSrv/dist"/>
+	<property name="_kefirGen.dist" value="./kefirGen/dist"/>
+	<property name="_kefirSampleSrv.dist" value="./kefirSampleSrv/dist"/>
+	<property name="_kefirSampleWeb.dist" value="./kefirSampleWeb/dist"/>
+
+	<target name="clean" description="clean up">
+		<delete dir="${_dist}"/>
+		<!--<delete dir="${doc}"/>-->
+	</target>
+
+	<target name="init">
+		<tstamp/>
+		<mkdir dir="${_dist}"/>
+		<!--<mkdir dir="${doc}"/>-->
+	</target>
+
+	<target name="distAll" depends="clean, init" description="generate the distribution of the whole kefir application">
+		<ant antfile="build.xml" target="dist" dir="json"/>
+		<ant antfile="build.xml" target="dist" dir="kefirStatic"/>
+		<ant antfile="build.xml" target="dist" dir="kefirUtil"/>
+		<ant antfile="build.xml" target="dist" dir="kefirSrv"/>
+		<ant antfile="build.xml" target="dist" dir="kefirGen"/>
+
+		<copy file="${_kefirUtil.dist}/${kefirUtil.jar.name}" todir="D:\java\gtn\gtnSrv\lib\"/> <!-- todo: remove this, do not commit this-->
+
+		<copy file="${_json.dist}/${json.jar.name}" todir="${_dist}"/>
+		<copy file="${_kefirStatic.dist}/${kefirStatic.war.name}" todir="${_dist}"/>
+		<copy file="${_kefirUtil.dist}/${kefirUtil.jar.name}" todir="${_dist}"/>
+		<copy file="${_kefirSrv.dist}/${kefirSrv.jar.name}" todir="${_dist}"/>
+		<copy file="${_kefirGen.dist}/${kefirGen.jar.name}" todir="${_dist}"/>
+	</target>
+
+	<target name="deploy-lib" description="deploy lib on server">
+		<ant antfile="build.xml" target="deploy" dir="json"/>
+	</target>
+
+	<target name="deploy-static" description="deploy static on server">
+		<ant antfile="build.xml" target="deploy" dir="kefirStatic"/>
+	</target>
+
+	<target name="dist-sample-ear" depends="distAll" description="generate the distribution of the whole kefirSample application">
+		<ant antfile="build.xml" target="dist" dir="kefirSampleSrv"/>
+		<ant antfile="build.xml" target="dist" dir="kefirSampleWeb"/>
+
+		<ear destfile="${_dist}/${kefirSample.ear.name}" appxml="./kefirSampleSrv/META-INF/application.xml">
+			<fileset file="${_dist}/${kefirUtil.jar.name}"/>
+			<fileset file="${_dist}/${kefirSrv.jar.name}"/>
+			<fileset file="${_kefirSampleSrv.dist}/${kefirSampleSrv.jar.name}"/>
+			<fileset file="${_kefirSampleWeb.dist}/${kefirSampleWeb.war.name}"/>
+		</ear>
+	</target>
+
+	<target name="deploy-sample-web" depends="dist-sample-ear" description="deploy sample ear on server">
+		<copy file="${_dist}/${kefirSample.ear.name}" todir="${deploy.path}"/>
+	</target>
+
+	<target name="deploy-all" depends="deploy-lib, deploy-static, deploy-sample-web" description="deploy all on server"/>
+
+</project>

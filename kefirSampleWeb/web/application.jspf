@@ -1,0 +1,25 @@
+<link rel="stylesheet" type="text/css" href="./css/main.css"/>
+
+<script type="text/javascript" src="./js/renderers.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./js/common-constants.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./js/vtypes.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./js/viewConfigs.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./js/localStores.js" charset="UTF-8"></script>
+
+<script type="text/javascript" src="./js/address/address.js" charset="UTF-8"></script>
+
+<script type="text/javascript" src="./js/sampleSrv/comboBoxEntitysList.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./js/sampleSrv/comboBoxEntityChoose.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./js/sampleSrv/comboBoxEntityForm.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./js/sampleSrv/comboBoxEntityFormLayout.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./js/sampleSrv/chooseEntitysList.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./js/sampleSrv/chooseEntityChoose.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./js/sampleSrv/chooseEntityForm.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./js/sampleSrv/chooseEntityFormLayout.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./js/sampleSrv/testEntitysList.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./js/sampleSrv/testEntityChoose.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./js/sampleSrv/testEntityForm.js" charset="UTF-8"></script>
+<script type="text/javascript" src="./js/sampleSrv/testEntityFormLayout.js" charset="UTF-8"></script>
+<%-- ${APPEND_INCLUDE} --%>
+
+<script type="text/javascript" src="./js/menu/mainMenu.js" charset="UTF-8"></script>

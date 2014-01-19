@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
+	<persistence-unit name="dynamicGrid">
+	 <jta-data-source>java:/dynamicGridDS</jta-data-source>
+	 <properties>
+		 <property name="hibernate.show_sql" value="false"/>
+		 <property name="hibernate.dialect" value="org.hibernate.dialect.FirebirdDialect"/>
+		 <!--<property name="com.intellij.javaee.persistence.datasource" value="bisDS"/>-->
+	 </properties>
+ </persistence-unit>
+</persistence>

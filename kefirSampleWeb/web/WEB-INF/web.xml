@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+           version="2.5">
+
+	<description>kefirSample application</description>
+
+	<context-param>
+		<description>Режим работы фабрики сервисов.</description>
+		<param-name>su.opencode.kefir.web.util.ServiceFactory.MODE</param-name>
+		<param-value>local</param-value>
+	</context-param>
+	<context-param>
+		<description>application ear name</description>
+		<param-name>su.opencode.kefir.web.util.ServiceFactory.EAR_NAME</param-name>
+		<param-value>kefirSample</param-value>
+	</context-param>
+	<context-param>
+		<param-name>fileEncoding</param-name>
+		<param-value>UTF-8</param-value>
+	</context-param>
+
+	<filter>
+		<filter-name>charsetFilter</filter-name>
+		<filter-class>su.opencode.kefir.web.util.CharsetFilter</filter-class>
+		<init-param>
+			<param-name>requestEncoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>charsetFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<!-- DYNAMIC LIVE GRID -->
+	<servlet>
+		<servlet-name>getGridParams</servlet-name>
+		<servlet-class>su.opencode.kefir.web.GetGridParamsServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>setGridParam</servlet-name>
+		<servlet-class>su.opencode.kefir.web.SetGridParamServlet</servlet-class>
+	</servlet>
+
+	<!-- ATTACHMENTS -->
+	<servlet>
+		<servlet-name>upload</servlet-name>
+		<servlet-class>su.opencode.kefir.web.fileupload.UploadServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>download</servlet-name>
+		<servlet-class>su.opencode.kefir.web.fileupload.DownloadServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>attachmentsList</servlet-name>
+		<servlet-class>su.opencode.kefir.web.fileupload.AttachmentsListServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>comboBoxEntitysList</servlet-name>
+		<servlet-class>su.opencode.kefir.sampleSrv.ComboBoxEntitysListServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>comboBoxEntitysListToExcel</servlet-name>
+		<servlet-class>su.opencode.kefir.sampleSrv.ComboBoxEntitysListToExcelServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>comboBoxEntityGet</servlet-name>
+		<servlet-class>su.opencode.kefir.sampleSrv.ComboBoxEntityGetServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>comboBoxEntityCreate</servlet-name>
+		<servlet-class>su.opencode.kefir.sampleSrv.ComboBoxEntityCreateServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>comboBoxEntityUpdate</servlet-name>
+		<servlet-class>su.opencode.kefir.sampleSrv.ComboBoxEntityUpdateServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>comboBoxEntityDelete</servlet-name>
+		<servlet-class>su.opencode.kefir.sampleSrv.ComboBoxEntityDeleteServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>chooseEntitysList</servlet-name>
+		<servlet-class>su.opencode.kefir.sampleSrv.ChooseEntitysListServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>chooseEntitysListToExcel</servlet-name>
+		<servlet-class>su.opencode.kefir.sampleSrv.ChooseEntitysListToExcelServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>chooseEntityGet</servlet-name>
+		<servlet-class>su.opencode.kefir.sampleSrv.ChooseEntityGetServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>chooseEntityCreate</servlet-name>
+		<servlet-class>su.opencode.kefir.sampleSrv.ChooseEntityCreateServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>chooseEntityUpdate</servlet-name>
+		<servlet-class>su.opencode.kefir.sampleSrv.ChooseEntityUpdateServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>chooseEntityDelete</servlet-name>
+		<servlet-class>su.opencode.kefir.sampleSrv.ChooseEntityDeleteServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>testEntitysList</servlet-name>
+		<servlet-class>su.opencode.kefir.sampleSrv.TestEntitysListServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>testEntitysListToExcel</servlet-name>
+		<servlet-class>su.opencode.kefir.sampleSrv.TestEntitysListToExcelServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>testEntityGet</servlet-name>
+		<servlet-class>su.opencode.kefir.sampleSrv.TestEntityGetServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>testEntityCreate</servlet-name>
+		<servlet-class>su.opencode.kefir.sampleSrv.TestEntityCreateServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>testEntityUpdate</servlet-name>
+		<servlet-class>su.opencode.kefir.sampleSrv.TestEntityUpdateServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>testEntityDelete</servlet-name>
+		<servlet-class>su.opencode.kefir.sampleSrv.TestEntityDeleteServlet</servlet-class>
+	</servlet>
+	<!-- ${APPEND_DECLARATION} -->
+
+	<!-- DYNAMIC LIVE GRID -->
+	<servlet-mapping>
+		<servlet-name>getGridParams</servlet-name>
+		<url-pattern>/getGridParams</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>setGridParam</servlet-name>
+		<url-pattern>/setGridParam</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>upload</servlet-name>
+		<url-pattern>/upload</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>download</servlet-name>
+		<url-pattern>/download</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>attachmentsList</servlet-name>
+		<url-pattern>/attachmentsList</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>comboBoxEntitysList</servlet-name>
+		<url-pattern>/comboBoxEntitysList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>comboBoxEntitysListToExcel</servlet-name>
+		<url-pattern>/comboBoxEntitysListToExcel</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>comboBoxEntityGet</servlet-name>
+		<url-pattern>/comboBoxEntityGet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>comboBoxEntityCreate</servlet-name>
+		<url-pattern>/comboBoxEntityCreate</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>comboBoxEntityUpdate</servlet-name>
+		<url-pattern>/comboBoxEntityUpdate</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>comboBoxEntityDelete</servlet-name>
+		<url-pattern>/comboBoxEntityDelete</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>chooseEntitysList</servlet-name>
+		<url-pattern>/chooseEntitysList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>chooseEntitysListToExcel</servlet-name>
+		<url-pattern>/chooseEntitysListToExcel</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>chooseEntityGet</servlet-name>
+		<url-pattern>/chooseEntityGet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>chooseEntityCreate</servlet-name>
+		<url-pattern>/chooseEntityCreate</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>chooseEntityUpdate</servlet-name>
+		<url-pattern>/chooseEntityUpdate</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>chooseEntityDelete</servlet-name>
+		<url-pattern>/chooseEntityDelete</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>testEntitysList</servlet-name>
+		<url-pattern>/testEntitysList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>testEntitysListToExcel</servlet-name>
+		<url-pattern>/testEntitysListToExcel</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>testEntityGet</servlet-name>
+		<url-pattern>/testEntityGet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>testEntityCreate</servlet-name>
+		<url-pattern>/testEntityCreate</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>testEntityUpdate</servlet-name>
+		<url-pattern>/testEntityUpdate</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>testEntityDelete</servlet-name>
+		<url-pattern>/testEntityDelete</url-pattern>
+	</servlet-mapping>
+	<!-- ${APPEND_MAPPING} -->
+
+	<!--          ejb references         -->
+	<ejb-local-ref>
+		<ejb-ref-name>ejb/DynamicGridService</ejb-ref-name>
+		<ejb-ref-type>Session</ejb-ref-type>
+		<local-home>java.lang.Object</local-home>
+		<local>su.opencode.kefir.srv.dynamicGrid.DynamicGridService</local>
+	</ejb-local-ref>
+	<ejb-local-ref>
+		<ejb-ref-name>ejb/AttachmentService</ejb-ref-name>
+		<ejb-ref-type>Session</ejb-ref-type>
+		<local-home>java.lang.Object</local-home>
+		<local>su.opencode.kefir.srv.attachment.AttachmentService</local>
+	</ejb-local-ref>
+
+	<ejb-local-ref>
+		<ejb-ref-name>ejb/TestService</ejb-ref-name>
+		<ejb-ref-type>Session</ejb-ref-type>
+		<local-home>java.lang.Object</local-home>
+		<local>su.opencode.kefir.generated.TestService</local>
+	</ejb-local-ref>
+	<!-- ${APPEND_EJB_LOCAL_REFERENCE} -->
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+</web-app>

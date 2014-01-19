@@ -1,0 +1,15 @@
+[
+	{
+		"createEntityData":{
+			"name":"name",
+			"shortName":"shortName",
+			"correspondentAccount":"correspondentAccount"
+		},
+
+		"updateEntityData":{
+			"name":"name1234567890",
+			"shortName":"shortName1234567890",
+			"correspondentAccount":"correspondentAccount"
+		}
+	}
+]

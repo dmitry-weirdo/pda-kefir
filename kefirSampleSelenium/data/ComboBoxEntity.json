@@ -1,0 +1,21 @@
+[
+	{
+		"createEntityData":{
+			"cadastralNumber":1234567
+		},
+
+		"updateEntityData":{
+			"cadastralNumber":"0987654"
+		}
+	},
+
+	{
+		"createEntityData":{
+			"cadastralNumber":123
+		},
+
+		"updateEntityData":{
+			"cadastralNumber":3210
+		}
+	}
+]
