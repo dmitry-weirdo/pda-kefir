@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE jboss-web PUBLIC "-//JBoss//DTD Web Application 4.2//EN"
+        "http://www.jboss.org/j2ee/dtd/jboss-web_4_2.dtd">
+<jboss-web>
+	<!-- todo: use security domain -->
+	<!--<security-domain>java:/jaas/gtnSD</security-domain>	-->
+	<context-root>minstroy</context-root>
+
+	<use-session-cookies>true</use-session-cookies>
+
+	<ejb-local-ref>
+		<ejb-ref-name>ejb/LeasingService</ejb-ref-name>
+		<local-jndi-name>LeasingServiceBean/local</local-jndi-name>
+	</ejb-local-ref>
+	<ejb-local-ref>
+		<ejb-ref-name>ejb/BuildingService</ejb-ref-name>
+		<local-jndi-name>BuildingServiceBean/local</local-jndi-name>
+	</ejb-local-ref>
+	<ejb-local-ref>
+		<ejb-ref-name>ejb/InvestingService</ejb-ref-name>
+		<local-jndi-name>InvestingServiceBean/local</local-jndi-name>
+	</ejb-local-ref>
+	<ejb-local-ref>
+		<ejb-ref-name>ejb/HoldingService</ejb-ref-name>
+		<local-jndi-name>HoldingServiceBean/local</local-jndi-name>
+	</ejb-local-ref>
+	<ejb-local-ref>
+		<ejb-ref-name>ejb/TestService</ejb-ref-name>
+		<local-jndi-name>TestServiceBean/local</local-jndi-name>
+	</ejb-local-ref>
+	<!-- ${APPEND_EJB_LOCAL_REFERENCE} -->
+
+	<ejb-local-ref>
+		<ejb-ref-name>ejb/DynamicGridService</ejb-ref-name>
+		<local-jndi-name>DynamicGridServiceBean/local</local-jndi-name>
+	</ejb-local-ref>
+
+</jboss-web>

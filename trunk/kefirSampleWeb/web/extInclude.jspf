@@ -1,0 +1,70 @@
+<%-- Extjs --%>
+<link rel="stylesheet" type="text/css" href="/ext/resources/css/ext-all.css">
+<script type="text/javascript" src="/ext/adapter/ext/ext-base.js"></script>
+<script type="text/javascript" src="/ext/ext-all-debug.js"></script>
+<script type="text/javascript" src="/ext/src/locale/ext-lang-ru.js"></script>
+<!--<script type="text/javascript" src="/ext/ext-all.js"></script>-->
+
+<!-- Spinner field -->
+<link rel="stylesheet" type="text/css" href="/ext/examples/ux/css/Spinner.css">
+<script type="text/javascript" src="/ext/examples/ux/Spinner.js"></script>
+<script type="text/javascript" src="/ext/examples/ux/SpinnerField.js"></script>
+
+<!-- Column header group-->
+<link rel="stylesheet" type="text/css" href="/ext/examples/ux/css/ColumnHeaderGroup.css">
+<script type="text/javascript" src="/ext/examples/ux/ColumnHeaderGroup.js"></script>
+
+<!-- CheckColumn -->
+<script type="text/javascript" src="/ext/examples/ux/CheckColumn.js"></script>
+
+<!-- Multiple sorting -->
+<link rel="stylesheet" type="text/css" href="/ext/examples/grid/multiple-sorting.css"/>
+<script type="text/javascript" src="/ext/examples/ux/ToolbarDroppable.js"></script>
+<script type="text/javascript" src="/kefirStatic/plugins/Reorderer.js"></script>
+<script type="text/javascript" src="/kefirStatic/plugins/ToolbarReorderer.js"></script>
+
+<!-- Input mask for text fields and search fields -->
+<script type="text/javascript" src="/kefirStatic/plugins/InputTextMask.js"></script>
+
+<!-- Grid summary -->
+<link rel="stylesheet" type="text/css" href="/kefirStatic/gridSummary/css/gridSummary.css"/>
+<script type="text/javascript" src="/kefirStatic/gridSummary/gridSummary.js" charset="UTF-8"></script> <!-- todo: think whether it's neeeded or only livegridSummary is ok -->
+<script type="text/javascript" src="/kefirStatic/gridSummary/liveGridSummary.js" charset="UTF-8"></script>
+
+<!-- Styles for normal buttons in toolbar -->
+<link rel="stylesheet" type="text/css" href="/kefirStatic/css/toolbar.css"/>
+
+<%-- livegrid --%>
+<link rel="stylesheet" type="text/css" href="/kefirStatic/livegrid/resources/css/ext-ux-livegrid.css"/>
+<script type="text/javascript" src="/kefirStatic/livegrid/livegrid-all-debug.js"></script>
+<script type="text/javascript" src="/kefirStatic/livegrid/src/locale/livegrid-lang-ru.js"></script>
+<script type="text/javascript" src="/kefirStatic/livegrid/src/CheckboxSelectionModel.js"></script>
+
+<!-- file upload -->
+<link rel="stylesheet" type="text/css" href="/kefirStatic/fileupload/css/fileuploadfield.css"/>
+<link rel="stylesheet" type="text/css" href="/kefirStatic/fileupload/css/filetree.css"/>
+<link rel="stylesheet" type="text/css" href="/kefirStatic/fileupload/css/icons.css"/>
+<script type="text/javascript" src="/kefirStatic/fileupload/FileUploadField.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/kefirStatic/fileupload/ExtendedUploadField.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/kefirStatic/fileupload/Ext.ux.FileUploader.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/kefirStatic/fileupload/Ext.ux.UploadPanel.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/kefirStatic/fileupload/MultiUploadPanel.js" charset="UTF-8"></script>
+
+<%-- Kefir default styles --%>
+<link rel="stylesheet" type="text/css" href="/kefirStatic/css/main.css"/>
+
+<!-- Kefir common scripts -->
+<script type="text/javascript" src="/kefirStatic/extUtils/common.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/kefirStatic/extUtils/searchField.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/kefirStatic/extUtils/stringUtils.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/kefirStatic/extUtils/common-dynamicLiveGrid.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/kefirStatic/extUtils/fieldsFactory.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/kefirStatic/extUtils/Kefir.form.MultiUploadPanel.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/kefirStatic/extUtils/Kefir.constant.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/kefirStatic/extUtils/Kefir.render.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/kefirStatic/extUtils/Kefir.vtype.js" charset="UTF-8"></script>
+<script type="text/javascript" src="/kefirStatic/extUtils/Kefir.mainMenu.MainMenu.js" charset="UTF-8"></script>
+
+<script type="text/javascript">
+	Ext.BLANK_IMAGE_URL = '/ext/resources/images/default/s.gif';
+</script>

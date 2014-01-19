@@ -1,0 +1,268 @@
+/* banner */
+a{color:#315BD3}
+a:hover{text-decoration:none}
+td{color:#373737;font:12px/14px Tahoma,sans-serif}
+.afishaabstract{border-bottom:1px #CCCCCC dashed;color:#7C7C7C;font:11px Tahoma;padding-bottom:20px;padding-top:20px}
+.afishadashed{border-bottom:1px #CCCCCC dashed;padding-top:20px}
+.afishadate{border:1px #CCCCCC solid;color:#AFAFAF;font-size:11px;padding:5px}
+.afishaday{font:11px Tahoma}
+.afishatext{color:#CCCCCC;padding-left:50px}
+.ft{color:#CCCCCC;font:11px/14px Tahoma,sans-serif}
+.newsdate{color:#00C0FF;font-size:10px;font-weight:bold;position:absolute}
+.newstext{font-size:11px;padding-left:60px}
+.toplinks{color:#9CC8FE;font-size:11px}
+.toplinks a{color:#FFFFFF}
+/* banner */
+
+
+
+.leftMenuHeader {
+    font-weight: bold;
+    font-size: 9pt;
+    color: #ffffff;
+    font-family: Arial, Helvetica, Geneva, sans-serif;
+    background-color: #336699;
+    text-decoration: none;
+    padding-left: 9px;
+}
+
+.leftMenuItem {
+    color: blue;
+    font-size: 10pt;
+    text-decoration: none;
+    font-family: Tahoma, Verdana, sans-serif;
+    font-weight: bold;
+}
+
+.leftMenuItemDeselected { padding: 5px 0 5px 21px; background-color: white;}
+
+.leftMenuItemSelected { padding: 5px 0 5px 21px; background-color: beige;}
+
+.menuImage{ position:absolute; left: 13px; padding-top: 5px;}
+
+.warning {
+	font-weight: normal;
+	font-size: 9pt;
+	font-family: Arial, Helvetica, Geneva, sans-serif;
+	background-color: #FFFACD;
+	text-decoration: none;
+	padding: 7px;
+    margin: 7px;0px;7px;0px;
+    font-style : italic;
+}
+
+.redWarning {
+	font-weight: normal;
+	font-size: 9pt;
+    color:red;
+    font-family: Arial, Helvetica, Geneva, sans-serif;
+	background-color: #FFFACD;
+	text-decoration: none;
+	padding: 7px;
+    margin: 7px;0px;7px;0px;
+    font-style : italic;
+}
+
+/* data block */
+
+table.blockHeader {
+    width: 100%;
+}
+
+table.blockHeader tr {
+    height: 21px;
+}
+
+table.blockHeader td {
+    font-weight: bold;
+    font-size: 10pt;
+    color: #ffffff;
+    font-family: Arial, Helvetica, Geneva, sans-serif;
+    background-color: #6699CC;
+}
+
+table.blockHeader td.leftCorner {
+    height: 21px;
+    width: 12px;
+    background: url( ../img/tbser_light.gif );
+}
+
+table.blockHeader td.rightCorner {
+    height: 21px;
+    width: 12px;
+    background: url( ../img/tbse_light.gif );
+}
+
+table.blockBody {
+    width: 100%;
+    background-color: #cccccc;
+    /*cellpadding: 0 8px;*/
+}
+
+table.blockBody table {
+    width: 100%;
+    background-color: white;
+}
+
+table.blockBody table td {
+    font-size: 9pt;
+    color: black;
+    font-family: Arial, Helvetica, Geneva, sans-serif;
+}
+
+table.dataBody {
+    width: 100%;
+    background-color: #639ACE;
+
+}
+
+table.dataBody table {
+    width: 100%;
+    background-color: #cccccc;
+}
+
+table.dataBody table tr.header td {
+    font-size: 9pt;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    background-color: gainsboro;
+    font-family: Arial, Helvetica, Geneva, sans-serif;
+}
+
+table.dataBody table td {
+    font-size: 9pt;
+    color: black;
+    background-color: white;
+    font-family: Arial, Helvetica, Geneva, sans-serif;
+}
+
+/* footer */
+table.footer {
+    margin: 10px 0;
+}
+
+table.footer td.container {
+    padding: 0 10px;
+}
+
+table.footer table.footerHead td.free {
+    width: 100%;
+    background: transparent url( ../img/bcg_footer.gif ) repeat-x bottom left;
+}
+
+table.footer td.menuCont {
+    background-color: #d9d2d0;
+    vertical-align: top;
+}
+
+table.footer td.menuCont table.menu {
+    background-color: #006bd0;
+    height: 28px;
+}
+
+table.footer td.menuCont table.menu td {
+    white-space: nowrap;
+}
+
+table.footer td.menuCont table.menu a {
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+table.footer td.menuCont table.menu td.sepr {
+    background: transparent url( ../img/sep_footer_menu.gif ) repeat-y top center;
+    font-size: 1px;
+    width: 1px;
+}
+
+table.footer td.menuCont table.menu td.item {
+    padding: 0 12px;
+}
+
+table.footer table.footerBody {
+    border-right: 1px #ebe7e2 solid;
+    border-bottom: 1px #ebe7e2 solid;
+    border-left: 1px #ebe7e2 solid;
+    background-color: #fafaf8;
+}
+
+table.footer table.footerBody p {
+    margin: 20px 60px 25px 30px;
+    white-space: nowrap;
+    text-align: left;
+}
+
+table.footer table.footerBody td {
+    vertical-align: top;
+}
+
+.bigHeader {
+    font: bold 18px Tahoma, Verdana, Helvetica, Geneva;
+    margin: 25px 0 25px 0;
+}
+
+.smallHeader {
+    font: bold 14px Tahoma, Verdana, Helvetica, Geneva;
+    margin: 25px 0 25px 0;
+}
+
+.smallHeader2 {
+    font: bold 12px Tahoma, Verdana, Helvetica, Geneva;
+    margin: 15px 0 15px 0;
+}
+
+
+.plainText {
+    margin: 0 0 15px 0;
+    font-size: 12px;
+}
+
+.smallText {
+    margin: 0 0 15px 0;
+    font-size: 10px;
+}
+
+body {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    color: #5b5b5b;
+}
+
+body, p, a, input, textarea, select {
+    font: normal 11px Tahoma, Verdana, Helvetica, Geneva;
+}
+
+a {
+    color: #086bff;
+    text-decoration: underline;
+}
+
+p {
+    text-align: justify;
+    margin: 0;
+}
+
+.textBlock p {
+    margin: 0 0 15px 0;
+    font-size: 12px;
+}
+
+img {
+    border: none;
+}
+
+form {
+    margin: 0;
+}
+
+li {
+    padding:3px;
+}
+
+span.highlighted, p.highlighted {
+    font-weight: bold;
+}

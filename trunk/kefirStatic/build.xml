@@ -1,0 +1,29 @@
+<project name="kefirStatic" default="dist" basedir=".">
+	<description>kefirStatic build file</description>
+
+	<property file="../build.properties"/>
+	<property file="../deploy.properties"/>
+	<property name="dist" location="dist"/>
+	<property name="war.name" value="${kefirStatic.war.name}"/>
+
+	<path id="compile.classpath">
+	</path>
+
+	<target name="clean" description="clean up">
+		<delete dir="${dist}"/>
+	</target>
+
+	<target name="init">
+		<tstamp/>
+		<mkdir dir="${dist}"/>
+	</target>
+
+	<target name="dist" depends="clean, init" description="generate the distribution">
+		<war basedir="web" warfile="${dist}/${war.name}" webxml="./web/WEB-INF/web.xml"/>
+	</target>
+
+	<target name="deploy" depends="dist" description="deploy on server">
+		<copy file="${dist}/${war.name}" todir="${deploy.path}"/>
+	</target>
+
+</project>

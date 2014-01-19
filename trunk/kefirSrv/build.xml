@@ -1,0 +1,59 @@
+<project name="kefirSrv" default="dist" basedir=".">
+	<description>kefirSrv build file</description>
+
+	<property file="../build.properties"/>
+	<property file="../deploy.properties"/>
+	<property name="src" location="src"/>
+	<property name="src-test" location="test"/>
+	<property name="build" location="build"/>
+	<property name="dist" location="dist"/>
+	<property name="lib" location="lib"/>
+	<property name="render.properties" location="src/java/su/opencode/kefir/srv/renderer/defaultRenderer.properties"/>
+	<property name="commonLib" location="./../lib"/>
+	<property name="json.dist" value="./../json/dist"/>
+	<property name="kefirUtil.dist" value="./../kefirUtil/dist"/>
+	<property name="kefirGen.dist" value="./../kefirGen/dist"/>
+	<property name="kefirGen.projectLib.common" value="./../kefirGen/projectLib/common"/>
+	<property name="jar.name" value="${kefirSrv.jar.name}"/>
+
+	<path id="compile.classpath">
+		<fileset file="${lib}/*.jar"/>
+		<fileset file="${commonLib}/*.jar"/>
+		<fileset file="${json.dist}/*.jar"/>
+		<fileset file="${kefirUtil.dist}/*.jar"/>
+		<fileset file="${kefirGen.dist}/*.jar"/>
+	</path>
+
+	<target name="clean" description="clean up">
+		<delete dir="${build}"/>
+		<delete dir="${dist}"/>
+	</target>
+
+	<target name="init">
+		<tstamp/>
+		<mkdir dir="${build}"/>
+		<mkdir dir="${dist}"/>
+	</target>
+
+	<target name="compile" depends="clean, init" description="compile the source">
+		<javac srcdir="${src}" destdir="${build}" debug="true" encoding="windows-1251">
+			<classpath refid="compile.classpath"/>
+		</javac>
+		<javac srcdir="${src-test}" destdir="${build}" debug="true">
+			<classpath refid="compile.classpath"/>
+		</javac>
+		<copy file="${render.properties}" todir="${build}/su/opencode/kefir/srv/renderer"/>
+	</target>
+
+	<target name="dist" depends="compile" description="generate the distribution">
+		<jar jarfile="${dist}/${jar.name}" basedir="${build}">
+			<metainf dir="META-INF"/>
+		</jar>
+		<copy file="${dist}/${jar.name}" todir="${kefirGen.projectLib.common}"/>
+	</target>
+
+	<target name="deploy" depends="dist" description="deploy on server">
+		<copy file="${dist}/${jar.name}" todir="${deploy.path}"/>
+	</target>
+
+</project>

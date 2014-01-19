@@ -1,0 +1,301 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Tahoma, Verdana, Helvetica, Geneva, sans-serif;
+}
+
+strong, a {
+    font-size: 11px
+}
+
+td {
+    color: #373737;
+    font-family: Tahoma, sans-serif; /*font-size:12px;*/
+}
+
+p, a, li, div {
+/*TODO: потом поменять на задание в %*/
+    font-size: 12px; /*font-size: 120%;*/
+}
+
+/*input, textarea {width: 10em;}*/
+
+sup {
+    color: red;
+}
+
+sup.black {
+    color: black;
+}
+
+#ruler {
+    position: absolute;
+    width: 100%;
+}
+
+/*#all { width: 100%; min-width: 1000px; }*/
+#all {
+    min-height: 100%;
+    min-width: 1000px;
+    position: absolute;
+    width: 100%;
+}
+
+/*For Header*/
+#top {
+    height: 34px;
+    border-bottom: solid 4px #FFFFFF;
+    background: #4093DC repeat-x scroll 0;
+}
+
+#top-left {
+    position: absolute;
+    left: 0;
+    height: 34px;
+    width: 330px;
+    background: url( "../img/h1_1.png" ) repeat-x scroll left top;
+    border-bottom: solid 4px #2E4F95;
+}
+
+#suprema {
+    height: 88px;
+    background: #E1E1E1 url( "../img/h2bg.png" ) repeat-x scroll 0;
+}
+
+#suprema-left {
+    position: absolute;
+    left: 0;
+    height: 88px;
+    width: 330px;
+    background: url( "../img/h2.png" ) repeat-x scroll left top;
+}
+
+#suprema-line {
+    position: absolute;
+    right: 258px;
+    height: 88px;
+    width: 1px;
+    background: url( "../img/h2vertline.png" ) no-repeat scroll center left;
+}
+
+#suprema-right {
+    position: absolute;
+    right: 50px;
+    height: 88px;
+    width: 188px;
+    background: url( "../img/h2suprema.png" ) no-repeat scroll center left;
+}
+
+div.home {
+    position: absolute;
+    top: 11px;
+    left: 22px;
+    width: 15px;
+    height: 14px;
+    padding: 0;
+    vertical-align: top;
+    cursor: pointer;
+    background: url( "../img/home.png" );
+}
+
+div.mailto {
+    position: absolute;
+    top: 11px;
+    left: 79px;
+    width: 14px;
+    height: 14px;
+    padding: 0;
+    vertical-align: top;
+    cursor: pointer;
+    background: url( "../img/mailto.png" );
+}
+
+#username {
+/*font-size: 12px; line-height: 14px;*/
+}
+
+#header-borders {
+    border-top: solid 1px #898989;
+    border-bottom: solid 1px #CBCBCB;
+}
+
+img.img-top {
+    position: absolute;
+}
+
+/*For Footer*/
+#footer-outer {
+    margin: 0 10px;
+    font-size: 12px;
+}
+
+#footer-body {
+    height: 7em;
+    background: #fafaf8;
+    border: solid 1px #EBE7E2;
+}
+
+#footer-shade {
+    position: absolute;
+    width: 20em;
+    height: 2.4em;
+    margin: -1em 0 0 1em;
+    background: #D9D2D0;
+}
+
+#footer-menu {
+    position: absolute;
+    width: 20em;
+    height: 2.3em;
+    margin: -0.1em 0 0.1em -0.15em;
+    background: #006BD0;
+}
+
+a.footer-menu-link {
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: justify;
+    text-transform: uppercase;
+    text-decoration: underline;
+    vertical-align: middle;
+}
+
+#footer-body-left {
+    position: absolute;
+    width: 40%;
+    left: 2.5em;
+    margin-top: 2em;
+}
+
+#footer-body-center {
+    position: absolute;
+    left: 24em;
+    margin-top: 2em;
+}
+
+#buttons {
+    padding: 4px;
+    background: white;
+}
+
+.constantWidth {
+    width: 30em;
+}
+
+.constantWidthShort {
+    width: 15em;
+}
+
+div.contentOuter {
+    border: #cccccc solid 1px;
+    padding: 0 8px;
+}
+
+div.contentOuter table td {
+    font-size: 9pt;
+    color: black;
+    font-family: Arial, Helvetica, Geneva, sans-serif;
+    border: 0;
+}
+
+div.contentOuter table td.visibleBorder {
+    font-size: 9pt;
+    color: black;
+    font-family: Arial, Helvetica, Geneva, sans-serif;
+    border: 1px solid #CCCCCC;
+}
+
+table.logins td {
+    font-size: 9pt;
+    color: black;
+    font-family: Arial, Helvetica, Geneva, sans-serif;
+    border: 1px;
+}
+
+div.small {
+    padding: 4px;
+    font-size: 83%;
+    font-weight: normal;
+    background: white;
+}
+
+td div.small {
+    padding: 0;
+}
+
+.buttonsTd {
+    padding-left: 9px;
+}
+
+.checkboxTd {
+    padding-left: 6px;
+}
+
+td.menuitem {
+    padding: 0 12px;
+    vertical-align: middle;
+}
+
+td.sepr {
+    background: url( "../img/sep_footer_menu.gif" ) repeat-y;
+    width: 1px;
+}
+
+/*For Menu*/
+td.leftMenuHeader {
+    font-weight: bold;
+    font-size: 9pt;
+    color: #ffffff;
+    font-family: Arial, Helvetica, Geneva, sans-serif;
+    background-color: #336699;
+    text-decoration: none;
+}
+
+td.menuLeftCorner {
+    background: #336699 url( '../img/tbser.gif' ) no-repeat;
+    width: 12px;
+    height: 21px;
+}
+
+td.menuRightCorner {
+    background: #336699 url( '../img/tbse.gif' ) no-repeat;
+    width: 12px;
+    height: 21px;
+}
+
+img.menuDelimiter {
+    width: 100%;
+}
+
+/*Стили для отрисовки узлов дерева*/
+a.Org {
+    font-weight: bold;
+}
+
+#gtree div {
+    color: gray;
+    font-style: italic;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    text-decoration: none;
+}
+
+#gtree div span, #gtree div a {
+    color: black;
+    font-style: normal;
+}
+
+#gtree div span {
+    /*background-color: #CDDBEB;*/
+    color: blue;
+
+}
+
+#gtree div a.clsNodeL2:hover {
+    color: blue;
+}
+
+.calendar_icon {
+    cursor:pointer;
+}

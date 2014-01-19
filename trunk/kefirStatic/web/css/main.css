@@ -1,0 +1,25 @@
+/* sample for change grid row style (changed through viewConfig ) */
+/*.theft { background-color: #000000; color: #FFFFFF; }*/
+/*.theft td { background-color: #000000; color: #FFFFFF; }*/
+/*.x-grid3-row-selected.theft { background-color: lightgray !important; color: #000000; !important; }*/
+/*.x-grid3-row-selected.theft td { background-color: lightgray !important; color: #000000; !important; }*/
+
+/* change text color for disabled */
+.x-btn.x-item-disabled button { color: gray !important; } /* retun gray color for disabled buttons */
+.x-item-disabled { color: #000000; }
+.x-item-disabled * { color: #000000 !important; }
+
+td.sort-asc { background-image: none !important; }
+td.sort-desc { background-image: none !important; }
+
+.upload-icon { background: url('/ext/examples/shared/icons/fam/image_add.png') no-repeat 0 0 !important; } /* upload file icon for single file upload field */
+
+.x-grid3-hd-row td { text-align: center; } /* centering all column headers */
+
+/* adding vertical border to grid cells */
+/*.x-grid3-col { border-left:  1px solid #EEEEEE; *//*border-right: 1px solid #D2D2D2;*//* } *//* Override standard grid styles (add colour to vertical grid lines) */
+.x-grid3-col { border-left:  1px solid #D2D2D2; } /* Override standard grid styles (add colour to vertical grid lines) */
+.x-grid3-row td, .x-grid3-summary-row td { padding-left: 0; /*padding-right: 0;*/ } /* Also remove padding from table data (to compensate for added grid lines) */
+
+/* main menu button style */
+.mainMenuBtn { margin: 5px; padding: 5px; } /* width does not work here, it would be overridden by Ext.Button width (which is 'auto' by default )*/ 

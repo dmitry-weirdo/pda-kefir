@@ -1,0 +1,108 @@
+/*  
+// Icon Classes */
+.icon-ok {
+	background-image:url('../img/icons/ok16.png') ! important;
+}
+.icon-check, .icon-check-off {
+	background-image:url(../../img/ext3/default/menu/unchecked.gif) ! important;
+}
+.icon-check-on {
+	background-image:url(../../img/ext3/default/menu/checked.gif) ! important;
+}
+.icon-grid {
+	background-image:url(../../img/ext3/default/ux/silk/icons/application_view_columns.png) !important;
+}
+.icon-expand-all {
+	background-image:url(../../img/ext3/default/ux/icons/expand-all.gif) ! important;
+}
+.icon-collapse-all {
+	background-image:url(../../img/ext3/default/ux/icons/collapse-all.gif) ! important;
+}
+.icon-expand {
+	background-image:url(../../img/ext3/default/ux/icons/expand-all.gif) ! important;
+}
+.icon-collapse {
+	background-image:url(../../img/ext3/default/ux/icons/collapse-all.gif) ! important;
+}
+.icon-plus {
+	background-image:url('/ext/examples/shared/icons/fam/add.png') ! important;
+}
+.icon-minus {
+	background-image:url('/ext/examples/shared/icons/fam/delete.gif') ! important;
+}
+.icon-disk {
+	background-image:url(../../img/ext3/default/ux/silk/icons/disk.png) ! important;
+}
+.icon-loading {
+	background-image:url(../../img/ext3/default/grid/grid-loading.gif) ! important;
+}
+.icon-cross {
+	background-image:url('/ext/examples/shared/icons/fam/cross.gif') ! important;
+}
+.icon-working {
+	background-image:url(../../img/ext3/default/grid/wait.gif) ! important;
+}
+.icon-upload {
+	background-image:url('../img/icons/up.png') ! important;
+}
+.icon-folder-add {
+	background-image:url(../../img/ext3/default/ux/silk/icons/folder_add.png) ! important;
+}
+.icon-open {
+	background-image:url(../../img/ext3/default/ux/silk/icons/application_go.png) ! important;
+}
+.icon-open-self {
+	background-image:url(../../img/ext3/default/ux/silk/icons/application.png) ! important;
+}
+.icon-open-popup {
+	background-image:url(../../img/ext3/default/ux/silk/icons/application_double.png) ! important;
+}
+.icon-open-blank {
+	background-image:url(../../img/ext3/default/ux/silk/icons/application_cascade.png) ! important;
+}
+.icon-open-download {
+	background-image:url(../../img/ext3/default/ux/silk/icons/application_put.png) ! important;
+}
+.icon-refresh {
+	background-image:url(../../img/ext3/default/ux/silk/icons/arrow_refresh.png) ! important;
+}
+.icon-pencil {
+	background-image:url(../../img/ext3/default/ux/silk/icons/pencil.png) ! important;
+}
+.icon-stop {
+	background-image:url(../../img/ext3/default/ux/silk/icons/control_stop.png) ! important;
+}
+.icon-run {
+	background-image:url(../../img/ext3/default/ux/silk/icons/application_go.png) ! important;
+}
+.icon-warn {
+	background-image:url(../../img/ext3/default/ux/silk/icons/error.png) ! important;
+}
+.icon-blank-img {
+	background-image:url(../../img/ext3/default/s.gif) ! important;
+}
+.icon-filter {
+	background-image:url(../../img/ext3/default/ux/icons/view-filter16.png) ! important;
+}
+.icon-filter-active {
+	background-image:url(../../img/ext3/default/ux/icons/view-filter-go16.png) ! important;
+}
+.x-form-field-wrap .trigger-tag-add {
+	background-image: url(../../img/ext3/default/trigger-tag-add.png);
+	cursor:pointer;
+}
+.x-form-field-wrap .trigger-tag {
+	background-image: url(../../img/ext3/default/trigger-tag.png);
+	cursor:pointer;
+}
+.x-form-field-wrap .x-trigger-disabled {
+	cursor:default;
+	opacity:0.5;
+	background-position:0 0;
+}
+.x-form-field-wrap .trigger-tree {
+	background-image: url(../../img/ext3/default/trigger-tree.png);
+	cursor:pointer;
+}
+
+/*  Icon Classes end */

@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+           version="2.5">
+
+	<description>minstroy application</description>
+
+	<context-param>
+		<description>Режим работы фабрики сервисов.</description>
+		<param-name>ru.kg.taglib.ServiceFactory.MODE</param-name>
+		<param-value>local-ref</param-value>
+	</context-param>
+	<context-param>
+		<param-name>fileEncoding</param-name>
+		<param-value>UTF-8</param-value>
+	</context-param>
+
+	<filter>
+		<filter-name>charsetFilter</filter-name>
+		<filter-class>su.opencode.kefir.web.util.CharsetFilter</filter-class>
+		<init-param>
+			<param-name>requestEncoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>charsetFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<!-- todo: remove this -->
+	<!-- DYNAMIC LIVE GRID -->
+	<servlet>
+		<servlet-name>getGridParams</servlet-name>
+		<servlet-class>su.opencode.kefir.web.GetGridParamsServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>setGridParam</servlet-name>
+		<servlet-class>su.opencode.kefir.web.SetGridParamServlet</servlet-class>
+	</servlet>
+
+	<!-- АРЕНДА -->
+	<servlet>
+		<servlet-name>parcelsList</servlet-name>
+		<servlet-class>su.opencode.minstroy.leasing.ParcelsListServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>parcelCreate</servlet-name>
+		<servlet-class>su.opencode.minstroy.leasing.ParcelCreateServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>developersList</servlet-name>
+		<servlet-class>su.opencode.minstroy.leasing.DevelopersListServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>developerCreate</servlet-name>
+		<servlet-class>su.opencode.minstroy.leasing.DeveloperCreateServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>leaseContractsList</servlet-name>
+		<servlet-class>su.opencode.minstroy.leasing.LeaseContractsListServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>leaseContractCreate</servlet-name>
+		<servlet-class>su.opencode.minstroy.leasing.LeaseContractCreateServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>rentPaymentsList</servlet-name>
+		<servlet-class>su.opencode.minstroy.leasing.RentPaymentsListServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>rentPaymentCreate</servlet-name>
+		<servlet-class>su.opencode.minstroy.leasing.RentPaymentCreateServlet</servlet-class>
+	</servlet>
+
+	<!-- СТРОИТЕЛЬНЫЙ ОБЪЕКТ -->
+	<servlet>
+		<servlet-name>buildingPermissionsList</servlet-name>
+		<servlet-class>su.opencode.minstroy.building.BuildingPermissionsListServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>buildingPermissionCreate</servlet-name>
+		<servlet-class>su.opencode.minstroy.building.BuildingPermissionCreateServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>buildingsList</servlet-name>
+		<servlet-class>su.opencode.minstroy.building.BuildingsListServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>buildingCreate</servlet-name>
+		<servlet-class>su.opencode.minstroy.building.BuildingCreateServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>buildingSectionsList</servlet-name>
+		<servlet-class>su.opencode.minstroy.building.BuildingSectionsListServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>buildingSectionCreate</servlet-name>
+		<servlet-class>su.opencode.minstroy.building.BuildingSectionCreateServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>buildingStatesList</servlet-name>
+		<servlet-class>su.opencode.minstroy.building.BuildingStatesListServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>buildingStateCreate</servlet-name>
+		<servlet-class>su.opencode.minstroy.building.BuildingStateCreateServlet</servlet-class>
+	</servlet>
+
+	<!-- ИНВЕСТИРОВАНИЕ -->
+	<servlet>
+		<servlet-name>investorsList</servlet-name>
+		<servlet-class>su.opencode.minstroy.investing.InvestorsListServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>investorCreate</servlet-name>
+		<servlet-class>su.opencode.minstroy.investing.InvestorCreateServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>condominiumsList</servlet-name>
+		<servlet-class>su.opencode.minstroy.investing.CondominiumsListServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>condominiumCreate</servlet-name>
+		<servlet-class>su.opencode.minstroy.investing.CondominiumCreateServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>investmentContractsList</servlet-name>
+		<servlet-class>su.opencode.minstroy.investing.InvestmentContractsListServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>investmentContractCreate</servlet-name>
+		<servlet-class>su.opencode.minstroy.investing.InvestmentContractCreateServlet</servlet-class>
+	</servlet>
+
+	<!-- ДОЛЬЩИКИ -->
+	<servlet>
+		<servlet-name>identityCardTypesList</servlet-name>
+		<servlet-class>su.opencode.minstroy.holding.IdentityCardTypesListServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>holdersList</servlet-name>
+		<servlet-class>su.opencode.minstroy.holding.HoldersListServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>holderCreate</servlet-name>
+		<servlet-class>su.opencode.minstroy.holding.HolderCreateServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ownershipContractTypesList</servlet-name>
+		<servlet-class>su.opencode.minstroy.holding.OwnershipContractTypesListServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>ownershipContractsList</servlet-name>
+		<servlet-class>su.opencode.minstroy.holding.OwnershipContractsListServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ownershipContractCreate</servlet-name>
+		<servlet-class>su.opencode.minstroy.holding.OwnershipContractCreateServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>coholdersList</servlet-name>
+		<servlet-class>su.opencode.minstroy.holding.CoholdersListServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>coholderCreate</servlet-name>
+		<servlet-class>su.opencode.minstroy.holding.CoholderCreateServlet</servlet-class>
+	</servlet>
+
+	<servlet>
+		<servlet-name>testEntitysList</servlet-name>
+		<servlet-class>test.TestEntitysListServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>testEntityGet</servlet-name>
+		<servlet-class>test.TestEntityGetServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>testEntityCreate</servlet-name>
+		<servlet-class>test.TestEntityCreateServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>testEntityUpdate</servlet-name>
+		<servlet-class>test.TestEntityUpdateServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>testEntityDelete</servlet-name>
+		<servlet-class>test.TestEntityDeleteServlet</servlet-class>
+	</servlet>
+
+	<!-- ${APPEND_DECLARATION} -->
+	
+	<!-- todo: remove this -->
+	<!-- DYNAMIC LIVE GRID -->
+	<servlet-mapping>
+		<servlet-name>getGridParams</servlet-name>
+		<url-pattern>/getGridParams</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>setGridParam</servlet-name>
+		<url-pattern>/setGridParam</url-pattern>
+	</servlet-mapping>
+
+	<!--  АРЕНДА -->
+	<servlet-mapping>
+		<servlet-name>parcelsList</servlet-name>
+		<url-pattern>/parcelsList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>parcelCreate</servlet-name>
+		<url-pattern>/parcelCreate</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>developersList</servlet-name>
+		<url-pattern>/developersList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>developerCreate</servlet-name>
+		<url-pattern>/developerCreate</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>leaseContractsList</servlet-name>
+		<url-pattern>/leaseContractsList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>leaseContractCreate</servlet-name>
+		<url-pattern>/leaseContractCreate</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>rentPaymentsList</servlet-name>
+		<url-pattern>/rentPaymentsList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>rentPaymentCreate</servlet-name>
+		<url-pattern>/rentPaymentCreate</url-pattern>
+	</servlet-mapping>
+
+	<!-- СТРОИТЕЛЬНЫЙ ОБЪЕКТ -->
+	<servlet-mapping>
+		<servlet-name>buildingPermissionsList</servlet-name>
+		<url-pattern>/buildingPermissionsList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>buildingPermissionCreate</servlet-name>
+		<url-pattern>/buildingPermissionCreate</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>buildingsList</servlet-name>
+		<url-pattern>/buildingsList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>buildingCreate</servlet-name>
+		<url-pattern>/buildingCreate</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>buildingSectionsList</servlet-name>
+		<url-pattern>/buildingSectionsList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>buildingSectionCreate</servlet-name>
+		<url-pattern>/buildingSectionCreate</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>buildingStatesList</servlet-name>
+		<url-pattern>/buildingStatesList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>buildingStateCreate</servlet-name>
+		<url-pattern>/buildingStateCreate</url-pattern>
+	</servlet-mapping>
+
+	<!-- ИНВЕСТИРОВАНИЕ -->
+	<servlet-mapping>
+		<servlet-name>investorsList</servlet-name>
+		<url-pattern>/investorsList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>investorCreate</servlet-name>
+		<url-pattern>/investorCreate</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>condominiumsList</servlet-name>
+		<url-pattern>/condominiumsList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>condominiumCreate</servlet-name>
+		<url-pattern>/condominiumCreate</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>investmentContractsList</servlet-name>
+		<url-pattern>/investmentContractsList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>investmentContractCreate</servlet-name>
+		<url-pattern>/investmentContractCreate</url-pattern>
+	</servlet-mapping>
+
+	<!-- ДОЛЬЩИКИ -->
+	<servlet-mapping>
+		<servlet-name>identityCardTypesList</servlet-name>
+		<url-pattern>/identityCardTypesList</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>holdersList</servlet-name>
+		<url-pattern>/holdersList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>holderCreate</servlet-name>
+		<url-pattern>/holderCreate</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ownershipContractTypesList</servlet-name>
+		<url-pattern>/ownershipContractTypesList</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>ownershipContractsList</servlet-name>
+		<url-pattern>/ownershipContractsList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ownershipContractCreate</servlet-name>
+		<url-pattern>/ownershipContractCreate</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>coholdersList</servlet-name>
+		<url-pattern>/coholdersList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>coholderCreate</servlet-name>
+		<url-pattern>/coholderCreate</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>testEntityGet</servlet-name>
+		<url-pattern>/testEntityGet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>testEntitysList</servlet-name>
+		<url-pattern>/testEntitysList</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>testEntityCreate</servlet-name>
+		<url-pattern>/testEntityCreate</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>testEntityUpdate</servlet-name>
+		<url-pattern>/testEntityUpdate</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>testEntityDelete</servlet-name>
+		<url-pattern>/testEntityDelete</url-pattern>
+	</servlet-mapping>
+
+	<!-- ${APPEND_MAPPING} -->
+
+	<!--          ejb references         -->
+	<ejb-local-ref>
+		<ejb-ref-name>ejb/DynamicGridService</ejb-ref-name>
+		<ejb-ref-type>Session</ejb-ref-type>
+		<local-home>java.lang.Object</local-home>
+		<local>su.opencode.kefir.srv.dynamicGrid.DynamicGridService</local>
+	</ejb-local-ref>
+
+	<ejb-local-ref>
+		<ejb-ref-name>ejb/LeasingService</ejb-ref-name>
+		<ejb-ref-type>Session</ejb-ref-type>
+		<local-home>java.lang.Object</local-home>
+		<local>su.opencode.minstroy.ejb.leasing.LeasingService</local>
+	</ejb-local-ref>
+	<ejb-local-ref>
+		<ejb-ref-name>ejb/BuildingService</ejb-ref-name>
+		<ejb-ref-type>Session</ejb-ref-type>
+		<local-home>java.lang.Object</local-home>
+		<local>su.opencode.minstroy.ejb.building.BuildingService</local>
+	</ejb-local-ref>
+	<ejb-local-ref>
+		<ejb-ref-name>ejb/InvestingService</ejb-ref-name>
+		<ejb-ref-type>Session</ejb-ref-type>
+		<local-home>java.lang.Object</local-home>
+		<local>su.opencode.minstroy.ejb.investing.InvestingService</local>
+	</ejb-local-ref>
+	<ejb-local-ref>
+		<ejb-ref-name>ejb/HoldingService</ejb-ref-name>
+		<ejb-ref-type>Session</ejb-ref-type>
+		<local-home>java.lang.Object</local-home>
+		<local>su.opencode.minstroy.ejb.holding.HoldingService</local>
+	</ejb-local-ref>
+	<ejb-local-ref>
+		<ejb-ref-name>ejb/TestService</ejb-ref-name>
+		<ejb-ref-type>Session</ejb-ref-type>
+		<local-home>java.lang.Object</local-home>
+		<local>test.TestService</local>
+	</ejb-local-ref>
+	<!-- ${APPEND_EJB_LOCAL_REFERENCE} -->
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+</web-app>
