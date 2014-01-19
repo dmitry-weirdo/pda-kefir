@@ -13,9 +13,9 @@ import su.opencode.kefir.util.SqlUtils;
 
 import static su.opencode.kefir.util.StringUtils.concat;
 
-public class SqlUtilsTests extends TestCase
+public class SqlUtilsTest extends TestCase
 {
-	public void testGetSearchParamFirebird() { // todo: move to SqlUtilsTest class
+	public void testGetSearchParamFirebird() {
 		String value;
 		String escapedValue;
 		StringBuilder sb = new StringBuilder();
