@@ -17,7 +17,7 @@ import static su.opencode.kefir.util.StringUtils.*;
 public class StringUtilsTests extends TestCase
 {
 	public void test866ProblemLetter() {
-		final String problemStr = "øØ";
+		final String problemStr = "ÑˆĞ¨";
 		System.out.println(getConcatenation("     str: ", problemStr));
 
 		final String problemStrTo866 = getStringTo866(problemStr);
@@ -37,7 +37,7 @@ public class StringUtilsTests extends TestCase
 		System.out.println(getConcatenation("from 866: ", strFrom866));
 	}
 	public void testUTF8ProblemLetter() {
-		final String problemStr = "èÈ";
+		final String problemStr = "Ğ¸Ğ˜";
 		System.out.println(getConcatenation("      str: ", problemStr));
 
 		final String problemStrToUTF8 = getStringToUTF8(problemStr);
@@ -70,5 +70,5 @@ public class StringUtilsTests extends TestCase
 	}
 
 	private static final String fileName = "d:\\11.txt";
-	private static final String str = "àÀáÁâÂäÄåÅ¸¨æÆçÇèÈéÉêÊëËìÌíÍîÎïÏğĞñÑòÒóÓôÔõÕöÖ÷×øØùÙúÚûÛüÜıİşŞÿß";
+	private static final String str = "Ğ°ĞĞ±Ğ‘Ğ²Ğ’Ğ´Ğ”ĞµĞ•Ñ‘ĞĞ¶Ğ–Ğ·Ğ—Ğ¸Ğ˜Ğ¹Ğ™ĞºĞšĞ»Ğ›Ğ¼ĞœĞ½ĞĞ¾ĞĞ¿ĞŸÑ€Ğ ÑĞ¡Ñ‚Ğ¢ÑƒĞ£Ñ„Ğ¤Ñ…Ğ¥Ñ†Ğ¦Ñ‡Ğ§ÑˆĞ¨Ñ‰Ğ©ÑŠĞªÑ‹Ğ«ÑŒĞ¬ÑĞ­ÑĞ®ÑĞ¯";
 }

@@ -74,13 +74,13 @@ public class ZipUtils
 		if (zipDir.list().length == 0)
 		{
 			logger.info( concat(sb, "zipping empty directory: " + zipDir.getPath()) );
-			String zipDirName = concat(zipDir.getPath().substring(rootDirPath.length() + FileUtils.FILE_SEPARATOR.length()), FileUtils.STRAIGHT_FILE_SEPARATOR); // нужно добавить "/" к имени директории, чтобы она сохранялась
+			String zipDirName = concat(zipDir.getPath().substring(rootDirPath.length() + FileUtils.FILE_SEPARATOR.length()), FileUtils.STRAIGHT_FILE_SEPARATOR); // РЅСѓР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ "/" Рє РёРјРµРЅРё РґРёСЂРµРєС‚РѕСЂРёРё, С‡С‚РѕР±С‹ РѕРЅР° СЃРѕС…СЂР°РЅСЏР»Р°СЃСЊ
 
 			// replace back slashes with slashes, otherwise linux will see subdirectories as file names with slashes
 			zipDirName = zipDirName.replace(FileUtils.FILE_SEPARATOR, FileUtils.STRAIGHT_FILE_SEPARATOR);
 
 			logger.info( concat(sb, "empty dir zip name: ", zipDirName) );
-			ZipEntry anEntry = new ZipEntry(zipDirName); // отрезаем корневую директорию, иначе пишется абсолютный путь файла (полная структура директорий)
+			ZipEntry anEntry = new ZipEntry(zipDirName); // РѕС‚СЂРµР·Р°РµРј РєРѕСЂРЅРµРІСѓСЋ РґРёСЂРµРєС‚РѕСЂРёСЋ, РёРЅР°С‡Рµ РїРёС€РµС‚СЃСЏ Р°Р±СЃРѕР»СЋС‚РЅС‹Р№ РїСѓС‚СЊ С„Р°Р№Р»Р° (РїРѕР»РЅР°СЏ СЃС‚СЂСѓРєС‚СѓСЂР° РґРёСЂРµРєС‚РѕСЂРёР№)
 			zos.putNextEntry(anEntry);
 
 			return;
@@ -105,7 +105,7 @@ public class ZipUtils
 			try
 				(FileInputStream fis = new FileInputStream(file)) // create a FileInputStream on top of file
 			{
-				// отрезаем корневую директорию, иначе пишется абслютный путь файла (полная структура директорий)
+				// РѕС‚СЂРµР·Р°РµРј РєРѕСЂРЅРµРІСѓСЋ РґРёСЂРµРєС‚РѕСЂРёСЋ, РёРЅР°С‡Рµ РїРёС€РµС‚СЃСЏ Р°Р±СЃР»СЋС‚РЅС‹Р№ РїСѓС‚СЊ С„Р°Р№Р»Р° (РїРѕР»РЅР°СЏ СЃС‚СЂСѓРєС‚СѓСЂР° РґРёСЂРµРєС‚РѕСЂРёР№)
 				String fileAbsolutePath = file.getAbsolutePath();
 				String zipEntryName = fileAbsolutePath.substring(rootDirPath.length());
 				if (zipEntryName.startsWith(FileUtils.FILE_SEPARATOR))
@@ -138,11 +138,11 @@ public class ZipUtils
 	}
 
 	/**
-	 * Разархивирует zip-файл с заданным именем в заданную директорию.
-	 * @param fileName полное имя zip-файла.
-	 * @param dirPath директория, в которую извлекается zip-файл.
-	 * @return список имен разархивированных файлов.
-	 * @throws RuntimeException ошибка извлечения.
+	 * Р Р°Р·Р°СЂС…РёРІРёСЂСѓРµС‚ zip-С„Р°Р№Р» СЃ Р·Р°РґР°РЅРЅС‹Рј РёРјРµРЅРµРј РІ Р·Р°РґР°РЅРЅСѓСЋ РґРёСЂРµРєС‚РѕСЂРёСЋ.
+	 * @param fileName РїРѕР»РЅРѕРµ РёРјСЏ zip-С„Р°Р№Р»Р°.
+	 * @param dirPath РґРёСЂРµРєС‚РѕСЂРёСЏ, РІ РєРѕС‚РѕСЂСѓСЋ РёР·РІР»РµРєР°РµС‚СЃСЏ zip-С„Р°Р№Р».
+	 * @return СЃРїРёСЃРѕРє РёРјРµРЅ СЂР°Р·Р°СЂС…РёРІРёСЂРѕРІР°РЅРЅС‹С… С„Р°Р№Р»РѕРІ.
+	 * @throws RuntimeException РѕС€РёР±РєР° РёР·РІР»РµС‡РµРЅРёСЏ.
 	 */
 	public static List<String> unzip(String fileName, String dirPath) {
 		try
@@ -183,7 +183,7 @@ public class ZipUtils
 					{
 						File file = new File(filePath);
 
-						// непустая директория может отсутствовать как отдельная сущность в zip-файле, поэтому создаем родителскую директорию извлекаемого файла
+						// РЅРµРїСѓСЃС‚Р°СЏ РґРёСЂРµРєС‚РѕСЂРёСЏ РјРѕР¶РµС‚ РѕС‚СЃСѓС‚СЃС‚РІРѕРІР°С‚СЊ РєР°Рє РѕС‚РґРµР»СЊРЅР°СЏ СЃСѓС‰РЅРѕСЃС‚СЊ РІ zip-С„Р°Р№Р»Рµ, РїРѕСЌС‚РѕРјСѓ СЃРѕР·РґР°РµРј СЂРѕРґРёС‚РµР»СЃРєСѓСЋ РґРёСЂРµРєС‚РѕСЂРёСЋ РёР·РІР»РµРєР°РµРјРѕРіРѕ С„Р°Р№Р»Р°
 						String parentDirectoryPath = file.getParent();
 						logger.info( concat(sb, "creating file's parent directory: ", parentDirectoryPath) );
 						FileUtils.createDirs(parentDirectoryPath);
