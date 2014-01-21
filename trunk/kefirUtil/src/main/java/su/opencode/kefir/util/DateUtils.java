@@ -109,9 +109,9 @@ public class DateUtils
 	}
 
 	/**
-	 * @param calendar календарь, используемый для преобразования.
-	 * @param date исходная дата.
-	 * @return дата с выставленным временем 00:00:00:000.
+	 * @param calendar РєР°Р»РµРЅРґР°СЂСЊ, РёСЃРїРѕР»СЊР·СѓРµРјС‹Р№ РґР»СЏ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ.
+	 * @param date РёСЃС…РѕРґРЅР°СЏ РґР°С‚Р°.
+	 * @return РґР°С‚Р° СЃ РІС‹СЃС‚Р°РІР»РµРЅРЅС‹Рј РІСЂРµРјРµРЅРµРј 00:00:00:000.
 	 */
 	public static Date getDayMonthYearDate(Calendar calendar, Date date) {
 		calendar.setTime(date);
@@ -128,8 +128,8 @@ public class DateUtils
 	}
 
 	/**
-	 * @param date исходная дата.
-	 * @return дата с выставленным временем 03:00:00.
+	 * @param date РёСЃС…РѕРґРЅР°СЏ РґР°С‚Р°.
+	 * @return РґР°С‚Р° СЃ РІС‹СЃС‚Р°РІР»РµРЅРЅС‹Рј РІСЂРµРјРµРЅРµРј 03:00:00.
 	 */
 	public static Date getDate3AM(Date date) {
 		Calendar calendar = clearCalendar(date);
@@ -287,6 +287,9 @@ public class DateUtils
 
 		Calendar calendar = clearCalendar(date);
 
+		if (field == null)
+			throw new IllegalArgumentException("Calendar Field cannot be null");
+
 		switch (field)
 		{
 			case DAY_OF_MONTH:
@@ -305,13 +308,15 @@ public class DateUtils
 
 	public static String getMonthNameGenitive(int num) {
 		if (num < Calendar.JANUARY || num > Calendar.DECEMBER)
-			throw new IllegalArgumentException("Неверный номер месяца. Номер месяца должен лежать в пределах от 0 до 11");
+			throw new IllegalArgumentException("РќРµРІРµСЂРЅС‹Р№ РЅРѕРјРµСЂ РјРµСЃСЏС†Р°. РќРѕРјРµСЂ РјРµСЃСЏС†Р° РґРѕР»Р¶РµРЅ Р»РµР¶Р°С‚СЊ РІ РїСЂРµРґРµР»Р°С… РѕС‚ 0 РґРѕ 11");
+
 		return MONTHS_GENITIVE[num];
 	}
 
 	public static String getMonthNameNominative(int num) {
 		if (num < Calendar.JANUARY || num > Calendar.DECEMBER)
-			throw new IllegalArgumentException("Неверный номер месяца. Номер месяца должен лежать в пределах от 0 до 11");
+			throw new IllegalArgumentException("РќРµРІРµСЂРЅС‹Р№ РЅРѕРјРµСЂ РјРµСЃСЏС†Р°. РќРѕРјРµСЂ РјРµСЃСЏС†Р° РґРѕР»Р¶РµРЅ Р»РµР¶Р°С‚СЊ РІ РїСЂРµРґРµР»Р°С… РѕС‚ 0 РґРѕ 11");
+
 		return MONTHS_NOMINATIVE[num];
 	}
 
@@ -330,9 +335,11 @@ public class DateUtils
 		DAY_OF_MONTH, MONTH, YEAR
 	}
 
-	public static final String[] MONTHS_GENITIVE = { "января", "февраля", "марта", "апреля", "мая", "июня", "июля",
-		"августа", "сентября", "октября", "ноября", "декабря" };
+	public static final String[] MONTHS_GENITIVE = {
+		"СЏРЅРІР°СЂСЏ", "С„РµРІСЂР°Р»СЏ", "РјР°СЂС‚Р°", "Р°РїСЂРµР»СЏ", "РјР°СЏ", "РёСЋРЅСЏ", "РёСЋР»СЏ", "Р°РІРіСѓСЃС‚Р°", "СЃРµРЅС‚СЏР±СЂСЏ", "РѕРєС‚СЏР±СЂСЏ", "РЅРѕСЏР±СЂСЏ", "РґРµРєР°Р±СЂСЏ"
+	};
 
-	public static final String[] MONTHS_NOMINATIVE = { "январь", "февраль", "март", "апрель", "май", "июнь", "июль",
-		"август", "сентябрь", "октябрь", "ноябрь", "декабрь" };
+	public static final String[] MONTHS_NOMINATIVE = {
+		"СЏРЅРІР°СЂСЊ", "С„РµРІСЂР°Р»СЊ", "РјР°СЂС‚", "Р°РїСЂРµР»СЊ", "РјР°Р№", "РёСЋРЅСЊ", "РёСЋР»СЊ", "Р°РІРіСѓСЃС‚", "СЃРµРЅС‚СЏР±СЂСЊ", "РѕРєС‚СЏР±СЂСЊ", "РЅРѕСЏР±СЂСЊ", "РґРµРєР°Р±СЂСЊ"
+	};
 }

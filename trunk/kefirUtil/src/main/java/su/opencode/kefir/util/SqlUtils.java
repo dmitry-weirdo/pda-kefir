@@ -38,7 +38,7 @@ public class SqlUtils
 			return ((Short) value).intValue();
 
 		if (value instanceof String)
-			return Integer.parseInt( (String) value ); // значение, замапленное на Integer, хранится в БД, как строка
+			return Integer.parseInt( (String) value ); // Р·РЅР°С‡РµРЅРёРµ, Р·Р°РјР°РїР»РµРЅРЅРѕРµ РЅР° Integer, С…СЂР°РЅРёС‚СЃСЏ РІ Р‘Р”, РєР°Рє СЃС‚СЂРѕРєР°
 
 		return (Integer) value;
 	}
@@ -89,7 +89,7 @@ public class SqlUtils
 			return booleanValue;
 		}
 		catch (ClassCastException e)
-		{ // представление Boolean как числа 0/1
+		{ // РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ Boolean РєР°Рє С‡РёСЃР»Р° 0/1
 			Byte byteValue = SqlUtils.getByte(value);
 			if (byteValue == null)
 				return null;
@@ -169,7 +169,7 @@ public class SqlUtils
 		if (isEmpty(value))
 			return "null";
 
-		String width = value.replace(',', '.').replaceAll(" ", "");
+		String width = value.replace(',', '.').replaceAll("В ", "");
 
 		if (width.indexOf('E') > -1)
 			width = width.substring(0, width.indexOf('.') + precision);
@@ -192,8 +192,8 @@ public class SqlUtils
 	}
 
 	/**
-	 * @param search параметр поиска
-	 * @return строка, подготовленная для поиска в sql-выражении like
+	 * @param search РїР°СЂР°РјРµС‚СЂ РїРѕРёСЃРєР°
+	 * @return СЃС‚СЂРѕРєР°, РїРѕРґРіРѕС‚РѕРІР»РµРЅРЅР°СЏ РґР»СЏ РїРѕРёСЃРєР° РІ sql-РІС‹СЂР°Р¶РµРЅРёРё like
 	 */
 	public static String getSearchParamFirebird(String search) {
 		if ( empty(search) )
@@ -305,8 +305,8 @@ public class SqlUtils
 	public static final String FIREBIRD_BOOLEAN_FALSE = "0";
 
 	/**
-	 * Максимальное число элементов в одном выражении <code>in</code> в Firebird.
-	 * При превышении этого числа при выполнении запроса вылетает "Implementation limit exceeded".
+	 * РњР°РєСЃРёРјР°Р»СЊРЅРѕРµ С‡РёСЃР»Рѕ СЌР»РµРјРµРЅС‚РѕРІ РІ РѕРґРЅРѕРј РІС‹СЂР°Р¶РµРЅРёРё <code>in</code> РІ Firebird.
+	 * РџСЂРё РїСЂРµРІС‹С€РµРЅРёРё СЌС‚РѕРіРѕ С‡РёСЃР»Р° РїСЂРё РІС‹РїРѕР»РЅРµРЅРёРё Р·Р°РїСЂРѕСЃР° РІС‹Р»РµС‚Р°РµС‚ "Implementation limit exceeded".
 	 */
 	public static final int FIREBIRD_MAX_IN_ELEMENTS_COUNT = 1499;
 }

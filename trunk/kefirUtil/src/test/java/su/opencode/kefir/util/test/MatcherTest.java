@@ -23,7 +23,7 @@ public class MatcherTest
 		assertTrue( InnMatcher.isValid("1234567894") );
 		assertTrue( InnMatcher.isValid("7830002293") );
 		assertFalse( InnMatcher.isValid("7830002294") );
-		assertFalse( InnMatcher.isValid("78ó0002293") );
+		assertFalse( InnMatcher.isValid("78Ñƒ0002293") );
 		assertFalse( InnMatcher.isValid("780002293") );
 		assertFalse( InnMatcher.isValid("78000229366") );
 		assertFalse( InnMatcher.isValid("631066062") );

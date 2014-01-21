@@ -27,28 +27,28 @@ import java.util.List;
 public class StringUtils
 {
 	/**
-	 * @param str строка
-	 * @return <code>false</code> - если строка непустая
+	 * @param str СЃС‚СЂРѕРєР°
+	 * @return <code>false</code> - РµСЃР»Рё СЃС‚СЂРѕРєР° РЅРµРїСѓСЃС‚Р°СЏ
 	 * <br/>
-	 * <code>true</code> - если строка равна <code>null</code> или имеет нулевую длину.
+	 * <code>true</code> - РµСЃР»Рё СЃС‚СЂРѕРєР° СЂР°РІРЅР° <code>null</code> РёР»Рё РёРјРµРµС‚ РЅСѓР»РµРІСѓСЋ РґР»РёРЅСѓ.
 	 */
-	public static boolean empty(String str) { // todo: аналогичная функция, которая делает trim
+	public static boolean empty(String str) { // todo: Р°РЅР°Р»РѕРіРёС‡РЅР°СЏ С„СѓРЅРєС†РёСЏ, РєРѕС‚РѕСЂР°СЏ РґРµР»Р°РµС‚ trim
 		return (str == null || str.isEmpty());
 	}
 	/**
-	 * @param str строка
-	 * @return <code>true</code> - если строка непустая
+	 * @param str СЃС‚СЂРѕРєР°
+	 * @return <code>true</code> - РµСЃР»Рё СЃС‚СЂРѕРєР° РЅРµРїСѓСЃС‚Р°СЏ
 	 * <br/>
-	 * <code>false</code> - если строка равна <code>null</code> или имеет нулевую длину.
+	 * <code>false</code> - РµСЃР»Рё СЃС‚СЂРѕРєР° СЂР°РІРЅР° <code>null</code> РёР»Рё РёРјРµРµС‚ РЅСѓР»РµРІСѓСЋ РґР»РёРЅСѓ.
 	 */
-	public static boolean notEmpty(String str) { // todo: аналогичная функция, которая делает trim
+	public static boolean notEmpty(String str) { // todo: Р°РЅР°Р»РѕРіРёС‡РЅР°СЏ С„СѓРЅРєС†РёСЏ, РєРѕС‚РѕСЂР°СЏ РґРµР»Р°РµС‚ trim
 		return (str != null && !str.isEmpty());
 	}
 
 	/**
-	 * @param value значение
-	 * @param defaultValue значение по умолчанию
-	 * @return если значение равно <code>null</code> или пусто - то значение по умолчанию.<br/>В противном случае - значение.
+	 * @param value Р·РЅР°С‡РµРЅРёРµ
+	 * @param defaultValue Р·РЅР°С‡РµРЅРёРµ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+	 * @return РµСЃР»Рё Р·РЅР°С‡РµРЅРёРµ СЂР°РІРЅРѕ <code>null</code> РёР»Рё РїСѓСЃС‚Рѕ - С‚Рѕ Р·РЅР°С‡РµРЅРёРµ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ.<br/>Р’ РїСЂРѕС‚РёРІРЅРѕРј СЃР»СѓС‡Р°Рµ - Р·РЅР°С‡РµРЅРёРµ.
 	 */
 	public static String getValue(String value, String defaultValue) {
 		if (value != null && !value.isEmpty())
@@ -58,10 +58,10 @@ public class StringUtils
 	}
 
 	/**
-	 * @param valueToCheck значение, которое проверяется на пустоту или равенство <code>null</code>
-	 * @param value значение
-	 * @param defaultValue значение по умолчанию
-	 * @return если значение равно <code>null</code> или пусто - то значение по умолчанию.<br/>В противном случае - значение.
+	 * @param valueToCheck Р·РЅР°С‡РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РїСЂРѕРІРµСЂСЏРµС‚СЃСЏ РЅР° РїСѓСЃС‚РѕС‚Сѓ РёР»Рё СЂР°РІРµРЅСЃС‚РІРѕ <code>null</code>
+	 * @param value Р·РЅР°С‡РµРЅРёРµ
+	 * @param defaultValue Р·РЅР°С‡РµРЅРёРµ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+	 * @return РµСЃР»Рё Р·РЅР°С‡РµРЅРёРµ СЂР°РІРЅРѕ <code>null</code> РёР»Рё РїСѓСЃС‚Рѕ - С‚Рѕ Р·РЅР°С‡РµРЅРёРµ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ.<br/>Р’ РїСЂРѕС‚РёРІРЅРѕРј СЃР»СѓС‡Р°Рµ - Р·РЅР°С‡РµРЅРёРµ.
 	 */
 	public static String getValue(String valueToCheck, String value, String defaultValue) {
 		if ( valueToCheck != null && !valueToCheck.isEmpty() )
@@ -71,10 +71,10 @@ public class StringUtils
 	}
 
 	/**
-	 * @param valueToCheck булево значение, которое проверяется
-	 * @param value значение
-	 * @param defaultValue значение по умолчанию
-	 * @return если значение неистинно - то значение по умолчанию.<br/>В противном случае - указанное значение.
+	 * @param valueToCheck Р±СѓР»РµРІРѕ Р·РЅР°С‡РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РїСЂРѕРІРµСЂСЏРµС‚СЃСЏ
+	 * @param value Р·РЅР°С‡РµРЅРёРµ
+	 * @param defaultValue Р·РЅР°С‡РµРЅРёРµ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+	 * @return РµСЃР»Рё Р·РЅР°С‡РµРЅРёРµ РЅРµРёСЃС‚РёРЅРЅРѕ - С‚Рѕ Р·РЅР°С‡РµРЅРёРµ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ.<br/>Р’ РїСЂРѕС‚РёРІРЅРѕРј СЃР»СѓС‡Р°Рµ - СѓРєР°Р·Р°РЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ.
 	 */
 	public static String getValue(boolean valueToCheck, String value, String defaultValue) {
 		if (valueToCheck)
@@ -175,10 +175,10 @@ public class StringUtils
 		if (len == 0)
 			return null;
 
-		// fix 'И' letter tomcat problem
+		// fix 'Р' letter tomcat problem
 		for (int i = 0; i < len; i++)
 		{
-			if (bytes[i] == -48 && bytes[i + 1] == 63) // буква И в глючном случае
+			if (bytes[i] == -48 && bytes[i + 1] == 63) // Р±СѓРєРІР° Р РІ РіР»СЋС‡РЅРѕРј СЃР»СѓС‡Р°Рµ
 			{
 				bytes[i] = (byte) 208;
 				bytes[i + 1] = (byte) 152;
@@ -217,10 +217,10 @@ public class StringUtils
 		if (len == 0)
 			return null;
 
-		// fix 'И' letter tomcat problem
+		// fix 'Р' letter tomcat problem
 		for (int i = 0; i < len; i++)
 		{
-			if (bytes[i] == -48 && bytes[i + 1] == 63) // буква И в глючном случае
+			if (bytes[i] == -48 && bytes[i + 1] == 63) // Р±СѓРєРІР° Р РІ РіР»СЋС‡РЅРѕРј СЃР»СѓС‡Р°Рµ
 			{
 				bytes[i] = (byte) 208;
 				bytes[i + 1] = (byte) 152;
@@ -254,10 +254,10 @@ public class StringUtils
 		if (len == 0)
 			return null;
 
-		// fix 'Ш' letter problem
+		// fix 'РЁ' letter problem
 		for (int i = 0; i < len; i++)
 		{
-			if (bytes[i] == 63) // буква Ш в глючном случае
+			if (bytes[i] == 63) // Р±СѓРєРІР° РЁ РІ РіР»СЋС‡РЅРѕРј СЃР»СѓС‡Р°Рµ
 				bytes[i] = (byte) -104;
 		}
 
@@ -293,11 +293,11 @@ public class StringUtils
 	}
 
 	/**
-	 * @param separator разделитель
-	 * @param strings список строка
-	 * @return строка, представляющая собой строки из списка, разделенные разелителем. В конце строки разделителя нет.
+	 * @param separator СЂР°Р·РґРµР»РёС‚РµР»СЊ
+	 * @param strings СЃРїРёСЃРѕРє СЃС‚СЂРѕРєР°
+	 * @return СЃС‚СЂРѕРєР°, РїСЂРµРґСЃС‚Р°РІР»СЏСЋС‰Р°СЏ СЃРѕР±РѕР№ СЃС‚СЂРѕРєРё РёР· СЃРїРёСЃРєР°, СЂР°Р·РґРµР»РµРЅРЅС‹Рµ СЂР°Р·РµР»РёС‚РµР»РµРј. Р’ РєРѕРЅС†Рµ СЃС‚СЂРѕРєРё СЂР°Р·РґРµР»РёС‚РµР»СЏ РЅРµС‚.
 	 * <br/>
-	 * Если список пуст или равен <code>null</code>, возвращается пустая строка.
+	 * Р•СЃР»Рё СЃРїРёСЃРѕРє РїСѓСЃС‚ РёР»Рё СЂР°РІРµРЅ <code>null</code>, РІРѕР·РІСЂР°С‰Р°РµС‚СЃСЏ РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР°.
 	 */
 	public static String getSeparatedString(String separator, List<String> strings) {
 		if (strings == null || strings.isEmpty())
@@ -534,26 +534,26 @@ public class StringUtils
 	}
 
 	/**
-	 * @param quarter квартал
-	 * @param year год
-	 * @return строка вида "1 кв. 2012 г."
+	 * @param quarter РєРІР°СЂС‚Р°Р»
+	 * @param year РіРѕРґ
+	 * @return СЃС‚СЂРѕРєР° РІРёРґР° "1 РєРІ. 2012 Рі."
 	 */
 	public static String getQuarter(Integer quarter, Integer year) {
 		if (quarter == null && year == null)
 			return "";
 
 		if (quarter == null)
-			return concat(Integer.toString(year), " г.");
+			return concat(Integer.toString(year), " Рі.");
 
 		if (year == null)
-			return concat(Integer.toString(quarter), " кв.");
+			return concat(Integer.toString(quarter), " РєРІ.");
 
-		return concat(Integer.toString(quarter), " кв. ", Integer.toString(year), " г.");
+		return concat(Integer.toString(quarter), " РєРІ. ", Integer.toString(year), " Рі.");
 	}
 
 	/**
-	 * @param singular английское существительное в единственном числе.
-	 * @return существительное во множественном числе, согласно правилам английского языка
+	 * @param singular Р°РЅРіР»РёР№СЃРєРѕРµ СЃСѓС‰РµСЃС‚РІРёС‚РµР»СЊРЅРѕРµ РІ РµРґРёРЅСЃС‚РІРµРЅРЅРѕРј С‡РёСЃР»Рµ.
+	 * @return СЃСѓС‰РµСЃС‚РІРёС‚РµР»СЊРЅРѕРµ РІРѕ РјРЅРѕР¶РµСЃС‚РІРµРЅРЅРѕРј С‡РёСЃР»Рµ, СЃРѕРіР»Р°СЃРЅРѕ РїСЂР°РІРёР»Р°Рј Р°РЅРіР»РёР№СЃРєРѕРіРѕ СЏР·С‹РєР°
 	 */
 	public static String getPlural(String singular) {
 		if (singular.endsWith("y"))
