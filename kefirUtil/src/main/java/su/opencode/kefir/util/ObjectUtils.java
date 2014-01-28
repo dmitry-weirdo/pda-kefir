@@ -307,6 +307,19 @@ public class ObjectUtils
 		return (collection != null) && ( !collection.isEmpty() );
 	}
 
+	public Long getLong(String value) {
+		if ( StringUtils.empty(value) )
+			return null;
+
+		return Long.parseLong(value);
+	}
+	public String toString(Long value) {
+		if (value == null)
+			return null;
+
+		return Long.toString(value);
+	}
+
 	public static String instanceToString(Object instance, boolean listStatics, DateFormat dateFormat) {
 		try
 		{
