@@ -14,10 +14,7 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 import static su.opencode.kefir.util.DateUtils.getDayMonthYearFormat;
 import static su.opencode.kefir.util.DateUtils.getJsDateFormat;
@@ -190,4 +187,20 @@ public class JsonUtils
 		return value.toString();
 	}
 
+	public static boolean hasField(JSONObject jsonObject, String fieldName) {
+		return jsonObject.has(fieldName) && ( !jsonObject.isNull(fieldName) );
+	}
+
+	/**
+	 * Method was from old version of org.json.JSONObject
+	 *
+	 * Get an enumeration of the keys of the JSONObject.
+	 * The keys will be sorted alphabetically.
+	 *
+	 * @return An iterator of the keys.
+	 */
+	@SuppressWarnings("unchecked")
+	public static Iterator sortedKeys(JSONObject jsonObject) {
+		return new TreeSet(jsonObject.keySet()).iterator();
+	}
 }

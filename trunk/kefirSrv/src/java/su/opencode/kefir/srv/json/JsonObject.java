@@ -11,6 +11,7 @@ package su.opencode.kefir.srv.json;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import su.opencode.kefir.util.JsonUtils;
 
 import javax.persistence.Transient;
 import java.io.Serializable;
@@ -472,7 +473,7 @@ public abstract class JsonObject implements JsonEntity, Serializable
 	private Map<String, String[]> getMap(JSONObject jsonObject) throws JSONException {
 		Map<String, String[]> map = new HashMap<String, String[]>();
 
-		Iterator iterator = jsonObject.sortedKeys();
+		Iterator iterator = JsonUtils.sortedKeys(jsonObject);
 		while (iterator.hasNext())
 		{
 			Object o = iterator.next();
