@@ -46,6 +46,9 @@ public class SqlUtils
 		if (value == null)
 			return null;
 
+		if (value instanceof Long)
+			return (Long) value;
+
 		if (value instanceof BigDecimal)
 			return ((BigDecimal) value).longValue();
 
