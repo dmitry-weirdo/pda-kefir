@@ -277,9 +277,7 @@ public abstract class JsonObject implements JsonEntity, Serializable
 				}
 
 				Class<?> fieldType = field.getType();
-				ObjectUtils.returnSetterMethod(thisClass, field);
-
-				Method setter = thisClass.getMethod(getSetterName(fieldName), fieldType);
+				Method setter = ObjectUtils.returnSetterMethod(thisClass, field);
 				if (setter == null)
 				{
 					logger.info( concat("Field \"", fieldName, "\" is present in JSONObject and in class ", thisClass.getName(), ", but no setter method exist for this field. Do not set this field to \"", thisClass.getName(), " instance.") );
