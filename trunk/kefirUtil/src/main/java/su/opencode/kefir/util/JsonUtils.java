@@ -191,6 +191,58 @@ public class JsonUtils
 		return jsonObject.has(fieldName) && ( !jsonObject.isNull(fieldName) );
 	}
 
+	public static Object getFieldValue(JSONObject json, Class fieldType, String fieldName) {
+		try
+		{
+			if (json == null)
+				return null;
+
+			if ( !JsonUtils.hasField(json, fieldName) )
+				return null;
+
+			if ( ObjectUtils.areSameClasses(fieldType, String.class) )
+				return json.getString(fieldName);
+
+			if ( ObjectUtils.areSameClasses(fieldType, Character.class) || ObjectUtils.areSameClasses(fieldType, Character.TYPE) )
+				return (Character) json.get(fieldName);
+
+			if ( ObjectUtils.areSameClasses(fieldType, Byte.class) || ObjectUtils.areSameClasses(fieldType, Byte.TYPE) )
+				return new Integer( json.getInt(fieldName) ).byteValue();
+
+			if ( ObjectUtils.areSameClasses(fieldType, Integer.class) || ObjectUtils.areSameClasses(fieldType, Integer.TYPE) )
+				return json.getInt(fieldName);
+
+			if ( ObjectUtils.areSameClasses(fieldType, Long.class) || ObjectUtils.areSameClasses(fieldType, Long.TYPE) )
+				return json.getLong(fieldName);
+
+			if ( ObjectUtils.areSameClasses(fieldType, Double.class) || ObjectUtils.areSameClasses(fieldType, Double.TYPE) )
+				return json.getDouble(fieldName);
+
+			if ( ObjectUtils.areSameClasses(fieldType, Float.class) || ObjectUtils.areSameClasses(fieldType, Float.TYPE) )
+				return new Double(json.getDouble(fieldName)).floatValue();
+
+			if ( ObjectUtils.areSameClasses(fieldType, Boolean.class) || ObjectUtils.areSameClasses(fieldType, Boolean.TYPE) )
+				return json.getBoolean(fieldName);
+
+			if ( fieldType.isArray() )
+				return json.getJSONArray(fieldName);
+
+			Object instance = fieldType.newInstance();
+			if ( instance instanceof Collection )
+				return json.getJSONArray(fieldName);
+
+			return json.get(fieldName);
+		}
+		catch (Exception e)
+		{
+			throw new RuntimeException(e);
+		}
+	}
+
+	public static boolean isEmpty(JSONArray jsonArray) {
+		return (jsonArray == null) || (jsonArray.length() <= 0);
+	}
+
 	/**
 	 * Method was from old version of org.json.JSONObject
 	 *

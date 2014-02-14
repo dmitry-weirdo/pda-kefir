@@ -8,18 +8,17 @@
 */
 package su.opencode.kefir.srv.json;
 
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import su.opencode.kefir.util.JsonUtils;
+import su.opencode.kefir.util.ObjectUtils;
 
 import javax.persistence.Transient;
 import java.io.Serializable;
 import java.lang.annotation.Annotation;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
+import java.lang.reflect.*;
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -62,13 +61,41 @@ public abstract class JsonObject implements JsonEntity, Serializable
 			if (isJsonObject(json, value))
 				continue;
 
-			if (isCollection(json, value))
+			if ( isArray(json, value) )
+				continue;
+
+			if ( isCollection(json, value) )
 				continue;
 
 			putToJson(json, jsonName, value);
 		}
 
 		return json;
+	}
+
+	private boolean isArray(JSONObject json, Object value) {
+		if (value == null)
+			return false;
+
+		if ( !value.getClass().isArray() )
+			return false;
+
+		JSONArray jsonArray = new JSONArray();
+
+		int length = Array.getLength(value);
+		for (int i = 0; i < length; i++)
+		{
+			Object o = Array.get(value, i);
+
+			if (o instanceof JsonObject)
+				jsonArray.put(((JsonObject) o).toJson());
+			else
+				jsonArray.put(o);
+		}
+
+		putToJson(json, jsonName, jsonArray);
+
+		return true;
 	}
 	private boolean isCollection(JSONObject json, Object value) {
 		if (value == null || !(value instanceof Collection))
@@ -217,6 +244,158 @@ public abstract class JsonObject implements JsonEntity, Serializable
 			throw new RuntimeException(concat("Incorrect type ", type));
 		}
 	}
+
+	public <T> T fromJson(String json, Class<T> thisClass) {
+		JSONObject jsonObject = new JSONObject(json);
+		return fromJson(jsonObject, thisClass);
+	}
+
+	public static <T> T fromJson(JSONObject json, Class<T> thisClass) {
+		if (json == null)
+			return null;
+
+		try
+		{
+			T instance = thisClass.newInstance();
+
+			Iterator iterator = json.keys();
+			while (iterator.hasNext())
+			{
+				String fieldName = (String) iterator.next();
+				if ( !hasField(json, fieldName) )
+				{ // field is null or is not present in jsonObject
+					// todo: think about setting null to instance field
+					logger.info( concat("Field \"", fieldName, "\" in JSONObject is null") );
+					continue;
+				}
+
+				Field field = ObjectUtils.getFieldOrNull(thisClass, fieldName);
+				if (field == null)
+				{
+					logger.info( concat("Field \"", fieldName, "\" is present in JSONObject, but is not present in class ", thisClass.getName()) );
+					continue;
+				}
+
+				Class<?> fieldType = field.getType();
+				ObjectUtils.returnSetterMethod(thisClass, field);
+
+				Method setter = thisClass.getMethod(getSetterName(fieldName), fieldType);
+				if (setter == null)
+				{
+					logger.info( concat("Field \"", fieldName, "\" is present in JSONObject and in class ", thisClass.getName(), ", but no setter method exist for this field. Do not set this field to \"", thisClass.getName(), " instance.") );
+					continue;
+				}
+
+				// todo: check @Json(exclude = true) on setter method
+
+				if (fieldType.isArray())
+				{
+					// todo: check that field is JSONArray and throw if it is not
+					JSONArray jsonArray = json.getJSONArray(fieldName);
+					if ( JsonUtils.isEmpty(jsonArray) ) // todo: refactor to JsonUtils method
+					{ // empty array -> set null to field
+						ObjectUtils.executeSetter(instance, field, null);
+						continue;
+					}
+
+					Class<?> componentType = fieldType.getComponentType();
+
+					int length = jsonArray.length();
+					Object array = Array.newInstance(componentType, length);
+					for (int i = 0; i < length; i++)
+					{
+						Object value;
+
+						Object jsonArrayElement = jsonArray.get(i);
+						if (jsonArrayElement instanceof JSONObject)
+						{ // object
+							value = fromJson( (JSONObject) jsonArrayElement, componentType);
+						}
+						else
+						{ // scalar type
+							// todo: solve inner values
+							value = ObjectUtils.cast(componentType, jsonArrayElement);
+						}
+
+						Array.set(array, i, value);
+					}
+
+					ObjectUtils.executeSetter(instance, field, array); // set array to instance
+
+					continue;
+				}
+
+				if ( ObjectUtils.isCollection(fieldType) )
+				{
+					// todo: check that field is JSONArray and throw if it is not
+					JSONArray jsonArray = json.getJSONArray(fieldName);
+					if ( JsonUtils.isEmpty(jsonArray) ) // todo: refactor to JsonUtils method
+					{ // empty array -> set null to field
+						ObjectUtils.executeSetter(instance, field, null);
+						continue;
+					}
+
+					Collection collection;
+					if ( ObjectUtils.isList(fieldType) )
+					{
+						collection = new ArrayList();
+					}
+					else if ( ObjectUtils.isSet(fieldType) )
+					{
+						collection = new TreeSet(); // sorted set
+					}
+					else
+					{
+						throw new IllegalArgumentException( concat( JsonObject.class.getName(), "#fromJson does not support collections fields with type = \"", fieldType, "\". Only lists and sets are supported,"));
+					}
+
+					int length = jsonArray.length();
+					for (int i = 0; i < length; i++)
+					{
+						Object value;
+
+						Object jsonArrayElement = jsonArray.get(i);
+						if (jsonArrayElement instanceof JSONObject)
+						{ // object
+							Class collectionElementType = getParametrizedTypeParameter(field);
+							value = fromJson( (JSONObject) jsonArrayElement, collectionElementType); // todo: use correct value instead of object
+						}
+						else
+						{ // scalar type
+							// todo: solve inner values
+							value = jsonArrayElement;
+						}
+
+						collection.add(value);
+					}
+
+					ObjectUtils.executeSetter(instance, field, collection); // set array to instance
+					continue;
+				}
+
+				if ( json.get(fieldName) instanceof JSONObject )
+				{ // inner object is object too
+					JSONObject fieldJson = json.getJSONObject(fieldName);
+					Object fieldObject = fromJson(fieldJson, fieldType);
+
+					ObjectUtils.executeSetter(instance, field, fieldObject);
+
+					continue;
+				}
+
+				// scalar type
+				Object value = JsonUtils.getFieldValue(json, fieldType, fieldName);
+				ObjectUtils.executeSetter(instance, field, value);
+			}
+
+			return instance;
+		}
+		catch (Exception e)
+		{
+			throw new RuntimeException(e);
+		}
+	}
+
 
 	private boolean setIfListOfJsonObject(Map<String, String[]> map, String jsonFieldName, Field field, Class type, Method setMethod) {
 		if (!type.isInterface() || !type.equals(List.class))
@@ -576,4 +755,6 @@ public abstract class JsonObject implements JsonEntity, Serializable
 	public static final String JSON_TOTAL_PROPERTY = "total";
 	public static final String JSON_RESULTS_PROPERTY = "results";
 	public static final String JSON_SUCCESS_PROPERTY = "success";
+
+	private static final Logger logger = Logger.getLogger(JsonObject.class);
 }
