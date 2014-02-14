@@ -55,6 +55,8 @@ public class JsonObjectTests extends TestCase
 		assertEquals( BOOLEAN_PRIMITIVE_VALUE, fromJson.isB() );
 		assertEquals( BOOLEAN_VALUE, fromJson.getB1() );
 
+		assertEquals( ENUM_VALUE, fromJson.getSimpleEnum() );
+
 		// array
 		byte[] array = fromJson.getArray();
 		assertNotNull(array);
@@ -181,6 +183,9 @@ public class JsonObjectTests extends TestCase
 			this.f1 = FLOAT_VALUE;
 			this.b = BOOLEAN_PRIMITIVE_VALUE;
 			this.b1 = BOOLEAN_VALUE;
+
+			this.simpleEnum = ENUM_VALUE;
+
 			this.array = ARRAY_VALUE;
 			this.list = LIST_VALUE;
 			this.set = getSetValue();
@@ -276,6 +281,12 @@ public class JsonObjectTests extends TestCase
 		public void setBt1(Byte bt1) {
 			this.bt1 = bt1;
 		}
+		public SimpleEnum getSimpleEnum() {
+			return simpleEnum;
+		}
+		public void setSimpleEnum(SimpleEnum simpleEnum) {
+			this.simpleEnum = simpleEnum;
+		}
 		public byte[] getArray() {
 			return array;
 		}
@@ -318,9 +329,14 @@ public class JsonObjectTests extends TestCase
 		private Float f1;
 		private boolean b;
 		private Boolean b1;
+		private SimpleEnum simpleEnum;
 		private byte[] array;
 		private List<String> list;
 		private Set<Integer> set;
+	}
+
+	public static enum SimpleEnum {
+		first_value, second_value, third_value
 	}
 
 	public static Set<Integer> getSetValue() {
@@ -337,7 +353,6 @@ public class JsonObjectTests extends TestCase
 		list.add(simpleClassForList);
 		return list;
 	}
-
 	public static final String STRING_VALUE = "a string";
 	public static final char CHAR_VALUE = 'q';
 	public static final Character CHARACTER_VALUE = 'c';
@@ -353,6 +368,8 @@ public class JsonObjectTests extends TestCase
 	public static final Float FLOAT_VALUE = 2.2f;
 	public static final boolean BOOLEAN_PRIMITIVE_VALUE = true;
 	public static final Boolean BOOLEAN_VALUE = Boolean.FALSE;
+
+	public static final SimpleEnum ENUM_VALUE = SimpleEnum.second_value;
 
 	public static final byte[] ARRAY_VALUE = { 11, 22, 33 };
 	public static final List<String> LIST_VALUE = Arrays.asList("zzz", "xxx", "cc");
