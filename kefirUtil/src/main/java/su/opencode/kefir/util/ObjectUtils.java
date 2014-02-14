@@ -10,15 +10,9 @@ package su.opencode.kefir.util;
 
 import org.apache.log4j.Logger;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
+import java.lang.reflect.*;
 import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 import static su.opencode.kefir.util.StringUtils.*;
 
@@ -194,6 +188,9 @@ public class ObjectUtils
 		}
 	}
 
+	public static Method returnSetterMethod(Class aClass, Field f) {
+		return returnSetterMethod(aClass, f.getName(), f.getType());
+	}
 	public static Method returnSetMethod(Class aClass, Field f, Class type) {
 		return returnSetterMethod(aClass, f.getName(), type);
 	}
@@ -209,6 +206,9 @@ public class ObjectUtils
 		}
 	}
 
+	public static void executeSetter(Object instance,  Field field, Object value) {
+		executeSetter(instance, field.getName(), field.getType(), value);
+	}
 	public static void executeSetter(Object instance, String fieldName, Class fieldType, Object value) {
 		Method setter = returnSetterMethod(instance.getClass(), fieldName, fieldType);
 		if (setter == null)
@@ -364,6 +364,112 @@ public class ObjectUtils
 	}
 	public static String instanceToString(Object instance) {
 		return instanceToString(instance, false, DateUtils.getDayMonthYearFormat()); // default do not list static fields
+	}
+
+	public static boolean isCollection(Class type) {
+		if (type == null)
+			return false;
+
+		if ( type.isPrimitive() )
+			return false;
+
+		if ( type.isArray() )
+			return false;
+
+		// check whether class implements Collection interface
+		Class<?>[] interfaces = type.getInterfaces();
+		if (interfaces.length == 0)
+			return false;
+
+		for (Class<?> implementedInterface : interfaces)
+			if ( ObjectUtils.areSameClasses(implementedInterface, Collection.class) )
+				return true;
+
+		return false;
+	}
+
+	public static boolean isList(Class type) {
+		if ( type == null )
+			return false;
+
+		if ( ObjectUtils.areSameClasses(type, List.class) )
+			return true;
+
+		Class<?>[] interfaces = type.getInterfaces();
+		for (Class<?> implementedInterface : interfaces)
+		{
+			if ( ObjectUtils.areSameClasses(implementedInterface, List.class) )
+				return true;
+		}
+
+		return false;
+	}
+	public static boolean isSet(Class type) {
+		if ( type == null )
+			return false;
+
+		if ( ObjectUtils.areSameClasses(type, Set.class) )
+			return true;
+
+		Class<?>[] interfaces = type.getInterfaces();
+		for (Class<?> implementedInterface : interfaces)
+		{
+			if ( ObjectUtils.areSameClasses(implementedInterface, Set.class) )
+				return true;
+		}
+
+		return false;
+	}
+
+	public static Object cast(Class classToCastTo, Object value) {
+		if (value == null)
+			return null;
+
+		if ( !classToCastTo.isPrimitive() )
+			return classToCastTo.cast(value);
+
+		// primitive cast
+		if ( ObjectUtils.areSameClasses(classToCastTo, Boolean.TYPE) )
+			return (Boolean) value;
+
+		if ( ObjectUtils.areSameClasses(classToCastTo, Byte.TYPE) )
+			return (Byte) value;
+
+		if ( ObjectUtils.areSameClasses(classToCastTo, Short.TYPE) )
+			return (Short) value;
+
+		if ( ObjectUtils.areSameClasses(classToCastTo, Character.TYPE) )
+			return (Character) value;
+
+		if ( ObjectUtils.areSameClasses(classToCastTo, Integer.TYPE) )
+			return (Integer) value;
+
+		if ( ObjectUtils.areSameClasses(classToCastTo, Long.TYPE) )
+			return (Long) value;
+
+		if ( ObjectUtils.areSameClasses(classToCastTo, Float.TYPE) )
+			return (Float) value;
+
+		if ( ObjectUtils.areSameClasses(classToCastTo, Double.TYPE) )
+			return (Double) value;
+
+		throw new IllegalArgumentException( concat("Unable to cast value to class ", classToCastTo.getName()) );
+	}
+
+	public static Class getParametrizedTypeParameter(Field field) {
+		if (field == null)
+			return null;
+
+		Type genericType = field.getGenericType();
+		if ( !(genericType instanceof ParameterizedType) )
+			return null;
+
+		ParameterizedType parameterizedType = (ParameterizedType) genericType;
+		Type[] actualTypeArguments = parameterizedType.getActualTypeArguments();
+		if (actualTypeArguments.length > 1)
+			throw new IllegalArgumentException( concat("Field ", field.getDeclaringClass().getName(), "#", field.getName(), " has more than one genericType actualTypeArguments") );
+
+		return (Class) actualTypeArguments[0];
 	}
 
 	private static final Logger logger = Logger.getLogger(ObjectUtils.class);
