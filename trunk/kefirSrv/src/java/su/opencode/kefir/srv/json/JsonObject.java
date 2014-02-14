@@ -288,6 +288,15 @@ public abstract class JsonObject implements JsonEntity, Serializable
 
 				// todo: check @Json(exclude = true) on setter method
 
+				if ( fieldType.isEnum() )
+				{
+//					String enumJsonValue = json.getString(fieldName); // fails
+					String enumJsonValue = json.get(fieldName).toString(); // somewhy debug shows it's an instance of the enum, but toString() for insurance
+					Enum<?> enumValue = Enum.valueOf((Class<Enum>) fieldType, enumJsonValue);
+					ObjectUtils.executeSetter(instance, field, enumValue);
+					continue;
+				}
+
 				if (fieldType.isArray())
 				{
 					// todo: check that field is JSONArray and throw if it is not
