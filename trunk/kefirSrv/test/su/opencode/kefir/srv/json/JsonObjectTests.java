@@ -11,7 +11,9 @@ package su.opencode.kefir.srv.json;
 import junit.framework.TestCase;
 import org.json.JSONObject;
 import org.junit.Test;
+import su.opencode.kefir.util.DateUtils;
 
+import java.text.ParseException;
 import java.util.*;
 
 public class JsonObjectTests extends TestCase
@@ -44,6 +46,8 @@ public class JsonObjectTests extends TestCase
 		assertEquals( CHARACTER_VALUE, fromJson.getC1() );
 		assertEquals( BYTE_PRIMITIVE_VALUE, fromJson.getBt() );
 		assertEquals( BYTE_VALUE, fromJson.getBt1() );
+		assertEquals( SHORT_PRIMITIVE_VALUE, fromJson.getSh() );
+		assertEquals( SHORT_VALUE, fromJson.getSh1() );
 		assertEquals( INT_VALUE, fromJson.getI() );
 		assertEquals( INTEGER_VALUE, fromJson.getI1() );
 		assertEquals( LONG_PRIMITIVE_VALUE, fromJson.getL() );
@@ -54,6 +58,8 @@ public class JsonObjectTests extends TestCase
 		assertEquals( FLOAT_VALUE, fromJson.getF1() );
 		assertEquals( BOOLEAN_PRIMITIVE_VALUE, fromJson.isB() );
 		assertEquals( BOOLEAN_VALUE, fromJson.getB1() );
+
+		assertEquals( getDateValue(), fromJson.getDate() );
 
 		assertEquals( ENUM_VALUE, fromJson.getSimpleEnum() );
 
@@ -173,6 +179,8 @@ public class JsonObjectTests extends TestCase
 			this.c1 = CHARACTER_VALUE;
 			this.bt = BYTE_PRIMITIVE_VALUE;
 			this.bt1 = BYTE_VALUE;
+			this.sh = SHORT_PRIMITIVE_VALUE;
+			this.sh1 = SHORT_VALUE;
 			this.i = INT_VALUE;
 			this.i1 = INTEGER_VALUE;
 			this.l = LONG_PRIMITIVE_VALUE;
@@ -183,6 +191,8 @@ public class JsonObjectTests extends TestCase
 			this.f1 = FLOAT_VALUE;
 			this.b = BOOLEAN_PRIMITIVE_VALUE;
 			this.b1 = BOOLEAN_VALUE;
+
+			this.date = getDateValue();
 
 			this.simpleEnum = ENUM_VALUE;
 
@@ -281,6 +291,24 @@ public class JsonObjectTests extends TestCase
 		public void setBt1(Byte bt1) {
 			this.bt1 = bt1;
 		}
+		public short getSh() {
+			return sh;
+		}
+		public void setSh(short sh) {
+			this.sh = sh;
+		}
+		public Short getSh1() {
+			return sh1;
+		}
+		public void setSh1(Short sh1) {
+			this.sh1 = sh1;
+		}
+		public Date getDate() {
+			return date;
+		}
+		public void setDate(Date date) {
+			this.date = date;
+		}
 		public SimpleEnum getSimpleEnum() {
 			return simpleEnum;
 		}
@@ -319,6 +347,8 @@ public class JsonObjectTests extends TestCase
 		private Character c1;
 		private byte bt;
 		private Byte bt1;
+		private short sh;
+		private Short sh1;
 		private int i;
 		private Integer i1;
 		private long l;
@@ -329,6 +359,7 @@ public class JsonObjectTests extends TestCase
 		private Float f1;
 		private boolean b;
 		private Boolean b1;
+		private Date date;
 		private SimpleEnum simpleEnum;
 		private byte[] array;
 		private List<String> list;
@@ -337,6 +368,17 @@ public class JsonObjectTests extends TestCase
 
 	public static enum SimpleEnum {
 		first_value, second_value, third_value
+	}
+
+	public static Date getDateValue() {
+		try
+		{
+			return DateUtils.getJsDateFormat().parse("1987-03-10T12:34:56");
+		}
+		catch (ParseException e)
+		{
+			throw new RuntimeException(e);
+		}
 	}
 
 	public static Set<Integer> getSetValue() {
@@ -353,11 +395,14 @@ public class JsonObjectTests extends TestCase
 		list.add(simpleClassForList);
 		return list;
 	}
+
 	public static final String STRING_VALUE = "a string";
 	public static final char CHAR_VALUE = 'q';
 	public static final Character CHARACTER_VALUE = 'c';
 	public static final byte BYTE_PRIMITIVE_VALUE = 10;
 	public static final Byte BYTE_VALUE = 20;
+	public static final short SHORT_PRIMITIVE_VALUE = 101;
+	public static final Short SHORT_VALUE = 202;
 	public static final int INT_VALUE = 1;
 	public static final Integer INTEGER_VALUE = 2;
 	public static final long LONG_PRIMITIVE_VALUE = 1000L;

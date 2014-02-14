@@ -18,17 +18,22 @@ import java.util.*;
 
 import static su.opencode.kefir.util.DateUtils.getDayMonthYearFormat;
 import static su.opencode.kefir.util.DateUtils.getJsDateFormat;
+import static su.opencode.kefir.util.StringUtils.concat;
 
 public class JsonUtils
 {
 	public static void putToJson(JSONObject json, String key, Object value) {
+		Object valueToPut = value;
+		if (value instanceof Date)
+			valueToPut = DateUtils.getUtcDateFormat().format( (Date) value );
+
 		try
 		{
-			json.put(key, value);
+			json.put(key, valueToPut);
 		}
 		catch (JSONException e)
 		{
-			throw new RuntimeException(StringUtils.getConcatenation("Can't put ", value, " to key = ", key));
+			throw new RuntimeException( concat("Can't put ", valueToPut, " to key = ", key) );
 		}
 	}
 
@@ -208,6 +213,9 @@ public class JsonUtils
 
 			if ( ObjectUtils.areSameClasses(fieldType, Byte.class) || ObjectUtils.areSameClasses(fieldType, Byte.TYPE) )
 				return new Integer( json.getInt(fieldName) ).byteValue();
+
+			if ( ObjectUtils.areSameClasses(fieldType, Short.class) || ObjectUtils.areSameClasses(fieldType, Short.TYPE) )
+				return new Integer( json.getInt(fieldName) ).shortValue();
 
 			if ( ObjectUtils.areSameClasses(fieldType, Integer.class) || ObjectUtils.areSameClasses(fieldType, Integer.TYPE) )
 				return json.getInt(fieldName);
