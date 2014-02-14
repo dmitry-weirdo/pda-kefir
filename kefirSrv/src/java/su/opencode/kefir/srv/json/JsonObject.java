@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import su.opencode.kefir.util.DateUtils;
 import su.opencode.kefir.util.JsonUtils;
 import su.opencode.kefir.util.ObjectUtils;
 
@@ -254,6 +255,8 @@ public abstract class JsonObject implements JsonEntity, Serializable
 		if (json == null)
 			return null;
 
+		logger.info( concat("fromJson: class ", thisClass.getName()) );
+
 		try
 		{
 			T instance = thisClass.newInstance();
@@ -262,6 +265,7 @@ public abstract class JsonObject implements JsonEntity, Serializable
 			while (iterator.hasNext())
 			{
 				String fieldName = (String) iterator.next();
+				logger.info( concat("fromJson: field: \"", fieldName, "\""));
 				if ( !hasField(json, fieldName) )
 				{ // field is null or is not present in jsonObject
 					// todo: think about setting null to instance field
@@ -386,7 +390,15 @@ public abstract class JsonObject implements JsonEntity, Serializable
 					Object fieldObject = fromJson(fieldJson, fieldType);
 
 					ObjectUtils.executeSetter(instance, field, fieldObject);
+					continue;
+				}
 
+				if ( !fieldType.isPrimitive() && ( ObjectUtils.areSameClasses(fieldType, Date.class) || fieldType.isInstance(Date.class) ) )
+				{
+					String dateStr = json.getString(fieldName);
+					Date date = DateUtils.getUtcDateFormat().parse(dateStr);
+
+					ObjectUtils.executeSetter(instance, field, date);
 					continue;
 				}
 
