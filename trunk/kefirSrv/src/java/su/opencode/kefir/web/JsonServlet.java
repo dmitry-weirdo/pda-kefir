@@ -147,7 +147,7 @@ public class JsonServlet extends HttpServlet
 		{
 			JSONObject jsonObject = entity.toJson();
 			jsonObject.put(JSON_SUCCESS_PROPERTY, true);
-			response.getOutputStream().write(jsonObject.toString().getBytes("UTF-8"));
+			response.getOutputStream().write(jsonObject.toString().getBytes(RESPONSE_ENCODING));
 		}
 		catch (JSONException e)
 		{
@@ -170,7 +170,7 @@ public class JsonServlet extends HttpServlet
 			json.put(JSON_RESULTS_PROPERTY, jsonArray);
 
 			response.setContentType(JSON_RESPONSE_CONTENT_TYPE);
-			response.getOutputStream().write(escapeHtml(json.toString()).getBytes("UTF-8")); // todo: refactor to separate method of servlet subclass
+			response.getOutputStream().write(escapeHtml(json.toString()).getBytes(RESPONSE_ENCODING)); // todo: refactor to separate method of servlet subclass
 		}
 		catch (JSONException e)
 		{
@@ -191,7 +191,7 @@ public class JsonServlet extends HttpServlet
 
 			String value = escapeHtml ? escapeHtml(json.toString()) : json.toString();
 			response.setContentType(JSON_RESPONSE_CONTENT_TYPE);
-			response.getOutputStream().write(value.getBytes("UTF-8")); // todo: refactor to separate method of servlet subclass
+			response.getOutputStream().write(value.getBytes(RESPONSE_ENCODING)); // todo: refactor to separate method of servlet subclass
 		}
 		catch (JSONException e)
 		{
@@ -213,7 +213,7 @@ public class JsonServlet extends HttpServlet
 			json.put(JSON_RESULTS_PROPERTY, jsonArray);
 
 			String value = escapeHtml ? escapeHtml(json.toString()) : json.toString();
-			response.getOutputStream().write(value.getBytes("UTF-8")); // todo: refactor to separate method of servlet subclass
+			response.getOutputStream().write(value.getBytes(RESPONSE_ENCODING)); // todo: refactor to separate method of servlet subclass
 		}
 		catch (JSONException e)
 		{
@@ -228,7 +228,7 @@ public class JsonServlet extends HttpServlet
 			json.put(JSON_TOTAL_PROPERTY, jsonArray.length());
 			json.put(JSON_RESULTS_PROPERTY, jsonArray);
 
-			response.getOutputStream().write(escapeHtml(json.toString()).getBytes("UTF-8"));
+			response.getOutputStream().write(escapeHtml(json.toString()).getBytes(RESPONSE_ENCODING));
 		}
 		catch (JSONException e)
 		{
@@ -250,7 +250,7 @@ public class JsonServlet extends HttpServlet
 	public static void writeJson(HttpServletResponse response, JSONObject json, boolean isEscapeHtml)	throws IOException, ServletException {
 		String value = isEscapeHtml ? escapeHtml(json.toString()) : json.toString();
 		response.setContentType(JSON_RESPONSE_CONTENT_TYPE);
-		response.getOutputStream().write(value.getBytes("UTF-8"));
+		response.getOutputStream().write(value.getBytes(RESPONSE_ENCODING));
 	}
 
 	public static void writeSuccess(HttpServletResponse response) throws IOException, ServletException {
@@ -268,7 +268,7 @@ public class JsonServlet extends HttpServlet
 
 			if (isStream)
 			{
-				response.getOutputStream().write(jsonObject.toString().getBytes());
+				response.getOutputStream().write(jsonObject.toString().getBytes(RESPONSE_ENCODING));
 			}
 			else
 			{
@@ -287,7 +287,7 @@ public class JsonServlet extends HttpServlet
 		{
 			jsonObject.put(JSON_SUCCESS_PROPERTY, true);
 			response.setContentType(JSON_RESPONSE_CONTENT_TYPE);
-			response.getOutputStream().write(jsonObject.toString().getBytes());
+			response.getOutputStream().write(jsonObject.toString().getBytes(RESPONSE_ENCODING));
 		}
 		catch (JSONException e)
 		{
@@ -300,7 +300,7 @@ public class JsonServlet extends HttpServlet
 			JSONObject jsonObject = entity == null ? new JSONObject() : entity.toJson();
 			jsonObject.put(JSON_SUCCESS_PROPERTY, true);
 			response.setContentType(JSON_RESPONSE_CONTENT_TYPE);
-			response.getOutputStream().write(jsonObject.toString().getBytes());
+			response.getOutputStream().write(jsonObject.toString().getBytes(RESPONSE_ENCODING));
 		}
 		catch (JSONException e)
 		{
@@ -320,7 +320,7 @@ public class JsonServlet extends HttpServlet
 			json.put(JSON_RESULTS_PROPERTY, jsonArray);
 
 			response.setContentType(JSON_RESPONSE_CONTENT_TYPE);
-			response.getOutputStream().write(escapeHtml(json.toString()).getBytes("UTF-8")); // todo: refactor to separate method of servlet subclass
+			response.getOutputStream().write(escapeHtml(json.toString()).getBytes(RESPONSE_ENCODING)); // todo: refactor to separate method of servlet subclass
 		}
 		catch (JSONException e)
 		{
@@ -329,7 +329,7 @@ public class JsonServlet extends HttpServlet
 	}
 
 	protected void writeFailure(HttpServletResponse response) throws IOException, ServletException {
-		response.getOutputStream().write(concat(sb, "{\"", JSON_SUCCESS_PROPERTY, "\": false}").getBytes());
+		response.getOutputStream().write(concat(sb, "{\"", JSON_SUCCESS_PROPERTY, "\": false}").getBytes(RESPONSE_ENCODING));
 	}
 	protected void writeFailure(HttpServletResponse response, Exception e)  {
 		writeFailure(response, e, false);
@@ -408,7 +408,7 @@ public class JsonServlet extends HttpServlet
 
 			if (isStream)
 			{
-				response.getOutputStream().write(jsonObject.toString().getBytes());
+				response.getOutputStream().write(jsonObject.toString().getBytes(RESPONSE_ENCODING));
 			}
 			else
 			{
@@ -645,6 +645,8 @@ public class JsonServlet extends HttpServlet
 	public static final String JSON_TOTAL_PROPERTY = "total";
 	public static final String JSON_RESULTS_PROPERTY = "results";
 	public static final String JSON_SUCCESS_PROPERTY = "success";
+
+	public static final String RESPONSE_ENCODING = "UTF-8";
 
 	protected static final String NAME_QUERY_PARAM_NAME = "nameQuery";
 
