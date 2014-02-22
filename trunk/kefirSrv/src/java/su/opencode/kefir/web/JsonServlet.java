@@ -10,6 +10,7 @@ package su.opencode.kefir.web;
 
 import org.apache.log4j.Logger;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -588,6 +589,19 @@ public class JsonServlet extends HttpServlet
 		}
 
 		return value;
+	}
+
+	protected static void writeToExcel(HttpServletResponse response, String fileName, XSSFWorkbook workbook) throws IOException {
+		response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"); // MIME-Type for Microsoft Excel 2007 (xlsx)
+		response.setHeader("Cache-Control", "private, max-age=0");
+
+		if ( StringUtils.notEmpty(fileName) )
+		{
+			String fullFileName = fileName.endsWith(".xlsx") ? fileName : concat(fileName, ".xlsx");
+			response.setHeader("Content-Disposition", concat("attachment;filename=", fullFileName));
+		}
+
+		workbook.write(response.getOutputStream());
 	}
 
 	protected static void writeToExcel(HttpServletResponse response, List<? extends VO> list, String entityName, String fileName, InputStream renderersInputStream) throws IOException {
