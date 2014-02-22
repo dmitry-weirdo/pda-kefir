@@ -8,6 +8,7 @@
 */
 package su.opencode.kefir.web;
 
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.json.JSONObject;
 import su.opencode.kefir.srv.SortConfig;
 import su.opencode.kefir.srv.VO;
@@ -130,6 +131,9 @@ public abstract class Action
 		return JsonServlet.getCheckGridIds(request, paramName);
 	}
 
+	protected void writeToExcel(String fileName, XSSFWorkbook workbook) throws IOException {
+		JsonServlet.writeToExcel(response, fileName, workbook);
+	}
 	protected void writeToExcel(List<? extends VO> list, String entityName, String fileName, InputStream renderersInputStream) throws IOException {
 		JsonServlet.writeToExcel(response, list, entityName, fileName, renderersInputStream);
 	}
