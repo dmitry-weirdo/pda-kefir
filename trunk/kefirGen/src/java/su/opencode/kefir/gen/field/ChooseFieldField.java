@@ -11,8 +11,8 @@ package su.opencode.kefir.gen.field;
 import su.opencode.kefir.gen.fileWriter.js.JsArray;
 
 /**
- * Оболочка для соответствия полей выбираемой сущности полям формы, которые подставляются в форму сущности.
- * Эта используется в js-функции Kefir.form.fillFormFields
+ * РћР±РѕР»РѕС‡РєР° РґР»СЏ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёСЏ РїРѕР»РµР№ РІС‹Р±РёСЂР°РµРјРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё РїРѕР»СЏРј С„РѕСЂРјС‹, РєРѕС‚РѕСЂС‹Рµ РїРѕРґСЃС‚Р°РІР»СЏСЋС‚СЃСЏ РІ С„РѕСЂРјСѓ СЃСѓС‰РЅРѕСЃС‚Рё.
+ * Р­С‚Р° РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІ js-С„СѓРЅРєС†РёРё Kefir.form.fillFormFields
  */
 public class ChooseFieldField
 {
@@ -41,11 +41,11 @@ public class ChooseFieldField
 	}
 
 	/**
-	 * @return представление для элемента массива, который используется в Kefir.form.fillFormFields, без запятой после закрывающей скобки
+	 * @return РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ РґР»СЏ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР°, РєРѕС‚РѕСЂС‹Р№ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІ Kefir.form.fillFormFields, Р±РµР· Р·Р°РїСЏС‚РѕР№ РїРѕСЃР»Рµ Р·Р°РєСЂС‹РІР°СЋС‰РµР№ СЃРєРѕР±РєРё
 	 */
 	public String getJsArrayElement() {
 		if ( renderer == null || renderer.isEmpty() )
-			return new JsArray(true, formFieldName, chooseFieldName).toString(); // рендерера нет
+			return new JsArray(true, formFieldName, chooseFieldName).toString(); // СЂРµРЅРґРµСЂРµСЂР° РЅРµС‚
 
 		JsArray array = new JsArray();
 		array.addString(formFieldName);
@@ -55,18 +55,18 @@ public class ChooseFieldField
 	}
 
 	/**
-	 * Имя поля формы сущности.
+	 * РРјСЏ РїРѕР»СЏ С„РѕСЂРјС‹ СЃСѓС‰РЅРѕСЃС‚Рё.
 	 */
 	private String formFieldName;
 
 	/**
-	 * Имя поля выбираемой сущности.
+	 * РРјСЏ РїРѕР»СЏ РІС‹Р±РёСЂР°РµРјРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё.
 	 */
 	private String chooseFieldName;
 
 	/**
-	 * Обработчик при подстановке значения поля выбираемой сущности в поле формы.
-	 * Может быть не указан.
+	 * РћР±СЂР°Р±РѕС‚С‡РёРє РїСЂРё РїРѕРґСЃС‚Р°РЅРѕРІРєРµ Р·РЅР°С‡РµРЅРёСЏ РїРѕР»СЏ РІС‹Р±РёСЂР°РµРјРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё РІ РїРѕР»Рµ С„РѕСЂРјС‹.
+	 * РњРѕР¶РµС‚ Р±С‹С‚СЊ РЅРµ СѓРєР°Р·Р°РЅ.
 	 */
 	private String renderer;
 }

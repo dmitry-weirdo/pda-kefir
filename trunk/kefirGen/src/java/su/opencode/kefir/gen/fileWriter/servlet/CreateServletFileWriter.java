@@ -49,13 +49,13 @@ public class CreateServletFileWriter extends EmptyJsonServletFileWriter
 		out.writeLn("\t\t\t\t", className, " ", entityVarName, " = ", FROM_JSON_FUNCTION_NAME, "(", className, ".class);");
 
 		if ( !hasAttachmentsFields(entityClass) )
-		{ // класс без файловых вложений
+		{ // РєР»Р°СЃСЃ Р±РµР· С„Р°Р№Р»РѕРІС‹С… РІР»РѕР¶РµРЅРёР№
 			out.writeLn("\t\t\t\t", DEFAULT_SERVICE_VAR_NAME, ".", getCreateMethodName(extEntity, entityClass), "(", entityVarName, ");");
 			out.writeLn();
 			out.writeLn("\t\t\t\t", WRITE_SUCCESS_FUNCTION_NAME, "(", entityVarName, ");");
 		}
 		else
-		{ // класс с файловыми вложениями -> проставить id созданной сущности в сохраненные аттачи
+		{ // РєР»Р°СЃСЃ СЃ С„Р°Р№Р»РѕРІС‹РјРё РІР»РѕР¶РµРЅРёСЏРјРё -> РїСЂРѕСЃС‚Р°РІРёС‚СЊ id СЃРѕР·РґР°РЅРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё РІ СЃРѕС…СЂР°РЅРµРЅРЅС‹Рµ Р°С‚С‚Р°С‡Рё
 			String entityIdVarName = "id";
 			String attachmentServiceVarName = "attachmentService";
 			String attachmentServiceClassSimpleName = getSimpleName(AttachmentsField.SERVICE_CLASS_NAME);
@@ -65,19 +65,19 @@ public class CreateServletFileWriter extends EmptyJsonServletFileWriter
 
 			writeComment("fill entityId for attachments");
 			out.writeLn("\t\t\t\t", attachmentServiceClassSimpleName, " ", attachmentServiceVarName, " = ", GET_SERVICE_FUNCTION_NAME, "(", attachmentServiceClassSimpleName, ".class);");
-			// для каждого attachment поля взять id из соотв. поля и проставить им код сущности
+			// РґР»СЏ РєР°Р¶РґРѕРіРѕ attachment РїРѕР»СЏ РІР·СЏС‚СЊ id РёР· СЃРѕРѕС‚РІ. РїРѕР»СЏ Рё РїСЂРѕСЃС‚Р°РІРёС‚СЊ РёРј РєРѕРґ СЃСѓС‰РЅРѕСЃС‚Рё
 			for (Field attachmentsField : getAttachmentsFields(entityClass))
 			{
 				String forIdVarName = concat(sb, getFieldName(attachmentsField), "Id");
 				AttachmentsField attachmentsFieldAnnotation = getAttachmentsFieldAnnotation(attachmentsField);
 
-				// for по id полей
+				// for РїРѕ id РїРѕР»РµР№
 				out.writeLn("\t\t\t\tfor (Integer ", forIdVarName, " : ", GET_CHECK_GRID_IDS_FUNCTION_NAME, "(\"", getAttachmentsFieldIdsParamName(attachmentsFieldAnnotation, attachmentsField), "\"))");
 				out.writeLn("\t\t\t\t\t", attachmentServiceVarName, ".", SET_ATTACHMENT_ENTITY_ID_FUNCTION_NAME, "(", forIdVarName, ", ", entityIdVarName, ");");
 				out.writeLn();
 			}
 
-			// в любом случае в response пишется созданная сущность
+			// РІ Р»СЋР±РѕРј СЃР»СѓС‡Р°Рµ РІ response РїРёС€РµС‚СЃСЏ СЃРѕР·РґР°РЅРЅР°СЏ СЃСѓС‰РЅРѕСЃС‚СЊ
 			out.writeLn("\t\t\t\t", WRITE_SUCCESS_FUNCTION_NAME, "(", entityVarName, ");");
 		}
 	}

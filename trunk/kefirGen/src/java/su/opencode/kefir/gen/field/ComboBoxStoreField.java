@@ -14,27 +14,27 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- * Поле хранилища комбобокса содержит имя поля и его js-тип.
+ * РџРѕР»Рµ С…СЂР°РЅРёР»РёС‰Р° РєРѕРјР±РѕР±РѕРєСЃР° СЃРѕРґРµСЂР¶РёС‚ РёРјСЏ РїРѕР»СЏ Рё РµРіРѕ js-С‚РёРї.
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ComboBoxStoreField
 {
 	/**
-	 * @return название поля
+	 * @return РЅР°Р·РІР°РЅРёРµ РїРѕР»СЏ
 	 */
 	String name();
 
 	/**
-	 * @return js-тип поля
-	 * // todo: возможно, стоит сделать это тип энумом
+	 * @return js-С‚РёРї РїРѕР»СЏ
+	 * // todo: РІРѕР·РјРѕР¶РЅРѕ, СЃС‚РѕРёС‚ СЃРґРµР»Р°С‚СЊ СЌС‚Рѕ С‚РёРї СЌРЅСѓРјРѕРј
 	 */
 	String type();
 
 	/**
-	 * @return {@linkplain su.opencode.kefir.gen.field.FieldSet#id() код} {@linkplain FieldSet филдсета}, в котором находится поле.
+	 * @return {@linkplain su.opencode.kefir.gen.field.FieldSet#id() РєРѕРґ} {@linkplain FieldSet С„РёР»РґСЃРµС‚Р°}, РІ РєРѕС‚РѕСЂРѕРј РЅР°С…РѕРґРёС‚СЃСЏ РїРѕР»Рµ.
 	 * <br/>
-	 * Код должен быть одним из кодов филдсетов, определенных в аннотации {@linkplain FieldSets FieldSets} к классу сущности.
+	 * РљРѕРґ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РѕРґРЅРёРј РёР· РєРѕРґРѕРІ С„РёР»РґСЃРµС‚РѕРІ, РѕРїСЂРµРґРµР»РµРЅРЅС‹С… РІ Р°РЅРЅРѕС‚Р°С†РёРё {@linkplain FieldSets FieldSets} Рє РєР»Р°СЃСЃСѓ СЃСѓС‰РЅРѕСЃС‚Рё.
 	 */
 	String fieldSetId() default "";
 }

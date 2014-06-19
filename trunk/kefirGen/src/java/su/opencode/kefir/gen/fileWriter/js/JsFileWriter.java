@@ -33,13 +33,13 @@ public abstract class JsFileWriter
 	public void createFile() throws IOException {
 		File file = createJsFile();
 		if (file.exists())
-		{ // todo: возможность внешним образом задавать перезапись существующих файлов
+		{ // todo: РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РІРЅРµС€РЅРёРј РѕР±СЂР°Р·РѕРј Р·Р°РґР°РІР°С‚СЊ РїРµСЂРµР·Р°РїРёСЃСЊ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёС… С„Р°Р№Р»РѕРІ
 			if (failIfFileExists)
 			{
 				throw new IllegalStateException( concat(sb, "file \"", file.getAbsolutePath(), "\" already exists") );
 			}
 			else
-			{ // оставить существующий файл как есть
+			{ // РѕСЃС‚Р°РІРёС‚СЊ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ С„Р°Р№Р» РєР°Рє РµСЃС‚СЊ
 				logger.info( concat(sb, "file \"", file.getAbsolutePath(), "\" already exists. It is not overwritten.") );
 				return;
 			}
@@ -58,13 +58,13 @@ public abstract class JsFileWriter
 	}
 	private File createJsFile() {
 		String dirPath = concat(sb, baseDir, FILE_SEPARATOR, dir);
-		createDirs(dirPath); // если директорий нет, создать их
+		createDirs(dirPath); // РµСЃР»Рё РґРёСЂРµРєС‚РѕСЂРёР№ РЅРµС‚, СЃРѕР·РґР°С‚СЊ РёС…
 
 		String filePath;
-		if (fileName.endsWith(JS_FILE_EXTENSION)) // если имя файла уже содержит ".js", не добавлять его
+		if (fileName.endsWith(JS_FILE_EXTENSION)) // РµСЃР»Рё РёРјСЏ С„Р°Р№Р»Р° СѓР¶Рµ СЃРѕРґРµСЂР¶РёС‚ ".js", РЅРµ РґРѕР±Р°РІР»СЏС‚СЊ РµРіРѕ
 			filePath = concat(sb, dirPath, FILE_SEPARATOR, fileName);
 		else
-			filePath = concat(sb, dirPath, FILE_SEPARATOR, fileName, JS_FILE_EXTENSION); // добавить ".js" к имени файла
+			filePath = concat(sb, dirPath, FILE_SEPARATOR, fileName, JS_FILE_EXTENSION); // РґРѕР±Р°РІРёС‚СЊ ".js" Рє РёРјРµРЅРё С„Р°Р№Р»Р°
 
 		return new File(filePath);
 	}
@@ -88,20 +88,20 @@ public abstract class JsFileWriter
 	}
 
 	/**
-	 * Пишет строковую константу 1-го уровня вложенности в функцию-неймспейс.
-	 * @param name название константы
-	 * @param value значение константы (без оборачивающих кавычек)
-	 * @throws IOException при ошибке записи в файл
+	 * РџРёС€РµС‚ СЃС‚СЂРѕРєРѕРІСѓСЋ РєРѕРЅСЃС‚Р°РЅС‚Сѓ 1-РіРѕ СѓСЂРѕРІРЅСЏ РІР»РѕР¶РµРЅРЅРѕСЃС‚Рё РІ С„СѓРЅРєС†РёСЋ-РЅРµР№РјСЃРїРµР№СЃ.
+	 * @param name РЅР°Р·РІР°РЅРёРµ РєРѕРЅСЃС‚Р°РЅС‚С‹
+	 * @param value Р·РЅР°С‡РµРЅРёРµ РєРѕРЅСЃС‚Р°РЅС‚С‹ (Р±РµР· РѕР±РѕСЂР°С‡РёРІР°СЋС‰РёС… РєР°РІС‹С‡РµРє)
+	 * @throws IOException РїСЂРё РѕС€РёР±РєРµ Р·Р°РїРёСЃРё РІ С„Р°Р№Р»
 	 */
 	protected void writeConstant(String name, String value) throws IOException {
 		out.writeLn(TAB, VAR_KEYWORD, " ", name, " ", ASSIGNMENT_OPERATOR, " ", getJsString(value), SEMICOLON);
 	}
 	/**
-	 * Пишет константу 1-го уровня вложенности с кавычками или без в функцию-неймспейс.
-	 * @param name название константы
-	 * @param value значение константы (без оборачивающих кавычек)
-	 * @param quoted <code>true</code> — если нужно оборачивать значение кавычками, <code>false</code> — если значение нужно писать как есть
-	 * @throws IOException при ошибке записи в файл
+	 * РџРёС€РµС‚ РєРѕРЅСЃС‚Р°РЅС‚Сѓ 1-РіРѕ СѓСЂРѕРІРЅСЏ РІР»РѕР¶РµРЅРЅРѕСЃС‚Рё СЃ РєР°РІС‹С‡РєР°РјРё РёР»Рё Р±РµР· РІ С„СѓРЅРєС†РёСЋ-РЅРµР№РјСЃРїРµР№СЃ.
+	 * @param name РЅР°Р·РІР°РЅРёРµ РєРѕРЅСЃС‚Р°РЅС‚С‹
+	 * @param value Р·РЅР°С‡РµРЅРёРµ РєРѕРЅСЃС‚Р°РЅС‚С‹ (Р±РµР· РѕР±РѕСЂР°С‡РёРІР°СЋС‰РёС… РєР°РІС‹С‡РµРє)
+	 * @param quoted <code>true</code> вЂ” РµСЃР»Рё РЅСѓР¶РЅРѕ РѕР±РѕСЂР°С‡РёРІР°С‚СЊ Р·РЅР°С‡РµРЅРёРµ РєР°РІС‹С‡РєР°РјРё, <code>false</code> вЂ” РµСЃР»Рё Р·РЅР°С‡РµРЅРёРµ РЅСѓР¶РЅРѕ РїРёСЃР°С‚СЊ РєР°Рє РµСЃС‚СЊ
+	 * @throws IOException РїСЂРё РѕС€РёР±РєРµ Р·Р°РїРёСЃРё РІ С„Р°Р№Р»
 	 */
 	protected void writeConstant(String name, String value, boolean quoted) throws IOException {
 		if (quoted)
@@ -110,18 +110,18 @@ public abstract class JsFileWriter
 			out.writeLn(TAB, VAR_KEYWORD, " ", name, " ", ASSIGNMENT_OPERATOR, " ", value, SEMICOLON);
 	}
 	/**
-	 * Пишет целую константу 1-го уровня вложенности в функцию-неймспейс.
-	 * @param name название константы
-	 * @param value значение константы
-	 * @throws IOException при ошибке записи в файл
+	 * РџРёС€РµС‚ С†РµР»СѓСЋ РєРѕРЅСЃС‚Р°РЅС‚Сѓ 1-РіРѕ СѓСЂРѕРІРЅСЏ РІР»РѕР¶РµРЅРЅРѕСЃС‚Рё РІ С„СѓРЅРєС†РёСЋ-РЅРµР№РјСЃРїРµР№СЃ.
+	 * @param name РЅР°Р·РІР°РЅРёРµ РєРѕРЅСЃС‚Р°РЅС‚С‹
+	 * @param value Р·РЅР°С‡РµРЅРёРµ РєРѕРЅСЃС‚Р°РЅС‚С‹
+	 * @throws IOException РїСЂРё РѕС€РёР±РєРµ Р·Р°РїРёСЃРё РІ С„Р°Р№Р»
 	 */
 	protected void writeConstant(String name, int value) throws IOException {
 		out.writeLn(TAB, VAR_KEYWORD, " ", name, " ", ASSIGNMENT_OPERATOR, " ", Integer.toString(value), SEMICOLON);
 	}
 	/**
-	 * Пишет объявление (без указания значения) переменной 1-го уровня вложенности в функцию-неймспейс.
-	 * @param name имя переменной
-	 * @throws IOException при ошибке записи в файл
+	 * РџРёС€РµС‚ РѕР±СЉСЏРІР»РµРЅРёРµ (Р±РµР· СѓРєР°Р·Р°РЅРёСЏ Р·РЅР°С‡РµРЅРёСЏ) РїРµСЂРµРјРµРЅРЅРѕР№ 1-РіРѕ СѓСЂРѕРІРЅСЏ РІР»РѕР¶РµРЅРЅРѕСЃС‚Рё РІ С„СѓРЅРєС†РёСЋ-РЅРµР№РјСЃРїРµР№СЃ.
+	 * @param name РёРјСЏ РїРµСЂРµРјРµРЅРЅРѕР№
+	 * @throws IOException РїСЂРё РѕС€РёР±РєРµ Р·Р°РїРёСЃРё РІ С„Р°Р№Р»
 	 */
 	protected void writeVariable(String name) throws IOException {
 		out.writeLn(TAB, VAR_KEYWORD, " ", name, SEMICOLON);
@@ -303,11 +303,11 @@ public abstract class JsFileWriter
 	}
 
 	/**
-	 * Пишет объявление переменной с указанным значением с указанным отступом, с двоеточием в конце.
-	 * @param name имя переменной
-	 * @param value значение переменной
-	 * @param indent отступ (как правило, содержит один или несколько табов)
-	 * @throws IOException при ошибке записи в файл
+	 * РџРёС€РµС‚ РѕР±СЉСЏРІР»РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№ СЃ СѓРєР°Р·Р°РЅРЅС‹Рј Р·РЅР°С‡РµРЅРёРµРј СЃ СѓРєР°Р·Р°РЅРЅС‹Рј РѕС‚СЃС‚СѓРїРѕРј, СЃ РґРІРѕРµС‚РѕС‡РёРµРј РІ РєРѕРЅС†Рµ.
+	 * @param name РёРјСЏ РїРµСЂРµРјРµРЅРЅРѕР№
+	 * @param value Р·РЅР°С‡РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№
+	 * @param indent РѕС‚СЃС‚СѓРї (РєР°Рє РїСЂР°РІРёР»Рѕ, СЃРѕРґРµСЂР¶РёС‚ РѕРґРёРЅ РёР»Рё РЅРµСЃРєРѕР»СЊРєРѕ С‚Р°Р±РѕРІ)
+	 * @throws IOException РїСЂРё РѕС€РёР±РєРµ Р·Р°РїРёСЃРё РІ С„Р°Р№Р»
 	 */
 	protected void writeVariable(String name, String value, String indent) throws IOException {
 		writeVariable(name, value, indent, true);
@@ -318,11 +318,11 @@ public abstract class JsFileWriter
 	}
 
 	/**
-	 * Пишет объявление переменной с указанным значением с {@linkplain JsUtils#DEFAULT_FUNCTION_VAR_INDENT отступом по умолчанию (2 таба)},
-	 * с двоеточием в конце.
-	 * @param name имя переменной
-	 * @param value значение переменной
-	 * @throws IOException при ошибке записи в файл
+	 * РџРёС€РµС‚ РѕР±СЉСЏРІР»РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№ СЃ СѓРєР°Р·Р°РЅРЅС‹Рј Р·РЅР°С‡РµРЅРёРµРј СЃ {@linkplain JsUtils#DEFAULT_FUNCTION_VAR_INDENT РѕС‚СЃС‚СѓРїРѕРј РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ (2 С‚Р°Р±Р°)},
+	 * СЃ РґРІРѕРµС‚РѕС‡РёРµРј РІ РєРѕРЅС†Рµ.
+	 * @param name РёРјСЏ РїРµСЂРµРјРµРЅРЅРѕР№
+	 * @param value Р·РЅР°С‡РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№
+	 * @throws IOException РїСЂРё РѕС€РёР±РєРµ Р·Р°РїРёСЃРё РІ С„Р°Р№Р»
 	 */
 	protected void writeVariable(String name, String value) throws IOException {
 		writeVariable(name, value, DEFAULT_FUNCTION_VAR_INDENT);
@@ -356,18 +356,18 @@ public abstract class JsFileWriter
 	}
 
 	/**
-	 * Пишет комментарий с указанным отступом.
-	 * @param comment значение комментария
-	 * @param indent отступ (как правило, содержит один или несколько табов)
-	 * @throws IOException при ошибке записи в файл
+	 * РџРёС€РµС‚ РєРѕРјРјРµРЅС‚Р°СЂРёР№ СЃ СѓРєР°Р·Р°РЅРЅС‹Рј РѕС‚СЃС‚СѓРїРѕРј.
+	 * @param comment Р·РЅР°С‡РµРЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+	 * @param indent РѕС‚СЃС‚СѓРї (РєР°Рє РїСЂР°РІРёР»Рѕ, СЃРѕРґРµСЂР¶РёС‚ РѕРґРёРЅ РёР»Рё РЅРµСЃРєРѕР»СЊРєРѕ С‚Р°Р±РѕРІ)
+	 * @throws IOException РїСЂРё РѕС€РёР±РєРµ Р·Р°РїРёСЃРё РІ С„Р°Р№Р»
 	 */
 	protected void writeComment(String comment, String indent) throws IOException {
 		out.writeLn(indent, ONE_STRING_COMMENT, " ", comment);
 	}
 	/**
-	 * Пишет комментарий 1-го уровня вложенности (с одним табом впереди).
-	 * @param comment значение комментария
-	 * @throws IOException при ошибке записи в файл
+	 * РџРёС€РµС‚ РєРѕРјРјРµРЅС‚Р°СЂРёР№ 1-РіРѕ СѓСЂРѕРІРЅСЏ РІР»РѕР¶РµРЅРЅРѕСЃС‚Рё (СЃ РѕРґРЅРёРј С‚Р°Р±РѕРј РІРїРµСЂРµРґРё).
+	 * @param comment Р·РЅР°С‡РµРЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+	 * @throws IOException РїСЂРё РѕС€РёР±РєРµ Р·Р°РїРёСЃРё РІ С„Р°Р№Р»
 	 */
 	protected void writeComment(String comment) throws IOException {
 		writeComment(comment, TAB);
@@ -582,36 +582,36 @@ public abstract class JsFileWriter
 	}
 
 	/**
-	 * Пишет ветвь case return: возврат указанного значения по указанному значению указанного энума.
-	 * @param enumName название класса энума
-	 * @param enumValue название значения энума
-	 * @param returnValue возвращаемое из ветви значение
-	 * @param indent отступ (как правило, содержит один или несколько табов)
-	 * @throws IOException при ошибке записи в файл
+	 * РџРёС€РµС‚ РІРµС‚РІСЊ case return: РІРѕР·РІСЂР°С‚ СѓРєР°Р·Р°РЅРЅРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ РїРѕ СѓРєР°Р·Р°РЅРЅРѕРјСѓ Р·РЅР°С‡РµРЅРёСЋ СѓРєР°Р·Р°РЅРЅРѕРіРѕ СЌРЅСѓРјР°.
+	 * @param enumName РЅР°Р·РІР°РЅРёРµ РєР»Р°СЃСЃР° СЌРЅСѓРјР°
+	 * @param enumValue РЅР°Р·РІР°РЅРёРµ Р·РЅР°С‡РµРЅРёСЏ СЌРЅСѓРјР°
+	 * @param returnValue РІРѕР·РІСЂР°С‰Р°РµРјРѕРµ РёР· РІРµС‚РІРё Р·РЅР°С‡РµРЅРёРµ
+	 * @param indent РѕС‚СЃС‚СѓРї (РєР°Рє РїСЂР°РІРёР»Рѕ, СЃРѕРґРµСЂР¶РёС‚ РѕРґРёРЅ РёР»Рё РЅРµСЃРєРѕР»СЊРєРѕ С‚Р°Р±РѕРІ)
+	 * @throws IOException РїСЂРё РѕС€РёР±РєРµ Р·Р°РїРёСЃРё РІ С„Р°Р№Р»
 	 */
 	protected void writeCaseReturn(String enumName, String enumValue, String returnValue, String indent) throws IOException {
 		out.writeLn(indent, CASE_KEYWORD, " ", enumName, ".", enumValue, ": ", RETURN_KEYWORD, " ", returnValue, SEMICOLON);
 	}
 	/**
-	 * Пишет ветвь case return: возврат указанного значения по указанному значению энума,
-	 * заданного {@linkplain #ACTION_CONSTANT_NAME константой по умолчанию},
-	 * с {@linkplain JsUtils#DEFAULT_CASE_INDENT отступом по умолчанию}.
-	 * @param enumValue название значения энума
-	 * @param returnValue возвращаемое из ветви значение
-	 * @throws IOException при ошибке записи в файл
+	 * РџРёС€РµС‚ РІРµС‚РІСЊ case return: РІРѕР·РІСЂР°С‚ СѓРєР°Р·Р°РЅРЅРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ РїРѕ СѓРєР°Р·Р°РЅРЅРѕРјСѓ Р·РЅР°С‡РµРЅРёСЋ СЌРЅСѓРјР°,
+	 * Р·Р°РґР°РЅРЅРѕРіРѕ {@linkplain #ACTION_CONSTANT_NAME РєРѕРЅСЃС‚Р°РЅС‚РѕР№ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ},
+	 * СЃ {@linkplain JsUtils#DEFAULT_CASE_INDENT РѕС‚СЃС‚СѓРїРѕРј РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ}.
+	 * @param enumValue РЅР°Р·РІР°РЅРёРµ Р·РЅР°С‡РµРЅРёСЏ СЌРЅСѓРјР°
+	 * @param returnValue РІРѕР·РІСЂР°С‰Р°РµРјРѕРµ РёР· РІРµС‚РІРё Р·РЅР°С‡РµРЅРёРµ
+	 * @throws IOException РїСЂРё РѕС€РёР±РєРµ Р·Р°РїРёСЃРё РІ С„Р°Р№Р»
 	 */
 	protected void writeCaseReturn(String enumValue, String returnValue) throws IOException {
 		writeCaseReturn(ACTION_CONSTANT_NAME, enumValue, returnValue, DEFAULT_CASE_INDENT);
 	}
 
 	/**
-	 * Пишет функцию, выполняющую case\return по энуму ACTION.
-	 * @param functionName название функции
-	 * @param actionVarName название переменной, по которой выполняется switch
-	 * @param constants массив, каждым элементом которого является массив из 2 элементов:
-	 * 0-й элемент — это название константы из энума ACTION, 1-й элемент — это возвращаемое из ветви case значение.
-	 * @param defaultAction действие по умолчанию (без последней ;)
-	 * @throws IOException при ошибке записи в файл
+	 * РџРёС€РµС‚ С„СѓРЅРєС†РёСЋ, РІС‹РїРѕР»РЅСЏСЋС‰СѓСЋ case\return РїРѕ СЌРЅСѓРјСѓ ACTION.
+	 * @param functionName РЅР°Р·РІР°РЅРёРµ С„СѓРЅРєС†РёРё
+	 * @param actionVarName РЅР°Р·РІР°РЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№, РїРѕ РєРѕС‚РѕСЂРѕР№ РІС‹РїРѕР»РЅСЏРµС‚СЃСЏ switch
+	 * @param constants РјР°СЃСЃРёРІ, РєР°Р¶РґС‹Рј СЌР»РµРјРµРЅС‚РѕРј РєРѕС‚РѕСЂРѕРіРѕ СЏРІР»СЏРµС‚СЃСЏ РјР°СЃСЃРёРІ РёР· 2 СЌР»РµРјРµРЅС‚РѕРІ:
+	 * 0-Р№ СЌР»РµРјРµРЅС‚ вЂ” СЌС‚Рѕ РЅР°Р·РІР°РЅРёРµ РєРѕРЅСЃС‚Р°РЅС‚С‹ РёР· СЌРЅСѓРјР° ACTION, 1-Р№ СЌР»РµРјРµРЅС‚ вЂ” СЌС‚Рѕ РІРѕР·РІСЂР°С‰Р°РµРјРѕРµ РёР· РІРµС‚РІРё case Р·РЅР°С‡РµРЅРёРµ.
+	 * @param defaultAction РґРµР№СЃС‚РІРёРµ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ (Р±РµР· РїРѕСЃР»РµРґРЅРµР№ ;)
+	 * @throws IOException РїСЂРё РѕС€РёР±РєРµ Р·Р°РїРёСЃРё РІ С„Р°Р№Р»
 	 */
 	protected void writeSwitchReturnFunction(String functionName, String actionVarName, String[][] constants, String defaultAction) throws IOException {
 		writeFunctionHeader(functionName);
@@ -629,12 +629,12 @@ public abstract class JsFileWriter
 		writeFunctionFooter();
 	}
 	/**
-	 * Пишет функцию, выполняющую case\return по энуму ACTION, со стандартным действием по умолчанию (Kefir.showError).
-	 * Название переменной, по которой берется свитч, использвуется по умолчанию {@linkplain JsUtils#ACTION_VAR_NAME action}.
-	 * @param functionName название функции
-	 * @param constants массив, каждым элементом которого является массив из 2 элементов:
-	 * 0-й элемент — это название константы из энума ACTION, 1-й элемент — это возвращаемое из ветви case значение.
-	 * @throws IOException при ошибке записи в файл
+	 * РџРёС€РµС‚ С„СѓРЅРєС†РёСЋ, РІС‹РїРѕР»РЅСЏСЋС‰СѓСЋ case\return РїРѕ СЌРЅСѓРјСѓ ACTION, СЃРѕ СЃС‚Р°РЅРґР°СЂС‚РЅС‹Рј РґРµР№СЃС‚РІРёРµРј РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ (Kefir.showError).
+	 * РќР°Р·РІР°РЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№, РїРѕ РєРѕС‚РѕСЂРѕР№ Р±РµСЂРµС‚СЃСЏ СЃРІРёС‚С‡, РёСЃРїРѕР»СЊР·РІСѓРµС‚СЃСЏ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ {@linkplain JsUtils#ACTION_VAR_NAME action}.
+	 * @param functionName РЅР°Р·РІР°РЅРёРµ С„СѓРЅРєС†РёРё
+	 * @param constants РјР°СЃСЃРёРІ, РєР°Р¶РґС‹Рј СЌР»РµРјРµРЅС‚РѕРј РєРѕС‚РѕСЂРѕРіРѕ СЏРІР»СЏРµС‚СЃСЏ РјР°СЃСЃРёРІ РёР· 2 СЌР»РµРјРµРЅС‚РѕРІ:
+	 * 0-Р№ СЌР»РµРјРµРЅС‚ вЂ” СЌС‚Рѕ РЅР°Р·РІР°РЅРёРµ РєРѕРЅСЃС‚Р°РЅС‚С‹ РёР· СЌРЅСѓРјР° ACTION, 1-Р№ СЌР»РµРјРµРЅС‚ вЂ” СЌС‚Рѕ РІРѕР·РІСЂР°С‰Р°РµРјРѕРµ РёР· РІРµС‚РІРё case Р·РЅР°С‡РµРЅРёРµ.
+	 * @throws IOException РїСЂРё РѕС€РёР±РєРµ Р·Р°РїРёСЃРё РІ С„Р°Р№Р»
 	 */
 	protected void writeSwitchReturnFunction(String functionName, String[][] constants) throws IOException {
 		writeFunctionHeader(functionName);

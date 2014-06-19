@@ -17,7 +17,7 @@ import static su.opencode.kefir.gen.fileWriter.ClassFileWriter.METHOD_CALL_SEPAR
 import static su.opencode.kefir.util.StringUtils.concat;
 
 /**
- * Оболочка для заголовка java-метода.
+ * РћР±РѕР»РѕС‡РєР° РґР»СЏ Р·Р°РіРѕР»РѕРІРєР° java-РјРµС‚РѕРґР°.
  */
 public class Method
 {
@@ -136,32 +136,32 @@ public class Method
 	}
 
 	/**
-	 * Модификатор доступа.
+	 * РњРѕРґРёС„РёРєР°С‚РѕСЂ РґРѕСЃС‚СѓРїР°.
 	 */
 	private AccessModifier accessModifier;
 
 	/**
-	 * Тип возврврата
+	 * РўРёРї РІРѕР·РІСЂРІСЂР°С‚Р°
 	 */
 	private String returnType;
 
 	/**
-	 * Имя метода.
+	 * РРјСЏ РјРµС‚РѕРґР°.
 	 */
 	private String name;
 
 	/**
-	 * Множество имен аргументов.
+	 * РњРЅРѕР¶РµСЃС‚РІРѕ РёРјРµРЅ Р°СЂРіСѓРјРµРЅС‚РѕРІ.
 	 */
 	private Set<String> argumentNames;
 
 	/**
-	 * Список аргументов (содержит тип и имя аргумента).
+	 * РЎРїРёСЃРѕРє Р°СЂРіСѓРјРµРЅС‚РѕРІ (СЃРѕРґРµСЂР¶РёС‚ С‚РёРї Рё РёРјСЏ Р°СЂРіСѓРјРµРЅС‚Р°).
 	 */
 	private List<MethodArgument> arguments;
 
 	/**
-	 * Список выбрасываемых исключений.
+	 * РЎРїРёСЃРѕРє РІС‹Р±СЂР°СЃС‹РІР°РµРјС‹С… РёСЃРєР»СЋС‡РµРЅРёР№.
 	 */
 	private List<String> throwsList;
 

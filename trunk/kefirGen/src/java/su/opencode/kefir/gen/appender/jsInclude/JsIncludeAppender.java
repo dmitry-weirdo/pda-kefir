@@ -64,7 +64,7 @@ public class JsIncludeAppender extends Appender
 		String srcParam = concat( sb, "src=\"", getSrcPath(), "\"" );
 
 		for (String fileLine : allFileLines)
-		{ // если этот файл уже включен -> ничего не делать
+		{ // РµСЃР»Рё СЌС‚РѕС‚ С„Р°Р№Р» СѓР¶Рµ РІРєР»СЋС‡РµРЅ -> РЅРёС‡РµРіРѕ РЅРµ РґРµР»Р°С‚СЊ
 			if (fileLine.contains(srcParam))
 			{
 				logger.info( concat(sb, "Js file \"", getSrcPath(), "\" is already included in file \"", includeFilePath, "\"") );
@@ -82,22 +82,22 @@ public class JsIncludeAppender extends Appender
 	}
 	private String getSrcPath() {
 		String basePath = baseJsPath;
-		basePath = basePath.replaceAll(BACK_SEPARATOR, SEPARATOR); // заменить "\" на "/"
-		if (basePath.endsWith(SEPARATOR)) // удалить конечный "/"
+		basePath = basePath.replaceAll(BACK_SEPARATOR, SEPARATOR); // Р·Р°РјРµРЅРёС‚СЊ "\" РЅР° "/"
+		if (basePath.endsWith(SEPARATOR)) // СѓРґР°Р»РёС‚СЊ РєРѕРЅРµС‡РЅС‹Р№ "/"
 			basePath = basePath.substring(0, basePath.length() - 1);
 
 
 		String fileDir = dir;
-		fileDir = fileDir.replaceAll(BACK_SEPARATOR, SEPARATOR); // заменить "\" на "/"
-		if (!fileDir.startsWith(SEPARATOR)) // добавить начальный "/"
+		fileDir = fileDir.replaceAll(BACK_SEPARATOR, SEPARATOR); // Р·Р°РјРµРЅРёС‚СЊ "\" РЅР° "/"
+		if (!fileDir.startsWith(SEPARATOR)) // РґРѕР±Р°РІРёС‚СЊ РЅР°С‡Р°Р»СЊРЅС‹Р№ "/"
 			fileDir = concat(sb, SEPARATOR, fileDir);
 
-		if (!fileDir.endsWith(SEPARATOR)) // добавить конечный "/"
+		if (!fileDir.endsWith(SEPARATOR)) // РґРѕР±Р°РІРёС‚СЊ РєРѕРЅРµС‡РЅС‹Р№ "/"
 			fileDir = concat(fileDir, SEPARATOR);
 
 
 		String jsFileName = fileName;
-		if (jsFileName.startsWith(SEPARATOR)) // удалить начальный "/"
+		if (jsFileName.startsWith(SEPARATOR)) // СѓРґР°Р»РёС‚СЊ РЅР°С‡Р°Р»СЊРЅС‹Р№ "/"
 			jsFileName = jsFileName.substring(SEPARATOR.length());
 
 		if (!fileName.endsWith(JS_FILE_EXTENSION))
@@ -107,22 +107,22 @@ public class JsIncludeAppender extends Appender
 	}
 
 	/**
-	 * Полный путь к файлу с инклюдами джаваскриптов (application.jspf).
+	 * РџРѕР»РЅС‹Р№ РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ СЃ РёРЅРєР»СЋРґР°РјРё РґР¶Р°РІР°СЃРєСЂРёРїС‚РѕРІ (application.jspf).
 	 */
 	private String includeFilePath;
 
 	/**
-	 * Базовый путь к js-файлам в &lt;script src="..."/&gt;. Как правило, равен ".js".
+	 * Р‘Р°Р·РѕРІС‹Р№ РїСѓС‚СЊ Рє js-С„Р°Р№Р»Р°Рј РІ &lt;script src="..."/&gt;. РљР°Рє РїСЂР°РІРёР»Рѕ, СЂР°РІРµРЅ ".js".
 	 */
 	private String baseJsPath;
 
 	/**
-	 * Путь к включаемому файлу относительно базовой директории (например, "/leasing").
+	 * РџСѓС‚СЊ Рє РІРєР»СЋС‡Р°РµРјРѕРјСѓ С„Р°Р№Р»Сѓ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ Р±Р°Р·РѕРІРѕР№ РґРёСЂРµРєС‚РѕСЂРёРё (РЅР°РїСЂРёРјРµСЂ, "/leasing").
 	 */
 	private String dir;
 
 	/**
-	 * Название включаемого файла (например, "parcelForm.js").
+	 * РќР°Р·РІР°РЅРёРµ РІРєР»СЋС‡Р°РµРјРѕРіРѕ С„Р°Р№Р»Р° (РЅР°РїСЂРёРјРµСЂ, "parcelForm.js").
 	 */
 	private String fileName;
 

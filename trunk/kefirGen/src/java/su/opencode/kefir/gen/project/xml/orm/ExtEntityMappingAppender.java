@@ -58,7 +58,7 @@ public class ExtEntityMappingAppender extends EntityMappingAppender
 	}
 	private void appendTable(List<String> fileLines) {
 		String tableName = ExtEntityUtils.getSqlTableName(extEntity, entityClass);
-		if (tableName.equals(entityClass.getName())) // таблицы с аналогичными классу именами отдельно объявлять не надо
+		if (tableName.equals(entityClass.getName())) // С‚Р°Р±Р»РёС†С‹ СЃ Р°РЅР°Р»РѕРіРёС‡РЅС‹РјРё РєР»Р°СЃСЃСѓ РёРјРµРЅР°РјРё РѕС‚РґРµР»СЊРЅРѕ РѕР±СЉСЏРІР»СЏС‚СЊ РЅРµ РЅР°РґРѕ
 			return;
 
 		appendTable(fileLines, tableName);
@@ -88,7 +88,7 @@ public class ExtEntityMappingAppender extends EntityMappingAppender
 
 			if ( hasIdFieldAnnotation(field) )
 			{
-				appendId(fileLines, field.getName(), getOrmSequenceName(extEntity, entityClass)); // todo: возможность в IdField тоже указывать имя sql-столбца
+				appendId(fileLines, field.getName(), getOrmSequenceName(extEntity, entityClass)); // todo: РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РІ IdField С‚РѕР¶Рµ СѓРєР°Р·С‹РІР°С‚СЊ РёРјСЏ sql-СЃС‚РѕР»Р±С†Р°
 				continue;
 			}
 
@@ -131,20 +131,20 @@ public class ExtEntityMappingAppender extends EntityMappingAppender
 				TextAreaField textAreaField = getTextAreaFieldAnnotation(field);
 
 				if (textAreaField.blob())
-				{ // lob поле -> надо добавить еще указание <lob/>, вне зависимости от названия поля
+				{ // lob РїРѕР»Рµ -> РЅР°РґРѕ РґРѕР±Р°РІРёС‚СЊ РµС‰Рµ СѓРєР°Р·Р°РЅРёРµ <lob/>, РІРЅРµ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РЅР°Р·РІР°РЅРёСЏ РїРѕР»СЏ
 					appendLobBasic(fileLines, field.getName());
 				}
 				else
 				{
-					appendBasic(fileLines, field.getName()); // simple field -> add basic column name, if needed // todo: возможность перегружать дефолтное имя sql-колонки во всех полях
+					appendBasic(fileLines, field.getName()); // simple field -> add basic column name, if needed // todo: РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРµСЂРµРіСЂСѓР¶Р°С‚СЊ РґРµС„РѕР»С‚РЅРѕРµ РёРјСЏ sql-РєРѕР»РѕРЅРєРё РІРѕ РІСЃРµС… РїРѕР»СЏС…
 				}
 
 				continue;
 			}
 
-			// todo: маппинг List полей на one-to-many (если это указано в их аннотации)
+			// todo: РјР°РїРїРёРЅРі List РїРѕР»РµР№ РЅР° one-to-many (РµСЃР»Рё СЌС‚Рѕ СѓРєР°Р·Р°РЅРѕ РІ РёС… Р°РЅРЅРѕС‚Р°С†РёРё)
 
-			appendBasic(fileLines, field.getName()); // simple field -> add basic column name, if needed // todo: возможность перегружать дефолтное имя sql-колонки во всех полях
+			appendBasic(fileLines, field.getName()); // simple field -> add basic column name, if needed // todo: РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРµСЂРµРіСЂСѓР¶Р°С‚СЊ РґРµС„РѕР»С‚РЅРѕРµ РёРјСЏ sql-РєРѕР»РѕРЅРєРё РІРѕ РІСЃРµС… РїРѕР»СЏС…
 		}
 
 		// append many to one fields

@@ -28,8 +28,8 @@ import static su.opencode.kefir.gen.project.xml.orm.EntityMappingAppender.ORM_SE
 import static su.opencode.kefir.util.StringUtils.*;
 
 /**
- * Класс, достающий сведения из сущности ExtEntity
- * и преобразовывающий их в нужный вид.
+ * РљР»Р°СЃСЃ, РґРѕСЃС‚Р°СЋС‰РёР№ СЃРІРµРґРµРЅРёСЏ РёР· СЃСѓС‰РЅРѕСЃС‚Рё ExtEntity
+ * Рё РїСЂРµРѕР±СЂР°Р·РѕРІС‹РІР°СЋС‰РёР№ РёС… РІ РЅСѓР¶РЅС‹Р№ РІРёРґ.
  */
 public class ExtEntityUtils
 {
@@ -39,8 +39,8 @@ public class ExtEntityUtils
 	}
 
 	/**
-	 * @param entityClass класс сущности
-	 * @return аннотация ExtEntity на указанном классе или <code>null</code>, если такой аннотации нет
+	 * @param entityClass РєР»Р°СЃСЃ СЃСѓС‰РЅРѕСЃС‚Рё
+	 * @return Р°РЅРЅРѕС‚Р°С†РёСЏ ExtEntity РЅР° СѓРєР°Р·Р°РЅРЅРѕРј РєР»Р°СЃСЃРµ РёР»Рё <code>null</code>, РµСЃР»Рё С‚Р°РєРѕР№ Р°РЅРЅРѕС‚Р°С†РёРё РЅРµС‚
 	 */
 	@SuppressWarnings(value = "unchecked")
 	public static ExtEntity getExtEntityAnnotation(Class entityClass) {
@@ -48,8 +48,8 @@ public class ExtEntityUtils
 	}
 
 	/**
-	 * @param varName имя переменной в camel-нотации
-	 * @return имя переменной заглавными буквами через подчеркивание
+	 * @param varName РёРјСЏ РїРµСЂРµРјРµРЅРЅРѕР№ РІ camel-РЅРѕС‚Р°С†РёРё
+	 * @return РёРјСЏ РїРµСЂРµРјРµРЅРЅРѕР№ Р·Р°РіР»Р°РІРЅС‹РјРё Р±СѓРєРІР°РјРё С‡РµСЂРµР· РїРѕРґС‡РµСЂРєРёРІР°РЅРёРµ
 	 */
 	public static String getConstantName(String varName) {
 		StringBuilder sb = new StringBuilder();
@@ -58,7 +58,7 @@ public class ExtEntityUtils
 		{
 			char ch = varName.charAt(i);
 
-			if ( i != 0 && Character.isUpperCase(ch) ) // перед первым символом в строке подчеркивание не ставится
+			if ( i != 0 && Character.isUpperCase(ch) ) // РїРµСЂРµРґ РїРµСЂРІС‹Рј СЃРёРјРІРѕР»РѕРј РІ СЃС‚СЂРѕРєРµ РїРѕРґС‡РµСЂРєРёРІР°РЅРёРµ РЅРµ СЃС‚Р°РІРёС‚СЃСЏ
 				sb.append(CONSTANT_NAME_SEPARATOR).append(ch);
 			else
 				sb.append( Character.toUpperCase(ch) );
@@ -82,15 +82,15 @@ public class ExtEntityUtils
 	}
 
 	/**
-	 * @param entityClass полное имя класса
-	 * @return simpleName класса с маленькой буквы
+	 * @param entityClass РїРѕР»РЅРѕРµ РёРјСЏ РєР»Р°СЃСЃР°
+	 * @return simpleName РєР»Р°СЃСЃР° СЃ РјР°Р»РµРЅСЊРєРѕР№ Р±СѓРєРІС‹
 	 */
 	public static String getSimpleName(Class entityClass) {
 		return decapitalize( entityClass.getSimpleName() );
 	}
 	/**
-	 * @param field поле
-	 * @return simpleName класса поля с маленькой буквы
+	 * @param field РїРѕР»Рµ
+	 * @return simpleName РєР»Р°СЃСЃР° РїРѕР»СЏ СЃ РјР°Р»РµРЅСЊРєРѕР№ Р±СѓРєРІС‹
 	 */
 	public static String getSimpleName(Field field) {
 		return getSimpleName(field.getType());
@@ -103,7 +103,7 @@ public class ExtEntityUtils
 		if ( extEntity.serviceClassName().isEmpty() )
 		{
 			String packageName = entityClass.getPackage().getName();
-			String packageLastName = getSimpleName(packageName); // последняя часть пакета после точки
+			String packageLastName = getSimpleName(packageName); // РїРѕСЃР»РµРґРЅСЏСЏ С‡Р°СЃС‚СЊ РїР°РєРµС‚Р° РїРѕСЃР»Рµ С‚РѕС‡РєРё
 			serviceClassName = concat(packageName, PACKAGE_SEPARATOR, capitalize(packageLastName), "Service");
 		}
 		else
@@ -156,7 +156,7 @@ public class ExtEntityUtils
 		if ( extEntity.serviceBeanClassName().isEmpty() )
 		{
 			String packageName = entityClass.getPackage().getName();
-			String packageLastName = getSimpleName(packageName); // последняя часть пакета после точки
+			String packageLastName = getSimpleName(packageName); // РїРѕСЃР»РµРґРЅСЏСЏ С‡Р°СЃС‚СЊ РїР°РєРµС‚Р° РїРѕСЃР»Рµ С‚РѕС‡РєРё
 			serviceClassName = concat(packageName, PACKAGE_SEPARATOR, capitalize(packageLastName), "ServiceBean");
 		}
 		else
@@ -190,7 +190,7 @@ public class ExtEntityUtils
 		String servletPackageName;
 
 		if ( extEntity.servletPackageName().isEmpty() )
-			servletPackageName = entityClass.getPackage().getName(); // по умолчанию берется пакет, аналогичный пакету, в котором лежит класс сущности
+			servletPackageName = entityClass.getPackage().getName(); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ Р±РµСЂРµС‚СЃСЏ РїР°РєРµС‚, Р°РЅР°Р»РѕРіРёС‡РЅС‹Р№ РїР°РєРµС‚Сѓ, РІ РєРѕС‚РѕСЂРѕРј Р»РµР¶РёС‚ РєР»Р°СЃСЃ СЃСѓС‰РЅРѕСЃС‚Рё
 		else
 			servletPackageName = extEntity.servletPackageName();
 
@@ -304,7 +304,7 @@ public class ExtEntityUtils
 		String voClassName;
 
 		if ( extEntity.chooseVoClassName().isEmpty() )
-			voClassName = getListVOClassName(extEntity, entityClass); // по умолчанию используется то же VO, что и для списка
+			voClassName = getListVOClassName(extEntity, entityClass); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ С‚Рѕ Р¶Рµ VO, С‡С‚Рѕ Рё РґР»СЏ СЃРїРёСЃРєР°
 		else
 			voClassName = extEntity.chooseVoClassName();
 
@@ -355,7 +355,7 @@ public class ExtEntityUtils
 		logger.info( concat("list servlet url: ", listServletUrl) );
 		return listServletUrl;
 	}
-	public static String getListServletName(ExtEntity extEntity, Class entityClass) { // имя для web.xml
+	public static String getListServletName(ExtEntity extEntity, Class entityClass) { // РёРјСЏ РґР»СЏ web.xml
 		return getListServletUrl(extEntity, entityClass).substring(1);
 	}
 
@@ -384,7 +384,7 @@ public class ExtEntityUtils
 		logger.info( concat("list export to Excel servlet url: ", url) );
 		return url;
 	}
-	public static String getListExportToExcelServletName(ExtEntity extEntity, Class entityClass) { // имя для web.xml
+	public static String getListExportToExcelServletName(ExtEntity extEntity, Class entityClass) { // РёРјСЏ РґР»СЏ web.xml
 		return getListExportToExcelServletUrl(extEntity, entityClass).substring(1);
 	}
 	public static String getListExportToExcelFileName(ExtEntity extEntity, Class entityClass) {
@@ -403,7 +403,7 @@ public class ExtEntityUtils
 		String chooseServletUrl;
 
 		if ( extEntity.chooseServletUrl().isEmpty() )
-			chooseServletUrl = getListServletUrl(extEntity, entityClass); // по умолчанию используется тот же сервлет, что и для списка сущностей
+			chooseServletUrl = getListServletUrl(extEntity, entityClass); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ С‚РѕС‚ Р¶Рµ СЃРµСЂРІР»РµС‚, С‡С‚Рѕ Рё РґР»СЏ СЃРїРёСЃРєР° СЃСѓС‰РЅРѕСЃС‚РµР№
 		else
 			chooseServletUrl = extEntity.chooseServletUrl();
 
@@ -436,7 +436,7 @@ public class ExtEntityUtils
 		logger.info( concat("get servlet url: ", servletUrl) );
 		return servletUrl;
 	}
-	public static String getGetServletName(ExtEntity extEntity, Class entityClass) { // имя для web.xml
+	public static String getGetServletName(ExtEntity extEntity, Class entityClass) { // РёРјСЏ РґР»СЏ web.xml
 		return getGetServletUrl(extEntity, entityClass).substring(1);
 	}
 
@@ -465,7 +465,7 @@ public class ExtEntityUtils
 		logger.info( concat("create servlet url: ", servletUrl) );
 		return servletUrl;
 	}
-	public static String getCreateServletName(ExtEntity extEntity, Class entityClass) { // имя для web.xml
+	public static String getCreateServletName(ExtEntity extEntity, Class entityClass) { // РёРјСЏ РґР»СЏ web.xml
 		return getCreateServletUrl(extEntity, entityClass).substring(1);
 	}
 
@@ -494,7 +494,7 @@ public class ExtEntityUtils
 		logger.info( concat("update servlet url: ", servletUrl) );
 		return servletUrl;
 	}
-	public static String getUpdateServletName(ExtEntity extEntity, Class entityClass) { // имя для web.xml
+	public static String getUpdateServletName(ExtEntity extEntity, Class entityClass) { // РёРјСЏ РґР»СЏ web.xml
 		return getUpdateServletUrl(extEntity, entityClass).substring(1);
 	}
 
@@ -523,7 +523,7 @@ public class ExtEntityUtils
 		logger.info( concat("create servlet url: ", servletUrl) );
 		return servletUrl;
 	}
-	public static String getDeleteServletName(ExtEntity extEntity, Class entityClass) { // имя для web.xml
+	public static String getDeleteServletName(ExtEntity extEntity, Class entityClass) { // РёРјСЏ РґР»СЏ web.xml
 		return getDeleteServletUrl(extEntity, entityClass).substring(1);
 	}
 
@@ -712,7 +712,7 @@ public class ExtEntityUtils
 	}
 
 
-	// ------------------------------  форма выбора -------------------------------------------
+	// ------------------------------  С„РѕСЂРјР° РІС‹Р±РѕСЂР° -------------------------------------------
 	public static String getChooseJsFileName(ExtEntity extEntity, Class entityClass) {
 		String fileName;
 
@@ -823,7 +823,7 @@ public class ExtEntityUtils
 		return buttonId;
 	}
 
-	// ------------------------------  форма CRUD ---------------------------------------------
+	// ------------------------------  С„РѕСЂРјР° CRUD ---------------------------------------------
 	public static String getFormLayoutJsFileName(ExtEntity extEntity, Class entityClass) {
 		String fileName;
 
@@ -961,11 +961,11 @@ public class ExtEntityUtils
 		String name;
 
 		if ( !secondRowButton.name().isEmpty() )
-		{ // имя задано явно
+		{ // РёРјСЏ Р·Р°РґР°РЅРѕ СЏРІРЅРѕ
 			name = secondRowButton.name();
 		}
 		else if ( !secondRowButton.listEntityClassName().isEmpty() )
-		{ // задана связанная сущность -> назвать кнопку (краткое имя связанной сущности с маленькой буквы + "Button")
+		{ // Р·Р°РґР°РЅР° СЃРІСЏР·Р°РЅРЅР°СЏ СЃСѓС‰РЅРѕСЃС‚СЊ -> РЅР°Р·РІР°С‚СЊ РєРЅРѕРїРєСѓ (РєСЂР°С‚РєРѕРµ РёРјСЏ СЃРІСЏР·Р°РЅРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё СЃ РјР°Р»РµРЅСЊРєРѕР№ Р±СѓРєРІС‹ + "Button")
 			name = concat( decapitalize( getSimpleName(secondRowButton.listEntityClassName()) ), "sButton");
 		}
 		else
@@ -991,7 +991,7 @@ public class ExtEntityUtils
 		String paramName;
 
 		if ( secondRowButton.listEntityParamName().isEmpty() )
-			paramName = getSimpleName(entityClass); // имя класса основной сущности с маленькой буквы
+			paramName = getSimpleName(entityClass); // РёРјСЏ РєР»Р°СЃСЃР° РѕСЃРЅРѕРІРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё СЃ РјР°Р»РµРЅСЊРєРѕР№ Р±СѓРєРІС‹
 		else
 			paramName = secondRowButton.listEntityParamName();
 
@@ -999,13 +999,13 @@ public class ExtEntityUtils
 		return paramName;
 	}
 	public static String getListFilterParamName(Field filterField, Class filterFieldClass, Class listEntityClass) {
-		String paramName = decapitalize(filterField.getName()); // по умолчанию - имя поля, которое передается в фильтр, с маленькой буквы
+		String paramName = decapitalize(filterField.getName()); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - РёРјСЏ РїРѕР»СЏ, РєРѕС‚РѕСЂРѕРµ РїРµСЂРµРґР°РµС‚СЃСЏ РІ С„РёР»СЊС‚СЂ, СЃ РјР°Р»РµРЅСЊРєРѕР№ Р±СѓРєРІС‹
 
-		// просмотреть filterConfig в сущности, список которой открывается при переходе
+		// РїСЂРѕСЃРјРѕС‚СЂРµС‚СЊ filterConfig РІ СЃСѓС‰РЅРѕСЃС‚Рё, СЃРїРёСЃРѕРє РєРѕС‚РѕСЂРѕР№ РѕС‚РєСЂС‹РІР°РµС‚СЃСЏ РїСЂРё РїРµСЂРµС…РѕРґРµ
 		for (Field field : getFilterConfigFields(listEntityClass))
 		{
 			if ( field.getType().getName().equals(filterFieldClass.getName()) )
-			{ // есть filterConfig по полю того же класса, что и параметр фильтрации — взять имя параметра оттуда
+			{ // РµСЃС‚СЊ filterConfig РїРѕ РїРѕР»СЋ С‚РѕРіРѕ Р¶Рµ РєР»Р°СЃСЃР°, С‡С‚Рѕ Рё РїР°СЂР°РјРµС‚СЂ С„РёР»СЊС‚СЂР°С†РёРё вЂ” РІР·СЏС‚СЊ РёРјСЏ РїР°СЂР°РјРµС‚СЂР° РѕС‚С‚СѓРґР°
 				FilterConfigField filterConfigField = getFilterConfigFieldAnnotation(field);
 				paramName = getFilterConfigListInitFunctionParamName(filterConfigField, field);
 				break;
@@ -1034,7 +1034,7 @@ public class ExtEntityUtils
 		String paramName;
 
 		if ( preventDeleteEntity.filterConfigFieldName().isEmpty() )
-			paramName = concat( getSimpleName(entityClass), "Id" ) ; // имя класса основной сущности с маленькой буквы + "Id"
+			paramName = concat( getSimpleName(entityClass), "Id" ) ; // РёРјСЏ РєР»Р°СЃСЃР° РѕСЃРЅРѕРІРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё СЃ РјР°Р»РµРЅСЊРєРѕР№ Р±СѓРєРІС‹ + "Id"
 		else
 			paramName = preventDeleteEntity.filterConfigFieldName();
 
@@ -1056,7 +1056,7 @@ public class ExtEntityUtils
 		return buttonText;
 	}
 	public static String getListMainMenuButtonToolTip(ExtEntity extEntity, Class entityClass) {
-		String buttonText = getValue(extEntity.listMainMenuButtonToolTip(), null); // равный тексту по дефолту подставится в js.
+		String buttonText = getValue(extEntity.listMainMenuButtonToolTip(), null); // СЂР°РІРЅС‹Р№ С‚РµРєСЃС‚Сѓ РїРѕ РґРµС„РѕР»С‚Сѓ РїРѕРґСЃС‚Р°РІРёС‚СЃСЏ РІ js.
 
 		logger.info( concat("list main menu button tooltip: ", buttonText) );
 		return buttonText;

@@ -17,19 +17,19 @@ import su.opencode.kefir.gen.field.searchField.SearchField;
 import su.opencode.kefir.srv.json.ColumnModel;
 
 @ExtEntity(
-	listWindowTitle = "Список связанных сущностей",
-	notChosenTitle = "Связанная сущность не выбрана",
-	notChosenMessage = "Выберите связанную сущность",
+	listWindowTitle = "РЎРїРёСЃРѕРє СЃРІСЏР·Р°РЅРЅС‹С… СЃСѓС‰РЅРѕСЃС‚РµР№",
+	notChosenTitle = "РЎРІСЏР·Р°РЅРЅР°СЏ СЃСѓС‰РЅРѕСЃС‚СЊ РЅРµ РІС‹Р±СЂР°РЅР°",
+	notChosenMessage = "Р’С‹Р±РµСЂРёС‚Рµ СЃРІСЏР·Р°РЅРЅСѓСЋ СЃСѓС‰РЅРѕСЃС‚СЊ",
 
-	chooseWindowTitle = "Выбор связанной сущности",
-	createWindowTitle = "Ввод связанной сущности",
-	showWindowTitle = "Просмотр связанной сущности",
-	updateWindowTitle = "Изменение связанной сущности",
-	deleteWindowTitle = "Удаление связанной сущности",
+	chooseWindowTitle = "Р’С‹Р±РѕСЂ СЃРІСЏР·Р°РЅРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё",
+	createWindowTitle = "Р’РІРѕРґ СЃРІСЏР·Р°РЅРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё",
+	showWindowTitle = "РџСЂРѕСЃРјРѕС‚СЂ СЃРІСЏР·Р°РЅРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё",
+	updateWindowTitle = "РР·РјРµРЅРµРЅРёРµ СЃРІСЏР·Р°РЅРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё",
+	deleteWindowTitle = "РЈРґР°Р»РµРЅРёРµ СЃРІСЏР·Р°РЅРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё",
 
-	createSaveErrorMessage = "Ошибка при сохранении связанной сущности",
-	updateSaveErrorMessage = "Ошибка при изменении связанной сущности",
-	deleteSaveErrorMessage = "Ошибка при удалении связанной сущности",
+	createSaveErrorMessage = "РћС€РёР±РєР° РїСЂРё СЃРѕС…СЂР°РЅРµРЅРёРё СЃРІСЏР·Р°РЅРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё",
+	updateSaveErrorMessage = "РћС€РёР±РєР° РїСЂРё РёР·РјРµРЅРµРЅРёРё СЃРІСЏР·Р°РЅРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё",
+	deleteSaveErrorMessage = "РћС€РёР±РєР° РїСЂРё СѓРґР°Р»РµРЅРёРё СЃРІСЏР·Р°РЅРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё",
 
 	formWindowWidth = 800,
 
@@ -39,11 +39,11 @@ import su.opencode.kefir.srv.json.ColumnModel;
 //	filterConfigClassName = "su.opencode.kefir.generated.ChooseEntityFilterConfig",
 
 	preventDeleteEntities = {
-		@PreventDeleteEntity(className = "su.opencode.kefir.gen.test.TestEntity", message = "Невозможно удалить связанную сущность, т.к. существует тестовая сущность, связанная с ней.")
+		@PreventDeleteEntity(className = "su.opencode.kefir.gen.test.TestEntity", message = "РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРґР°Р»РёС‚СЊ СЃРІСЏР·Р°РЅРЅСѓСЋ СЃСѓС‰РЅРѕСЃС‚СЊ, С‚.Рє. СЃСѓС‰РµСЃС‚РІСѓРµС‚ С‚РµСЃС‚РѕРІР°СЏ СЃСѓС‰РЅРѕСЃС‚СЊ, СЃРІСЏР·Р°РЅРЅР°СЏ СЃ РЅРµР№.")
 	},
 
 	listSecondRowButtons = {
-		@SecondRowButton(text = "Перейти к списку тестовых сущностей", listEntityClassName = "su.opencode.kefir.gen.test.TestEntity")
+		@SecondRowButton(text = "РџРµСЂРµР№С‚Рё Рє СЃРїРёСЃРєСѓ С‚РµСЃС‚РѕРІС‹С… СЃСѓС‰РЅРѕСЃС‚РµР№", listEntityClassName = "su.opencode.kefir.gen.test.TestEntity")
 	}
 )
 public class ChooseEntity
@@ -89,27 +89,27 @@ public class ChooseEntity
 	@IdField()
 	private Integer id;
 
-	@SearchField(label = "Наименование:", width = 250)
-	@TextField(label = "Полное наименование", maxLength = 255, width = 300)
+	@SearchField(label = "РќР°РёРјРµРЅРѕРІР°РЅРёРµ:", width = 250)
+	@TextField(label = "РџРѕР»РЅРѕРµ РЅР°РёРјРµРЅРѕРІР°РЅРёРµ", maxLength = 255, width = 300)
 	private String name;
 
 	/**
-	 * Сокращенное наименование
+	 * РЎРѕРєСЂР°С‰РµРЅРЅРѕРµ РЅР°РёРјРµРЅРѕРІР°РЅРёРµ
 	 */
-	@TextField(label = "Сокращенное наименование", maxLength = 255, width = 300)
+	@TextField(label = "РЎРѕРєСЂР°С‰РµРЅРЅРѕРµ РЅР°РёРјРµРЅРѕРІР°РЅРёРµ", maxLength = 255, width = 300)
 	private String shortName;
 
 	/**
-	 * Корреспондентский счет. 20 знаков.<br/>
-	 * Последние три знака (18-й, 19-й, 20-й разряды) содержат 3-значный условный номер участника расчётов, соответствующий 7-му, 8-му, 9-му разрядам БИК.
+	 * РљРѕСЂСЂРµСЃРїРѕРЅРґРµРЅС‚СЃРєРёР№ СЃС‡РµС‚. 20 Р·РЅР°РєРѕРІ.<br/>
+	 * РџРѕСЃР»РµРґРЅРёРµ С‚СЂРё Р·РЅР°РєР° (18-Р№, 19-Р№, 20-Р№ СЂР°Р·СЂСЏРґС‹) СЃРѕРґРµСЂР¶Р°С‚ 3-Р·РЅР°С‡РЅС‹Р№ СѓСЃР»РѕРІРЅС‹Р№ РЅРѕРјРµСЂ СѓС‡Р°СЃС‚РЅРёРєР° СЂР°СЃС‡С‘С‚РѕРІ, СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ 7-РјСѓ, 8-РјСѓ, 9-РјСѓ СЂР°Р·СЂСЏРґР°Рј Р‘РРљ.
 	 */
 	@ColumnModel(header = "aaaaaa")
-	@TextField(label = "Корреспондентский счет", maxLength = 20, width = 300)
+	@TextField(label = "РљРѕСЂСЂРµСЃРїРѕРЅРґРµРЅС‚СЃРєРёР№ СЃС‡РµС‚", maxLength = 20, width = 300)
 	private String correspondentAccount;
 
-//	@FilterConfigField(name = "comboBoxEntityId", type = "Integer", filterFieldName = "id", sqlParamName = "comboBoxEntity.id", listWindowFilterTitle = "комбо сущность", listWindowTitleParamName = "cadastralNumber")
+//	@FilterConfigField(name = "comboBoxEntityId", type = "Integer", filterFieldName = "id", sqlParamName = "comboBoxEntity.id", listWindowFilterTitle = "РєРѕРјР±Рѕ СЃСѓС‰РЅРѕСЃС‚СЊ", listWindowTitleParamName = "cadastralNumber")
 //	@ComboBoxField(
-//		label = "Селект поле", url = "/comboBoxEntitysList", width = 400, maxLength = 25,
+//		label = "РЎРµР»РµРєС‚ РїРѕР»Рµ", url = "/comboBoxEntitysList", width = 400, maxLength = 25,
 //
 //		sortBy = "cadastralNumber",
 //		queryParam = "cadastralNumber",

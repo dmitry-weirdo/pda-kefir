@@ -15,19 +15,19 @@ import su.opencode.kefir.gen.ExtEntity;
 import su.opencode.kefir.srv.json.JsonObject;
 
 /**
- * Адрес. Используется для {@linkplain su.opencode.minstroy.ejb.holding.Holder дольщиков}, {@linkplain su.opencode.minstroy.ejb.building.Building строительных объектов} {@linkplain su.opencode.minstroy.ejb.leasing.Developer застройщиков} и {@linkplain su.opencode.minstroy.ejb.investing.Investor инвесторов}.
+ * РђРґСЂРµСЃ. РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ {@linkplain su.opencode.minstroy.ejb.holding.Holder РґРѕР»СЊС‰РёРєРѕРІ}, {@linkplain su.opencode.minstroy.ejb.building.Building СЃС‚СЂРѕРёС‚РµР»СЊРЅС‹С… РѕР±СЉРµРєС‚РѕРІ} {@linkplain su.opencode.minstroy.ejb.leasing.Developer Р·Р°СЃС‚СЂРѕР№С‰РёРєРѕРІ} Рё {@linkplain su.opencode.minstroy.ejb.investing.Investor РёРЅРІРµСЃС‚РѕСЂРѕРІ}.
  */
 @ExtEntity(
-	listWindowTitle = "Список адресов",
-	notChosenTitle = "Адрес не выбран",
-	notChosenMessage = "Выберите адрес",
+	listWindowTitle = "РЎРїРёСЃРѕРє Р°РґСЂРµСЃРѕРІ",
+	notChosenTitle = "РђРґСЂРµСЃ РЅРµ РІС‹Р±СЂР°РЅ",
+	notChosenMessage = "Р’С‹Р±РµСЂРёС‚Рµ Р°РґСЂРµСЃ",
 
-	chooseWindowTitle = "Выбор адреса",
+	chooseWindowTitle = "Р’С‹Р±РѕСЂ Р°РґСЂРµСЃР°",
 
-	createWindowTitle = "Ввод адреса",
-	showWindowTitle = "Просмотр адреса",
-	updateWindowTitle = "Изменение адреса",
-	deleteWindowTitle = "Удаление адреса"
+	createWindowTitle = "Р’РІРѕРґ Р°РґСЂРµСЃР°",
+	showWindowTitle = "РџСЂРѕСЃРјРѕС‚СЂ Р°РґСЂРµСЃР°",
+	updateWindowTitle = "РР·РјРµРЅРµРЅРёРµ Р°РґСЂРµСЃР°",
+	deleteWindowTitle = "РЈРґР°Р»РµРЅРёРµ Р°РґСЂРµСЃР°"
 )
 public class Address extends JsonObject
 {
@@ -142,57 +142,57 @@ public class Address extends JsonObject
 	private Integer id;
 
 	/**
-	 * Почтовый индекс. 6 цифр (возможны ведущие нули).
+	 * РџРѕС‡С‚РѕРІС‹Р№ РёРЅРґРµРєСЃ. 6 С†РёС„СЂ (РІРѕР·РјРѕР¶РЅС‹ РІРµРґСѓС‰РёРµ РЅСѓР»Рё).
 	 */
 	private Integer zipCode;
 
 	/**
-	 * Название субъекта РФ.
+	 * РќР°Р·РІР°РЅРёРµ СЃСѓР±СЉРµРєС‚Р° Р Р¤.
 	 */
 	private String subject;
 
 	/**
-	 * Район области
+	 * Р Р°Р№РѕРЅ РѕР±Р»Р°СЃС‚Рё.
 	 */
 	private String district;
 
 	/**
-	 * Город
+	 * Р“РѕСЂРѕРґ.
 	 */
 	private String city;
 
 	/**
-	 * Район города
+	 * Р Р°Р№РѕРЅ РіРѕСЂРѕРґР°.
 	 */
 	private String cityDistrict;
 
 	/**
-	 * Населенный пункт
+	 * РќР°СЃРµР»РµРЅРЅС‹Р№ РїСѓРЅРєС‚.
 	 */
 	private String locality;
 
 	/**
-	 * Улица
+	 * РЈР»РёС†Р°.
 	 */
 	private String street;
 
 	/**
-	 * Квартал
+	 * РљРІР°СЂС‚Р°Р».
 	 */
 	private String block;
 
 	/**
-	 * Дом
+	 * Р”РѕРј.
 	 */
 	private String house;
 
 	/**
-	 * Корпус
+	 * РљРѕСЂРїСѓСЃ.
 	 */
 	private String building;
 
 	/**
-	 * Квартира\офис
+	 * РљРІР°СЂС‚РёСЂР°\РѕС„РёСЃ.
 	 */
 	private String apartment;
 

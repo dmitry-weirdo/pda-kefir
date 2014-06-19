@@ -21,7 +21,7 @@ import static su.opencode.kefir.gen.ExtEntityUtils.getServiceReferenceName;
 import static su.opencode.kefir.util.StringUtils.concat;
 
 /**
- * Добавляет описание локального сервиса в jboss-web.xml
+ * Р”РѕР±Р°РІР»СЏРµС‚ РѕРїРёСЃР°РЅРёРµ Р»РѕРєР°Р»СЊРЅРѕРіРѕ СЃРµСЂРІРёСЃР° РІ jboss-web.xml
  */
 public class ServiceBeanReferenceAppender extends XmlAppender
 {

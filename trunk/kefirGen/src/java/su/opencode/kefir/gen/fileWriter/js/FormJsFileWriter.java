@@ -46,9 +46,9 @@ public class FormJsFileWriter extends JsFileWriter
 		// functions
 		writeComment("functions");
 		writeFillAddressFieldsFunctions();
-		writeFillChooseFieldsFunctions(); // функции заполнения полей выбора
+		writeFillChooseFieldsFunctions(); // С„СѓРЅРєС†РёРё Р·Р°РїРѕР»РЅРµРЅРёСЏ РїРѕР»РµР№ РІС‹Р±РѕСЂР°
 		out.writeLn();
-		writeFillFilterChooseFieldsFunctions(); // функции жесткого заполнения полей выбора
+		writeFillFilterChooseFieldsFunctions(); // С„СѓРЅРєС†РёРё Р¶РµСЃС‚РєРѕРіРѕ Р·Р°РїРѕР»РЅРµРЅРёСЏ РїРѕР»РµР№ РІС‹Р±РѕСЂР°
 		out.writeLn();
 		writeFillFormFields();
 
@@ -150,7 +150,7 @@ public class FormJsFileWriter extends JsFileWriter
 		// FIELDS_IDS array constant
 		writeFieldsIdsConstant();
 
-		// choose fields filled fields (поля, заполняемые при выборе связанной сущности)
+		// choose fields filled fields (РїРѕР»СЏ, Р·Р°РїРѕР»РЅСЏРµРјС‹Рµ РїСЂРё РІС‹Р±РѕСЂРµ СЃРІСЏР·Р°РЅРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё)
 		writeChooseFieldsFilledFields();
 
 		out.writeLn();
@@ -200,17 +200,17 @@ public class FormJsFileWriter extends JsFileWriter
 		Field[] fields = entityClass.getDeclaredFields();
 		for (Field field : fields)
 		{
-			if ( !hasFieldAnnotation(field) || hasAttachmentsFieldAnnotation(field) || hasAddressFieldAnnotation(field) ) // если поле не помечено аннотацией или является аттачем, id для него не генерится
+			if ( !hasFieldAnnotation(field) || hasAttachmentsFieldAnnotation(field) || hasAddressFieldAnnotation(field) ) // РµСЃР»Рё РїРѕР»Рµ РЅРµ РїРѕРјРµС‡РµРЅРѕ Р°РЅРЅРѕС‚Р°С†РёРµР№ РёР»Рё СЏРІР»СЏРµС‚СЃСЏ Р°С‚С‚Р°С‡РµРј, id РґР»СЏ РЅРµРіРѕ РЅРµ РіРµРЅРµСЂРёС‚СЃСЏ
 				continue;
 
-			// todo: возможность исключения поля из формы через аннотацию
+			// todo: РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РёСЃРєР»СЋС‡РµРЅРёСЏ РїРѕР»СЏ РёР· С„РѕСЂРјС‹ С‡РµСЂРµР· Р°РЅРЅРѕС‚Р°С†РёСЋ
 			ChooseField chooseField = getChooseFieldAnnotation(field);
 			if (chooseField != null)
-			{ // поле выбора другой сущности
+			{ // РїРѕР»Рµ РІС‹Р±РѕСЂР° РґСЂСѓРіРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё
 				writeChooseFieldIdsConstants(fieldPrefix, field, chooseField);
 			}
 			else
-			{ // обычное поле (не выбора)
+			{ // РѕР±С‹С‡РЅРѕРµ РїРѕР»Рµ (РЅРµ РІС‹Р±РѕСЂР°)
 				writeFieldIdConstant(field);
 			}
 		}
@@ -221,10 +221,10 @@ public class FormJsFileWriter extends JsFileWriter
 	private void writeChooseFieldIdsConstants(String fieldPrefix, Field field, ChooseField chooseField) throws IOException {
 		out.writeLn();
 
-		// id: constant - пишется всегда
+		// id: constant - РїРёС€РµС‚СЃСЏ РІСЃРµРіРґР°
 		writeFieldIdConstant(field);
 
-		// текстовые поля сущности, которые нужно заполнять
+		// С‚РµРєСЃС‚РѕРІС‹Рµ РїРѕР»СЏ СЃСѓС‰РЅРѕСЃС‚Рё, РєРѕС‚РѕСЂС‹Рµ РЅСѓР¶РЅРѕ Р·Р°РїРѕР»РЅСЏС‚СЊ
 		for (ChooseFieldTextField textField : chooseField.fields())
 		{
 			String fieldIdConstantName = getChooseFieldTextFieldIdConstantName(field, textField);
@@ -298,7 +298,7 @@ public class FormJsFileWriter extends JsFileWriter
 	private List<String> collectFieldsIds() {
 		List<String> fieldsIds = new ArrayList<String>();
 
-		// фокус полей формы
+		// С„РѕРєСѓСЃ РїРѕР»РµР№ С„РѕСЂРјС‹
 		for (Field field : entityClass.getDeclaredFields())
 		{
 			if ( !hasFieldAnnotation(field) || hasIdFieldAnnotation(field) || hasAttachmentsFieldAnnotation(field) )
@@ -309,19 +309,19 @@ public class FormJsFileWriter extends JsFileWriter
 				fieldsIds.add( getAddressFieldUpdateButtonIdConstantName(field) );
 			}
 			else if ( hasChooseFieldAnnotation(field) )
-			{ // поле выбора -> фокусируется кнопка выбора
+			{ // РїРѕР»Рµ РІС‹Р±РѕСЂР° -> С„РѕРєСѓСЃРёСЂСѓРµС‚СЃСЏ РєРЅРѕРїРєР° РІС‹Р±РѕСЂР°
 				fieldsIds.add( getChooseButtonIdConstantName(field) );
 			}
 			else
-			{ // обычное поле -> фокусируется само поле
+			{ // РѕР±С‹С‡РЅРѕРµ РїРѕР»Рµ -> С„РѕРєСѓСЃРёСЂСѓРµС‚СЃСЏ СЃР°РјРѕ РїРѕР»Рµ
 				fieldsIds.add( getFieldIdConstantName(field) );
 			}
 		}
 
-		// последней фокусируется кнопка сохранения
+		// РїРѕСЃР»РµРґРЅРµР№ С„РѕРєСѓСЃРёСЂСѓРµС‚СЃСЏ РєРЅРѕРїРєР° СЃРѕС…СЂР°РЅРµРЅРёСЏ
 		fieldsIds.add(SAVE_BUTTON_ID_CONSTANT_NAME);
 
-		// или кнопка закрытия для формы показа
+		// РёР»Рё РєРЅРѕРїРєР° Р·Р°РєСЂС‹С‚РёСЏ РґР»СЏ С„РѕСЂРјС‹ РїРѕРєР°Р·Р°
 		fieldsIds.add(SHOW_CANCEL_BUTTON_ID_CONSTANT_NAME);
 		return fieldsIds;
 	}
@@ -411,11 +411,11 @@ public class FormJsFileWriter extends JsFileWriter
 		List<ChooseFieldField> fields = new ArrayList<ChooseFieldField>();
 		ChooseField chooseField = getChooseFieldAnnotation(field);
 
-		fields.add( new ChooseFieldField(getFieldName(field), chooseField.idFieldName(), null) ); // поле, содержащее id выбранной сущности в форме имеет имя, равное имени поля
+		fields.add( new ChooseFieldField(getFieldName(field), chooseField.idFieldName(), null) ); // РїРѕР»Рµ, СЃРѕРґРµСЂР¶Р°С‰РµРµ id РІС‹Р±СЂР°РЅРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё РІ С„РѕСЂРјРµ РёРјРµРµС‚ РёРјСЏ, СЂР°РІРЅРѕРµ РёРјРµРЅРё РїРѕР»СЏ
 
 		for (ChooseFieldTextField textField : chooseField.fields())
 		{
-			String formFieldName = getChooseFieldFieldName(field, textField); // имя поля в форме сущности, которое будет заполняться полем из выбранной связанной сущности
+			String formFieldName = getChooseFieldFieldName(field, textField); // РёРјСЏ РїРѕР»СЏ РІ С„РѕСЂРјРµ СЃСѓС‰РЅРѕСЃС‚Рё, РєРѕС‚РѕСЂРѕРµ Р±СѓРґРµС‚ Р·Р°РїРѕР»РЅСЏС‚СЊСЃСЏ РїРѕР»РµРј РёР· РІС‹Р±СЂР°РЅРЅРѕР№ СЃРІСЏР·Р°РЅРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё
 			fields.add( new ChooseFieldField(formFieldName, textField.name(), textField.renderer()) );
 		}
 
@@ -468,7 +468,7 @@ public class FormJsFileWriter extends JsFileWriter
 	}
 
 	private void writeAttachmentsVariables() throws IOException {
-		writeVariable(ATTACHMENT_FIELDS_LOAD_COUNT_VAR_NAME); // переменная-счетчик для количества загрузок аттачей в разные UploadPanel
+		writeVariable(ATTACHMENT_FIELDS_LOAD_COUNT_VAR_NAME); // РїРµСЂРµРјРµРЅРЅР°СЏ-СЃС‡РµС‚С‡РёРє РґР»СЏ РєРѕР»РёС‡РµСЃС‚РІР° Р·Р°РіСЂСѓР·РѕРє Р°С‚С‚Р°С‡РµР№ РІ СЂР°Р·РЅС‹Рµ UploadPanel
 
 		for (Field field : getAttachmentsFields(entityClass))
 			writeVariable(getAttachmentsFieldAttachmentsVarName(field));
@@ -512,7 +512,7 @@ public class FormJsFileWriter extends JsFileWriter
 		String paramName = field.getName();
 		writeFunctionHeader(functionName, paramName);
 
-		out.writeLn("\t\tif (", paramName, ")"); // заполнять и разрешать просмотр только в случае, если связанная сущность есть
+		out.writeLn("\t\tif (", paramName, ")"); // Р·Р°РїРѕР»РЅСЏС‚СЊ Рё СЂР°Р·СЂРµС€Р°С‚СЊ РїСЂРѕСЃРјРѕС‚СЂ С‚РѕР»СЊРєРѕ РІ СЃР»СѓС‡Р°Рµ, РµСЃР»Рё СЃРІСЏР·Р°РЅРЅР°СЏ СЃСѓС‰РЅРѕСЃС‚СЊ РµСЃС‚СЊ
 		out.writeLn("\t\t{");
 
 		String formVarName = "form";
@@ -574,21 +574,21 @@ public class FormJsFileWriter extends JsFileWriter
 			}
 
 			if ( hasChooseFieldAnnotation(field) )
-			{ // поле выбора -> вызвать функцию заполнения
+			{ // РїРѕР»Рµ РІС‹Р±РѕСЂР° -> РІС‹Р·РІР°С‚СЊ С„СѓРЅРєС†РёСЋ Р·Р°РїРѕР»РЅРµРЅРёСЏ
 				writeFillChooseField(field, entityVarName);
 				continue;
 			}
 
 			if ( hasComboBoxFieldAnnotation(field) )
-			{ // поле комбобокса -> вызвать спецфункцию заполнения комбобокса
+			{ // РїРѕР»Рµ РєРѕРјР±РѕР±РѕРєСЃР° -> РІС‹Р·РІР°С‚СЊ СЃРїРµС†С„СѓРЅРєС†РёСЋ Р·Р°РїРѕР»РЅРµРЅРёСЏ РєРѕРјР±РѕР±РѕРєСЃР°
 				writeFillComboBox(field, formVarName, entityVarName);
 				continue;
 			}
 
-			if ( hasAttachmentsFieldAnnotation(field) ) // аттачмент панели заполняются через отдельные ajaxRequest
+			if ( hasAttachmentsFieldAnnotation(field) ) // Р°С‚С‚Р°С‡РјРµРЅС‚ РїР°РЅРµР»Рё Р·Р°РїРѕР»РЅСЏСЋС‚СЃСЏ С‡РµСЂРµР· РѕС‚РґРµР»СЊРЅС‹Рµ ajaxRequest
 				continue;
 
-			// обычное поле -> заполнить через стандартную функцию Kefir.form.fillFormField
+			// РѕР±С‹С‡РЅРѕРµ РїРѕР»Рµ -> Р·Р°РїРѕР»РЅРёС‚СЊ С‡РµСЂРµР· СЃС‚Р°РЅРґР°СЂС‚РЅСѓСЋ С„СѓРЅРєС†РёСЋ Kefir.form.fillFormField
 			writeFillField(field, formVarName, entityVarName);
 		}
 
@@ -614,7 +614,7 @@ public class FormJsFileWriter extends JsFileWriter
 		out.writeLn(
 			"\t\t", SET_COMBO_BOX_VALUE_FUNCTION_NAME, "( ", formVarName, ".findField('", getFieldName(field), "'), ", fieldValueVarName, " );"
 		);
-		// todo: если понадобится, выставлять rawValue, учитывая renderer из ComboBoxField
+		// todo: РµСЃР»Рё РїРѕРЅР°РґРѕР±РёС‚СЃСЏ, РІС‹СЃС‚Р°РІР»СЏС‚СЊ rawValue, СѓС‡РёС‚С‹РІР°СЏ renderer РёР· ComboBoxField
 
 		out.writeLn();
 	}
@@ -658,11 +658,11 @@ public class FormJsFileWriter extends JsFileWriter
 		return concat(sb, field.getName(), "IdHiddenField");
 	}
 
-	protected String getAttachmentsFieldPanelVarName(Field field) { // название параметра конфига
+	protected String getAttachmentsFieldPanelVarName(Field field) { // РЅР°Р·РІР°РЅРёРµ РїР°СЂР°РјРµС‚СЂР° РєРѕРЅС„РёРіР°
 		return concat(sb, field.getName(), "Panel");
 	}
 
-	protected String getIdHiddenFieldVarName() { // имя переменной, в которой передается поле id основной сущности
+	protected String getIdHiddenFieldVarName() { // РёРјСЏ РїРµСЂРµРјРµРЅРЅРѕР№, РІ РєРѕС‚РѕСЂРѕР№ РїРµСЂРµРґР°РµС‚СЃСЏ РїРѕР»Рµ id РѕСЃРЅРѕРІРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё
 		return "idHiddenField";
 	}
 
@@ -687,7 +687,7 @@ public class FormJsFileWriter extends JsFileWriter
 		out.writeLn();
 		out.writeLn("\t\tvar ", itemsVarName, " = {");
 
-		// первым без запятой пишется скрытое поле id
+		// РїРµСЂРІС‹Рј Р±РµР· Р·Р°РїСЏС‚РѕР№ РїРёС€РµС‚СЃСЏ СЃРєСЂС‹С‚РѕРµ РїРѕР»Рµ id
 		out.writeLn("\t\t\t  ", idHiddenFieldVarName, ": ", idHiddenFieldVarName);
 		writeFieldsHash();
 		out.writeLn("\t\t};"); // end of items
@@ -703,7 +703,7 @@ public class FormJsFileWriter extends JsFileWriter
 			if ( !hasFieldAnnotation(field) )
 				continue;
 
-			// id поле уже учтено и написано самым первым, без запятой впереди
+			// id РїРѕР»Рµ СѓР¶Рµ СѓС‡С‚РµРЅРѕ Рё РЅР°РїРёСЃР°РЅРѕ СЃР°РјС‹Рј РїРµСЂРІС‹Рј, Р±РµР· Р·Р°РїСЏС‚РѕР№ РІРїРµСЂРµРґРё
 			if ( hasIdFieldAnnotation(field) )
 				continue;
 
@@ -725,7 +725,7 @@ public class FormJsFileWriter extends JsFileWriter
 				continue;
 			}
 
-			// обычное поле — создается поле соответствующего типа
+			// РѕР±С‹С‡РЅРѕРµ РїРѕР»Рµ вЂ” СЃРѕР·РґР°РµС‚СЃСЏ РїРѕР»Рµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµРіРѕ С‚РёРїР°
 			writeFieldHashParams(field);
 		}
 	}
@@ -752,11 +752,11 @@ public class FormJsFileWriter extends JsFileWriter
 		out.writeLn();
 	}
 	private void writeAttachmentsFieldHashParam(Field field) throws IOException {
-		out.writeLn("\t\t\t, ", getAttachmentsFieldPanelVarName(field), ": ", getAttachmentsFieldPanelVarName(field)); // передать uploadPanel
+		out.writeLn("\t\t\t, ", getAttachmentsFieldPanelVarName(field), ": ", getAttachmentsFieldPanelVarName(field)); // РїРµСЂРµРґР°С‚СЊ uploadPanel
 	}
 
 	private void writeFieldHashParams(Field field) throws IOException {
-		out.writeLn("\t\t\t, ", field.getName(), ": ", getFieldName(field)); // названием поля конфига служит строго имя поля в классе, а значение (название переменной) уже может быть перегружено
+		out.writeLn("\t\t\t, ", field.getName(), ": ", getFieldName(field)); // РЅР°Р·РІР°РЅРёРµРј РїРѕР»СЏ РєРѕРЅС„РёРіР° СЃР»СѓР¶РёС‚ СЃС‚СЂРѕРіРѕ РёРјСЏ РїРѕР»СЏ РІ РєР»Р°СЃСЃРµ, Р° Р·РЅР°С‡РµРЅРёРµ (РЅР°Р·РІР°РЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№) СѓР¶Рµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїРµСЂРµРіСЂСѓР¶РµРЅРѕ
 	}
 
 	private void writeFieldVariables(String disabledVarName) throws IOException {
@@ -765,11 +765,11 @@ public class FormJsFileWriter extends JsFileWriter
 			if ( !hasFieldAnnotation(field) )
 				continue;
 
-			// id поле уже учтено и написано самым первым, без запятой впереди
+			// id РїРѕР»Рµ СѓР¶Рµ СѓС‡С‚РµРЅРѕ Рё РЅР°РїРёСЃР°РЅРѕ СЃР°РјС‹Рј РїРµСЂРІС‹Рј, Р±РµР· Р·Р°РїСЏС‚РѕР№ РІРїРµСЂРµРґРё
 			if ( hasIdFieldAnnotation(field) )
 				continue;
 
-			// обычное поле — создается поле соответствующего типа
+			// РѕР±С‹С‡РЅРѕРµ РїРѕР»Рµ вЂ” СЃРѕР·РґР°РµС‚СЃСЏ РїРѕР»Рµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµРіРѕ С‚РёРїР°
 			writeFieldVariable(field, disabledVarName);
 		}
 	}
@@ -836,12 +836,12 @@ public class FormJsFileWriter extends JsFileWriter
 			return;
 		}
 		if ( hasAddressFieldAnnotation(field) )
-		{ // поле адреса - создаются поля: текстовое поле для адреса одной строкой, кнопка изменения адреса
+		{ // РїРѕР»Рµ Р°РґСЂРµСЃР° - СЃРѕР·РґР°СЋС‚СЃСЏ РїРѕР»СЏ: С‚РµРєСЃС‚РѕРІРѕРµ РїРѕР»Рµ РґР»СЏ Р°РґСЂРµСЃР° РѕРґРЅРѕР№ СЃС‚СЂРѕРєРѕР№, РєРЅРѕРїРєР° РёР·РјРµРЅРµРЅРёСЏ Р°РґСЂРµСЃР°
 			writeAddressFieldVariables(field, disabledVarName);
 			return;
 		}
 		if ( hasChooseFieldAnnotation(field) )
-		{ // поле выбора - создаются поля: скрытое id, выбираемые поля, кнопка выбора, кнопка просмотра
+		{ // РїРѕР»Рµ РІС‹Р±РѕСЂР° - СЃРѕР·РґР°СЋС‚СЃСЏ РїРѕР»СЏ: СЃРєСЂС‹С‚РѕРµ id, РІС‹Р±РёСЂР°РµРјС‹Рµ РїРѕР»СЏ, РєРЅРѕРїРєР° РІС‹Р±РѕСЂР°, РєРЅРѕРїРєР° РїСЂРѕСЃРјРѕС‚СЂР°
 			writeChooseFieldVariables(field, disabledVarName);
 			return;
 		}
@@ -872,11 +872,11 @@ public class FormJsFileWriter extends JsFileWriter
 		}
 		else
 		{
-			if ( !textField.uppercase() ) // todo: возможно, здесь нужно сделать обратный инверт, если в приложении не будут дефолтно большие буквы
+			if ( !textField.uppercase() ) // todo: РІРѕР·РјРѕР¶РЅРѕ, Р·РґРµСЃСЊ РЅСѓР¶РЅРѕ СЃРґРµР»Р°С‚СЊ РѕР±СЂР°С‚РЅС‹Р№ РёРЅРІРµСЂС‚, РµСЃР»Рё РІ РїСЂРёР»РѕР¶РµРЅРёРё РЅРµ Р±СѓРґСѓС‚ РґРµС„РѕР»С‚РЅРѕ Р±РѕР»СЊС€РёРµ Р±СѓРєРІС‹
 				config.put("style", "{ textTransform: 'none'}");
 		}
 
-//		var strField = Kefir.form.getTextField({ disabled: disabled }, STR_FIELD_FIELD_ID, 'strField', 'Строковое поле', 200, 200, false);
+//		var strField = Kefir.form.getTextField({ disabled: disabled }, STR_FIELD_FIELD_ID, 'strField', 'РЎС‚СЂРѕРєРѕРІРѕРµ РїРѕР»Рµ', 200, 200, false);
 		String varValue = concat(sb,
 			GET_TEXT_FIELD_FUNCTION_NAME, "(",
 				config,
@@ -933,7 +933,7 @@ public class FormJsFileWriter extends JsFileWriter
 		JsHash config = new JsHash();
 		config.put("disabled", disabledVarName);
 
-//		Kefir.form.getOgrnTextField({}, 'developer-ogrn', 'ogrn', 'ОГРН', 150, false),
+//		Kefir.form.getOgrnTextField({}, 'developer-ogrn', 'ogrn', 'РћР“Р Рќ', 150, false),
 		String varValue = concat(sb,
 			GET_OGRN_TEXT_FIELD_FUNCTION_NAME, "(",
 				config,
@@ -953,7 +953,7 @@ public class FormJsFileWriter extends JsFileWriter
 		JsHash config = new JsHash();
 		config.put("disabled", disabledVarName);
 
-//		Kefir.form.getKppTextField({}, 'developer-kpp', 'kpp', 'КПП', 150, false),
+//		Kefir.form.getKppTextField({}, 'developer-kpp', 'kpp', 'РљРџРџ', 150, false),
 		String varValue = concat(sb,
 			GET_KPP_TEXT_FIELD_FUNCTION_NAME, "(",
 				config,
@@ -973,7 +973,7 @@ public class FormJsFileWriter extends JsFileWriter
 		JsHash config = new JsHash();
 		config.put("disabled", disabledVarName);
 
-//		Kefir.form.getInnJuridicalTextField({}, 'developer-inn', 'inn', 'ИНН', 150, false),
+//		Kefir.form.getInnJuridicalTextField({}, 'developer-inn', 'inn', 'РРќРќ', 150, false),
 		String varValue = concat(sb,
 			GET_INN_JURIDICAL_TEXT_FIELD_FUNCTION_NAME, "(",
 				config,
@@ -1009,7 +1009,7 @@ public class FormJsFileWriter extends JsFileWriter
 		if ( integerField.maxValue() != IntegerField.DEFAULT_MAX_VALUE )
 			config.put("maxValue", integerField.maxValue());
 
-//		var intField = Kefir.form.getNumberField({ disabled: disabled, allowZero: true, allowDecimals: false }, INT_FIELD_FIELD_ID, 'intField', 'Целое поле', 100, 9, false);
+//		var intField = Kefir.form.getNumberField({ disabled: disabled, allowZero: true, allowDecimals: false }, INT_FIELD_FIELD_ID, 'intField', 'Р¦РµР»РѕРµ РїРѕР»Рµ', 100, 9, false);
 		String varValue = concat(sb,
 			GET_NUMBER_FIELD_FUNCTION_NAME, "(",
 				config,
@@ -1055,7 +1055,7 @@ public class FormJsFileWriter extends JsFileWriter
 		if ( spinnerField.noDefaultValue() )
 			defaultValue = "null";
 
-//		var intSpinnerField = Kefir.form.getSpinnerField({ disabled: disabled, maxLength: 2, minValue: 10, maxValue: 90 }, INT_SPINNER_FIELD_FIELD_ID, 'intSpinnerField', 'Целое спиннер поле', 15); // последнее - исходное значение
+//		var intSpinnerField = Kefir.form.getSpinnerField({ disabled: disabled, maxLength: 2, minValue: 10, maxValue: 90 }, INT_SPINNER_FIELD_FIELD_ID, 'intSpinnerField', 'Р¦РµР»РѕРµ СЃРїРёРЅРЅРµСЂ РїРѕР»Рµ', 15); // РїРѕСЃР»РµРґРЅРµРµ - РёСЃС…РѕРґРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ
 		String varValue = concat(sb,
 			GET_SPINNER_FIELD_FUNCTION_NAME, "(",
 				config,
@@ -1086,7 +1086,7 @@ public class FormJsFileWriter extends JsFileWriter
 		if ( numberField.maxValue() != NumberField.DEFAULT_MAX_VALUE )
 			config.put("maxValue", numberField.maxValue());
 
-//		var doubleField = Kefir.form.getNumberField({ disabled: disabled }, DOUBLE_FIELD_FIELD_ID, 'doubleField', 'Дробное поле', 100, 10, false);
+//		var doubleField = Kefir.form.getNumberField({ disabled: disabled }, DOUBLE_FIELD_FIELD_ID, 'doubleField', 'Р”СЂРѕР±РЅРѕРµ РїРѕР»Рµ', 100, 10, false);
 		String varValue = concat(sb,
 			GET_NUMBER_FIELD_FUNCTION_NAME, "(",
 				config,
@@ -1111,11 +1111,11 @@ public class FormJsFileWriter extends JsFileWriter
 			config.putDate("minValue", dateField.minValue());
 
 		if ( !dateField.maxValue().isEmpty() )
-			config.putDate("maxValue", dateField.maxValue()); // здесь по умолчанию new Date()
+			config.putDate("maxValue", dateField.maxValue()); // Р·РґРµСЃСЊ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ new Date()
 
-		// todo: установка defaultValue с возможностью указания NOW (и в js будет писаться defaultValue: new Date()
+		// todo: СѓСЃС‚Р°РЅРѕРІРєР° defaultValue СЃ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊСЋ СѓРєР°Р·Р°РЅРёСЏ NOW (Рё РІ js Р±СѓРґРµС‚ РїРёСЃР°С‚СЊСЃСЏ defaultValue: new Date()
 
-//		var dateField = Kefir.form.getDateField({ disabled: disabled }, DATE_FIELD_FIELD_ID, 'dateField', 'Датовое поле', false);
+//		var dateField = Kefir.form.getDateField({ disabled: disabled }, DATE_FIELD_FIELD_ID, 'dateField', 'Р”Р°С‚РѕРІРѕРµ РїРѕР»Рµ', false);
 		String varValue = concat(sb,
 			GET_DATE_FIELD_FUNCTION_NAME, "(",
 				config,
@@ -1137,7 +1137,7 @@ public class FormJsFileWriter extends JsFileWriter
 		if ( checkboxField.defaultValue() )
 			config.put("checked", "true");
 
-//		var booleanField = Kefir.form.getCheckbox({ disabled: disabled, checked: true }, BOOLEAN_FIELD_FIELD_ID, 'booleanField', 'Булево поле', false);
+//		var booleanField = Kefir.form.getCheckbox({ disabled: disabled, checked: true }, BOOLEAN_FIELD_FIELD_ID, 'booleanField', 'Р‘СѓР»РµРІРѕ РїРѕР»Рµ', false);
 		String varValue = concat(sb,
 			GET_CHECKBOX_FUNCTION_NAME, "(",
 				config,
@@ -1160,7 +1160,7 @@ public class FormJsFileWriter extends JsFileWriter
 		if ( !localComboBoxField.vtype().isEmpty() )
 			config.putString("vtype", localComboBoxField.vtype());
 
-		if ( !localComboBoxField.uppercase() ) // todo: возможно, здесь нужно сделать обратный инверт, если в приложении не будут дефолтно большие буквы
+		if ( !localComboBoxField.uppercase() ) // todo: РІРѕР·РјРѕР¶РЅРѕ, Р·РґРµСЃСЊ РЅСѓР¶РЅРѕ СЃРґРµР»Р°С‚СЊ РѕР±СЂР°С‚РЅС‹Р№ РёРЅРІРµСЂС‚, РµСЃР»Рё РІ РїСЂРёР»РѕР¶РµРЅРёРё РЅРµ Р±СѓРґСѓС‚ РґРµС„РѕР»С‚РЅРѕ Р±РѕР»СЊС€РёРµ Р±СѓРєРІС‹
 			config.put("style", "{ textTransform: 'none' }");
 
 		if ( !localComboBoxField.valueField().equals(LocalComboBoxField.DEFAULT_VALUE_FIELD_NAME) )
@@ -1169,7 +1169,7 @@ public class FormJsFileWriter extends JsFileWriter
 		if ( !localComboBoxField.displayField().equals(LocalComboBoxField.DEFAULT_DISPLAY_FIELD_NAME) )
 			config.putString("displayField", localComboBoxField.displayField());
 
-//		var enumField = Kefir.form.getLocalComboBox({ disabled: disabled, editable: false, style: {} }, test.TestEnumStore, ENUM_FIELD_FIELD_ID, 'enumField', 'enumField', 'Энумовое поле', 200, 200, 100, false, true);
+//		var enumField = Kefir.form.getLocalComboBox({ disabled: disabled, editable: false, style: {} }, test.TestEnumStore, ENUM_FIELD_FIELD_ID, 'enumField', 'enumField', 'Р­РЅСѓРјРѕРІРѕРµ РїРѕР»Рµ', 200, 200, 100, false, true);
 		String varValue = concat(sb,
 			GET_LOCAL_COMBO_BOX_FUNCTION_NAME, "(",
 				config,
@@ -1203,7 +1203,7 @@ public class FormJsFileWriter extends JsFileWriter
 		if ( !comboBoxField.vtype().isEmpty() )
 			config.putString("vtype", comboBoxField.vtype());
 
-		if ( !comboBoxField.uppercase() ) // todo: возможно, здесь нужно сделать обратный инверт, если в приложении не будут дефолтно большие буквы
+		if ( !comboBoxField.uppercase() ) // todo: РІРѕР·РјРѕР¶РЅРѕ, Р·РґРµСЃСЊ РЅСѓР¶РЅРѕ СЃРґРµР»Р°С‚СЊ РѕР±СЂР°С‚РЅС‹Р№ РёРЅРІРµСЂС‚, РµСЃР»Рё РІ РїСЂРёР»РѕР¶РµРЅРёРё РЅРµ Р±СѓРґСѓС‚ РґРµС„РѕР»С‚РЅРѕ Р±РѕР»СЊС€РёРµ Р±СѓРєРІС‹
 			config.put("style", "{ textTransform: 'none' }");
 
 		if ( !comboBoxField.queryParam().equals(ComboBoxField.DEFAULT_QUERY_PARAM) )
@@ -1216,7 +1216,7 @@ public class FormJsFileWriter extends JsFileWriter
 			config.putString("displayField", comboBoxField.displayField());
 
 		if ( comboBoxField.fields().length != 0 )
-		{ // переопределен набор полей для store комбобокса
+		{ // РїРµСЂРµРѕРїСЂРµРґРµР»РµРЅ РЅР°Р±РѕСЂ РїРѕР»РµР№ РґР»СЏ store РєРѕРјР±РѕР±РѕРєСЃР°
 			JsArray fieldsArray = new JsArray();
 
 			for (ComboBoxStoreField storeField : comboBoxField.fields())
@@ -1230,7 +1230,7 @@ public class FormJsFileWriter extends JsFileWriter
 			config.put("fields", fieldsArray);
 		}
 
-		// put sort params to config (считаем, что используется обычный listServlet, поэтому нужно передавать параметры сортировки)
+		// put sort params to config (СЃС‡РёС‚Р°РµРј, С‡С‚Рѕ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РѕР±С‹С‡РЅС‹Р№ listServlet, РїРѕСЌС‚РѕРјСѓ РЅСѓР¶РЅРѕ РїРµСЂРµРґР°РІР°С‚СЊ РїР°СЂР°РјРµС‚СЂС‹ СЃРѕСЂС‚РёСЂРѕРІРєРё)
 		JsHash paramsHash = new JsHash();
 		paramsHash.putString("sort", comboBoxField.sortBy());
 		paramsHash.putString("dir", comboBoxField.sortDir());
@@ -1241,7 +1241,7 @@ public class FormJsFileWriter extends JsFileWriter
 //				disabled: disabled, typeAhead: false, queryParam: 'cadastralNumber', displayField: 'cadastralNumber', params: { sort: 'cadastralNumber', dir: 'asc' },
 //				fields: [ { name: 'id', type: 'int' }, { name: 'cadastralNumber', type: 'string' } ]
 //			},
-//			'/parcelsList', COMBO_FIELD_FIELD_ID, 'comboField', 'comboField', 'Селект поле', 400, 400, 25, false, true
+//			'/parcelsList', COMBO_FIELD_FIELD_ID, 'comboField', 'comboField', 'РЎРµР»РµРєС‚ РїРѕР»Рµ', 400, 400, 25, false, true
 //		);
 		String varValue = concat(sb,
 			GET_COMBO_BOX_FUNCTION_NAME, "(",
@@ -1276,7 +1276,7 @@ public class FormJsFileWriter extends JsFileWriter
 		config.put("disabled", disabledVarName);
 		config.put("readOnly", true);
 
-		if ( !addressField.uppercase() ) // todo: возможно, здесь нужно сделать обратный инверт, если в приложении не будут дефолтно большие буквы
+		if ( !addressField.uppercase() ) // todo: РІРѕР·РјРѕР¶РЅРѕ, Р·РґРµСЃСЊ РЅСѓР¶РЅРѕ СЃРґРµР»Р°С‚СЊ РѕР±СЂР°С‚РЅС‹Р№ РёРЅРІРµСЂС‚, РµСЃР»Рё РІ РїСЂРёР»РѕР¶РµРЅРёРё РЅРµ Р±СѓРґСѓС‚ РґРµС„РѕР»С‚РЅРѕ Р±РѕР»СЊС€РёРµ Р±СѓРєРІС‹
 			config.put("style", "{ textTransform: 'none' }");
 
 		String varValue = concat(sb,
@@ -1291,7 +1291,7 @@ public class FormJsFileWriter extends JsFileWriter
 			")"
 		);
 
-//		var juridicalAddressTextField = Kefir.form.getTextField({ disabled: disabled, readOnly: true }, JURIDICAL_ADDRESS_TEXT_FIELD_ID, 'juridicalAddressFull', 'Юридический адрес', 400, 400, false)
+//		var juridicalAddressTextField = Kefir.form.getTextField({ disabled: disabled, readOnly: true }, JURIDICAL_ADDRESS_TEXT_FIELD_ID, 'juridicalAddressFull', 'Р®СЂРёРґРёС‡РµСЃРєРёР№ Р°РґСЂРµСЃ', 400, 400, false)
 		writeVariable(getAddressFieldTextFieldVarName(field), varValue);
 	}
 	private void writeAddressFieldUpdateButtonVariable(Field field, String disabledVarName) throws IOException {
@@ -1354,10 +1354,10 @@ public class FormJsFileWriter extends JsFileWriter
 		if ( !textField.vtype().isEmpty() )
 			config.putString("vtype", textField.vtype());
 
-		if ( !textField.uppercase() ) // todo: возможно, здесь нужно сделать обратный инверт, если в приложении не будут дефолтно большие буквы
+		if ( !textField.uppercase() ) // todo: РІРѕР·РјРѕР¶РЅРѕ, Р·РґРµСЃСЊ РЅСѓР¶РЅРѕ СЃРґРµР»Р°С‚СЊ РѕР±СЂР°С‚РЅС‹Р№ РёРЅРІРµСЂС‚, РµСЃР»Рё РІ РїСЂРёР»РѕР¶РµРЅРёРё РЅРµ Р±СѓРґСѓС‚ РґРµС„РѕР»С‚РЅРѕ Р±РѕР»СЊС€РёРµ Р±СѓРєРІС‹
 			config.put("style", "{ textTransform: 'none' }");
 
-//		var strField = Kefir.form.getTextField({ disabled: disabled }, STR_FIELD_FIELD_ID, 'strField', 'Строковое поле', 200, 200, false);
+//		var strField = Kefir.form.getTextField({ disabled: disabled }, STR_FIELD_FIELD_ID, 'strField', 'РЎС‚СЂРѕРєРѕРІРѕРµ РїРѕР»Рµ', 200, 200, false);
 		String varValue = concat(sb,
 			GET_TEXT_FIELD_FUNCTION_NAME, "(",
 				config,
@@ -1383,8 +1383,8 @@ public class FormJsFileWriter extends JsFileWriter
 
 		out.writeLn("\t\t\thandler: function() {");
 		out.writeLn("\t\t\t\t", getChooseFieldChooseFunctionName(field),"({");
-		writeChooseFunctionInitParams(field); // передать дополнительные параметры
-		writeChooseFunctionFilterParams(field); // передать параметры фильтрации, кроме себя
+		writeChooseFunctionInitParams(field); // РїРµСЂРµРґР°С‚СЊ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РїР°СЂР°РјРµС‚СЂС‹
+		writeChooseFunctionFilterParams(field); // РїРµСЂРµРґР°С‚СЊ РїР°СЂР°РјРµС‚СЂС‹ С„РёР»СЊС‚СЂР°С†РёРё, РєСЂРѕРјРµ СЃРµР±СЏ
 		out.writeLn("\t\t\t\t\t", getChooseFieldChooseFunctionSuccessHandlerParamName(field), ": ", getFillChooseFieldFieldsFunctionName(field));
 		out.writeLn("\t\t\t\t});");
 		out.writeLn("\t\t\t}"); // end of handler
@@ -1399,7 +1399,7 @@ public class FormJsFileWriter extends JsFileWriter
 	private void writeChooseFunctionFilterParams(Field field) throws IOException {
 		for (Field filterField : getFilterConfigFormFilterFields(entityClass))
 		{
-			if ( !filterField.getName().equals(field.getName()) ) // самого себя в параметр выбора не передавать
+			if ( !filterField.getName().equals(field.getName()) ) // СЃР°РјРѕРіРѕ СЃРµР±СЏ РІ РїР°СЂР°РјРµС‚СЂ РІС‹Р±РѕСЂР° РЅРµ РїРµСЂРµРґР°РІР°С‚СЊ
 			{
 				out.writeLn("\t\t\t\t\t", getListFilterParamName(filterField, filterField.getType(), field.getType()), ": ", getFilterVarName(filterField), ",");
 			}
@@ -1410,7 +1410,7 @@ public class FormJsFileWriter extends JsFileWriter
 		ChooseField chooseField = getChooseFieldAnnotation(field);
 
 		out.writeLn("\t\tvar ", getChooseFieldShowButtonVarName(field), " = new ", EXT_BUTTON_CLASS_NAME, "({");
-		out.writeLn("\t\t\tdisabled: true,"); // по умолчанию кнопка просмотра недоступна
+		out.writeLn("\t\t\tdisabled: true,"); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РєРЅРѕРїРєР° РїСЂРѕСЃРјРѕС‚СЂР° РЅРµРґРѕСЃС‚СѓРїРЅР°
 		out.writeLn("\t\t\tid: ", getShowButtonIdConstantName(field), ",");
 		out.writeLn("\t\t\ttext: ", getShowButtonTextConstantName(field), ",");
 		out.writeLn("\t\t\tstyle: ", chooseField.showButtonStyle(), ",");
@@ -1485,7 +1485,7 @@ public class FormJsFileWriter extends JsFileWriter
 
 		out.writeLn("\t\t\thandler: function() {");
 
-		// todo: весь сабмит делать через общую функцию, написанную по аналогии с Kefir.formSubmit
+		// todo: РІРµСЃСЊ СЃР°Р±РјРёС‚ РґРµР»Р°С‚СЊ С‡РµСЂРµР· РѕР±С‰СѓСЋ С„СѓРЅРєС†РёСЋ, РЅР°РїРёСЃР°РЅРЅСѓСЋ РїРѕ Р°РЅР°Р»РѕРіРёРё СЃ Kefir.formSubmit
 		out.writeLn("\t\t\t\t", CHECK_FORM_FUNCTION_NAME, "(", PANEL_VAR_NAME, ", function() {");
 
 		JsHash params = new JsHash();
@@ -1500,7 +1500,7 @@ public class FormJsFileWriter extends JsFileWriter
 		writeVariable(paramsVarName, params.toString(), "\t\t\t\t\t");
 
 		if (hasCheckboxFields(entityClass))
-		{ // добавить заполнение false чекбоксов параметрами
+		{ // РґРѕР±Р°РІРёС‚СЊ Р·Р°РїРѕР»РЅРµРЅРёРµ false С‡РµРєР±РѕРєСЃРѕРІ РїР°СЂР°РјРµС‚СЂР°РјРё
 			JsArray checkboxFieldsNames = getCheckboxFieldsNames();
 			out.writeLn("\t\t\t\t\t", EXT_APPLY_FUNCTION_NAME, "( ", paramsVarName, ", ", GET_NEGATIVE_CHECKBOX_PARAMS_FUNCTION_NAME, "(", PANEL_VAR_NAME, ".getForm(), ", checkboxFieldsNames, ") );");
 		}
@@ -1523,7 +1523,7 @@ public class FormJsFileWriter extends JsFileWriter
 		String failureFormParamName = "form";
 		String failureActionParamName = "action";
 		out.writeLn("\t\t\t\t\t\tfailure: function(", failureFormParamName, ", ", failureActionParamName, ") {");
-		// todo: использовать GET_SAVE_ERROR_MSG_TITLE_FUNCTION_NAME() и православную функцию, которая будет принимать заголовок окна с ошибкой
+		// todo: РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ GET_SAVE_ERROR_MSG_TITLE_FUNCTION_NAME() Рё РїСЂР°РІРѕСЃР»Р°РІРЅСѓСЋ С„СѓРЅРєС†РёСЋ, РєРѕС‚РѕСЂР°СЏ Р±СѓРґРµС‚ РїСЂРёРЅРёРјР°С‚СЊ Р·Р°РіРѕР»РѕРІРѕРє РѕРєРЅР° СЃ РѕС€РёР±РєРѕР№
 		out.writeLn("\t\t\t\t\t\t\t", SHOW_FORM_RESPONSE_MESSAGE_CONSTANT_NAME, "(", GET_SAVE_URL_FUNCTION_NAME, "(), ", failureActionParamName, ", ", failureFormParamName, ", ", GET_SAVE_ERROR_MSG_TITLE_FUNCTION_NAME, "());");
 		out.writeLn("\t\t\t\t\t\t}"); // end of failure
 
@@ -1550,7 +1550,7 @@ public class FormJsFileWriter extends JsFileWriter
 
 		JsHash params = new JsHash();
 		for (Field field : getAttachmentsFields(entityClass))
-		{ // передать id сохраненных Attachment в createServlet
+		{ // РїРµСЂРµРґР°С‚СЊ id СЃРѕС…СЂР°РЅРµРЅРЅС‹С… Attachment РІ createServlet
 			AttachmentsField attachmentsField = getAttachmentsFieldAnnotation(field);
 			String paramName = getAttachmentsFieldIdsParamName(attachmentsField, field);
 			String paramValue = concat(sb, EXT_GET_CMP_FUNCTION_NAME, "(", getAttachmentsFieldPanelIdConstantName(field), ").getAttachmentsIds()");
@@ -1568,7 +1568,7 @@ public class FormJsFileWriter extends JsFileWriter
 		writeVariable(paramsVarName, params.toString());
 
 		if (hasCheckboxFields(entityClass))
-		{ // добавить заполнение false чекбоксов параметрами
+		{ // РґРѕР±Р°РІРёС‚СЊ Р·Р°РїРѕР»РЅРµРЅРёРµ false С‡РµРєР±РѕРєСЃРѕРІ РїР°СЂР°РјРµС‚СЂР°РјРё
 			JsArray checkboxFieldsNames = getCheckboxFieldsNames();
 			out.writeLn("\t\t", EXT_APPLY_FUNCTION_NAME, "( ", paramsVarName, ", ", GET_NEGATIVE_CHECKBOX_PARAMS_FUNCTION_NAME, "(", PANEL_VAR_NAME, ".getForm(), ", checkboxFieldsNames, ") );");
 		}
@@ -1772,7 +1772,7 @@ public class FormJsFileWriter extends JsFileWriter
 		String defaultAction;
 		String firstElementId = collectFieldsIds().get(0);
 		if (isButtonId(firstElementId))
-			defaultAction = concat(sb, "return ", firstElementId); // первый фокусируемый элемент - кнопка -> фокусировать его
+			defaultAction = concat(sb, "return ", firstElementId); // РїРµСЂРІС‹Р№ С„РѕРєСѓСЃРёСЂСѓРµРјС‹Р№ СЌР»РµРјРµРЅС‚ - РєРЅРѕРїРєР° -> С„РѕРєСѓСЃРёСЂРѕРІР°С‚СЊ РµРіРѕ
 		else
 			defaultAction = "return undefined";
 
@@ -1814,7 +1814,7 @@ public class FormJsFileWriter extends JsFileWriter
 		// todo: window close and show handlers
 		out.writeLn("\t\t", WINDOW_VAR_NAME, ".on('show', ", FILL_FORM_FUNCTION_VAR_NAME, ");");
 
-		// заполнить жестко подставляемые поля выбора
+		// Р·Р°РїРѕР»РЅРёС‚СЊ Р¶РµСЃС‚РєРѕ РїРѕРґСЃС‚Р°РІР»СЏРµРјС‹Рµ РїРѕР»СЏ РІС‹Р±РѕСЂР°
 		for (Field field : getFilterConfigFormFilterChooseFields(entityClass))
 		{
 			out.writeLn("\t\t", WINDOW_VAR_NAME, ".on('show', function() { ", getFillFilterChooseFieldFunctionName(field), "(", getFilterVarName(field), "); });"); // window.on('show', function() { fillParcel(parcel); } );
@@ -1925,7 +1925,7 @@ public class FormJsFileWriter extends JsFileWriter
 
 		String jsonParamName = "json";
 		for (Field field : getAttachmentsFields(entityClass))
-		{ // для каждого аттачмент поля загрузить аттачи по entityName и entityFieldName
+		{ // РґР»СЏ РєР°Р¶РґРѕРіРѕ Р°С‚С‚Р°С‡РјРµРЅС‚ РїРѕР»СЏ Р·Р°РіСЂСѓР·РёС‚СЊ Р°С‚С‚Р°С‡Рё РїРѕ entityName Рё entityFieldName
 
 			// { entityId: id, entityName: ENTITY_NAME, entityFieldName: ATTACHMENTS_FIELD_ENTITY_FIELD_NAME }
 			JsHash params = new JsHash();
@@ -1951,7 +1951,7 @@ public class FormJsFileWriter extends JsFileWriter
 		out.writeLn("\treturn {");
 
 		out.writeLn("\t\t", extEntity.formCreateFunctionName(), ": function(", configParamName, ") {");
-		// очистить загруженные адресы
+		// РѕС‡РёСЃС‚РёС‚СЊ Р·Р°РіСЂСѓР¶РµРЅРЅС‹Рµ Р°РґСЂРµСЃС‹
 		for (Field field : getAddressFields(entityClass))
 			out.writeLn("\t\t\t", getAddressFieldVarName(field), " = null;");
 
@@ -1983,11 +1983,11 @@ public class FormJsFileWriter extends JsFileWriter
 		// initCreateForm
 		out.writeLn("\t\t", extEntity.formCreateFunctionName(), ": function(", configParamName, ") {");
 
-		// очистить загруженные адресы
+		// РѕС‡РёСЃС‚РёС‚СЊ Р·Р°РіСЂСѓР¶РµРЅРЅС‹Рµ Р°РґСЂРµСЃС‹
 		for (Field field : getAddressFields(entityClass))
 			out.writeLn("\t\t\t", getAddressFieldVarName(field), " = null;");
 
-		// очистить загруженные аттачи всех полей сущности во избежание начальной загрузки аттачей, сохраненных при RUD загрузке аттачей сущностей
+		// РѕС‡РёСЃС‚РёС‚СЊ Р·Р°РіСЂСѓР¶РµРЅРЅС‹Рµ Р°С‚С‚Р°С‡Рё РІСЃРµС… РїРѕР»РµР№ СЃСѓС‰РЅРѕСЃС‚Рё РІРѕ РёР·Р±РµР¶Р°РЅРёРµ РЅР°С‡Р°Р»СЊРЅРѕР№ Р·Р°РіСЂСѓР·РєРё Р°С‚С‚Р°С‡РµР№, СЃРѕС…СЂР°РЅРµРЅРЅС‹С… РїСЂРё RUD Р·Р°РіСЂСѓР·РєРµ Р°С‚С‚Р°С‡РµР№ СЃСѓС‰РЅРѕСЃС‚РµР№
 		for (Field field : getAttachmentsFields(entityClass))
 			out.writeLn("\t\t\t", getAttachmentsFieldAttachmentsVarName(field), " = null;");
 		out.writeLn();
@@ -2023,7 +2023,7 @@ public class FormJsFileWriter extends JsFileWriter
 	}
 
 	// constant variable names
-	public static final String ENTITY_NAME_CONSTANT_NAME = "ENTITY_NAME"; // используется как параметр аттачмента
+	public static final String ENTITY_NAME_CONSTANT_NAME = "ENTITY_NAME"; // РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РєР°Рє РїР°СЂР°РјРµС‚СЂ Р°С‚С‚Р°С‡РјРµРЅС‚Р°
 
 	private static final String WINDOW_ID_CONSTANT_NAME = "WINDOW_ID";
 	private static final String WINDOW_WIDTH_CONSTANT_NAME = "WINDOW_WIDTH";

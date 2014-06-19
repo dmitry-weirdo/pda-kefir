@@ -18,7 +18,7 @@ import java.util.Properties;
 import static su.opencode.kefir.util.FileUtils.close;
 
 /**
- * Заполняет поля объекта из property файла, ключи которого имеют названия, равные названиям полей класса.
+ * Р—Р°РїРѕР»РЅСЏРµС‚ РїРѕР»СЏ РѕР±СЉРµРєС‚Р° РёР· property С„Р°Р№Р»Р°, РєР»СЋС‡Рё РєРѕС‚РѕСЂРѕРіРѕ РёРјРµСЋС‚ РЅР°Р·РІР°РЅРёСЏ, СЂР°РІРЅС‹Рµ РЅР°Р·РІР°РЅРёСЏРј РїРѕР»РµР№ РєР»Р°СЃСЃР°.
  */
 public class ObjectFiller
 {
@@ -33,7 +33,7 @@ public class ObjectFiller
 			{
 				String propertyValue = properties.getProperty(field.getName());
 				if (field.getType().equals(Class.class) && propertyValue != null)
-					field.set(object, Class.forName(propertyValue)); // установить класс по имени
+					field.set(object, Class.forName(propertyValue)); // СѓСЃС‚Р°РЅРѕРІРёС‚СЊ РєР»Р°СЃСЃ РїРѕ РёРјРµРЅРё
 				else
 					field.set(object, propertyValue);
 			}

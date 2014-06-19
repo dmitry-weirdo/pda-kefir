@@ -20,7 +20,7 @@ import static su.opencode.kefir.util.StringUtils.concat;
 import static su.opencode.kefir.util.StringUtils.getJsString;
 
 /**
- * Оболочка для js хэша.
+ * РћР±РѕР»РѕС‡РєР° РґР»СЏ js С…СЌС€Р°.
  */
 public class JsHash
 {
@@ -28,11 +28,11 @@ public class JsHash
 		this.map = new HashMap<String, Object>();
 		this.keys = new LinkedList<String>();
 	}
-	public JsHash(String key, boolean value) { // конструктор для хэша из 1 элемента
+	public JsHash(String key, boolean value) { // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ С…СЌС€Р° РёР· 1 СЌР»РµРјРµРЅС‚Р°
 		this();
 		this.put(key, value);
 	}
-	public JsHash(String key, String value) { // конструктор для хэша из 1 элемента
+	public JsHash(String key, String value) { // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ С…СЌС€Р° РёР· 1 СЌР»РµРјРµРЅС‚Р°
 		this();
 		this.putString(key, value);
 	}
@@ -95,7 +95,7 @@ public class JsHash
 	}
 
 	public void putDate(String key, String value) {
-		// todo: возможность указать new Date()
+		// todo: РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ СѓРєР°Р·Р°С‚СЊ new Date()
 
 		if (value.equals(DateField.NULL_DATE_VALUE))
 		{
@@ -113,10 +113,10 @@ public class JsHash
 	}
 
 	/**
-	 * @return значение хэша в строчку
+	 * @return Р·РЅР°С‡РµРЅРёРµ С…СЌС€Р° РІ СЃС‚СЂРѕС‡РєСѓ
 	 */
 	public String toString() {
-		if (indent != null) // указан отступ -> писать вертикалн
+		if (indent != null) // СѓРєР°Р·Р°РЅ РѕС‚СЃС‚СѓРї -> РїРёСЃР°С‚СЊ РІРµСЂС‚РёРєР°Р»РЅ
 			return toStringAligned(indent);
 
 		if (map.isEmpty())
@@ -136,10 +136,10 @@ public class JsHash
 	}
 
 	/**
-	 * @param indent начальный отступ хэша. На этот отступ будет отстоять от начала строки закрывающая скобка хэша.
-	 * @return значение хэша, отформатированное по кодстайлу и оттабленное указанным отступом.
-	 * Вначале отступ не ставится (ибо сам хэш может быть частью хэша.
-	 * Перенос строки в конце не ставится, ибо после закрывающей скобки может быть нужна запятая
+	 * @param indent РЅР°С‡Р°Р»СЊРЅС‹Р№ РѕС‚СЃС‚СѓРї С…СЌС€Р°. РќР° СЌС‚РѕС‚ РѕС‚СЃС‚СѓРї Р±СѓРґРµС‚ РѕС‚СЃС‚РѕСЏС‚СЊ РѕС‚ РЅР°С‡Р°Р»Р° СЃС‚СЂРѕРєРё Р·Р°РєСЂС‹РІР°СЋС‰Р°СЏ СЃРєРѕР±РєР° С…СЌС€Р°.
+	 * @return Р·РЅР°С‡РµРЅРёРµ С…СЌС€Р°, РѕС‚С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРЅРѕРµ РїРѕ РєРѕРґСЃС‚Р°Р№Р»Сѓ Рё РѕС‚С‚Р°Р±Р»РµРЅРЅРѕРµ СѓРєР°Р·Р°РЅРЅС‹Рј РѕС‚СЃС‚СѓРїРѕРј.
+	 * Р’РЅР°С‡Р°Р»Рµ РѕС‚СЃС‚СѓРї РЅРµ СЃС‚Р°РІРёС‚СЃСЏ (РёР±Рѕ СЃР°Рј С…СЌС€ РјРѕР¶РµС‚ Р±С‹С‚СЊ С‡Р°СЃС‚СЊСЋ С…СЌС€Р°.
+	 * РџРµСЂРµРЅРѕСЃ СЃС‚СЂРѕРєРё РІ РєРѕРЅС†Рµ РЅРµ СЃС‚Р°РІРёС‚СЃСЏ, РёР±Рѕ РїРѕСЃР»Рµ Р·Р°РєСЂС‹РІР°СЋС‰РµР№ СЃРєРѕР±РєРё РјРѕР¶РµС‚ Р±С‹С‚СЊ РЅСѓР¶РЅР° Р·Р°РїСЏС‚Р°СЏ
 	 */
 	public String toStringAligned(String indent) {
 		if (map.isEmpty())
@@ -174,17 +174,17 @@ public class JsHash
 	}
 
 	/**
-	 * Если не <code>null</code>, то в toString пишется этот хэш с указанным отступом
+	 * Р•СЃР»Рё РЅРµ <code>null</code>, С‚Рѕ РІ toString РїРёС€РµС‚СЃСЏ СЌС‚РѕС‚ С…СЌС€ СЃ СѓРєР°Р·Р°РЅРЅС‹Рј РѕС‚СЃС‚СѓРїРѕРј
 	 */
 	private String indent = null;
 
 	/**
-	 * Если <code>true</code>, то при выравненном написании все непосредственно вложенные хэши
-	 * будут отформатированы, вне зависимости от их {@linkplain #indent свойства indent}.
+	 * Р•СЃР»Рё <code>true</code>, С‚Рѕ РїСЂРё РІС‹СЂР°РІРЅРµРЅРЅРѕРј РЅР°РїРёСЃР°РЅРёРё РІСЃРµ РЅРµРїРѕСЃСЂРµРґСЃС‚РІРµРЅРЅРѕ РІР»РѕР¶РµРЅРЅС‹Рµ С…СЌС€Рё
+	 * Р±СѓРґСѓС‚ РѕС‚С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅС‹, РІРЅРµ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РѕС‚ РёС… {@linkplain #indent СЃРІРѕР№СЃС‚РІР° indent}.
 	 */
 	private boolean alignChildren = false;
 
-	private List<String> keys; // сохраняет ключи в порядке их добавления
+	private List<String> keys; // СЃРѕС…СЂР°РЅСЏРµС‚ РєР»СЋС‡Рё РІ РїРѕСЂСЏРґРєРµ РёС… РґРѕР±Р°РІР»РµРЅРёСЏ
 	private Map<String, Object> map;
 	private StringBuffer sb = new StringBuffer();
 

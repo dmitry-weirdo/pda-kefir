@@ -36,7 +36,7 @@ public class CreateExtEntityTableAppender extends CreateTablesSqlAppender
 
 	@Override
 	protected void appendCreateTable(List<String> fileLinesToAppend, List<String> allFileLines) throws IOException {
-		// проверка, что создания таблицы еще нет
+		// РїСЂРѕРІРµСЂРєР°, С‡С‚Рѕ СЃРѕР·РґР°РЅРёСЏ С‚Р°Р±Р»РёС†С‹ РµС‰Рµ РЅРµС‚
 		String tableName = getSqlTableName(extEntity, entityClass);
 		String createTableStr = getCreateTableString(tableName);
 
@@ -67,7 +67,7 @@ public class CreateExtEntityTableAppender extends CreateTablesSqlAppender
 
 			if ( hasIdFieldAnnotation(field) )
 			{
-				table.addIdField(field.getName()); // todo: возможность в IdField тоже указывать имя sql-столбца
+				table.addIdField(field.getName()); // todo: РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РІ IdField С‚РѕР¶Рµ СѓРєР°Р·С‹РІР°С‚СЊ РёРјСЏ sql-СЃС‚РѕР»Р±С†Р°
 				continue;
 			}
 

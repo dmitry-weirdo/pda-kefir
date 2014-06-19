@@ -35,9 +35,9 @@ import static su.opencode.kefir.util.StringUtils.*;
 public class ExtEntityFieldsUtils
 {
 	/**
-	 * @param field поле
-	 * @return <code>true</code>, если поле помечено как поле для формы, <br/>
-	 * <code>false</code> — в противном случае.
+	 * @param field РїРѕР»Рµ
+	 * @return <code>true</code>, РµСЃР»Рё РїРѕР»Рµ РїРѕРјРµС‡РµРЅРѕ РєР°Рє РїРѕР»Рµ РґР»СЏ С„РѕСЂРјС‹, <br/>
+	 * <code>false</code> вЂ” РІ РїСЂРѕС‚РёРІРЅРѕРј СЃР»СѓС‡Р°Рµ.
 	 */
 	public static boolean hasFieldAnnotation(Field field) {
 		Annotation[] annotations = field.getDeclaredAnnotations();
@@ -186,23 +186,29 @@ public class ExtEntityFieldsUtils
 		return field.getAnnotation(ChooseField.class);
 	}
 
+	@SuppressWarnings("unchecked")
 	public static boolean hasColumnGroupsAnnotation(Class entityClass) {
 		return entityClass.getAnnotation(ColumnGroups.class) != null;
 	}
+	@SuppressWarnings("unchecked")
 	public static ColumnGroups getColumnGroupsAnnotation(Class entityClass) {
 		return (ColumnGroups) entityClass.getAnnotation(ColumnGroups.class);
 	}
 
+	@SuppressWarnings("unchecked")
 	public static boolean hasFieldSetsAnnotation(Class entityClass) {
 		return entityClass.getAnnotation(FieldSets.class) != null;
 	}
+	@SuppressWarnings("unchecked")
 	public static FieldSets getFieldSetsAnnotation(Class entityClass) {
 		return (FieldSets) entityClass.getAnnotation(FieldSets.class);
 	}
 
+	@SuppressWarnings("unchecked")
 	public static boolean hasViewConfigAnnotation(Class entityClass) {
 		return entityClass.getAnnotation(ViewConfig.class) != null;
 	}
+	@SuppressWarnings("unchecked")
 	public static ViewConfig getViewConfigAnnotation(Class entityClass) {
 		return (ViewConfig) entityClass.getAnnotation(ViewConfig.class);
 	}
@@ -218,6 +224,7 @@ public class ExtEntityFieldsUtils
 
 		throw new IllegalArgumentException(concat("Class ", entityClass.getName(), " has no ", FieldSet.class.getName(), " with id \"", id, "\""));
 	}
+	@SuppressWarnings("unchecked")
 	public static boolean isTransient(Class entityClass, Field field) {
 		if (hasTransientAnnotation(field)) // check @Transient annotation on field
 			return true;
@@ -838,12 +845,12 @@ public class ExtEntityFieldsUtils
 		{
 			Class<?> fieldClass = field.getType();
 			if (hasEnumFieldAnnotation(fieldClass))
-			{ // получить store из enumField
+			{ // РїРѕР»СѓС‡РёС‚СЊ store РёР· enumField
 				EnumField enumField = getEnumFieldAnnotation(fieldClass);
 				store = getEnumStoreFullName(enumField, fieldClass);
 			}
 			else
-			{ // по умолчанию - полное имя класса поля + Store
+			{ // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - РїРѕР»РЅРѕРµ РёРјСЏ РєР»Р°СЃСЃР° РїРѕР»СЏ + Store
 				store = concat( fieldClass.getName(), "Store" );
 			}
 		}
@@ -859,7 +866,7 @@ public class ExtEntityFieldsUtils
 		String hiddenName;
 
 		if ( localComboBoxField.hiddenName().isEmpty() )
-			hiddenName = getFieldName(field); // по умолчанию равно имени поля
+			hiddenName = getFieldName(field); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ СЂР°РІРЅРѕ РёРјРµРЅРё РїРѕР»СЏ
 		else
 			hiddenName = localComboBoxField.hiddenName();
 
@@ -870,7 +877,7 @@ public class ExtEntityFieldsUtils
 		int listWidth;
 
 		if ( localComboBoxField.listWidth() == LocalComboBoxField.DEFAULT_LIST_WIDTH )
-			listWidth = localComboBoxField.width(); // по умолчанию ширина списка равна ширине комбобокса
+			listWidth = localComboBoxField.width(); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ С€РёСЂРёРЅР° СЃРїРёСЃРєР° СЂР°РІРЅР° С€РёСЂРёРЅРµ РєРѕРјР±РѕР±РѕРєСЃР°
 		else
 			listWidth = localComboBoxField.listWidth();
 
@@ -882,7 +889,7 @@ public class ExtEntityFieldsUtils
 		String hiddenName;
 
 		if ( comboBoxField.hiddenName().isEmpty() )
-			hiddenName = getFieldName(field); // по умолчанию равно имени поля
+			hiddenName = getFieldName(field); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ СЂР°РІРЅРѕ РёРјРµРЅРё РїРѕР»СЏ
 		else
 			hiddenName = comboBoxField.hiddenName();
 
@@ -893,7 +900,7 @@ public class ExtEntityFieldsUtils
 		int listWidth;
 
 		if ( comboBoxField.listWidth() == LocalComboBoxField.DEFAULT_LIST_WIDTH )
-			listWidth = comboBoxField.width(); // по умолчанию ширина списка равна ширине комбобокса
+			listWidth = comboBoxField.width(); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ С€РёСЂРёРЅР° СЃРїРёСЃРєР° СЂР°РІРЅР° С€РёСЂРёРЅРµ РєРѕРјР±РѕР±РѕРєСЃР°
 		else
 			listWidth = comboBoxField.listWidth();
 
@@ -928,7 +935,7 @@ public class ExtEntityFieldsUtils
 		String namespace;
 
 		if ( enumField.hashNamespace().isEmpty() )
-			namespace = getPackageName(enumClass.getName()); // по умолчанию пакет хэша энума равен пакету класса энума
+			namespace = getPackageName(enumClass.getName()); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РїР°РєРµС‚ С…СЌС€Р° СЌРЅСѓРјР° СЂР°РІРµРЅ РїР°РєРµС‚Сѓ РєР»Р°СЃСЃР° СЌРЅСѓРјР°
 		else
 			namespace = enumField.hashNamespace();
 
@@ -939,7 +946,7 @@ public class ExtEntityFieldsUtils
 		String name;
 
 		if ( enumField.hashName().isEmpty() )
-			name = enumClass.getSimpleName(); // по умолчанию название хэша энума равно названию класса энума
+			name = enumClass.getSimpleName(); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РЅР°Р·РІР°РЅРёРµ С…СЌС€Р° СЌРЅСѓРјР° СЂР°РІРЅРѕ РЅР°Р·РІР°РЅРёСЋ РєР»Р°СЃСЃР° СЌРЅСѓРјР°
 		else
 			name = enumField.hashName();
 
@@ -954,7 +961,7 @@ public class ExtEntityFieldsUtils
 		String namespace;
 
 		if ( enumField.storeNamespace().isEmpty() )
-			namespace = getPackageName(enumClass.getName()); // по умолчанию пакет хэша энума равен пакету класса энума
+			namespace = getPackageName(enumClass.getName()); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РїР°РєРµС‚ С…СЌС€Р° СЌРЅСѓРјР° СЂР°РІРµРЅ РїР°РєРµС‚Сѓ РєР»Р°СЃСЃР° СЌРЅСѓРјР°
 		else
 			namespace = enumField.storeNamespace();
 
@@ -965,7 +972,7 @@ public class ExtEntityFieldsUtils
 		String name;
 
 		if ( enumField.storeName().isEmpty() )
-			name = concat(enumClass.getSimpleName(), "Store"); // по умолчанию равно названию класса энума + "Store"
+			name = concat(enumClass.getSimpleName(), "Store"); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ СЂР°РІРЅРѕ РЅР°Р·РІР°РЅРёСЋ РєР»Р°СЃСЃР° СЌРЅСѓРјР° + "Store"
 		else
 			name = enumField.storeName();
 
@@ -980,7 +987,7 @@ public class ExtEntityFieldsUtils
 		String name;
 
 		if ( enumField.rendererName().isEmpty() )
-			name = concat(enumClass.getSimpleName(), "Renderer"); // по умолчанию равно названию класса энума + "Renderer"
+			name = concat(enumClass.getSimpleName(), "Renderer"); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ СЂР°РІРЅРѕ РЅР°Р·РІР°РЅРёСЋ РєР»Р°СЃСЃР° СЌРЅСѓРјР° + "Renderer"
 		else
 			name = enumField.rendererName();
 
@@ -995,7 +1002,7 @@ public class ExtEntityFieldsUtils
 		String name;
 
 		if ( enumFieldValue.hashName().isEmpty() )
-			name = field.getName().toUpperCase(); // по умолчанию — имя поля энума большими буквами
+			name = field.getName().toUpperCase(); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” РёРјСЏ РїРѕР»СЏ СЌРЅСѓРјР° Р±РѕР»СЊС€РёРјРё Р±СѓРєРІР°РјРё
 		else
 			name = enumFieldValue.hashName();
 
@@ -1006,7 +1013,7 @@ public class ExtEntityFieldsUtils
 		String value;
 
 		if ( enumFieldValue.hashValue().isEmpty() )
-			value = field.getName(); // по умолчанию — имя поля энума
+			value = field.getName(); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” РёРјСЏ РїРѕР»СЏ СЌРЅСѓРјР°
 		else
 			value = enumFieldValue.hashValue();
 
@@ -1017,7 +1024,7 @@ public class ExtEntityFieldsUtils
 		String value;
 
 		if ( enumFieldValue.rendererValue().isEmpty() )
-			value = enumFieldValue.storeValue(); // по умолчанию — равно значению, используемому в store
+			value = enumFieldValue.storeValue(); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” СЂР°РІРЅРѕ Р·РЅР°С‡РµРЅРёСЋ, РёСЃРїРѕР»СЊР·СѓРµРјРѕРјСѓ РІ store
 		else
 			value = enumFieldValue.rendererValue();
 
@@ -1064,7 +1071,7 @@ public class ExtEntityFieldsUtils
 
 		for (Field field : entityClass.getDeclaredFields())
 		{
-			// todo: также учитывать аннотации и других полей поиска
+			// todo: С‚Р°РєР¶Рµ СѓС‡РёС‚С‹РІР°С‚СЊ Р°РЅРЅРѕС‚Р°С†РёРё Рё РґСЂСѓРіРёС… РїРѕР»РµР№ РїРѕРёСЃРєР°
 			if (hasSearchFieldAnnotation(field))
 				searchFields.add(field);
 		}
@@ -1078,12 +1085,12 @@ public class ExtEntityFieldsUtils
 		if ( searchField.paramName().isEmpty() )
 		{
 			if (hasChooseFieldAnnotation(field))
-			{ // связанная сущность
-				paramName = concat( field.getName(), capitalize(searchField.chooseFieldFieldName()) ); // по умолчанию — имя параметра = (имя поля с выбираемой сущностью + имя поля выбираемой сущности с большой буквы)
+			{ // СЃРІСЏР·Р°РЅРЅР°СЏ СЃСѓС‰РЅРѕСЃС‚СЊ
+				paramName = concat( field.getName(), capitalize(searchField.chooseFieldFieldName()) ); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” РёРјСЏ РїР°СЂР°РјРµС‚СЂР° = (РёРјСЏ РїРѕР»СЏ СЃ РІС‹Р±РёСЂР°РµРјРѕР№ СЃСѓС‰РЅРѕСЃС‚СЊСЋ + РёРјСЏ РїРѕР»СЏ РІС‹Р±РёСЂР°РµРјРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё СЃ Р±РѕР»СЊС€РѕР№ Р±СѓРєРІС‹)
 			}
 			else
-			{ // обычное поле
-				paramName = field.getName(); // по умолчанию — имя параметра равно имени поля
+			{ // РѕР±С‹С‡РЅРѕРµ РїРѕР»Рµ
+				paramName = field.getName(); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” РёРјСЏ РїР°СЂР°РјРµС‚СЂР° СЂР°РІРЅРѕ РёРјРµРЅРё РїРѕР»СЏ
 			}
 		}
 		else
@@ -1101,12 +1108,12 @@ public class ExtEntityFieldsUtils
 		if ( searchField.id().isEmpty() )
 		{
 			if (hasChooseFieldAnnotation(field))
-			{ // связанная сущность
-				id = concat( field.getName(), capitalize(searchField.chooseFieldFieldName()), "SearchField" ); // по умолчанию — имя параметра = (имя поля с выбираемой сущностью + имя поля выбираемой сущности с большой буквы) + "SearchField"
+			{ // СЃРІСЏР·Р°РЅРЅР°СЏ СЃСѓС‰РЅРѕСЃС‚СЊ
+				id = concat( field.getName(), capitalize(searchField.chooseFieldFieldName()), "SearchField" ); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” РёРјСЏ РїР°СЂР°РјРµС‚СЂР° = (РёРјСЏ РїРѕР»СЏ СЃ РІС‹Р±РёСЂР°РµРјРѕР№ СЃСѓС‰РЅРѕСЃС‚СЊСЋ + РёРјСЏ РїРѕР»СЏ РІС‹Р±РёСЂР°РµРјРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё СЃ Р±РѕР»СЊС€РѕР№ Р±СѓРєРІС‹) + "SearchField"
 			}
 			else
-			{ // обычное поле
-				id = concat(field.getName(), "SearchField"); // по умолчанию — имя поля + "SearchField"
+			{ // РѕР±С‹С‡РЅРѕРµ РїРѕР»Рµ
+				id = concat(field.getName(), "SearchField"); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” РёРјСЏ РїРѕР»СЏ + "SearchField"
 			}
 		}
 		else
@@ -1124,7 +1131,7 @@ public class ExtEntityFieldsUtils
 		if ( searchField.maxLength() == SearchField.DEFAULT_MAX_LENGTH_VALUE )
 		{
 			if (hasChooseFieldAnnotation(field))
-			{ // связанная сущность
+			{ // СЃРІСЏР·Р°РЅРЅР°СЏ СЃСѓС‰РЅРѕСЃС‚СЊ
 				Class<?> chooseFieldClass = field.getType();
 
 				try
@@ -1138,8 +1145,8 @@ public class ExtEntityFieldsUtils
 				}
 			}
 			else
-			{ // обычное поле
-				maxLength = getFieldMaxLength(field); // по умолчанию — имя параметра равно имени поля
+			{ // РѕР±С‹С‡РЅРѕРµ РїРѕР»Рµ
+				maxLength = getFieldMaxLength(field); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” РёРјСЏ РїР°СЂР°РјРµС‚СЂР° СЂР°РІРЅРѕ РёРјРµРЅРё РїРѕР»СЏ
 			}
 		}
 		else
@@ -1157,12 +1164,12 @@ public class ExtEntityFieldsUtils
 		if ( searchField.sqlParamName().isEmpty() )
 		{
 			if (hasChooseFieldAnnotation(field))
-			{ // связанная сущность
-				paramName = concat( field.getName(), ".", searchField.chooseFieldFieldName() ); // по умолчанию — имя параметра = (имя поля с выбираемой сущностью + "." + имя поля выбираемой сущности)
+			{ // СЃРІСЏР·Р°РЅРЅР°СЏ СЃСѓС‰РЅРѕСЃС‚СЊ
+				paramName = concat( field.getName(), ".", searchField.chooseFieldFieldName() ); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” РёРјСЏ РїР°СЂР°РјРµС‚СЂР° = (РёРјСЏ РїРѕР»СЏ СЃ РІС‹Р±РёСЂР°РµРјРѕР№ СЃСѓС‰РЅРѕСЃС‚СЊСЋ + "." + РёРјСЏ РїРѕР»СЏ РІС‹Р±РёСЂР°РµРјРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё)
 			}
 			else
-			{ // обычное поле
-				paramName = field.getName(); // по умолчанию — имя поля
+			{ // РѕР±С‹С‡РЅРѕРµ РїРѕР»Рµ
+				paramName = field.getName(); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” РёРјСЏ РїРѕР»СЏ
 			}
 		}
 		else
@@ -1223,7 +1230,7 @@ public class ExtEntityFieldsUtils
 
 		return filterConfigFields;
 	}
-	public static String getFilterVarName(Field field) { // используется и в List, и в Choose, и в Form
+	public static String getFilterVarName(Field field) { // РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ Рё РІ List, Рё РІ Choose, Рё РІ Form
 //		return getSimpleName(field.getName());
 		return decapitalize(field.getName());
 	}
@@ -1231,7 +1238,7 @@ public class ExtEntityFieldsUtils
 		String paramName;
 
 		if ( filterConfigField.listInitFunctionParamName().isEmpty() )
-			paramName = decapitalize(field.getName()); //  по умолчанию равно имени поля с маленькой буквы
+			paramName = decapitalize(field.getName()); //  РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ СЂР°РІРЅРѕ РёРјРµРЅРё РїРѕР»СЏ СЃ РјР°Р»РµРЅСЊРєРѕР№ Р±СѓРєРІС‹
 		else
 			paramName = filterConfigField.listInitFunctionParamName();
 
@@ -1260,7 +1267,7 @@ public class ExtEntityFieldsUtils
 
 		return filterConfigFields;
 	}
-	public static List<Field> getFilterConfigFormFilterChooseFields(Class entityClass) { // только те параметры фильтрации, которые являются выбираемыми сущнсотями в crud-форме. Они будут жестко подставлены при указании
+	public static List<Field> getFilterConfigFormFilterChooseFields(Class entityClass) { // С‚РѕР»СЊРєРѕ С‚Рµ РїР°СЂР°РјРµС‚СЂС‹ С„РёР»СЊС‚СЂР°С†РёРё, РєРѕС‚РѕСЂС‹Рµ СЏРІР»СЏСЋС‚СЃСЏ РІС‹Р±РёСЂР°РµРјС‹РјРё СЃСѓС‰РЅСЃРѕС‚СЏРјРё РІ crud-С„РѕСЂРјРµ. РћРЅРё Р±СѓРґСѓС‚ Р¶РµСЃС‚РєРѕ РїРѕРґСЃС‚Р°РІР»РµРЅС‹ РїСЂРё СѓРєР°Р·Р°РЅРёРё
 		List<Field> filterConfigFields = new ArrayList<Field>();
 
 		for (Field field : getFilterConfigFields(entityClass))
@@ -1275,7 +1282,7 @@ public class ExtEntityFieldsUtils
 		String paramName;
 
 		if ( filterConfigField.formInitFunctionsParamName().isEmpty() )
-			paramName = decapitalize(field.getName()); //  по умолчанию равно имени поля с маленькой буквы
+			paramName = decapitalize(field.getName()); //  РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ СЂР°РІРЅРѕ РёРјРµРЅРё РїРѕР»СЏ СЃ РјР°Р»РµРЅСЊРєРѕР№ Р±СѓРєРІС‹
 		else
 			paramName = filterConfigField.formInitFunctionsParamName();
 
@@ -1289,12 +1296,12 @@ public class ExtEntityFieldsUtils
 		if ( filterConfigField.name().isEmpty() )
 		{
 			if (hasChooseFieldAnnotation(field))
-			{ // связанная сущность
-				name = concat( field.getName(), capitalize(filterConfigField.chooseFieldFieldName()) ); // по умолчанию — имя параметра = (имя поля с выбираемой сущностью + имя поля выбираемой сущности с большой буквы)
+			{ // СЃРІСЏР·Р°РЅРЅР°СЏ СЃСѓС‰РЅРѕСЃС‚СЊ
+				name = concat( field.getName(), capitalize(filterConfigField.chooseFieldFieldName()) ); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” РёРјСЏ РїР°СЂР°РјРµС‚СЂР° = (РёРјСЏ РїРѕР»СЏ СЃ РІС‹Р±РёСЂР°РµРјРѕР№ СЃСѓС‰РЅРѕСЃС‚СЊСЋ + РёРјСЏ РїРѕР»СЏ РІС‹Р±РёСЂР°РµРјРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё СЃ Р±РѕР»СЊС€РѕР№ Р±СѓРєРІС‹)
 			}
 			else
-			{ // обычное поле
-				name = field.getName(); // по умолчанию — имя параметра равно имени поля
+			{ // РѕР±С‹С‡РЅРѕРµ РїРѕР»Рµ
+				name = field.getName(); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” РёРјСЏ РїР°СЂР°РјРµС‚СЂР° СЂР°РІРЅРѕ РёРјРµРЅРё РїРѕР»СЏ
 			}
 		}
 		else
@@ -1326,13 +1333,13 @@ public class ExtEntityFieldsUtils
 		if ( filterConfigField.type().isEmpty() )
 		{
 			if (hasChooseFieldAnnotation(field))
-			{ // связанная сущность
-				type = filterConfigField.chooseFieldFieldType(); // берется указанный тип для поля связанной сущности
-				// todo: если не указан тип chooseFieldFieldType, брать его по возможности из связанной сущности
+			{ // СЃРІСЏР·Р°РЅРЅР°СЏ СЃСѓС‰РЅРѕСЃС‚СЊ
+				type = filterConfigField.chooseFieldFieldType(); // Р±РµСЂРµС‚СЃСЏ СѓРєР°Р·Р°РЅРЅС‹Р№ С‚РёРї РґР»СЏ РїРѕР»СЏ СЃРІСЏР·Р°РЅРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё
+				// todo: РµСЃР»Рё РЅРµ СѓРєР°Р·Р°РЅ С‚РёРї chooseFieldFieldType, Р±СЂР°С‚СЊ РµРіРѕ РїРѕ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РёР· СЃРІСЏР·Р°РЅРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё
 			}
 			else
-			{ // обычное поле
-				type = field.getType().getSimpleName(); // по умолчанию — имя параметра равно имени поля
+			{ // РѕР±С‹С‡РЅРѕРµ РїРѕР»Рµ
+				type = field.getType().getSimpleName(); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” РёРјСЏ РїР°СЂР°РјРµС‚СЂР° СЂР°РІРЅРѕ РёРјРµРЅРё РїРѕР»СЏ
 			}
 		}
 		else
@@ -1349,12 +1356,12 @@ public class ExtEntityFieldsUtils
 		if ( filterConfigField.sqlParamName().isEmpty() )
 		{
 			if (hasChooseFieldAnnotation(field))
-			{ // связанная сущность
-				paramName = concat( field.getName(), ".", filterConfigField.chooseFieldFieldName() ); // по умолчанию — имя параметра = (имя поля с выбираемой сущностью + "." + имя поля выбираемой сущности)
+			{ // СЃРІСЏР·Р°РЅРЅР°СЏ СЃСѓС‰РЅРѕСЃС‚СЊ
+				paramName = concat( field.getName(), ".", filterConfigField.chooseFieldFieldName() ); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” РёРјСЏ РїР°СЂР°РјРµС‚СЂР° = (РёРјСЏ РїРѕР»СЏ СЃ РІС‹Р±РёСЂР°РµРјРѕР№ СЃСѓС‰РЅРѕСЃС‚СЊСЋ + "." + РёРјСЏ РїРѕР»СЏ РІС‹Р±РёСЂР°РµРјРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё)
 			}
 			else
-			{ // обычное поле
-				paramName = field.getName(); // по умолчанию — имя поля
+			{ // РѕР±С‹С‡РЅРѕРµ РїРѕР»Рµ
+				paramName = field.getName(); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” РёРјСЏ РїРѕР»СЏ
 			}
 		}
 		else
@@ -1394,7 +1401,7 @@ public class ExtEntityFieldsUtils
 		String paramName;
 
 		if ( attachmentsField.idsParamName().isEmpty() )
-			paramName = concat(getFieldName(field), "Ids"); //  по умолчанию равно имени поля + "Ids"
+			paramName = concat(getFieldName(field), "Ids"); //  РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ СЂР°РІРЅРѕ РёРјРµРЅРё РїРѕР»СЏ + "Ids"
 		else
 			paramName = attachmentsField.idsParamName();
 
@@ -1405,7 +1412,7 @@ public class ExtEntityFieldsUtils
 		String entityFieldName;
 
 		if ( attachmentsField.entityFieldName().isEmpty() )
-			entityFieldName = field.getName(); //  по умолчанию равно имени поля
+			entityFieldName = field.getName(); //  РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ СЂР°РІРЅРѕ РёРјРµРЅРё РїРѕР»СЏ
 		else
 			entityFieldName = attachmentsField.entityFieldName();
 
@@ -1416,7 +1423,7 @@ public class ExtEntityFieldsUtils
 		String entityFieldName;
 
 		if ( attachmentsField.panelId().isEmpty() )
-			entityFieldName = concat( getJsFieldPrefix(extEntity, entityClass), JS_FIELD_NAME_SEPARATOR, field.getName() ); //  по умолчанию равно имени поля
+			entityFieldName = concat( getJsFieldPrefix(extEntity, entityClass), JS_FIELD_NAME_SEPARATOR, field.getName() ); //  РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ СЂР°РІРЅРѕ РёРјРµРЅРё РїРѕР»СЏ
 		else
 			entityFieldName = attachmentsField.panelId();
 
@@ -1478,7 +1485,7 @@ public class ExtEntityFieldsUtils
 		String buttonId;
 
 		if ( addressField.textFieldName().isEmpty() )
-			buttonId = concat( field.getName(), "Full" ); // по умолчанию (имя поля + full)
+			buttonId = concat( field.getName(), "Full" ); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ (РёРјСЏ РїРѕР»СЏ + full)
 		else
 			buttonId = addressField.textFieldName();
 
@@ -1500,7 +1507,7 @@ public class ExtEntityFieldsUtils
 		String fieldName;
 
 		if ( addressField.voFieldName().isEmpty() )
-			fieldName = field.getName(); // по умолчанию равно имени поля
+			fieldName = field.getName(); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ СЂР°РІРЅРѕ РёРјРµРЅРё РїРѕР»СЏ
 		else
 			fieldName = addressField.voFieldName();
 

@@ -11,19 +11,19 @@ package su.opencode.kefir.gen.test;
 import su.opencode.kefir.gen.ExtEntity;
 
 @ExtEntity(
-	listWindowTitle = "Список земельных участков",
-	notChosenTitle = "Земельный участок не выбран",
-	notChosenMessage = "Выберите земельный участок",
+	listWindowTitle = "РЎРїРёСЃРѕРє Р·РµРјРµР»СЊРЅС‹С… СѓС‡Р°СЃС‚РєРѕРІ",
+	notChosenTitle = "Р—РµРјРµР»СЊРЅС‹Р№ СѓС‡Р°СЃС‚РѕРє РЅРµ РІС‹Р±СЂР°РЅ",
+	notChosenMessage = "Р’С‹Р±РµСЂРёС‚Рµ Р·РµРјРµР»СЊРЅС‹Р№ СѓС‡Р°СЃС‚РѕРє",
 
-	chooseWindowTitle = "Выбор земельного участка",
-	createWindowTitle = "Ввод земельного участка",
-	showWindowTitle = "Просмотр земельного участка",
-	updateWindowTitle = "Изменение земельного участка",
-	deleteWindowTitle = "Удаление земельного участка",
+	chooseWindowTitle = "Р’С‹Р±РѕСЂ Р·РµРјРµР»СЊРЅРѕРіРѕ СѓС‡Р°СЃС‚РєР°",
+	createWindowTitle = "Р’РІРѕРґ Р·РµРјРµР»СЊРЅРѕРіРѕ СѓС‡Р°СЃС‚РєР°",
+	showWindowTitle = "РџСЂРѕСЃРјРѕС‚СЂ Р·РµРјРµР»СЊРЅРѕРіРѕ СѓС‡Р°СЃС‚РєР°",
+	updateWindowTitle = "РР·РјРµРЅРµРЅРёРµ Р·РµРјРµР»СЊРЅРѕРіРѕ СѓС‡Р°СЃС‚РєР°",
+	deleteWindowTitle = "РЈРґР°Р»РµРЅРёРµ Р·РµРјРµР»СЊРЅРѕРіРѕ СѓС‡Р°СЃС‚РєР°",
 
-	createSaveErrorMessage = "Ошибка при сохранении земельного участка",
-	updateSaveErrorMessage = "Ошибка при изменении земельного участка",
-	deleteSaveErrorMessage = "Ошибка при удалении земельного участка",
+	createSaveErrorMessage = "РћС€РёР±РєР° РїСЂРё СЃРѕС…СЂР°РЅРµРЅРёРё Р·РµРјРµР»СЊРЅРѕРіРѕ СѓС‡Р°СЃС‚РєР°",
+	updateSaveErrorMessage = "РћС€РёР±РєР° РїСЂРё РёР·РјРµРЅРµРЅРёРё Р·РµРјРµР»СЊРЅРѕРіРѕ СѓС‡Р°СЃС‚РєР°",
+	deleteSaveErrorMessage = "РћС€РёР±РєР° РїСЂРё СѓРґР°Р»РµРЅРёРё Р·РµРјРµР»СЊРЅРѕРіРѕ СѓС‡Р°СЃС‚РєР°",
 
 	formWindowWidth = 500,
 

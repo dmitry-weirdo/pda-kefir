@@ -53,7 +53,7 @@ public class EntityFilterConfigFileWriter extends ClassFileWriter
 		writeEnumImports();
 	}
 	private void writeEnumImports() throws IOException {
-		// если участвуют поля-энумы, и они в другом пакете -> записать их в импорты
+		// РµСЃР»Рё СѓС‡Р°СЃС‚РІСѓСЋС‚ РїРѕР»СЏ-СЌРЅСѓРјС‹, Рё РѕРЅРё РІ РґСЂСѓРіРѕРј РїР°РєРµС‚Рµ -> Р·Р°РїРёСЃР°С‚СЊ РёС… РІ РёРјРїРѕСЂС‚С‹
 		Set<String> enumClassesNames = new HashSet<String>();
 
 		for (Field searchField : getSearchFields(entityClass))
@@ -120,13 +120,13 @@ public class EntityFilterConfigFileWriter extends ClassFileWriter
 		addWhereParam(field, qbParamName, entityPrefixParamName, fieldName, sqlParamName, relation);
 	}
 	private void addWhereParam(Field field, String qbParamName, String entityPrefixParamName, String fieldName, String sqlParamName, Relation relation) throws IOException {
-		// todo: когда будет булевский SearchField, его писать аналогичным образом
+		// todo: РєРѕРіРґР° Р±СѓРґРµС‚ Р±СѓР»РµРІСЃРєРёР№ SearchField, РµРіРѕ РїРёСЃР°С‚СЊ Р°РЅР°Р»РѕРіРёС‡РЅС‹Рј РѕР±СЂР°Р·РѕРј
 		if (isBoolean(field))
-		{ // булево поле фильтрации - проверить на != null и на true
+		{ // Р±СѓР»РµРІРѕ РїРѕР»Рµ С„РёР»СЊС‚СЂР°С†РёРё - РїСЂРѕРІРµСЂРёС‚СЊ РЅР° != null Рё РЅР° true
 			out.writeLn("\t\tif (", fieldName, " != null && ", fieldName, ")");
 		}
 		else
-		{ // обычное поле - проверить на неравенство null
+		{ // РѕР±С‹С‡РЅРѕРµ РїРѕР»Рµ - РїСЂРѕРІРµСЂРёС‚СЊ РЅР° РЅРµСЂР°РІРµРЅСЃС‚РІРѕ null
 			out.writeLn("\t\tif (", fieldName, " != null)");
 		}
 
@@ -187,35 +187,35 @@ public class EntityFilterConfigFileWriter extends ClassFileWriter
 		return filterConfigField != null && getFilterConfigFieldType(filterConfigField, field).equals(Boolean.class.getSimpleName());
 	}
 	private String getSqlParamName(Field field, String entityPrefixParamName, String sqlParamName) {
-		// todo: такую же возможность (отменить entityPrefix) для SearchField
+		// todo: С‚Р°РєСѓСЋ Р¶Рµ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ (РѕС‚РјРµРЅРёС‚СЊ entityPrefix) РґР»СЏ SearchField
 		FilterConfigField filterConfigField = getFilterConfigFieldAnnotation(field);
-		if ( filterConfigField != null && !filterConfigField.addEntityPrefix() ) // не добавлять entityPrefix
+		if ( filterConfigField != null && !filterConfigField.addEntityPrefix() ) // РЅРµ РґРѕР±Р°РІР»СЏС‚СЊ entityPrefix
 			return concat(sb, "\"", sqlParamName, "\"");
 
-		// добавить entityPrefix
+		// РґРѕР±Р°РІРёС‚СЊ entityPrefix
 		return concat(sb, CONCAT_METHOD_NAME, "(", SB_FIELD_NAME, ", ", entityPrefixParamName, ", \".", sqlParamName, "\"", ")");
 	}
 	private String getSqlParamValue(Field field, String fieldName) {
 		FilterConfigField filterConfigField = getFilterConfigFieldAnnotation(field);
-		if ( filterConfigField != null && !filterConfigField.sqlParamValue().isEmpty() ) // подставить явное значение
+		if ( filterConfigField != null && !filterConfigField.sqlParamValue().isEmpty() ) // РїРѕРґСЃС‚Р°РІРёС‚СЊ СЏРІРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ
 		{
 			String type = getFilterConfigFieldType(filterConfigField, field);
 
 			if (filterConfigField.sqlParamValue().equals(FilterConfigField.NULL_VALUE))
-			{ // спецслучай для null - нужно привести null к String
+			{ // СЃРїРµС†СЃР»СѓС‡Р°Р№ РґР»СЏ null - РЅСѓР¶РЅРѕ РїСЂРёРІРµСЃС‚Рё null Рє String
 				return "(String) null";
 			}
 
 			if ( type.equals(String.class.getSimpleName()) )
-			{ // строка - обрамить значение кавычками
+			{ // СЃС‚СЂРѕРєР° - РѕР±СЂР°РјРёС‚СЊ Р·РЅР°С‡РµРЅРёРµ РєР°РІС‹С‡РєР°РјРё
 				return concat(sb, "\"", filterConfigField.sqlParamValue(), "\"");
 			}
 
-			// вернуть значение как есть
+			// РІРµСЂРЅСѓС‚СЊ Р·РЅР°С‡РµРЅРёРµ РєР°Рє РµСЃС‚СЊ
 			return filterConfigField.sqlParamName();
 		}
 
-		// по умолчанию - значение поля FilterConfig
+		// РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - Р·РЅР°С‡РµРЅРёРµ РїРѕР»СЏ FilterConfig
 		return fieldName;
 	}
 
@@ -247,7 +247,7 @@ public class EntityFilterConfigFileWriter extends ClassFileWriter
 			writeFieldDeclaration(getSearchFieldParamName(searchField, field), "String");
 		}
 
-		// todo: для других типов полей поиска создавать не стринговые, а поля соответствующих типов
+		// todo: РґР»СЏ РґСЂСѓРіРёС… С‚РёРїРѕРІ РїРѕР»РµР№ РїРѕРёСЃРєР° СЃРѕР·РґР°РІР°С‚СЊ РЅРµ СЃС‚СЂРёРЅРіРѕРІС‹Рµ, Р° РїРѕР»СЏ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёС… С‚РёРїРѕРІ
 	}
 
 	private void writeFilterConfigFields() throws IOException {
@@ -260,7 +260,7 @@ public class EntityFilterConfigFileWriter extends ClassFileWriter
 				writeFieldDeclaration(getFilterConfigFieldName(filterConfigField, field), getFilterConfigFieldType(filterConfigField, field));
 			}
 			else
-			{ // не uppercase -> написать @Json(uppercase = false)
+			{ // РЅРµ uppercase -> РЅР°РїРёСЃР°С‚СЊ @Json(uppercase = false)
 				out.writeLn("\t@", Json.class.getSimpleName(), "(uppercase = false)");
 				writeFieldDeclaration(getFilterConfigFieldName(filterConfigField, field), getFilterConfigFieldType(filterConfigField, field));
 				out.writeLn();

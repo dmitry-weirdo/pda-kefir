@@ -52,15 +52,15 @@ public class SqlTable
 	}
 
 	/**
-	 * Добавляет целое поле id, которое является primary key.
+	 * Р”РѕР±Р°РІР»СЏРµС‚ С†РµР»РѕРµ РїРѕР»Рµ id, РєРѕС‚РѕСЂРѕРµ СЏРІР»СЏРµС‚СЃСЏ primary key.
 	 */
 	public void addIdField() {
 		this.addField( getIdField() );
 		setPrimaryKey( new SqlTablePrimaryKey() );
 	}
 	/**
-	 * Добавляет целое поле id с заданным названием, которое является primary key.
-	 * @param fieldName имя id-поля
+	 * Р”РѕР±Р°РІР»СЏРµС‚ С†РµР»РѕРµ РїРѕР»Рµ id СЃ Р·Р°РґР°РЅРЅС‹Рј РЅР°Р·РІР°РЅРёРµРј, РєРѕС‚РѕСЂРѕРµ СЏРІР»СЏРµС‚СЃСЏ primary key.
+	 * @param fieldName РёРјСЏ id-РїРѕР»СЏ
 	 */
 	public void addIdField(String fieldName) {
 		this.addField( new SqlTableField(fieldName, INTEGER_TYPE, true) );
@@ -195,39 +195,39 @@ public class SqlTable
 
 
 	/**
-	 * Комментарий перед create table
-	 * Если равен <code>null</code> или пуст, то в скрипт не пишется.
+	 * РљРѕРјРјРµРЅС‚Р°СЂРёР№ РїРµСЂРµРґ create table
+	 * Р•СЃР»Рё СЂР°РІРµРЅ <code>null</code> РёР»Рё РїСѓСЃС‚, С‚Рѕ РІ СЃРєСЂРёРїС‚ РЅРµ РїРёС€РµС‚СЃСЏ.
 	 */
 	private String comment;
 
 	/**
-	 * Название таблицы
+	 * РќР°Р·РІР°РЅРёРµ С‚Р°Р±Р»РёС†С‹
 	 */
 	private String name;
 
 	/**
-	 * Название генератора.
-	 * Если указано, то после создания таблицы пишется создание генератора и установка его в 0.
+	 * РќР°Р·РІР°РЅРёРµ РіРµРЅРµСЂР°С‚РѕСЂР°.
+	 * Р•СЃР»Рё СѓРєР°Р·Р°РЅРѕ, С‚Рѕ РїРѕСЃР»Рµ СЃРѕР·РґР°РЅРёСЏ С‚Р°Р±Р»РёС†С‹ РїРёС€РµС‚СЃСЏ СЃРѕР·РґР°РЅРёРµ РіРµРЅРµСЂР°С‚РѕСЂР° Рё СѓСЃС‚Р°РЅРѕРІРєР° РµРіРѕ РІ 0.
 	 */
 	private String generatorName;
 
 	/**
-	 * Список полей таблицы.
+	 * РЎРїРёСЃРѕРє РїРѕР»РµР№ С‚Р°Р±Р»РёС†С‹.
 	 */
 	private List<SqlTableField> fields = new ArrayList<SqlTableField>();
 
 	/**
-	 * Главный ключ таблицы.
+	 * Р“Р»Р°РІРЅС‹Р№ РєР»СЋС‡ С‚Р°Р±Р»РёС†С‹.
 	 */
 	private SqlTablePrimaryKey primaryKey;
 
 	/**
-	 * Foreign keys таблицы.
+	 * Foreign keys С‚Р°Р±Р»РёС†С‹.
 	 */
 	private List<SqlTableForeignKey> foreignKeys = new ArrayList<SqlTableForeignKey>();
 
 	/**
-	 * Список уникальных полей таблицы.
+	 * РЎРїРёСЃРѕРє СѓРЅРёРєР°Р»СЊРЅС‹С… РїРѕР»РµР№ С‚Р°Р±Р»РёС†С‹.
 	 */
 	private List<SqlTableUnique> uniques = new ArrayList<SqlTableUnique>();
 

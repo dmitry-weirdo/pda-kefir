@@ -14,21 +14,21 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- * Помечает скрытое поле с id сущности, генерируемое в CRUD-формах сущности.
+ * РџРѕРјРµС‡Р°РµС‚ СЃРєСЂС‹С‚РѕРµ РїРѕР»Рµ СЃ id СЃСѓС‰РЅРѕСЃС‚Рё, РіРµРЅРµСЂРёСЂСѓРµРјРѕРµ РІ CRUD-С„РѕСЂРјР°С… СЃСѓС‰РЅРѕСЃС‚Рё.
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface IdField
 {
 	/**
-	 * @return код поля.
-	 *         По умолчанию — ( {@linkplain su.opencode.kefir.gen.ExtEntity#jsFieldPrefix() префикс js-поля формы сущности} + "-" + название поля )
+	 * @return РєРѕРґ РїРѕР»СЏ.
+	 *         РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” ( {@linkplain su.opencode.kefir.gen.ExtEntity#jsFieldPrefix() РїСЂРµС„РёРєСЃ js-РїРѕР»СЏ С„РѕСЂРјС‹ СЃСѓС‰РЅРѕСЃС‚Рё} + "-" + РЅР°Р·РІР°РЅРёРµ РїРѕР»СЏ )
 	 */
 	String id() default "";
 
 	/**
-	 * @return имя поля.
-	 *         По умолчанию — равно имени поля, на котором стоит аннотация
+	 * @return РёРјСЏ РїРѕР»СЏ.
+	 *         РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” СЂР°РІРЅРѕ РёРјРµРЅРё РїРѕР»СЏ, РЅР° РєРѕС‚РѕСЂРѕРј СЃС‚РѕРёС‚ Р°РЅРЅРѕС‚Р°С†РёСЏ
 	 */
 	String name() default "";
 }

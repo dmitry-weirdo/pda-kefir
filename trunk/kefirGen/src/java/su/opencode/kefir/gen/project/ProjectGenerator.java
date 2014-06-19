@@ -302,12 +302,12 @@ public class ProjectGenerator
 	private void createKefirIncludeJspfFile() throws IOException, SAXException {
 		String filePath = getKefirIncludeJspfFullPath(config);
 		new KefirIncludeJspfFileWriter(filePath, config).writeFile();
-		new EmptyXmlTagsFormatter(filePath).clearSpaces(); // удалить пробелы в <script> </script> тэгах
+		new EmptyXmlTagsFormatter(filePath).clearSpaces(); // СѓРґР°Р»РёС‚СЊ РїСЂРѕР±РµР»С‹ РІ <script> </script> С‚СЌРіР°С…
 	}
 	private void createApplicationJspfFile() throws IOException, SAXException {
 		String filePath = getApplicationJspfFullPath(config);
 		new ApplicationJspfFileWriter(filePath, config).writeFile();
-		new EmptyXmlTagsFormatter(filePath).clearSpaces(); // удалить пробелы в <script> </script> тэгах
+		new EmptyXmlTagsFormatter(filePath).clearSpaces(); // СѓРґР°Р»РёС‚СЊ РїСЂРѕР±РµР»С‹ РІ <script> </script> С‚СЌРіР°С…
 	}
 
 	private void createIndexJspFile() throws IOException, SAXException {
@@ -330,7 +330,7 @@ public class ProjectGenerator
 		copyAllFiles(concat(sb, config.libPath, FILE_SEPARATOR, "selenium"), seleniumLibFullPath);
 	}
 	private void createSeleniumBuildXml() throws IOException, SAXException {
-		new SeleniumBuildXmlFileWriter(getSeleniumBuildXmlFullPath(config), config).writeFile();//todo доделать
+		new SeleniumBuildXmlFileWriter(getSeleniumBuildXmlFullPath(config), config).writeFile();//todo РґРѕРґРµР»Р°С‚СЊ
 	}
 
 	private ProjectConfig config;

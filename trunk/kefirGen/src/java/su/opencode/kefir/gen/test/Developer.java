@@ -21,17 +21,17 @@ import su.opencode.kefir.gen.field.TextField;
 //	formShowFunctionName = "developerExtEntityShowFunction",
 //	formConfigEntityIdParamName = "developerExtEntityConfigId",
 
-	notChosenMessage = "Застройщик не выбран",
-	listWindowTitle = "Список застройщиков",
-	chooseWindowTitle = "Выбор застройщика",
-	createWindowTitle = "Ввод застройщика",
-	showWindowTitle = "Просмотр застройщика",
-	updateWindowTitle = "Изменение застройщика",
-	deleteWindowTitle = "Удаление застройщика"
+	notChosenMessage = "Р—Р°СЃС‚СЂРѕР№С‰РёРє РЅРµ РІС‹Р±СЂР°РЅ",
+	listWindowTitle = "РЎРїРёСЃРѕРє Р·Р°СЃС‚СЂРѕР№С‰РёРєРѕРІ",
+	chooseWindowTitle = "Р’С‹Р±РѕСЂ Р·Р°СЃС‚СЂРѕР№С‰РёРєР°",
+	createWindowTitle = "Р’РІРѕРґ Р·Р°СЃС‚СЂРѕР№С‰РёРєР°",
+	showWindowTitle = "РџСЂРѕСЃРјРѕС‚СЂ Р·Р°СЃС‚СЂРѕР№С‰РёРєР°",
+	updateWindowTitle = "РР·РјРµРЅРµРЅРёРµ Р·Р°СЃС‚СЂРѕР№С‰РёРєР°",
+	deleteWindowTitle = "РЈРґР°Р»РµРЅРёРµ Р·Р°СЃС‚СЂРѕР№С‰РёРєР°"
 )
 public class Developer
 {
-	@TextField(label = "Название", maxLength = 255, width = 200)
+	@TextField(label = "РќР°Р·РІР°РЅРёРµ", maxLength = 255, width = 200)
 	private String name;
 
 //	@FilterConfigField(listInitFunctionParamName = "mySuperParcelParamForDevListInit")

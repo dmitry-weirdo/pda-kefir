@@ -35,7 +35,7 @@ public abstract class SimpleFileWriter
 				throw new IllegalStateException(concat(sb, "file \"", file.getAbsolutePath(), "\" already exists"));
 			}
 			else
-			{ // оставить существующий файл как есть
+			{ // РѕСЃС‚Р°РІРёС‚СЊ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ С„Р°Р№Р» РєР°Рє РµСЃС‚СЊ
 				final String overwritten = overwriteIfFileExists ? "overwritten" : "not overwritten";
 				logger.info(concat(sb, "file \"", file.getAbsolutePath(), "\" already exists. It is ", overwritten, "."));
 
@@ -59,28 +59,28 @@ public abstract class SimpleFileWriter
 	protected abstract void writeFile() throws IOException;
 
 	/**
-	 * Пишет комментарий с указанным отступом.
+	 * РџРёС€РµС‚ РєРѕРјРјРµРЅС‚Р°СЂРёР№ СЃ СѓРєР°Р·Р°РЅРЅС‹Рј РѕС‚СЃС‚СѓРїРѕРј.
 	 *
-	 * @param indent	отступ (как правило, содержит один или несколько табов)
-	 * @param comment значение комментария
-	 * @throws java.io.IOException при ошибке записи в файл
+	 * @param indent	РѕС‚СЃС‚СѓРї (РєР°Рє РїСЂР°РІРёР»Рѕ, СЃРѕРґРµСЂР¶РёС‚ РѕРґРёРЅ РёР»Рё РЅРµСЃРєРѕР»СЊРєРѕ С‚Р°Р±РѕРІ)
+	 * @param comment Р·РЅР°С‡РµРЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+	 * @throws java.io.IOException РїСЂРё РѕС€РёР±РєРµ Р·Р°РїРёСЃРё РІ С„Р°Р№Р»
 	 */
 	protected void writeComment(String indent, String comment) throws IOException {
 		out.writeLn(indent, "// ", comment);
 	}
 
 	/**
-	 * Пишет комментарий 1-го уровня вложенности (с одним табом впереди).
+	 * РџРёС€РµС‚ РєРѕРјРјРµРЅС‚Р°СЂРёР№ 1-РіРѕ СѓСЂРѕРІРЅСЏ РІР»РѕР¶РµРЅРЅРѕСЃС‚Рё (СЃ РѕРґРЅРёРј С‚Р°Р±РѕРј РІРїРµСЂРµРґРё).
 	 *
-	 * @param comment значение комментария
-	 * @throws java.io.IOException при ошибке записи в файл
+	 * @param comment Р·РЅР°С‡РµРЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+	 * @throws java.io.IOException РїСЂРё РѕС€РёР±РєРµ Р·Р°РїРёСЃРё РІ С„Р°Р№Р»
 	 */
 	protected void writeComment(String comment) throws IOException {
 		writeComment(TAB, comment);
 	}
 
 	private File createClassFile(String baseDir, String fileName) {
-		new File(baseDir).mkdirs(); // если директорий нет, создать их
+		new File(baseDir).mkdirs(); // РµСЃР»Рё РґРёСЂРµРєС‚РѕСЂРёР№ РЅРµС‚, СЃРѕР·РґР°С‚СЊ РёС…
 		return new File(concat(sb, baseDir, FILE_SEPARATOR, fileName));
 	}
 

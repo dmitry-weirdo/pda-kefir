@@ -34,7 +34,7 @@ public class CreateAddressTableAppender extends CreateTablesSqlAppender
 		table.addField( getVarcharField("city_district", 50, false) );
 		table.addField( getVarcharField("locality", 50, false) );
 		table.addField( getVarcharField("street", 50, false) );
-		table.addField( getVarcharField("block", 255, false) ); // квартал
+		table.addField( getVarcharField("block", 255, false) ); // РєРІР°СЂС‚Р°Р»
 		table.addField( getVarcharField("house", 15, false) );
 		table.addField( getVarcharField("building", 5, false) );
 		table.addField( getVarcharField("apartment", 10, false) );

@@ -43,7 +43,7 @@ public class VOClassFileWriter extends ClassFileWriter
 		this.renderersClass = renderersClass;
 		this.packageName = ExtEntityUtils.getListVOClassPackageName(extEntity, entityClass);
 		this.className = ExtEntityUtils.getListVOClassSimpleName(extEntity, entityClass);
-		this.failIfFileExists = false; // если VO класс уже есть, не перезаписывать его
+		this.failIfFileExists = false; // РµСЃР»Рё VO РєР»Р°СЃСЃ СѓР¶Рµ РµСЃС‚СЊ, РЅРµ РїРµСЂРµР·Р°РїРёСЃС‹РІР°С‚СЊ РµРіРѕ
 	}
 	@Override
 	protected void writeImports() throws IOException {
@@ -232,7 +232,7 @@ public class VOClassFileWriter extends ClassFileWriter
 			}
 			writeGetterAndSetter(field);
 
-			if (hasAddressFieldAnnotation(field)) // для адресного поля помимо одноименного поля добавляется str поле, содержащее строковое представление адреса
+			if (hasAddressFieldAnnotation(field)) // РґР»СЏ Р°РґСЂРµСЃРЅРѕРіРѕ РїРѕР»СЏ РїРѕРјРёРјРѕ РѕРґРЅРѕРёРјРµРЅРЅРѕРіРѕ РїРѕР»СЏ РґРѕР±Р°РІР»СЏРµС‚СЃСЏ str РїРѕР»Рµ, СЃРѕРґРµСЂР¶Р°С‰РµРµ СЃС‚СЂРѕРєРѕРІРѕРµ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРµ Р°РґСЂРµСЃР°
 				writeGetterAndSetter(getAddressFieldStrFieldName(field), String.class);
 		}
 	}
@@ -301,7 +301,7 @@ public class VOClassFileWriter extends ClassFileWriter
 				continue;
 			}
 
-			// просто поле сущности - переносится без ColumnModel, как есть
+			// РїСЂРѕСЃС‚Рѕ РїРѕР»Рµ СЃСѓС‰РЅРѕСЃС‚Рё - РїРµСЂРµРЅРѕСЃРёС‚СЃСЏ Р±РµР· ColumnModel, РєР°Рє РµСЃС‚СЊ
 			writeFieldDeclaration(field);
 		}
 	}
@@ -320,13 +320,13 @@ public class VOClassFileWriter extends ClassFileWriter
 	}
 
 	private void writeAddressFieldFields(Field field) throws IOException {
-		writeFieldDeclaration(field);// Address поле (без аннотации)
+		writeFieldDeclaration(field);// Address РїРѕР»Рµ (Р±РµР· Р°РЅРЅРѕС‚Р°С†РёРё)
 		out.writeLn();
 
 		if (!hasColumnModelExcludeAnnotation(field))
 			writeColumnModelAnnotation(getFieldColumnHeader(field), null, false);
 
-		writeFieldDeclaration(getAddressFieldStrFieldName(field), String.class); // str поле
+		writeFieldDeclaration(getAddressFieldStrFieldName(field), String.class); // str РїРѕР»Рµ
 		out.writeLn();
 	}
 	private void writeChooseFieldFields(Field field) throws IOException {
@@ -405,7 +405,7 @@ public class VOClassFileWriter extends ClassFileWriter
 		if ( notEmpty(voField.sortParam()) )
 			return voField.sortParam();
 
-		return concat(sb, field.getName(), ".", voField.name()); // по умолчанию - (имя поля + "." + имя поля связанной сущности)
+		return concat(sb, field.getName(), ".", voField.name()); // РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - (РёРјСЏ РїРѕР»СЏ + "." + РёРјСЏ РїРѕР»СЏ СЃРІСЏР·Р°РЅРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё)
 	}
 	private String getVOFieldTooltip(VOField voField, Field field) {
 		if (notEmpty(voField.tooltip()))

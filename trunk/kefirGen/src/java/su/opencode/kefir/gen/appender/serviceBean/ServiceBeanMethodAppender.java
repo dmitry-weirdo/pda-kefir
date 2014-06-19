@@ -24,11 +24,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Добавляет реализациюю методов сервиса в указанный класс, реализующий сервис.
+ * Р”РѕР±Р°РІР»СЏРµС‚ СЂРµР°Р»РёР·Р°С†РёСЋСЋ РјРµС‚РѕРґРѕРІ СЃРµСЂРІРёСЃР° РІ СѓРєР°Р·Р°РЅРЅС‹Р№ РєР»Р°СЃСЃ, СЂРµР°Р»РёР·СѓСЋС‰РёР№ СЃРµСЂРІРёСЃ.
  * <br/>
- * Если класс не существует, он создается с помощью {@linkplain su.opencode.kefir.gen.fileWriter.LocalServiceBeanFileWriter LocalServiceBeanFileWriter}
+ * Р•СЃР»Рё РєР»Р°СЃСЃ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚, РѕРЅ СЃРѕР·РґР°РµС‚СЃСЏ СЃ РїРѕРјРѕС‰СЊСЋ {@linkplain su.opencode.kefir.gen.fileWriter.LocalServiceBeanFileWriter LocalServiceBeanFileWriter}
  * <br/>
- * Если класс реализации сервиса существует, то методы добавляются в место уканное {@linkplain su.opencode.kefir.gen.fileWriter.LocalServiceBeanFileWriter#APPEND_METHOD_IMPLEMENTATION_MARKER маркером}.
+ * Р•СЃР»Рё РєР»Р°СЃСЃ СЂРµР°Р»РёР·Р°С†РёРё СЃРµСЂРІРёСЃР° СЃСѓС‰РµСЃС‚РІСѓРµС‚, С‚Рѕ РјРµС‚РѕРґС‹ РґРѕР±Р°РІР»СЏСЋС‚СЃСЏ РІ РјРµСЃС‚Рѕ СѓРєР°РЅРЅРѕРµ {@linkplain su.opencode.kefir.gen.fileWriter.LocalServiceBeanFileWriter#APPEND_METHOD_IMPLEMENTATION_MARKER РјР°СЂРєРµСЂРѕРј}.
  */
 public abstract class ServiceBeanMethodAppender extends Appender
 {
@@ -54,12 +54,12 @@ public abstract class ServiceBeanMethodAppender extends Appender
 		String classSimpleName = getServiceBeanClassSimpleName(extEntity, entityClass);
 
 		String dirPath = concat(sb, baseDir, FILE_SEPARATOR, packageName.replace(".", FILE_SEPARATOR));
-		new File(dirPath).mkdirs(); // если директорий нет, создать их
+		new File(dirPath).mkdirs(); // РµСЃР»Рё РґРёСЂРµРєС‚РѕСЂРёР№ РЅРµС‚, СЃРѕР·РґР°С‚СЊ РёС…
 		String filePath = concat(sb, dirPath, FILE_SEPARATOR, classSimpleName, ".java");
 		File file = new File(filePath);
 
 		if ( !file.exists() )
-		{ // создать класс сервиса, если он не существует
+		{ // СЃРѕР·РґР°С‚СЊ РєР»Р°СЃСЃ СЃРµСЂРІРёСЃР°, РµСЃР»Рё РѕРЅ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
 			new LocalServiceBeanFileWriter(baseDir, packageName, classSimpleName, getServiceClassName(extEntity, entityClass)).createFile();
 			file = new File(filePath);
 		}
@@ -145,34 +145,34 @@ public abstract class ServiceBeanMethodAppender extends Appender
 	}
 
 	/**
-	 * Добавляет необходимые импорты для методов реализации сервиса.
-	 * @param fileLines строки, считанные из файла, добавлять нужно в их конец, позиция строк уже стоит перед маркером.
-	 * @param imports строки, содержащие уже имеющиеся импорты (нужно проверять, что они не совпадают с добавляемыми импортами).
+	 * Р”РѕР±Р°РІР»СЏРµС‚ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РёРјРїРѕСЂС‚С‹ РґР»СЏ РјРµС‚РѕРґРѕРІ СЂРµР°Р»РёР·Р°С†РёРё СЃРµСЂРІРёСЃР°.
+	 * @param fileLines СЃС‚СЂРѕРєРё, СЃС‡РёС‚Р°РЅРЅС‹Рµ РёР· С„Р°Р№Р»Р°, РґРѕР±Р°РІР»СЏС‚СЊ РЅСѓР¶РЅРѕ РІ РёС… РєРѕРЅРµС†, РїРѕР·РёС†РёСЏ СЃС‚СЂРѕРє СѓР¶Рµ СЃС‚РѕРёС‚ РїРµСЂРµРґ РјР°СЂРєРµСЂРѕРј.
+	 * @param imports СЃС‚СЂРѕРєРё, СЃРѕРґРµСЂР¶Р°С‰РёРµ СѓР¶Рµ РёРјРµСЋС‰РёРµСЃСЏ РёРјРїРѕСЂС‚С‹ (РЅСѓР¶РЅРѕ РїСЂРѕРІРµСЂСЏС‚СЊ, С‡С‚Рѕ РѕРЅРё РЅРµ СЃРѕРІРїР°РґР°СЋС‚ СЃ РґРѕР±Р°РІР»СЏРµРјС‹РјРё РёРјРїРѕСЂС‚Р°РјРё).
 	 */
 	protected abstract void appendImports(List<String> fileLines, List<String> imports);
 
 	/**
-	 * @return список сигнатур методов, добавляемых в сервис.
+	 * @return СЃРїРёСЃРѕРє СЃРёРіРЅР°С‚СѓСЂ РјРµС‚РѕРґРѕРІ, РґРѕР±Р°РІР»СЏРµРјС‹С… РІ СЃРµСЂРІРёСЃ.
 	 */
 	protected abstract List<String> getMethodSignatures();
 
 	/**
-	 * Добавляет реализации методов сервиса перед указанным маркером.
-	 * @param fileLines строки, считанные из файла, добавлять нужно в их конец, позиция строк уже стоит перед маркером.
+	 * Р”РѕР±Р°РІР»СЏРµС‚ СЂРµР°Р»РёР·Р°С†РёРё РјРµС‚РѕРґРѕРІ СЃРµСЂРІРёСЃР° РїРµСЂРµРґ СѓРєР°Р·Р°РЅРЅС‹Рј РјР°СЂРєРµСЂРѕРј.
+	 * @param fileLines СЃС‚СЂРѕРєРё, СЃС‡РёС‚Р°РЅРЅС‹Рµ РёР· С„Р°Р№Р»Р°, РґРѕР±Р°РІР»СЏС‚СЊ РЅСѓР¶РЅРѕ РІ РёС… РєРѕРЅРµС†, РїРѕР·РёС†РёСЏ СЃС‚СЂРѕРє СѓР¶Рµ СЃС‚РѕРёС‚ РїРµСЂРµРґ РјР°СЂРєРµСЂРѕРј.
 	 */
 	protected abstract void appendMethods(List<String> fileLines);
 
 	/**
-	 * Добавляет поля реализации сервиса.
-	 * @param fileLines строки, считанные из файла, добавлять нужно в их конец, позиция строк уже стоит перед маркером.
-	 * @param fields строки, содержащие уже имеющиеся private поля (нужно проверять, что они не совпадают с добавляемыми полдями по имени).
+	 * Р”РѕР±Р°РІР»СЏРµС‚ РїРѕР»СЏ СЂРµР°Р»РёР·Р°С†РёРё СЃРµСЂРІРёСЃР°.
+	 * @param fileLines СЃС‚СЂРѕРєРё, СЃС‡РёС‚Р°РЅРЅС‹Рµ РёР· С„Р°Р№Р»Р°, РґРѕР±Р°РІР»СЏС‚СЊ РЅСѓР¶РЅРѕ РІ РёС… РєРѕРЅРµС†, РїРѕР·РёС†РёСЏ СЃС‚СЂРѕРє СѓР¶Рµ СЃС‚РѕРёС‚ РїРµСЂРµРґ РјР°СЂРєРµСЂРѕРј.
+	 * @param fields СЃС‚СЂРѕРєРё, СЃРѕРґРµСЂР¶Р°С‰РёРµ СѓР¶Рµ РёРјРµСЋС‰РёРµСЃСЏ private РїРѕР»СЏ (РЅСѓР¶РЅРѕ РїСЂРѕРІРµСЂСЏС‚СЊ, С‡С‚Рѕ РѕРЅРё РЅРµ СЃРѕРІРїР°РґР°СЋС‚ СЃ РґРѕР±Р°РІР»СЏРµРјС‹РјРё РїРѕР»РґСЏРјРё РїРѕ РёРјРµРЅРё).
 	 */
 	protected void appendFields(List<String> fileLines, List<String> fields) {
 		// default do nothing
 	}
 
 	protected void appendEjbField(String serviceClassFullName, List<String> fileLines, List<String> fields) {
-		if ( serviceClassFullName.equals( getServiceClassName(extEntity, entityClass) ) ) // исключить добавление ссылки сервиса на самого себя
+		if ( serviceClassFullName.equals( getServiceClassName(extEntity, entityClass) ) ) // РёСЃРєР»СЋС‡РёС‚СЊ РґРѕР±Р°РІР»РµРЅРёРµ СЃСЃС‹Р»РєРё СЃРµСЂРІРёСЃР° РЅР° СЃР°РјРѕРіРѕ СЃРµР±СЏ
 			return;
 
 		String simpleName = getSimpleName(serviceClassFullName);

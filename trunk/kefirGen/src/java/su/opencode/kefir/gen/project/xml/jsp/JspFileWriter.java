@@ -32,13 +32,13 @@ public abstract class JspFileWriter
 	public void createFile() throws IOException {
 		File file = createJspFile();
 		if (file.exists())
-		{ // todo: возможность внешним образом задавать перезапись существующих файлов
+		{ // todo: РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РІРЅРµС€РЅРёРј РѕР±СЂР°Р·РѕРј Р·Р°РґР°РІР°С‚СЊ РїРµСЂРµР·Р°РїРёСЃСЊ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёС… С„Р°Р№Р»РѕРІ
 			if (failIfFileExists)
 			{
 				throw new IllegalStateException( concat(sb, "file \"", file.getAbsolutePath(), "\" already exists") );
 			}
 			else
-			{ // оставить существующий файл как есть
+			{ // РѕСЃС‚Р°РІРёС‚СЊ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ С„Р°Р№Р» РєР°Рє РµСЃС‚СЊ
 				logger.info( concat(sb, "file \"", file.getAbsolutePath(), "\" already exists. It is not overwritten.") );
 				return;
 			}
@@ -58,13 +58,13 @@ public abstract class JspFileWriter
 
 	private File createJspFile() {
 		String dirPath = concat(sb, baseDir, FILE_SEPARATOR, dir);
-		createDirs(dirPath); // если директорий нет, создать их
+		createDirs(dirPath); // РµСЃР»Рё РґРёСЂРµРєС‚РѕСЂРёР№ РЅРµС‚, СЃРѕР·РґР°С‚СЊ РёС…
 
 		String filePath;
-		if (fileName.endsWith(JSP_FILE_EXTENSION) || fileName.endsWith(HTML_FILE_EXTENSION)) // если имя файла уже содержит ".jsp" или ".html", не добавлять его
+		if (fileName.endsWith(JSP_FILE_EXTENSION) || fileName.endsWith(HTML_FILE_EXTENSION)) // РµСЃР»Рё РёРјСЏ С„Р°Р№Р»Р° СѓР¶Рµ СЃРѕРґРµСЂР¶РёС‚ ".jsp" РёР»Рё ".html", РЅРµ РґРѕР±Р°РІР»СЏС‚СЊ РµРіРѕ
 			filePath = concat(sb, dirPath, FILE_SEPARATOR, fileName);
 		else
-			filePath = concat(sb, dirPath, FILE_SEPARATOR, fileName, JSP_FILE_EXTENSION); // добавить ".jsp" к имени файла
+			filePath = concat(sb, dirPath, FILE_SEPARATOR, fileName, JSP_FILE_EXTENSION); // РґРѕР±Р°РІРёС‚СЊ ".jsp" Рє РёРјРµРЅРё С„Р°Р№Р»Р°
 
 		return new File(filePath);
 	}

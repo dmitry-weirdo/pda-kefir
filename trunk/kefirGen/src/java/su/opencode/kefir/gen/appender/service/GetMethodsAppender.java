@@ -26,7 +26,7 @@ public class GetMethodsAppender extends ServiceMethodAppender
 	}
 	protected void appendImports(List<String> fileLines, List<String> imports) {
 		addImport(VO.class, fileLines, imports);
-		addImport( entityClass.getName(), fileLines, imports ); // ÂÒÎË ÒÛ˘ÌÓÒÚ¸ ÌÂ ‚ ÚÓÏ ÊÂ Ô‡ÍÂÚÂ, ˜ÚÓ ÒÂ‚ËÒ -> ‰Ó·‡‚ËÚ¸ ËÏÔÓÚ ÒÛ˘ÌÓÒÚË
+		addImport( entityClass.getName(), fileLines, imports ); // –µ—Å–ª–∏ —Å—É—â–Ω–æ—Å—Ç—å –Ω–µ –≤ —Ç–æ–º –∂–µ –ø–∞–∫–µ—Ç–µ, —á—Ç–æ —Å–µ—Ä–≤–∏—Å -> –¥–æ–±–∞–≤–∏—Ç—å –∏–º–ø–æ—Ä—Ç —Å—É—â–Ω–æ—Å—Ç–∏
 	}
 	@Override
 	protected List<String> getMethodSignatures() {

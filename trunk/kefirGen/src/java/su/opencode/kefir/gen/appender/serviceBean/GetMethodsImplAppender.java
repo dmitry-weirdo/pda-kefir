@@ -31,7 +31,7 @@ public class GetMethodsImplAppender extends ServiceBeanMethodAppender
 
 	protected void appendImports(List<String> fileLines, List<String> imports) {
 		addImport(VO.class, fileLines, imports);
-		addImport( entityClass.getName(), fileLines, imports ); // если сущность не в том же пакете, что и реализация сервиса -> добавить импорт сущности
+		addImport( entityClass.getName(), fileLines, imports ); // РµСЃР»Рё СЃСѓС‰РЅРѕСЃС‚СЊ РЅРµ РІ С‚РѕРј Р¶Рµ РїР°РєРµС‚Рµ, С‡С‚Рѕ Рё СЂРµР°Р»РёР·Р°С†РёСЏ СЃРµСЂРІРёСЃР° -> РґРѕР±Р°РІРёС‚СЊ РёРјРїРѕСЂС‚ СЃСѓС‰РЅРѕСЃС‚Рё
 
 		if ( extEntity.getUsingSelectById() )
 		{
@@ -55,7 +55,7 @@ public class GetMethodsImplAppender extends ServiceBeanMethodAppender
 		addMethodStart(fileLines, getGetEntityMethodSignature());
 
 		if (extEntity.getUsingSelectById())
-		{ // использовать запрос "select Entity o where o.id = :id"
+		{ // РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ Р·Р°РїСЂРѕСЃ "select Entity o where o.id = :id"
 			String queryStrVarName = "queryStr";
 			String queryAlias = "o";
 			String idFieldName = getIdField(entityClass).getName();
@@ -79,7 +79,7 @@ public class GetMethodsImplAppender extends ServiceBeanMethodAppender
 			fileLines.add( concat(sb, "\t\treturn (", className, ") ", resultListVarName, ".get(0);") ); // return (Holder) resultList.get(0);
 		}
 		else
-		{ // использовать em.find
+		{ // РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ em.find
 			fileLines.add( concat(sb, "\t\treturn ", EM_FIELD_NAME, ".find(", className, ".class, ", ID_PARAM_NAME, ");") );
 		}
 

@@ -27,7 +27,7 @@ public class EntityQueryBuilderFileWriter extends ClassFileWriter
 	}
 	protected void writeImports() throws IOException {
 		if ( !samePackage( getQueryBuilderClassName(extEntity, entityClass), entityClass.getName()) )
-		{ // добавить импорт класса сущности, если билдер находится в другом пакете
+		{ // РґРѕР±Р°РІРёС‚СЊ РёРјРїРѕСЂС‚ РєР»Р°СЃСЃР° СЃСѓС‰РЅРѕСЃС‚Рё, РµСЃР»Рё Р±РёР»РґРµСЂ РЅР°С…РѕРґРёС‚СЃСЏ РІ РґСЂСѓРіРѕРј РїР°РєРµС‚Рµ
 			writeImport(entityClass.getName());
 		}
 

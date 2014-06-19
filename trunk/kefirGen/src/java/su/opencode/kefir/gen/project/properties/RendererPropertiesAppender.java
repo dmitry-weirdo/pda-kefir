@@ -58,9 +58,9 @@ public class RendererPropertiesAppender extends PropertiesAppender
 		String key = getEnumRendererFullName(enumField, enumClass);
 		String value = getEnumFieldRendererClassFullName(enumField, enumClass);
 
-		// если уже есть такое свойство, не добавлять его
+		// РµСЃР»Рё СѓР¶Рµ РµСЃС‚СЊ С‚Р°РєРѕРµ СЃРІРѕР№СЃС‚РІРѕ, РЅРµ РґРѕР±Р°РІР»СЏС‚СЊ РµРіРѕ
 		for (String allFileLine : allFileLines)
-			if (allFileLine.startsWith(key)) // todo: нормальная проверка (не учитывать комменты)
+			if (allFileLine.startsWith(key)) // todo: РЅРѕСЂРјР°Р»СЊРЅР°СЏ РїСЂРѕРІРµСЂРєР° (РЅРµ СѓС‡РёС‚С‹РІР°С‚СЊ РєРѕРјРјРµРЅС‚С‹)
 				return;
 
 		appendProperty(fileLinesToAppend, key, value);

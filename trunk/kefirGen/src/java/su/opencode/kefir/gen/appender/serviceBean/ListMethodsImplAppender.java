@@ -25,13 +25,13 @@ public class ListMethodsImplAppender extends ServiceBeanMethodAppender
 	}
 
 	protected void appendImports(List<String> fileLines, List<String> imports) {
-		// íà ñëó÷àé, åñëè îíè áûëè óäàëåíû ïðè îïòèìèçàöèè èìïîðòîâ
+		// Ð½Ð° ÑÐ»ÑƒÑ‡Ð°Ð¹, ÐµÑÐ»Ð¸ Ð¾Ð½Ð¸ Ð±Ñ‹Ð»Ð¸ ÑƒÐ´Ð°Ð»ÐµÐ½Ñ‹ Ð¿Ñ€Ð¸ Ð¾Ð¿Ñ‚Ð¸Ð¼Ð¸Ð·Ð°Ñ†Ð¸Ð¸ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¾Ð²
 		addImport(SortConfig.class, fileLines, imports);
 		addImport(List.class, fileLines, imports);
 
-		addImport( getListVOClassName(extEntity, entityClass), fileLines, imports ); // åñëè VO íå â òîì æå ïàêåòå, ÷òî è ðåàëèçàöèÿ ñåðâèñà -> äîáàâèòü èìïîðò VO
-		addImport( getFilterConfigClassName(extEntity, entityClass), fileLines, imports ); // åñëè FilterConfig íå â òîì æå ïàêåòå, ÷òî è ðåàëèçàöèÿ ñåðâèñà -> äîáàâèòü èìïîðò FilterConfig
-		addImport( getQueryBuilderClassName(extEntity, entityClass), fileLines, imports ); // åñëè QueryBuilder íå â òîì æå ïàêåòå, ÷òî è ðåàëèçàöèÿ ñåðâèñà -> äîáàâèòü èìïîðò QueryBuilder
+		addImport( getListVOClassName(extEntity, entityClass), fileLines, imports ); // ÐµÑÐ»Ð¸ VO Ð½Ðµ Ð² Ñ‚Ð¾Ð¼ Ð¶Ðµ Ð¿Ð°ÐºÐµÑ‚Ðµ, Ñ‡Ñ‚Ð¾ Ð¸ Ñ€ÐµÐ°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ ÑÐµÑ€Ð²Ð¸ÑÐ° -> Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚ VO
+		addImport( getFilterConfigClassName(extEntity, entityClass), fileLines, imports ); // ÐµÑÐ»Ð¸ FilterConfig Ð½Ðµ Ð² Ñ‚Ð¾Ð¼ Ð¶Ðµ Ð¿Ð°ÐºÐµÑ‚Ðµ, Ñ‡Ñ‚Ð¾ Ð¸ Ñ€ÐµÐ°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ ÑÐµÑ€Ð²Ð¸ÑÐ° -> Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚ FilterConfig
+		addImport( getQueryBuilderClassName(extEntity, entityClass), fileLines, imports ); // ÐµÑÐ»Ð¸ QueryBuilder Ð½Ðµ Ð² Ñ‚Ð¾Ð¼ Ð¶Ðµ Ð¿Ð°ÐºÐµÑ‚Ðµ, Ñ‡Ñ‚Ð¾ Ð¸ Ñ€ÐµÐ°Ð»Ð¸Ð·Ð°Ñ†Ð¸Ñ ÑÐµÑ€Ð²Ð¸ÑÐ° -> Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚ QueryBuilder
 	}
 	@Override
 	protected List<String> getMethodSignatures() {

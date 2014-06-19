@@ -29,13 +29,13 @@ public abstract class CssFileWriter
 	public void createFile() throws IOException {
 		File file = createCssFile();
 		if (file.exists())
-		{ // todo: возможность внешним образом задавать перезапись существующих файлов
+		{ // todo: РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РІРЅРµС€РЅРёРј РѕР±СЂР°Р·РѕРј Р·Р°РґР°РІР°С‚СЊ РїРµСЂРµР·Р°РїРёСЃСЊ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёС… С„Р°Р№Р»РѕРІ
 			if (failIfFileExists)
 			{
 				throw new IllegalStateException( concat(sb, "file \"", file.getAbsolutePath(), "\" already exists") );
 			}
 			else
-			{ // оставить существующий файл как есть
+			{ // РѕСЃС‚Р°РІРёС‚СЊ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ С„Р°Р№Р» РєР°Рє РµСЃС‚СЊ
 				logger.info( concat(sb, "file \"", file.getAbsolutePath(), "\" already exists. It is not overwritten.") );
 				return;
 			}
@@ -55,13 +55,13 @@ public abstract class CssFileWriter
 
 	private File createCssFile() {
 		String dirPath = concat(sb, baseDir, FILE_SEPARATOR, dir);
-		createDirs(dirPath); // если директорий нет, создать их
+		createDirs(dirPath); // РµСЃР»Рё РґРёСЂРµРєС‚РѕСЂРёР№ РЅРµС‚, СЃРѕР·РґР°С‚СЊ РёС…
 
 		String filePath;
-		if (fileName.endsWith(CSS_FILE_EXTENSION)) // если имя файла уже содержит ".css", не добавлять его
+		if (fileName.endsWith(CSS_FILE_EXTENSION)) // РµСЃР»Рё РёРјСЏ С„Р°Р№Р»Р° СѓР¶Рµ СЃРѕРґРµСЂР¶РёС‚ ".css", РЅРµ РґРѕР±Р°РІР»СЏС‚СЊ РµРіРѕ
 			filePath = concat(sb, dirPath, FILE_SEPARATOR, fileName);
 		else
-			filePath = concat(sb, dirPath, FILE_SEPARATOR, fileName, CSS_FILE_EXTENSION); // добавить ".css" к имени файла
+			filePath = concat(sb, dirPath, FILE_SEPARATOR, fileName, CSS_FILE_EXTENSION); // РґРѕР±Р°РІРёС‚СЊ ".css" Рє РёРјРµРЅРё С„Р°Р№Р»Р°
 
 		return new File(filePath);
 	}

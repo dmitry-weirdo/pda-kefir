@@ -19,22 +19,22 @@ import static su.opencode.kefir.gen.field.DateField.NULL_DATE_VALUE;
 import java.util.Date;
 
 /**
- * Разрешение на строительство (договор).
- * Выдается при заключении договора аренды на каждый {@linkplain su.opencode.minstroy.ejb.building.Building строительный объект},
- * которое будет строиться {@linkplain su.opencode.minstroy.ejb.leasing.Developer застройщиком} на {@linkplain su.opencode.minstroy.ejb.leasing.Parcel земельном участке}.
+ * Р Р°Р·СЂРµС€РµРЅРёРµ РЅР° СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІРѕ (РґРѕРіРѕРІРѕСЂ).
+ * Р’С‹РґР°РµС‚СЃСЏ РїСЂРё Р·Р°РєР»СЋС‡РµРЅРёРё РґРѕРіРѕРІРѕСЂР° Р°СЂРµРЅРґС‹ РЅР° РєР°Р¶РґС‹Р№ {@linkplain su.opencode.minstroy.ejb.building.Building СЃС‚СЂРѕРёС‚РµР»СЊРЅС‹Р№ РѕР±СЉРµРєС‚},
+ * РєРѕС‚РѕСЂРѕРµ Р±СѓРґРµС‚ СЃС‚СЂРѕРёС‚СЊСЃСЏ {@linkplain su.opencode.minstroy.ejb.leasing.Developer Р·Р°СЃС‚СЂРѕР№С‰РёРєРѕРј} РЅР° {@linkplain su.opencode.minstroy.ejb.leasing.Parcel Р·РµРјРµР»СЊРЅРѕРј СѓС‡Р°СЃС‚РєРµ}.
  */
 @ExtEntity(
 	queryBuilderJoin = "left join o.building b",
 
-	listWindowTitle = "Список разрешений на строительство",
-	notChosenTitle = "Разрешение на строительство не выбрано",
-	notChosenMessage = "Выберите разрешение на строительство",
+	listWindowTitle = "РЎРїРёСЃРѕРє СЂР°Р·СЂРµС€РµРЅРёР№ РЅР° СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІРѕ",
+	notChosenTitle = "Р Р°Р·СЂРµС€РµРЅРёРµ РЅР° СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІРѕ РЅРµ РІС‹Р±СЂР°РЅРѕ",
+	notChosenMessage = "Р’С‹Р±РµСЂРёС‚Рµ СЂР°Р·СЂРµС€РµРЅРёРµ РЅР° СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІРѕ",
 
-	chooseWindowTitle = "Выбор разрешения на строительство",
-	createWindowTitle = "Ввод разрешения на строительство",
-	showWindowTitle = "Просмотр разрешения на строительство",
-	updateWindowTitle = "Изменение разрешения на строительство",
-	deleteWindowTitle = "Удаление разрешения на строительство",
+	chooseWindowTitle = "Р’С‹Р±РѕСЂ СЂР°Р·СЂРµС€РµРЅРёСЏ РЅР° СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІРѕ",
+	createWindowTitle = "Р’РІРѕРґ СЂР°Р·СЂРµС€РµРЅРёСЏ РЅР° СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІРѕ",
+	showWindowTitle = "РџСЂРѕСЃРјРѕС‚СЂ СЂР°Р·СЂРµС€РµРЅРёСЏ РЅР° СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІРѕ",
+	updateWindowTitle = "РР·РјРµРЅРµРЅРёРµ СЂР°Р·СЂРµС€РµРЅРёСЏ РЅР° СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІРѕ",
+	deleteWindowTitle = "РЈРґР°Р»РµРЅРёРµ СЂР°Р·СЂРµС€РµРЅРёСЏ РЅР° СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІРѕ",
 
 	formWindowWidth = 800,
 
@@ -53,7 +53,7 @@ import java.util.Date;
 	deleteServletUrl = "/buildingPermissionDeleteNew",
 
 	preventDeleteEntities = {
-		@PreventDeleteEntity(className = "su.opencode.minstroy.ejb.building.Building", message = "Невозможно удалить разрешение на строительство, т.к. существует строительный объект, связанный с ним.")
+		@PreventDeleteEntity(className = "su.opencode.minstroy.ejb.building.Building", message = "РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРґР°Р»РёС‚СЊ СЂР°Р·СЂРµС€РµРЅРёРµ РЅР° СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІРѕ, С‚.Рє. СЃСѓС‰РµСЃС‚РІСѓРµС‚ СЃС‚СЂРѕРёС‚РµР»СЊРЅС‹Р№ РѕР±СЉРµРєС‚, СЃРІСЏР·Р°РЅРЅС‹Р№ СЃ РЅРёРј.")
 	}
 )
 public class BuildingPermission extends JsonObject
@@ -105,58 +105,58 @@ public class BuildingPermission extends JsonObject
 	private Integer id;
 
 	/**
-	 * Договор аренды. В рамках одного договора аренды
-	 * могут быть заключены разрешения на строительство одного или более
-	 * {@linkplain su.opencode.minstroy.ejb.building.Building строительных объектов}.
+	 * Р”РѕРіРѕРІРѕСЂ Р°СЂРµРЅРґС‹. Р’ СЂР°РјРєР°С… РѕРґРЅРѕРіРѕ РґРѕРіРѕРІРѕСЂР° Р°СЂРµРЅРґС‹
+	 * РјРѕРіСѓС‚ Р±С‹С‚СЊ Р·Р°РєР»СЋС‡РµРЅС‹ СЂР°Р·СЂРµС€РµРЅРёСЏ РЅР° СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІРѕ РѕРґРЅРѕРіРѕ РёР»Рё Р±РѕР»РµРµ
+	 * {@linkplain su.opencode.minstroy.ejb.building.Building СЃС‚СЂРѕРёС‚РµР»СЊРЅС‹С… РѕР±СЉРµРєС‚РѕРІ}.
 	 */
-	@FilterConfigField(listWindowFilterTitle = "договор аренды", listWindowTitleParamName = "number")
+	@FilterConfigField(listWindowFilterTitle = "РґРѕРіРѕРІРѕСЂ Р°СЂРµРЅРґС‹", listWindowTitleParamName = "number")
 	@ChooseField(
-		fieldSetName = "Договор аренды",
+		fieldSetName = "Р”РѕРіРѕРІРѕСЂ Р°СЂРµРЅРґС‹",
 
 		fields = {
-			@ChooseFieldTextField(name = "number", label = "Договор аренды", maxLength = 100, width = 400, formPanelWidth = 580),
-			@ChooseFieldTextField(name = "parcelCadastralNumber", label = "Земельный участок", maxLength = 25, width = 400, formPanelWidth = 580),
-			@ChooseFieldTextField(name = "developerName", label = "Застройщик", maxLength = 255, width = 400, formPanelWidth = 580)
+			@ChooseFieldTextField(name = "number", label = "Р”РѕРіРѕРІРѕСЂ Р°СЂРµРЅРґС‹", maxLength = 100, width = 400, formPanelWidth = 580),
+			@ChooseFieldTextField(name = "parcelCadastralNumber", label = "Р—РµРјРµР»СЊРЅС‹Р№ СѓС‡Р°СЃС‚РѕРє", maxLength = 25, width = 400, formPanelWidth = 580),
+			@ChooseFieldTextField(name = "developerName", label = "Р—Р°СЃС‚СЂРѕР№С‰РёРє", maxLength = 255, width = 400, formPanelWidth = 580)
 		}
 	)
 	private LeaseContract leaseContract;
 
-	@FilterConfigField(name = "parcelId", type = "Integer", filterFieldName = "id", sqlParamName = "leaseContract.parcel.id", listWindowFilterTitle = "земельный участок", listWindowTitleParamName = "cadastralNumber")
+	@FilterConfigField(name = "parcelId", type = "Integer", filterFieldName = "id", sqlParamName = "leaseContract.parcel.id", listWindowFilterTitle = "Р·РµРјРµР»СЊРЅС‹Р№ СѓС‡Р°СЃС‚РѕРє", listWindowTitleParamName = "cadastralNumber")
 	private Parcel parcel; // transient for filterConfig
 
-	@FilterConfigField(name = "developerId", type = "Integer", filterFieldName = "id", sqlParamName = "leaseContract.developer.id", listWindowFilterTitle = "застройщик")
+	@FilterConfigField(name = "developerId", type = "Integer", filterFieldName = "id", sqlParamName = "leaseContract.developer.id", listWindowFilterTitle = "Р·Р°СЃС‚СЂРѕР№С‰РёРє")
 	private Developer developer; // transient for filterConfig
 
 
 	/**
-	 * Номер разрешения на строительство.
-	 * Имеет формат "RU 630101803"
+	 * РќРѕРјРµСЂ СЂР°Р·СЂРµС€РµРЅРёСЏ РЅР° СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІРѕ.
+	 * РРјРµРµС‚ С„РѕСЂРјР°С‚ "RU 630101803"
 	 */
-	@SearchField(label = "Номер:", width = 250)
-	@TextField(label = "Номер разрешения на строительство", width = 300, maxLength = 100)
+	@SearchField(label = "РќРѕРјРµСЂ:", width = 250)
+	@TextField(label = "РќРѕРјРµСЂ СЂР°Р·СЂРµС€РµРЅРёСЏ РЅР° СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІРѕ", width = 300, maxLength = 100)
 	private String number;
 
 	/**
-	 * Дата начала срока действия договора
+	 * Р”Р°С‚Р° РЅР°С‡Р°Р»Р° СЃСЂРѕРєР° РґРµР№СЃС‚РІРёСЏ РґРѕРіРѕРІРѕСЂР°
 	 */
-	@DateField(label = "Дата начала срока действия", maxValue = NULL_DATE_VALUE)
+	@DateField(label = "Р”Р°С‚Р° РЅР°С‡Р°Р»Р° СЃСЂРѕРєР° РґРµР№СЃС‚РІРёСЏ", maxValue = NULL_DATE_VALUE)
 	private Date beginDate;
 
 	/**
-	 * Дата окончания срока действия договора
+	 * Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ СЃСЂРѕРєР° РґРµР№СЃС‚РІРёСЏ РґРѕРіРѕРІРѕСЂР°
 	 */
-	@DateField(label = "Дата окончания срока действия", maxValue = NULL_DATE_VALUE)
+	@DateField(label = "Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ СЃСЂРѕРєР° РґРµР№СЃС‚РІРёСЏ", maxValue = NULL_DATE_VALUE)
 	private Date endDate;
 
 	/**
-	 * Дата, до которой был продле	н договор.
-	 * Обязана быть больше, чем дата окончания срока действия договора.
+	 * Р”Р°С‚Р°, РґРѕ РєРѕС‚РѕСЂРѕР№ Р±С‹Р» РїСЂРѕРґР»Рµ	РЅ РґРѕРіРѕРІРѕСЂ.
+	 * РћР±СЏР·Р°РЅР° Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ, С‡РµРј РґР°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ СЃСЂРѕРєР° РґРµР№СЃС‚РІРёСЏ РґРѕРіРѕРІРѕСЂР°.
 	 */
-	@DateField(label = "Дата продления", maxValue = NULL_DATE_VALUE, allowBlank = true)
+	@DateField(label = "Р”Р°С‚Р° РїСЂРѕРґР»РµРЅРёСЏ", maxValue = NULL_DATE_VALUE, allowBlank = true)
 	private Date prolongationDate;
 
 	/**
-	 * Строительный объект, на который выдается разрешение на строительство.
+	 * РЎС‚СЂРѕРёС‚РµР»СЊРЅС‹Р№ РѕР±СЉРµРєС‚, РЅР° РєРѕС‚РѕСЂС‹Р№ РІС‹РґР°РµС‚СЃСЏ СЂР°Р·СЂРµС€РµРЅРёРµ РЅР° СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІРѕ.
 	 */
 	@FilterConfigField(name = "noBuilding", type = "Boolean", sqlParamName = "b", sqlParamValue = FilterConfigField.NULL_VALUE, addEntityPrefix = false)
 	private Integer building;

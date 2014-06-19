@@ -41,8 +41,8 @@ public class JsUtils
 	}
 
 	/**
-	 * @param arguments список аргументов функции
-	 * @return заголовок анонимной (без имени) js-функции без табов впереди.
+	 * @param arguments СЃРїРёСЃРѕРє Р°СЂРіСѓРјРµРЅС‚РѕРІ С„СѓРЅРєС†РёРё
+	 * @return Р·Р°РіРѕР»РѕРІРѕРє Р°РЅРѕРЅРёРјРЅРѕР№ (Р±РµР· РёРјРµРЅРё) js-С„СѓРЅРєС†РёРё Р±РµР· С‚Р°Р±РѕРІ РІРїРµСЂРµРґРё.
 	 */
 	public static String getAnonymousFunctionHeader(String... arguments) {
 		return getFunctionHeader(new StringBuffer(), null, 0, arguments);
@@ -81,10 +81,10 @@ public class JsUtils
 	public static String getFunctionHeader(String functionName, int indentTabsCount, String... arguments) {
 		return getFunctionHeader(new StringBuffer(), functionName, indentTabsCount, arguments);
 	}
-	public static String getFunctionHeader(String functionName, String... arguments) { // заголовок функции с отступом по умолчанию (один таб)
+	public static String getFunctionHeader(String functionName, String... arguments) { // Р·Р°РіРѕР»РѕРІРѕРє С„СѓРЅРєС†РёРё СЃ РѕС‚СЃС‚СѓРїРѕРј РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ (РѕРґРёРЅ С‚Р°Р±)
 		return getFunctionHeader(new StringBuffer(), functionName, DEFAULT_FUNCTION_INDENT_TABS_COUNT, arguments);
 	}
-	public static String getFunctionHeader(StringBuffer sb, String functionName, String... arguments) { // заголовок функции с отступом по умолчанию (один таб)
+	public static String getFunctionHeader(StringBuffer sb, String functionName, String... arguments) { // Р·Р°РіРѕР»РѕРІРѕРє С„СѓРЅРєС†РёРё СЃ РѕС‚СЃС‚СѓРїРѕРј РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ (РѕРґРёРЅ С‚Р°Р±)
 		return getFunctionHeader(sb, functionName, DEFAULT_FUNCTION_INDENT_TABS_COUNT, arguments);
 	}
 
