@@ -19,8 +19,8 @@ import java.util.List;
 import static su.opencode.kefir.util.StringUtils.concat;
 
 /**
- * Добавляет описание и маппинг сервлета в указанный файл web.xml в кодировке UTF-8.
- * в места, помеченные специальными маркерами.
+ * Р”РѕР±Р°РІР»СЏРµС‚ РѕРїРёСЃР°РЅРёРµ Рё РјР°РїРїРёРЅРі СЃРµСЂРІР»РµС‚Р° РІ СѓРєР°Р·Р°РЅРЅС‹Р№ С„Р°Р№Р» web.xml РІ РєРѕРґРёСЂРѕРІРєРµ UTF-8.
+ * РІ РјРµСЃС‚Р°, РїРѕРјРµС‡РµРЅРЅС‹Рµ СЃРїРµС†РёР°Р»СЊРЅС‹РјРё РјР°СЂРєРµСЂР°РјРё.
  */
 public abstract class ServletMappingAppender extends XmlAppender
 {

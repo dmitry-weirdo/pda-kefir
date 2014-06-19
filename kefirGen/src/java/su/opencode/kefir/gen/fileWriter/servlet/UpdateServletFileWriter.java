@@ -42,6 +42,6 @@ public class UpdateServletFileWriter extends EmptyJsonServletFileWriter
 		out.writeLn("\t\t\t\t", className, " ", entityVarName, " = ", FROM_JSON_FUNCTION_NAME, "(", className, ".class);");
 		out.writeLn("\t\t\t\t", DEFAULT_SERVICE_VAR_NAME, ".", getUpdateMethodName(extEntity, entityClass), "(", GET_ID_FUNCTION_NAME, "(), ", entityVarName, ");");
 		out.writeLn();
-		out.writeLn("\t\t\t\t", WRITE_SUCCESS_FUNCTION_NAME, "();"); // todo: если надо, в писать в респонс измененную сущность
+		out.writeLn("\t\t\t\t", WRITE_SUCCESS_FUNCTION_NAME, "();"); // todo: РµСЃР»Рё РЅР°РґРѕ, РІ РїРёСЃР°С‚СЊ РІ СЂРµСЃРїРѕРЅСЃ РёР·РјРµРЅРµРЅРЅСѓСЋ СЃСѓС‰РЅРѕСЃС‚СЊ
 	}
 }

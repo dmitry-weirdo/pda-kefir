@@ -26,7 +26,7 @@ import static su.opencode.kefir.util.StringUtils.*;
 import static su.opencode.kefir.util.StringUtils.concat;
 
 /**
- * Добавляет кнопку, открывающую список сущностей, в главное меню.
+ * Р”РѕР±Р°РІР»СЏРµС‚ РєРЅРѕРїРєСѓ, РѕС‚РєСЂС‹РІР°СЋС‰СѓСЋ СЃРїРёСЃРѕРє СЃСѓС‰РЅРѕСЃС‚РµР№, РІ РіР»Р°РІРЅРѕРµ РјРµРЅСЋ.
  */
 public class MainPageAppender extends Appender
 {

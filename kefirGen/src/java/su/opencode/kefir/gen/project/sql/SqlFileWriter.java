@@ -36,13 +36,13 @@ public abstract class SqlFileWriter
 	public void createFile() throws IOException {
 		File file = createSqlFile();
 		if (file.exists())
-		{ // todo: возможность внешним образом задавать перезапись существующих файлов
+		{ // todo: РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РІРЅРµС€РЅРёРј РѕР±СЂР°Р·РѕРј Р·Р°РґР°РІР°С‚СЊ РїРµСЂРµР·Р°РїРёСЃСЊ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёС… С„Р°Р№Р»РѕРІ
 			if (failIfFileExists)
 			{
 				throw new IllegalStateException( concat(sb, "file \"", file.getAbsolutePath(), "\" already exists") );
 			}
 			else
-			{ // оставить существующий файл как есть
+			{ // РѕСЃС‚Р°РІРёС‚СЊ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ С„Р°Р№Р» РєР°Рє РµСЃС‚СЊ
 				logger.info( concat(sb, "file \"", file.getAbsolutePath(), "\" already exists. It is not overwritten.") );
 				return;
 			}
@@ -62,13 +62,13 @@ public abstract class SqlFileWriter
 
 	private File createSqlFile() {
 		String dirPath = concat(sb, baseDir, FILE_SEPARATOR, dir);
-		createDirs(dirPath); // если директорий нет, создать их
+		createDirs(dirPath); // РµСЃР»Рё РґРёСЂРµРєС‚РѕСЂРёР№ РЅРµС‚, СЃРѕР·РґР°С‚СЊ РёС…
 
 		String filePath;
-		if (fileName.endsWith(SQL_FILE_EXTENSION)) // если имя файла уже содержит ".sql", не добавлять его
+		if (fileName.endsWith(SQL_FILE_EXTENSION)) // РµСЃР»Рё РёРјСЏ С„Р°Р№Р»Р° СѓР¶Рµ СЃРѕРґРµСЂР¶РёС‚ ".sql", РЅРµ РґРѕР±Р°РІР»СЏС‚СЊ РµРіРѕ
 			filePath = concat(sb, dirPath, FILE_SEPARATOR, fileName);
 		else
-			filePath = concat(sb, dirPath, FILE_SEPARATOR, fileName, SQL_FILE_EXTENSION); // добавить ".sql" к имени файла
+			filePath = concat(sb, dirPath, FILE_SEPARATOR, fileName, SQL_FILE_EXTENSION); // РґРѕР±Р°РІРёС‚СЊ ".sql" Рє РёРјРµРЅРё С„Р°Р№Р»Р°
 
 		return new File(filePath);
 	}
@@ -134,7 +134,7 @@ public abstract class SqlFileWriter
 		{
 			char ch = className.charAt(i);
 
-			if ( i != 0 && Character.isUpperCase(ch) ) // перед первым символом в строке подчеркивание не ставится
+			if ( i != 0 && Character.isUpperCase(ch) ) // РїРµСЂРµРґ РїРµСЂРІС‹Рј СЃРёРјРІРѕР»РѕРј РІ СЃС‚СЂРѕРєРµ РїРѕРґС‡РµСЂРєРёРІР°РЅРёРµ РЅРµ СЃС‚Р°РІРёС‚СЃСЏ
 				sb.append(TABLE_NAME_SEPARATOR).append(ch);
 			else
 				sb.append(ch);
@@ -154,7 +154,7 @@ public abstract class SqlFileWriter
 
 	protected abstract void writeFile() throws IOException;
 
-	protected boolean failIfFileExists = false; // если sql файл уже есть, оставить его как есть
+	protected boolean failIfFileExists = false; // РµСЃР»Рё sql С„Р°Р№Р» СѓР¶Рµ РµСЃС‚СЊ, РѕСЃС‚Р°РІРёС‚СЊ РµРіРѕ РєР°Рє РµСЃС‚СЊ
 
 	protected String baseDir;
 	protected String dir;

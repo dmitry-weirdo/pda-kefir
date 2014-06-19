@@ -9,7 +9,7 @@
 package su.opencode.kefir.gen.field.searchField;
 
 /**
- * Возможное отношение элемента части where sql-запроса.
+ * Р’РѕР·РјРѕР¶РЅРѕРµ РѕС‚РЅРѕС€РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° С‡Р°СЃС‚Рё where sql-Р·Р°РїСЂРѕСЃР°.
  */
 public enum Relation
 {

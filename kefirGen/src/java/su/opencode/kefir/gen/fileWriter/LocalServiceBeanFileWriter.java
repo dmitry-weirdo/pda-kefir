@@ -21,8 +21,8 @@ import static su.opencode.kefir.gen.ExtEntityUtils.*;
 import static su.opencode.kefir.util.StringUtils.concat;
 
 /**
- * Создает новую реализацию локального интерфейса без методов.
- * Класс интерфейс содержит маркеры вставки методов и импортов.
+ * РЎРѕР·РґР°РµС‚ РЅРѕРІСѓСЋ СЂРµР°Р»РёР·Р°С†РёСЋ Р»РѕРєР°Р»СЊРЅРѕРіРѕ РёРЅС‚РµСЂС„РµР№СЃР° Р±РµР· РјРµС‚РѕРґРѕРІ.
+ * РљР»Р°СЃСЃ РёРЅС‚РµСЂС„РµР№СЃ СЃРѕРґРµСЂР¶РёС‚ РјР°СЂРєРµСЂС‹ РІСЃС‚Р°РІРєРё РјРµС‚РѕРґРѕРІ Рё РёРјРїРѕСЂС‚РѕРІ.
  */
 public class LocalServiceBeanFileWriter extends ClassFileWriter
 {
@@ -40,7 +40,7 @@ public class LocalServiceBeanFileWriter extends ClassFileWriter
 		writeImport(List.class);
 		out.writeLn();
 
-		if ( !samePackage( getFullName(packageName, className), interfaceName) ) // если интерфейс находится в другом пакете, сделать его импорт
+		if ( !samePackage( getFullName(packageName, className), interfaceName) ) // РµСЃР»Рё РёРЅС‚РµСЂС„РµР№СЃ РЅР°С…РѕРґРёС‚СЃСЏ РІ РґСЂСѓРіРѕРј РїР°РєРµС‚Рµ, СЃРґРµР»Р°С‚СЊ РµРіРѕ РёРјРїРѕСЂС‚
 			writeImport(interfaceName);
 
 		out.writeLn("// ", APPEND_IMPORT_MARKER);

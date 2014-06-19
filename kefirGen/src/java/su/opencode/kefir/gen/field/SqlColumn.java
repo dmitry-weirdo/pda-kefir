@@ -16,47 +16,47 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Помечает поля сущности, которых нет в форме, но которые присутствуют в sql-таблице, хранящей сущность.
+ * РџРѕРјРµС‡Р°РµС‚ РїРѕР»СЏ СЃСѓС‰РЅРѕСЃС‚Рё, РєРѕС‚РѕСЂС‹С… РЅРµС‚ РІ С„РѕСЂРјРµ, РЅРѕ РєРѕС‚РѕСЂС‹Рµ РїСЂРёСЃСѓС‚СЃС‚РІСѓСЋС‚ РІ sql-С‚Р°Р±Р»РёС†Рµ, С…СЂР°РЅСЏС‰РµР№ СЃСѓС‰РЅРѕСЃС‚СЊ.
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface SqlColumn
 {
 	/**
-	 * @return название sql-столбца.
-	 * По умолчанию — равно имени поля, на котором стоит аннотация в котором слова разделены подчерком.
+	 * @return РЅР°Р·РІР°РЅРёРµ sql-СЃС‚РѕР»Р±С†Р°.
+	 * РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” СЂР°РІРЅРѕ РёРјРµРЅРё РїРѕР»СЏ, РЅР° РєРѕС‚РѕСЂРѕРј СЃС‚РѕРёС‚ Р°РЅРЅРѕС‚Р°С†РёСЏ РІ РєРѕС‚РѕСЂРѕРј СЃР»РѕРІР° СЂР°Р·РґРµР»РµРЅС‹ РїРѕРґС‡РµСЂРєРѕРј.
 	 */
 	String columnName() default "";
 
 	/**
-	 * @return тип sql-столбца
+	 * @return С‚РёРї sql-СЃС‚РѕР»Р±С†Р°
 	 */
 	String type() default SqlTableField.VARCHAR_TYPE;
 
 	/**
-	 * @return длина sql-столбца. Актуальна для {@linkplain SqlTableField#VARCHAR_TYPE varchar} полей.
+	 * @return РґР»РёРЅР° sql-СЃС‚РѕР»Р±С†Р°. РђРєС‚СѓР°Р»СЊРЅР° РґР»СЏ {@linkplain SqlTableField#VARCHAR_TYPE varchar} РїРѕР»РµР№.
 	 */
 	int length() default 200;
 
 	/**
-	 * @return общее количество значащих цифр в sql-столбце для поля. Актуально для {@linkplain SqlTableField#NUMERIC_TYPE numeric} полей
+	 * @return РѕР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р·РЅР°С‡Р°С‰РёС… С†РёС„СЂ РІ sql-СЃС‚РѕР»Р±С†Рµ РґР»СЏ РїРѕР»СЏ. РђРєС‚СѓР°Р»СЊРЅРѕ РґР»СЏ {@linkplain SqlTableField#NUMERIC_TYPE numeric} РїРѕР»РµР№
 	 */
 	int digits() default SqlTableField.DEFAULT_NUMERIC_FIELD_DIGITS;
 
 	/**
-	 * @return общее количество десятичных цифр в sql-столбце для поля. Актуально для {@linkplain SqlTableField#NUMERIC_TYPE numeric} полей.
+	 * @return РѕР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РґРµСЃСЏС‚РёС‡РЅС‹С… С†РёС„СЂ РІ sql-СЃС‚РѕР»Р±С†Рµ РґР»СЏ РїРѕР»СЏ. РђРєС‚СѓР°Р»СЊРЅРѕ РґР»СЏ {@linkplain SqlTableField#NUMERIC_TYPE numeric} РїРѕР»РµР№.
 	 */
 	int precision() default SqlTableField.DEFAULT_NUMERIC_FIELD_PRECISION;
 
 	/**
-	 * @return not null значение для sql-столбца
+	 * @return not null Р·РЅР°С‡РµРЅРёРµ РґР»СЏ sql-СЃС‚РѕР»Р±С†Р°
 	 */
 	boolean notNull() default false;
 
 	/**
-	 * @return {@linkplain su.opencode.kefir.gen.field.FieldSet#id() код} {@linkplain FieldSet филдсета}, в котором находится поле.
+	 * @return {@linkplain su.opencode.kefir.gen.field.FieldSet#id() РєРѕРґ} {@linkplain FieldSet С„РёР»РґСЃРµС‚Р°}, РІ РєРѕС‚РѕСЂРѕРј РЅР°С…РѕРґРёС‚СЃСЏ РїРѕР»Рµ.
 	 * <br/>
-	 * Код должен быть одним из кодов филдсетов, определенных в аннотации {@linkplain FieldSets FieldSets} к классу сущности.
+	 * РљРѕРґ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РѕРґРЅРёРј РёР· РєРѕРґРѕРІ С„РёР»РґСЃРµС‚РѕРІ, РѕРїСЂРµРґРµР»РµРЅРЅС‹С… РІ Р°РЅРЅРѕС‚Р°С†РёРё {@linkplain FieldSets FieldSets} Рє РєР»Р°СЃСЃСѓ СЃСѓС‰РЅРѕСЃС‚Рё.
 	 */
 	String fieldSetId() default "";
 }

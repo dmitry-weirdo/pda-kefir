@@ -62,7 +62,7 @@ public class EnumRendererAppender extends JsAppender
 		String hashName = getEnumHashFullName(enumField, enumClass);
 		String valueParamName = "value";
 
-		if (!namespace.equals(DEFAULT_RENDERER_NAMESPACE)) // если рендерер находится не в стандартном неймспейсе, добавить объявление этого неймспейса
+		if (!namespace.equals(DEFAULT_RENDERER_NAMESPACE)) // РµСЃР»Рё СЂРµРЅРґРµСЂРµСЂ РЅР°С…РѕРґРёС‚СЃСЏ РЅРµ РІ СЃС‚Р°РЅРґР°СЂС‚РЅРѕРј РЅРµР№РјСЃРїРµР№СЃРµ, РґРѕР±Р°РІРёС‚СЊ РѕР±СЉСЏРІР»РµРЅРёРµ СЌС‚РѕРіРѕ РЅРµР№РјСЃРїРµР№СЃР°
 			appendNamespace(fileLines, namespace);
 
 		fileLines.add( concat(sb, getEnumRendererFullName(enumField, enumClass), " = function(", valueParamName, ") {") );

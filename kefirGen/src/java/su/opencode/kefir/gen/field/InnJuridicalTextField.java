@@ -14,44 +14,44 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- * Помечает текстовое поле для ввода ОГРН.
+ * РџРѕРјРµС‡Р°РµС‚ С‚РµРєСЃС‚РѕРІРѕРµ РїРѕР»Рµ РґР»СЏ РІРІРѕРґР° РћР“Р Рќ.
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface InnJuridicalTextField
 {
 	/**
-	 * @return код поля.
-	 *         По умолчанию — ( {@linkplain su.opencode.kefir.gen.ExtEntity#jsFieldPrefix() префикс js-поля формы сущности} + "-" + название поля )
+	 * @return РєРѕРґ РїРѕР»СЏ.
+	 *         РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” ( {@linkplain su.opencode.kefir.gen.ExtEntity#jsFieldPrefix() РїСЂРµС„РёРєСЃ js-РїРѕР»СЏ С„РѕСЂРјС‹ СЃСѓС‰РЅРѕСЃС‚Рё} + "-" + РЅР°Р·РІР°РЅРёРµ РїРѕР»СЏ )
 	 */
 	public abstract String id() default "";
 
 	/**
-	 * @return имя поля.
-	 *         По умолчанию — равно имени поля, на котором стоит аннотация
+	 * @return РёРјСЏ РїРѕР»СЏ.
+	 *         РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” СЂР°РІРЅРѕ РёРјРµРЅРё РїРѕР»СЏ, РЅР° РєРѕС‚РѕСЂРѕРј СЃС‚РѕРёС‚ Р°РЅРЅРѕС‚Р°С†РёСЏ
 	 */
 	public abstract String name() default "";
 
 	/**
-	 * @return метка поля
+	 * @return РјРµС‚РєР° РїРѕР»СЏ
 	 */
-	public abstract String label() default "ИНН";
+	public abstract String label() default "РРќРќ";
 
 	/**
-	 * @return ширина поля в пикселах
+	 * @return С€РёСЂРёРЅР° РїРѕР»СЏ РІ РїРёРєСЃРµР»Р°С…
 	 */
 	public abstract int width();
 
 	/**
-	 * @return <code>true</code> — если поле можно не обязательно для заполнения, <br/>
-	 *         <code>false</code> — если поле обязательно для заполнения
+	 * @return <code>true</code> вЂ” РµСЃР»Рё РїРѕР»Рµ РјРѕР¶РЅРѕ РЅРµ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ, <br/>
+	 *         <code>false</code> вЂ” РµСЃР»Рё РїРѕР»Рµ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ
 	 */
 	public abstract boolean allowBlank() default true;
 
 	/**
-	 * @return {@linkplain su.opencode.kefir.gen.field.FieldSet#id() код} {@linkplain FieldSet филдсета}, в котором находится поле.
+	 * @return {@linkplain su.opencode.kefir.gen.field.FieldSet#id() РєРѕРґ} {@linkplain FieldSet С„РёР»РґСЃРµС‚Р°}, РІ РєРѕС‚РѕСЂРѕРј РЅР°С…РѕРґРёС‚СЃСЏ РїРѕР»Рµ.
 	 * <br/>
-	 * Код должен быть одним из кодов филдсетов, определенных в аннотации {@linkplain FieldSets FieldSets} к классу сущности.
+	 * РљРѕРґ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РѕРґРЅРёРј РёР· РєРѕРґРѕРІ С„РёР»РґСЃРµС‚РѕРІ, РѕРїСЂРµРґРµР»РµРЅРЅС‹С… РІ Р°РЅРЅРѕС‚Р°С†РёРё {@linkplain FieldSets FieldSets} Рє РєР»Р°СЃСЃСѓ СЃСѓС‰РЅРѕСЃС‚Рё.
 	 */
 	String fieldSetId() default "";
 

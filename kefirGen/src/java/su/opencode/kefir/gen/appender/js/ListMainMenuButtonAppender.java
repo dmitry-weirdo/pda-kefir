@@ -20,7 +20,7 @@ import static su.opencode.kefir.gen.fileWriter.js.project.MainMenuJsFileWriter.A
 import static su.opencode.kefir.util.StringUtils.*;
 
 /**
- * Добавляет кнопку, открывающую список сущностей, в главное меню.
+ * Р”РѕР±Р°РІР»СЏРµС‚ РєРЅРѕРїРєСѓ, РѕС‚РєСЂС‹РІР°СЋС‰СѓСЋ СЃРїРёСЃРѕРє СЃСѓС‰РЅРѕСЃС‚РµР№, РІ РіР»Р°РІРЅРѕРµ РјРµРЅСЋ.
  */
 public class ListMainMenuButtonAppender extends JsAppender
 {
@@ -31,7 +31,7 @@ public class ListMainMenuButtonAppender extends JsAppender
 	}
 
 	public void appendMainMenuButton() throws IOException {
-		if ( !extEntity.hasListMainMenuButton() ) // если кнопки нет - ничего не делать
+		if ( !extEntity.hasListMainMenuButton() ) // РµСЃР»Рё РєРЅРѕРїРєРё РЅРµС‚ - РЅРёС‡РµРіРѕ РЅРµ РґРµР»Р°С‚СЊ
 			return;
 
 		File file = new File(filePath);
@@ -110,7 +110,7 @@ public class ListMainMenuButtonAppender extends JsAppender
 		}
 	}
 	private void appendButton(AppendMode mode, List<String> fileLines) throws IOException {
-		// todo: проверить, что кнопки с таким id еще не добавлено
+		// todo: РїСЂРѕРІРµСЂРёС‚СЊ, С‡С‚Рѕ РєРЅРѕРїРєРё СЃ С‚Р°РєРёРј id РµС‰Рµ РЅРµ РґРѕР±Р°РІР»РµРЅРѕ
 
 		switch (mode)
 		{
@@ -125,7 +125,7 @@ public class ListMainMenuButtonAppender extends JsAppender
 		appendConstant(fileLines, getButtonIdConstantName(), getListMainMenuButtonId(extEntity, entityClass));
 		appendConstant(fileLines, getButtonTextConstantName(), getListMainMenuButtonText(extEntity, entityClass));
 
-		if ( notEmpty( getListMainMenuButtonToolTip(extEntity, entityClass) ) ) // есть отдельный тултип у кнопки
+		if ( notEmpty( getListMainMenuButtonToolTip(extEntity, entityClass) ) ) // РµСЃС‚СЊ РѕС‚РґРµР»СЊРЅС‹Р№ С‚СѓР»С‚РёРї Сѓ РєРЅРѕРїРєРё
 			appendConstant(fileLines, getButtonToolTipConstantName(), getListMainMenuButtonToolTip(extEntity, entityClass));
 
 		fileLines.add(""); // empty line after each button's constants

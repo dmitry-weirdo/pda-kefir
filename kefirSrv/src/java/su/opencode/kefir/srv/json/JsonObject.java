@@ -247,8 +247,15 @@ public abstract class JsonObject implements JsonEntity, Serializable
 	}
 
 	public static <T> T fromJson(String json, Class<T> thisClass) {
-		JSONObject jsonObject = new JSONObject(json);
-		return fromJson(jsonObject, thisClass);
+		try
+		{
+			JSONObject jsonObject = new JSONObject(json);
+			return fromJson(jsonObject, thisClass);
+		}
+		catch (JSONException e)
+		{
+			throw new RuntimeException(e);
+		}
 	}
 
 	public static <T> T fromJson(JSONObject json, Class<T> thisClass) {

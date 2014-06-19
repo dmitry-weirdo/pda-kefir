@@ -13,148 +13,148 @@ import java.io.IOException;
 public interface GeneratorServiceHelper
 {
 	/**
-	 * Генерирует пустой локальный сервис, его пустую имплементацию и его маппинг в web.xml и jboss-web.xml
-	 * с именованиями по умолчанию, определяемыми исходя из полного имени класса сервиса.
-	 * @param config конфиг, в котором должны содержаться поля:
+	 * Р“РµРЅРµСЂРёСЂСѓРµС‚ РїСѓСЃС‚РѕР№ Р»РѕРєР°Р»СЊРЅС‹Р№ СЃРµСЂРІРёСЃ, РµРіРѕ РїСѓСЃС‚СѓСЋ РёРјРїР»РµРјРµРЅС‚Р°С†РёСЋ Рё РµРіРѕ РјР°РїРїРёРЅРі РІ web.xml Рё jboss-web.xml
+	 * СЃ РёРјРµРЅРѕРІР°РЅРёСЏРјРё РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ, РѕРїСЂРµРґРµР»СЏРµРјС‹РјРё РёСЃС…РѕРґСЏ РёР· РїРѕР»РЅРѕРіРѕ РёРјРµРЅРё РєР»Р°СЃСЃР° СЃРµСЂРІРёСЃР°.
+	 * @param config РєРѕРЅС„РёРі, РІ РєРѕС‚РѕСЂРѕРј РґРѕР»Р¶РЅС‹ СЃРѕРґРµСЂР¶Р°С‚СЊСЃСЏ РїРѕР»СЏ:
 	 * <ul>
-	 * 	<li>{@linkplain HelperConfig#srvSrcDir srvSrcDir} путь с исходниками, в котором будут располагаться сервис и его реализация</li>
-	 * 	<li>{@linkplain HelperConfig#webXmlPath webXmlPath} путь к файлу web.xml</li>
-	 * 	<li>{@linkplain HelperConfig#jbossWebXmlPath jbossWebXmlPath} путь к файлу jboss-web.xml</li>
-	 * 	<li>{@linkplain HelperConfig#serviceClassName serviceClassName} полное имя класса сервиса</li>
+	 * 	<li>{@linkplain HelperConfig#srvSrcDir srvSrcDir} РїСѓС‚СЊ СЃ РёСЃС…РѕРґРЅРёРєР°РјРё, РІ РєРѕС‚РѕСЂРѕРј Р±СѓРґСѓС‚ СЂР°СЃРїРѕР»Р°РіР°С‚СЊСЃСЏ СЃРµСЂРІРёСЃ Рё РµРіРѕ СЂРµР°Р»РёР·Р°С†РёСЏ</li>
+	 * 	<li>{@linkplain HelperConfig#webXmlPath webXmlPath} РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ web.xml</li>
+	 * 	<li>{@linkplain HelperConfig#jbossWebXmlPath jbossWebXmlPath} РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ jboss-web.xml</li>
+	 * 	<li>{@linkplain HelperConfig#serviceClassName serviceClassName} РїРѕР»РЅРѕРµ РёРјСЏ РєР»Р°СЃСЃР° СЃРµСЂРІРёСЃР°</li>
 	 * </ul>
-	 * @throws IOException в случае ошибки записи какого-либо файла
+	 * @throws IOException РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё Р·Р°РїРёСЃРё РєР°РєРѕРіРѕ-Р»РёР±Рѕ С„Р°Р№Р»Р°
 	 */
 	void generateLocalInterface(HelperConfig config) throws IOException;
 
 	/**
-	 * Добавляет orm-маппинг класса ExtEntity класса на основании его полей, создание таблицы сущности в createTables.sql и ее удаление в dropTables.sql.
-	 * Если маппинг уже присутствует в orm.xml, createTables.sql или dropTables.sql, то ничего не происходит для соответствующих файлов.
-	 * @param config конфиг, в котором должны содержаться поля:
+	 * Р”РѕР±Р°РІР»СЏРµС‚ orm-РјР°РїРїРёРЅРі РєР»Р°СЃСЃР° ExtEntity РєР»Р°СЃСЃР° РЅР° РѕСЃРЅРѕРІР°РЅРёРё РµРіРѕ РїРѕР»РµР№, СЃРѕР·РґР°РЅРёРµ С‚Р°Р±Р»РёС†С‹ СЃСѓС‰РЅРѕСЃС‚Рё РІ createTables.sql Рё РµРµ СѓРґР°Р»РµРЅРёРµ РІ dropTables.sql.
+	 * Р•СЃР»Рё РјР°РїРїРёРЅРі СѓР¶Рµ РїСЂРёСЃСѓС‚СЃС‚РІСѓРµС‚ РІ orm.xml, createTables.sql РёР»Рё dropTables.sql, С‚Рѕ РЅРёС‡РµРіРѕ РЅРµ РїСЂРѕРёСЃС…РѕРґРёС‚ РґР»СЏ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёС… С„Р°Р№Р»РѕРІ.
+	 * @param config РєРѕРЅС„РёРі, РІ РєРѕС‚РѕСЂРѕРј РґРѕР»Р¶РЅС‹ СЃРѕРґРµСЂР¶Р°С‚СЊСЃСЏ РїРѕР»СЏ:
 	 * <ul>
-	 * 	<li>{@linkplain HelperConfig#entityClass entityClass} класс сущности, должен содержать аннотацию ExtEntity</li>
-	 * 	<li>{@linkplain HelperConfig#ormXmlPath ormXmlPath} путь к orm.xml, в который будет добавляться маппинг</li>
-	 * 	<li>{@linkplain HelperConfig#createTablesSqlPath createTablesSqlPath} путь к createTables.sql, в который будет добавляться создание таблицы</li>
-	 * 	<li>{@linkplain HelperConfig#dropTablesSqlPath dropTablesSqlPath} путь к dropTables.sql, в который будет добавляться удаление таблицы</li>
+	 * 	<li>{@linkplain HelperConfig#entityClass entityClass} РєР»Р°СЃСЃ СЃСѓС‰РЅРѕСЃС‚Рё, РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ Р°РЅРЅРѕС‚Р°С†РёСЋ ExtEntity</li>
+	 * 	<li>{@linkplain HelperConfig#ormXmlPath ormXmlPath} РїСѓС‚СЊ Рє orm.xml, РІ РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ РґРѕР±Р°РІР»СЏС‚СЊСЃСЏ РјР°РїРїРёРЅРі</li>
+	 * 	<li>{@linkplain HelperConfig#createTablesSqlPath createTablesSqlPath} РїСѓС‚СЊ Рє createTables.sql, РІ РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ РґРѕР±Р°РІР»СЏС‚СЊСЃСЏ СЃРѕР·РґР°РЅРёРµ С‚Р°Р±Р»РёС†С‹</li>
+	 * 	<li>{@linkplain HelperConfig#dropTablesSqlPath dropTablesSqlPath} РїСѓС‚СЊ Рє dropTables.sql, РІ РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ РґРѕР±Р°РІР»СЏС‚СЊСЃСЏ СѓРґР°Р»РµРЅРёРµ С‚Р°Р±Р»РёС†С‹</li>
 	 * </ul>
-	 * @throws IOException в случае ошибки записи какого-либо файла
+	 * @throws IOException РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё Р·Р°РїРёСЃРё РєР°РєРѕРіРѕ-Р»РёР±Рѕ С„Р°Р№Р»Р°
 	 */
 	void generateEntityMapping(HelperConfig config) throws IOException;
 
 	/**
-	 * Генерирует VO для класса сущности в серверной части приложения.
-	 * Полное имя класса сущности определяется исходя из {@linkplain su.opencode.kefir.gen.ExtEntity#listVoClassName() свойства listVoClassName} его @ExtEntity аннотации.
-	 * При наличии @ViewConfig аннотации на сущности, создается viewConfig в viewConfigs.js и необходимые стили в main.css для списка сущностей и легенды
-	 * @param config конфиг, в котором должны содержаться поля:
+	 * Р“РµРЅРµСЂРёСЂСѓРµС‚ VO РґР»СЏ РєР»Р°СЃСЃР° СЃСѓС‰РЅРѕСЃС‚Рё РІ СЃРµСЂРІРµСЂРЅРѕР№ С‡Р°СЃС‚Рё РїСЂРёР»РѕР¶РµРЅРёСЏ.
+	 * РџРѕР»РЅРѕРµ РёРјСЏ РєР»Р°СЃСЃР° СЃСѓС‰РЅРѕСЃС‚Рё РѕРїСЂРµРґРµР»СЏРµС‚СЃСЏ РёСЃС…РѕРґСЏ РёР· {@linkplain su.opencode.kefir.gen.ExtEntity#listVoClassName() СЃРІРѕР№СЃС‚РІР° listVoClassName} РµРіРѕ @ExtEntity Р°РЅРЅРѕС‚Р°С†РёРё.
+	 * РџСЂРё РЅР°Р»РёС‡РёРё @ViewConfig Р°РЅРЅРѕС‚Р°С†РёРё РЅР° СЃСѓС‰РЅРѕСЃС‚Рё, СЃРѕР·РґР°РµС‚СЃСЏ viewConfig РІ viewConfigs.js Рё РЅРµРѕР±С…РѕРґРёРјС‹Рµ СЃС‚РёР»Рё РІ main.css РґР»СЏ СЃРїРёСЃРєР° СЃСѓС‰РЅРѕСЃС‚РµР№ Рё Р»РµРіРµРЅРґС‹
+	 * @param config РєРѕРЅС„РёРі, РІ РєРѕС‚РѕСЂРѕРј РґРѕР»Р¶РЅС‹ СЃРѕРґРµСЂР¶Р°С‚СЊСЃСЏ РїРѕР»СЏ:
 	 * <ul>
-	 * 	<li>{@linkplain HelperConfig#entityClass entityClass} класс сущности, должен содержать аннотацию ExtEntity</li>
-	 * 	<li>{@linkplain HelperConfig#srvSrcDir srvSrcDir} путь к исходникам серверной части</li>
-	 * 	<li>{@linkplain HelperConfig#viewConfigsJsPath viewConfigsJsPath} путь к viewConfigs.js</li>
-	 * 	<li>{@linkplain HelperConfig#mainCssPath mainCssPath} путь к main.css</li>
+	 * 	<li>{@linkplain HelperConfig#entityClass entityClass} РєР»Р°СЃСЃ СЃСѓС‰РЅРѕСЃС‚Рё, РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ Р°РЅРЅРѕС‚Р°С†РёСЋ ExtEntity</li>
+	 * 	<li>{@linkplain HelperConfig#srvSrcDir srvSrcDir} РїСѓС‚СЊ Рє РёСЃС…РѕРґРЅРёРєР°Рј СЃРµСЂРІРµСЂРЅРѕР№ С‡Р°СЃС‚Рё</li>
+	 * 	<li>{@linkplain HelperConfig#viewConfigsJsPath viewConfigsJsPath} РїСѓС‚СЊ Рє viewConfigs.js</li>
+	 * 	<li>{@linkplain HelperConfig#mainCssPath mainCssPath} РїСѓС‚СЊ Рє main.css</li>
 	 * </ul>
-	 * @throws IOException в случае ошибки записи какого-либо файла
+	 * @throws IOException РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё Р·Р°РїРёСЃРё РєР°РєРѕРіРѕ-Р»РёР±Рѕ С„Р°Р№Р»Р°
 	 */
 	void generateEntityVO(HelperConfig config) throws IOException;
 
 	/**
-	 * Генерирует необходимые компоненты для отображения списка сущностей и выбора из списка сущностей:
+	 * Р“РµРЅРµСЂРёСЂСѓРµС‚ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РєРѕРјРїРѕРЅРµРЅС‚С‹ РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ СЃРїРёСЃРєР° СЃСѓС‰РЅРѕСЃС‚РµР№ Рё РІС‹Р±РѕСЂР° РёР· СЃРїРёСЃРєР° СЃСѓС‰РЅРѕСЃС‚РµР№:
 	 * <ul>
-	 * 	<li>методы локального сервиса;</li>
+	 * 	<li>РјРµС‚РѕРґС‹ Р»РѕРєР°Р»СЊРЅРѕРіРѕ СЃРµСЂРІРёСЃР°;</li>
 	 * 	<li>FilterConfig</li>
-	 * 	<li>сервлет, получающий список сущностей</li>
-	 * 	<li>сервлет, выгружающий в Excel список сущностей</li>
-	 * 	<li>js-файл, отображающий список сущностей</li>
-	 * 	<li>js-файл, отображающий выбор из списка сущностей</li>
-	 * 	<li>в главное меню добавляется кнопка с переходом на список сущностей, если {@linkplain su.opencode.kefir.gen.ExtEntity#hasListMainMenuButton() соответствующий признак} выставлен</li>
+	 * 	<li>СЃРµСЂРІР»РµС‚, РїРѕР»СѓС‡Р°СЋС‰РёР№ СЃРїРёСЃРѕРє СЃСѓС‰РЅРѕСЃС‚РµР№</li>
+	 * 	<li>СЃРµСЂРІР»РµС‚, РІС‹РіСЂСѓР¶Р°СЋС‰РёР№ РІ Excel СЃРїРёСЃРѕРє СЃСѓС‰РЅРѕСЃС‚РµР№</li>
+	 * 	<li>js-С„Р°Р№Р», РѕС‚РѕР±СЂР°Р¶Р°СЋС‰РёР№ СЃРїРёСЃРѕРє СЃСѓС‰РЅРѕСЃС‚РµР№</li>
+	 * 	<li>js-С„Р°Р№Р», РѕС‚РѕР±СЂР°Р¶Р°СЋС‰РёР№ РІС‹Р±РѕСЂ РёР· СЃРїРёСЃРєР° СЃСѓС‰РЅРѕСЃС‚РµР№</li>
+	 * 	<li>РІ РіР»Р°РІРЅРѕРµ РјРµРЅСЋ РґРѕР±Р°РІР»СЏРµС‚СЃСЏ РєРЅРѕРїРєР° СЃ РїРµСЂРµС…РѕРґРѕРј РЅР° СЃРїРёСЃРѕРє СЃСѓС‰РЅРѕСЃС‚РµР№, РµСЃР»Рё {@linkplain su.opencode.kefir.gen.ExtEntity#hasListMainMenuButton() СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ РїСЂРёР·РЅР°Рє} РІС‹СЃС‚Р°РІР»РµРЅ</li>
 	 * </ul>
-	 * @param config конфиг, в котором должны содержаться поля:
+	 * @param config РєРѕРЅС„РёРі, РІ РєРѕС‚РѕСЂРѕРј РґРѕР»Р¶РЅС‹ СЃРѕРґРµСЂР¶Р°С‚СЊСЃСЏ РїРѕР»СЏ:
 	 * <ul>
-	 * 	<li>{@linkplain HelperConfig#entityClass entityClass} класс сущности, должен содержать аннотацию ExtEntity</li>
-	 * 	<li>{@linkplain HelperConfig#renderersClass renderersClass} класс сущности Renderers, содержащий {@linkplain su.opencode.kefir.gen.fileWriter.RenderersFileWriter#GET_RENDER_INPUT_STREAM_METHOD_NAME метод получения InputStream для файла renderers.properties приложения}</li>
-	 * 	<li>{@linkplain HelperConfig#srvSrcDir srvSrcDir} путь к исходникам серверной части</li>
-	 * 	<li>{@linkplain HelperConfig#webSrcDir webSrcDir} путь к исходникам веб-части</li>
-	 * 	<li>{@linkplain HelperConfig#webXmlPath webXmlPath} путь к файлу web.xml</li>
-	 * 	<li>{@linkplain HelperConfig#jsDir jsDir} путь к исходникам js</li>
-	 * 	<li>{@linkplain HelperConfig#jsIncludeFilePath jsIncludeFilePath} путь к файлу с инклюдами js (application.jspf)</li>
-	 * 	<li>{@linkplain HelperConfig#baseJsPath baseJsPath} базовый путь к js-файлам при инклюде (например, "./js")</li>
+	 * 	<li>{@linkplain HelperConfig#entityClass entityClass} РєР»Р°СЃСЃ СЃСѓС‰РЅРѕСЃС‚Рё, РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ Р°РЅРЅРѕС‚Р°С†РёСЋ ExtEntity</li>
+	 * 	<li>{@linkplain HelperConfig#renderersClass renderersClass} РєР»Р°СЃСЃ СЃСѓС‰РЅРѕСЃС‚Рё Renderers, СЃРѕРґРµСЂР¶Р°С‰РёР№ {@linkplain su.opencode.kefir.gen.fileWriter.RenderersFileWriter#GET_RENDER_INPUT_STREAM_METHOD_NAME РјРµС‚РѕРґ РїРѕР»СѓС‡РµРЅРёСЏ InputStream РґР»СЏ С„Р°Р№Р»Р° renderers.properties РїСЂРёР»РѕР¶РµРЅРёСЏ}</li>
+	 * 	<li>{@linkplain HelperConfig#srvSrcDir srvSrcDir} РїСѓС‚СЊ Рє РёСЃС…РѕРґРЅРёРєР°Рј СЃРµСЂРІРµСЂРЅРѕР№ С‡Р°СЃС‚Рё</li>
+	 * 	<li>{@linkplain HelperConfig#webSrcDir webSrcDir} РїСѓС‚СЊ Рє РёСЃС…РѕРґРЅРёРєР°Рј РІРµР±-С‡Р°СЃС‚Рё</li>
+	 * 	<li>{@linkplain HelperConfig#webXmlPath webXmlPath} РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ web.xml</li>
+	 * 	<li>{@linkplain HelperConfig#jsDir jsDir} РїСѓС‚СЊ Рє РёСЃС…РѕРґРЅРёРєР°Рј js</li>
+	 * 	<li>{@linkplain HelperConfig#jsIncludeFilePath jsIncludeFilePath} РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ СЃ РёРЅРєР»СЋРґР°РјРё js (application.jspf)</li>
+	 * 	<li>{@linkplain HelperConfig#baseJsPath baseJsPath} Р±Р°Р·РѕРІС‹Р№ РїСѓС‚СЊ Рє js-С„Р°Р№Р»Р°Рј РїСЂРё РёРЅРєР»СЋРґРµ (РЅР°РїСЂРёРјРµСЂ, "./js")</li>
 	 * </ul>
-	 * @throws IOException в случае ошибки записи какого-либо файла
+	 * @throws IOException РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё Р·Р°РїРёСЃРё РєР°РєРѕРіРѕ-Р»РёР±Рѕ С„Р°Р№Р»Р°
 	 */
 	void generateEntityList(HelperConfig config) throws IOException;
 
 	/**
-	 * Генерирует сервисные методы для получения по id, создания, изменения, редактирования и удаления сущностей:
+	 * Р“РµРЅРµСЂРёСЂСѓРµС‚ СЃРµСЂРІРёСЃРЅС‹Рµ РјРµС‚РѕРґС‹ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РїРѕ id, СЃРѕР·РґР°РЅРёСЏ, РёР·РјРµРЅРµРЅРёСЏ, СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ Рё СѓРґР°Р»РµРЅРёСЏ СЃСѓС‰РЅРѕСЃС‚РµР№:
 	 * <ul>
-	 * 	<li>методы локального сервиса для этих действий</li>
+	 * 	<li>РјРµС‚РѕРґС‹ Р»РѕРєР°Р»СЊРЅРѕРіРѕ СЃРµСЂРІРёСЃР° РґР»СЏ СЌС‚РёС… РґРµР№СЃС‚РІРёР№</li>
 	 * </ul>
-	 * @param config конфиг, в котором должны содержаться поля:
+	 * @param config РєРѕРЅС„РёРі, РІ РєРѕС‚РѕСЂРѕРј РґРѕР»Р¶РЅС‹ СЃРѕРґРµСЂР¶Р°С‚СЊСЃСЏ РїРѕР»СЏ:
 	 * <ul>
-	 * 	<li>{@linkplain HelperConfig#entityClass entityClass} класс сущности, должен содержать аннотацию ExtEntity</li>
-	 * 	<li>{@linkplain HelperConfig#srvSrcDir srvSrcDir} путь к исходникам серверной части</li>
+	 * 	<li>{@linkplain HelperConfig#entityClass entityClass} РєР»Р°СЃСЃ СЃСѓС‰РЅРѕСЃС‚Рё, РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ Р°РЅРЅРѕС‚Р°С†РёСЋ ExtEntity</li>
+	 * 	<li>{@linkplain HelperConfig#srvSrcDir srvSrcDir} РїСѓС‚СЊ Рє РёСЃС…РѕРґРЅРёРєР°Рј СЃРµСЂРІРµСЂРЅРѕР№ С‡Р°СЃС‚Рё</li>
 	 * </ul>
-	 * @throws IOException в случае ошибки записи какого-либо файла
+	 * @throws IOException РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё Р·Р°РїРёСЃРё РєР°РєРѕРіРѕ-Р»РёР±Рѕ С„Р°Р№Р»Р°
 	 */
 	void generateEntityServiceCrudMethods(HelperConfig config) throws IOException;
 
 	/**
-	 * Генерирует необходимые компоненты для получения по id, создания, изменения, редактирования и удаления сущностей:
+	 * Р“РµРЅРµСЂРёСЂСѓРµС‚ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РєРѕРјРїРѕРЅРµРЅС‚С‹ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ РїРѕ id, СЃРѕР·РґР°РЅРёСЏ, РёР·РјРµРЅРµРЅРёСЏ, СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ Рё СѓРґР°Р»РµРЅРёСЏ СЃСѓС‰РЅРѕСЃС‚РµР№:
 	 * <ul>
-	 * 	<li>методы локального сервиса для этих действий</li>
-	 * 	<li>сервлеты и их маппинги для этих действий</li>
-	 * 	<li>js-файл, отображающий crud-формы для сущности</li>
+	 * 	<li>РјРµС‚РѕРґС‹ Р»РѕРєР°Р»СЊРЅРѕРіРѕ СЃРµСЂРІРёСЃР° РґР»СЏ СЌС‚РёС… РґРµР№СЃС‚РІРёР№</li>
+	 * 	<li>СЃРµСЂРІР»РµС‚С‹ Рё РёС… РјР°РїРїРёРЅРіРё РґР»СЏ СЌС‚РёС… РґРµР№СЃС‚РІРёР№</li>
+	 * 	<li>js-С„Р°Р№Р», РѕС‚РѕР±СЂР°Р¶Р°СЋС‰РёР№ crud-С„РѕСЂРјС‹ РґР»СЏ СЃСѓС‰РЅРѕСЃС‚Рё</li>
 	 * </ul>
-	 * @param config конфиг, в котором должны содержаться поля:
+	 * @param config РєРѕРЅС„РёРі, РІ РєРѕС‚РѕСЂРѕРј РґРѕР»Р¶РЅС‹ СЃРѕРґРµСЂР¶Р°С‚СЊСЃСЏ РїРѕР»СЏ:
 	 * <ul>
-	 * 	<li>{@linkplain HelperConfig#entityClass entityClass} класс сущности, должен содержать аннотацию ExtEntity</li>
-	 * 	<li>{@linkplain HelperConfig#addressClass addressClass} класс адреса, должен содержать аннотацию ExtEntity</li>
-	 * 	<li>{@linkplain HelperConfig#srvSrcDir srvSrcDir} путь к исходникам серверной части</li>
-	 * 	<li>{@linkplain HelperConfig#webSrcDir webSrcDir} путь к исходникам веб-части</li>
-	 * 	<li>{@linkplain HelperConfig#webXmlPath webXmlPath} путь к файлу web.xml</li>
-	 * 	<li>{@linkplain HelperConfig#jsDir jsDir} путь к исходникам js</li>
-	 * 	<li>{@linkplain HelperConfig#jsIncludeFilePath jsIncludeFilePath} путь к файлу с инклюдами js (application.jspf)</li>
-	 * 	<li>{@linkplain HelperConfig#baseJsPath baseJsPath} базовый путь к js-файлам при инклюде (например, "./js")</li>
+	 * 	<li>{@linkplain HelperConfig#entityClass entityClass} РєР»Р°СЃСЃ СЃСѓС‰РЅРѕСЃС‚Рё, РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ Р°РЅРЅРѕС‚Р°С†РёСЋ ExtEntity</li>
+	 * 	<li>{@linkplain HelperConfig#addressClass addressClass} РєР»Р°СЃСЃ Р°РґСЂРµСЃР°, РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ Р°РЅРЅРѕС‚Р°С†РёСЋ ExtEntity</li>
+	 * 	<li>{@linkplain HelperConfig#srvSrcDir srvSrcDir} РїСѓС‚СЊ Рє РёСЃС…РѕРґРЅРёРєР°Рј СЃРµСЂРІРµСЂРЅРѕР№ С‡Р°СЃС‚Рё</li>
+	 * 	<li>{@linkplain HelperConfig#webSrcDir webSrcDir} РїСѓС‚СЊ Рє РёСЃС…РѕРґРЅРёРєР°Рј РІРµР±-С‡Р°СЃС‚Рё</li>
+	 * 	<li>{@linkplain HelperConfig#webXmlPath webXmlPath} РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ web.xml</li>
+	 * 	<li>{@linkplain HelperConfig#jsDir jsDir} РїСѓС‚СЊ Рє РёСЃС…РѕРґРЅРёРєР°Рј js</li>
+	 * 	<li>{@linkplain HelperConfig#jsIncludeFilePath jsIncludeFilePath} РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ СЃ РёРЅРєР»СЋРґР°РјРё js (application.jspf)</li>
+	 * 	<li>{@linkplain HelperConfig#baseJsPath baseJsPath} Р±Р°Р·РѕРІС‹Р№ РїСѓС‚СЊ Рє js-С„Р°Р№Р»Р°Рј РїСЂРё РёРЅРєР»СЋРґРµ (РЅР°РїСЂРёРјРµСЂ, "./js")</li>
 	 * </ul>
-	 * @throws IOException в случае ошибки записи какого-либо файла
+	 * @throws IOException РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё Р·Р°РїРёСЃРё РєР°РєРѕРіРѕ-Р»РёР±Рѕ С„Р°Р№Р»Р°
 	 */
 	void generateEntityCrud(HelperConfig config) throws IOException;
 
 	/**
-	 * Генерирует необходимые js-компоненты для работы с enum-полем в js:
+	 * Р“РµРЅРµСЂРёСЂСѓРµС‚ РЅРµРѕР±С…РѕРґРёРјС‹Рµ js-РєРѕРјРїРѕРЅРµРЅС‚С‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ enum-РїРѕР»РµРј РІ js:
 	 * <ul>
-	 * 	<li>Хэш, содержащий значения энума, в качестве значений используются строки со значениями энума</li>
-	 * 	<li>Local store, хранящий значения энума и отображаемые значения для использования в LocalComboBox</li>
-	 * 	<li>Рендерер, обрабатывающий строковые значения энума для отображения в таблице</li>
-	 * 	<li>{@linkplain su.opencode.kefir.srv.renderer.CellRenderer CellRenderer}, обрабатывающий строковые значения энума для экспорта в Excel</li>
-	 * 	<li>Добавляется соответствие js-рендерера и сгенерированного CellRenderer в renders.properties приложения</li>
+	 * 	<li>РҐСЌС€, СЃРѕРґРµСЂР¶Р°С‰РёР№ Р·РЅР°С‡РµРЅРёСЏ СЌРЅСѓРјР°, РІ РєР°С‡РµСЃС‚РІРµ Р·РЅР°С‡РµРЅРёР№ РёСЃРїРѕР»СЊР·СѓСЋС‚СЃСЏ СЃС‚СЂРѕРєРё СЃРѕ Р·РЅР°С‡РµРЅРёСЏРјРё СЌРЅСѓРјР°</li>
+	 * 	<li>Local store, С…СЂР°РЅСЏС‰РёР№ Р·РЅР°С‡РµРЅРёСЏ СЌРЅСѓРјР° Рё РѕС‚РѕР±СЂР°Р¶Р°РµРјС‹Рµ Р·РЅР°С‡РµРЅРёСЏ РґР»СЏ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ РІ LocalComboBox</li>
+	 * 	<li>Р РµРЅРґРµСЂРµСЂ, РѕР±СЂР°Р±Р°С‚С‹РІР°СЋС‰РёР№ СЃС‚СЂРѕРєРѕРІС‹Рµ Р·РЅР°С‡РµРЅРёСЏ СЌРЅСѓРјР° РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РІ С‚Р°Р±Р»РёС†Рµ</li>
+	 * 	<li>{@linkplain su.opencode.kefir.srv.renderer.CellRenderer CellRenderer}, РѕР±СЂР°Р±Р°С‚С‹РІР°СЋС‰РёР№ СЃС‚СЂРѕРєРѕРІС‹Рµ Р·РЅР°С‡РµРЅРёСЏ СЌРЅСѓРјР° РґР»СЏ СЌРєСЃРїРѕСЂС‚Р° РІ Excel</li>
+	 * 	<li>Р”РѕР±Р°РІР»СЏРµС‚СЃСЏ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРµ js-СЂРµРЅРґРµСЂРµСЂР° Рё СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅРѕРіРѕ CellRenderer РІ renders.properties РїСЂРёР»РѕР¶РµРЅРёСЏ</li>
 	 * </ul>
-	 * @param config конфиг, в котором должны содержаться поля:
+	 * @param config РєРѕРЅС„РёРі, РІ РєРѕС‚РѕСЂРѕРј РґРѕР»Р¶РЅС‹ СЃРѕРґРµСЂР¶Р°С‚СЊСЃСЏ РїРѕР»СЏ:
 	 * <ul>
-	 * 	<li>{@linkplain HelperConfig#enumClass enumClass} класс энума, должен содержать аннотацию ExtField</li>
-	 * 	<li>{@linkplain HelperConfig#constantsJsFilePath constantsJsFilePath} путь к js-файлу с хэшами-константами</li>
-	 * 	<li>{@linkplain HelperConfig#localStoresJsFilePath localStoresJsFilePath} путь к js-файлу со store</li>
-	 * 	<li>{@linkplain HelperConfig#renderersJsFilePath renderersJsFilePath} путь к js-файлу с рендерерами</li>
-	 * 	<li>{@linkplain HelperConfig#srvSrcDir srvSrcDir} путь к исходникам серверной части</li>
-	 * 	<li>{@linkplain HelperConfig#rendererPropertiesFilePath rendererPropertiesFilePath} путь к файлу renderer.properties</li>
-	 * 	<li>{@linkplain HelperConfig#renderersClassFilePath renderersClassFilePath} путь к файлу Renderers.java</li>
+	 * 	<li>{@linkplain HelperConfig#enumClass enumClass} РєР»Р°СЃСЃ СЌРЅСѓРјР°, РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ Р°РЅРЅРѕС‚Р°С†РёСЋ ExtField</li>
+	 * 	<li>{@linkplain HelperConfig#constantsJsFilePath constantsJsFilePath} РїСѓС‚СЊ Рє js-С„Р°Р№Р»Сѓ СЃ С…СЌС€Р°РјРё-РєРѕРЅСЃС‚Р°РЅС‚Р°РјРё</li>
+	 * 	<li>{@linkplain HelperConfig#localStoresJsFilePath localStoresJsFilePath} РїСѓС‚СЊ Рє js-С„Р°Р№Р»Сѓ СЃРѕ store</li>
+	 * 	<li>{@linkplain HelperConfig#renderersJsFilePath renderersJsFilePath} РїСѓС‚СЊ Рє js-С„Р°Р№Р»Сѓ СЃ СЂРµРЅРґРµСЂРµСЂР°РјРё</li>
+	 * 	<li>{@linkplain HelperConfig#srvSrcDir srvSrcDir} РїСѓС‚СЊ Рє РёСЃС…РѕРґРЅРёРєР°Рј СЃРµСЂРІРµСЂРЅРѕР№ С‡Р°СЃС‚Рё</li>
+	 * 	<li>{@linkplain HelperConfig#rendererPropertiesFilePath rendererPropertiesFilePath} РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ renderer.properties</li>
+	 * 	<li>{@linkplain HelperConfig#renderersClassFilePath renderersClassFilePath} РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ Renderers.java</li>
 	 * </ul>
-	 * @throws IOException в случае ошибки записи какого-либо файла
+	 * @throws IOException РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё Р·Р°РїРёСЃРё РєР°РєРѕРіРѕ-Р»РёР±Рѕ С„Р°Р№Р»Р°
 	 */
 	void generateEnumJs(HelperConfig config) throws IOException;
 
 	/**
-	 * Генерирует необходимые классы Page, DataProvider, TestCase для тестирования сущности при помощи Selenium:
+	 * Р“РµРЅРµСЂРёСЂСѓРµС‚ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РєР»Р°СЃСЃС‹ Page, DataProvider, TestCase РґР»СЏ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ СЃСѓС‰РЅРѕСЃС‚Рё РїСЂРё РїРѕРјРѕС‰Рё Selenium:
 	 * <ul>
-	 *   <li>FormPage - класс, с помощью которого можно вводить тестовые данные в форму</li>
-	 *   <li>ListPage - класс, который описывает работу со списком сцщности</li>
-	 *   <li>DataProvider - класс, который загружает тестовые данные</li>
-	 *   <li>TestCase - тест, в котором выполняется создание, просморт, изменение, удаление и создание, если не найдено нужной сущности</li>
+	 *   <li>FormPage - РєР»Р°СЃСЃ, СЃ РїРѕРјРѕС‰СЊСЋ РєРѕС‚РѕСЂРѕРіРѕ РјРѕР¶РЅРѕ РІРІРѕРґРёС‚СЊ С‚РµСЃС‚РѕРІС‹Рµ РґР°РЅРЅС‹Рµ РІ С„РѕСЂРјСѓ</li>
+	 *   <li>ListPage - РєР»Р°СЃСЃ, РєРѕС‚РѕСЂС‹Р№ РѕРїРёСЃС‹РІР°РµС‚ СЂР°Р±РѕС‚Сѓ СЃРѕ СЃРїРёСЃРєРѕРј СЃС†С‰РЅРѕСЃС‚Рё</li>
+	 *   <li>DataProvider - РєР»Р°СЃСЃ, РєРѕС‚РѕСЂС‹Р№ Р·Р°РіСЂСѓР¶Р°РµС‚ С‚РµСЃС‚РѕРІС‹Рµ РґР°РЅРЅС‹Рµ</li>
+	 *   <li>TestCase - С‚РµСЃС‚, РІ РєРѕС‚РѕСЂРѕРј РІС‹РїРѕР»РЅСЏРµС‚СЃСЏ СЃРѕР·РґР°РЅРёРµ, РїСЂРѕСЃРјРѕСЂС‚, РёР·РјРµРЅРµРЅРёРµ, СѓРґР°Р»РµРЅРёРµ Рё СЃРѕР·РґР°РЅРёРµ, РµСЃР»Рё РЅРµ РЅР°Р№РґРµРЅРѕ РЅСѓР¶РЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё</li>
 	 * </ul>
-	 * @param config конфиг, в котором должны содержаться поля:
+	 * @param config РєРѕРЅС„РёРі, РІ РєРѕС‚РѕСЂРѕРј РґРѕР»Р¶РЅС‹ СЃРѕРґРµСЂР¶Р°С‚СЊСЃСЏ РїРѕР»СЏ:
 	 * <ul>
-	 * 	<li>{@linkplain HelperConfig#entityClass entityClass} класс сущности, должен содержать аннотацию ExtEntity</li>
-	 * 	<li>{@linkplain HelperConfig#seleniumSrcDir seleniumSrcDir} путь к исходникам selenium страниц</li>
-	 * 	<li>{@linkplain HelperConfig#seleniumTestDir seleniumTestDir} путь к тестам selenium страниц, куда будут добавляться TestCase и DataProvider</li>
+	 * 	<li>{@linkplain HelperConfig#entityClass entityClass} РєР»Р°СЃСЃ СЃСѓС‰РЅРѕСЃС‚Рё, РґРѕР»Р¶РµРЅ СЃРѕРґРµСЂР¶Р°С‚СЊ Р°РЅРЅРѕС‚Р°С†РёСЋ ExtEntity</li>
+	 * 	<li>{@linkplain HelperConfig#seleniumSrcDir seleniumSrcDir} РїСѓС‚СЊ Рє РёСЃС…РѕРґРЅРёРєР°Рј selenium СЃС‚СЂР°РЅРёС†</li>
+	 * 	<li>{@linkplain HelperConfig#seleniumTestDir seleniumTestDir} РїСѓС‚СЊ Рє С‚РµСЃС‚Р°Рј selenium СЃС‚СЂР°РЅРёС†, РєСѓРґР° Р±СѓРґСѓС‚ РґРѕР±Р°РІР»СЏС‚СЊСЃСЏ TestCase Рё DataProvider</li>
 	 * </ul>
-	 * @throws IOException в случае ошибки записи какого-либо файла
+	 * @throws IOException РІ СЃР»СѓС‡Р°Рµ РѕС€РёР±РєРё Р·Р°РїРёСЃРё РєР°РєРѕРіРѕ-Р»РёР±Рѕ С„Р°Р№Р»Р°
 	 */
 	void generateEntityTests(HelperConfig config) throws IOException;
 

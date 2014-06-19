@@ -340,7 +340,7 @@ public class ProjectConfigUtils
 		return concat(getAddressClassPackage(config), PACKAGE_SEPARATOR, ADDRESS_CLASS_SIMPLE_NAME);
 	}
 	public static String getAddressJsNamespace(ProjectConfig config) {
-		return getValue(config.addressJsNamespace, concat( getAddressClassPackage(config), PACKAGE_SEPARATOR, decapitalize(ADDRESS_CLASS_SIMPLE_NAME))); // определятеся аналогично ExtEntity.jsNamespace
+		return getValue(config.addressJsNamespace, concat( getAddressClassPackage(config), PACKAGE_SEPARATOR, decapitalize(ADDRESS_CLASS_SIMPLE_NAME))); // РѕРїСЂРµРґРµР»СЏС‚РµСЃСЏ Р°РЅР°Р»РѕРіРёС‡РЅРѕ ExtEntity.jsNamespace
 	}
 	public static String getAddressFormJsNamespace(ProjectConfig config) {
 		return getValue(config.addressFormJsNamespace, ADDRESS_CLASS_SIMPLE_NAME);

@@ -16,7 +16,7 @@ import java.util.Map;
 import static su.opencode.kefir.util.StringUtils.concat;
 
 /**
- * Оболочка для css-стиля.
+ * РћР±РѕР»РѕС‡РєР° РґР»СЏ css-СЃС‚РёР»СЏ.
  */
 public class CssStyle
 {
@@ -43,7 +43,7 @@ public class CssStyle
 	}
 
 	/**
-	 * @return значение стиля в строчку.
+	 * @return Р·РЅР°С‡РµРЅРёРµ СЃС‚РёР»СЏ РІ СЃС‚СЂРѕС‡РєСѓ.
 	 */
 	public String toString() {
 		if (map.isEmpty())
@@ -82,8 +82,8 @@ public class CssStyle
 		return concat(CLASS_NAME_PREFIX, name);
 	}
 
-	private String name; // имя стиля
-	private List<String> keys; // сохраняет ключи в порядке их добавления
+	private String name; // РёРјСЏ СЃС‚РёР»СЏ
+	private List<String> keys; // СЃРѕС…СЂР°РЅСЏРµС‚ РєР»СЋС‡Рё РІ РїРѕСЂСЏРґРєРµ РёС… РґРѕР±Р°РІР»РµРЅРёСЏ
 	private Map<String, Object> map;
 	private StringBuffer sb = new StringBuffer();
 

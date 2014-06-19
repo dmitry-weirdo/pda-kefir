@@ -32,7 +32,7 @@ public class AddressClassFileWriter extends ClassFileWriter
 	public AddressClassFileWriter(String baseDir, String packageName, ProjectConfig config) {
 		super(baseDir, packageName, ADDRESS_CLASS_SIMPLE_NAME);
 		this.config = config;
-		this.failIfFileExists = false; // если уже есть класс адреса, не перезаписывать ее
+		this.failIfFileExists = false; // РµСЃР»Рё СѓР¶Рµ РµСЃС‚СЊ РєР»Р°СЃСЃ Р°РґСЂРµСЃР°, РЅРµ РїРµСЂРµР·Р°РїРёСЃС‹РІР°С‚СЊ РµРµ
 	}
 
 	@Override
@@ -211,12 +211,12 @@ public class AddressClassFileWriter extends ClassFileWriter
 	public static final String FORM_JS_NAMESPACE_TITLE_PARAM_NAME = "formJsNamespace";
 
 	// values // todo: read this values from property file
-	public static final String LIST_WINDOW_TITLE_PARAM_VALUE = "Список адресов";
-	public static final String NOT_CHOSEN_TITLE_PARAM_VALUE = "Адрес не выбран";
-	public static final String NOT_CHOSEN_MESSAGE_PARAM_VALUE = "Выберите адрес";
-	public static final String CHOOSE_WINDOW_TITLE_PARAM_VALUE = "Выбор адреса";
-	public static final String CREATE_WINDOW_TITLE_PARAM_VALUE = "Ввод адреса";
-	public static final String SHOW_WINDOW_TITLE_PARAM_VALUE = "Просмотр адреса";
-	public static final String UPDATE_WINDOW_TITLE_PARAM_VALUE = "Изменение адреса";
-	public static final String DELETE_WINDOW_TITLE_PARAM_VALUE = "Удаление адреса";
+	public static final String LIST_WINDOW_TITLE_PARAM_VALUE = "РЎРїРёСЃРѕРє Р°РґСЂРµСЃРѕРІ";
+	public static final String NOT_CHOSEN_TITLE_PARAM_VALUE = "РђРґСЂРµСЃ РЅРµ РІС‹Р±СЂР°РЅ";
+	public static final String NOT_CHOSEN_MESSAGE_PARAM_VALUE = "Р’С‹Р±РµСЂРёС‚Рµ Р°РґСЂРµСЃ";
+	public static final String CHOOSE_WINDOW_TITLE_PARAM_VALUE = "Р’С‹Р±РѕСЂ Р°РґСЂРµСЃР°";
+	public static final String CREATE_WINDOW_TITLE_PARAM_VALUE = "Р’РІРѕРґ Р°РґСЂРµСЃР°";
+	public static final String SHOW_WINDOW_TITLE_PARAM_VALUE = "РџСЂРѕСЃРјРѕС‚СЂ Р°РґСЂРµСЃР°";
+	public static final String UPDATE_WINDOW_TITLE_PARAM_VALUE = "РР·РјРµРЅРµРЅРёРµ Р°РґСЂРµСЃР°";
+	public static final String DELETE_WINDOW_TITLE_PARAM_VALUE = "РЈРґР°Р»РµРЅРёРµ Р°РґСЂРµСЃР°";
 }

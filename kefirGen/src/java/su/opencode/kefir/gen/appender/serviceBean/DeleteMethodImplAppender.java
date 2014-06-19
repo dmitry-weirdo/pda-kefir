@@ -38,18 +38,18 @@ public class DeleteMethodImplAppender extends ServiceBeanMethodAppender
 	}
 
 	protected void appendImports(List<String> fileLines, List<String> imports) {
-		addImport( entityClass.getName(), fileLines, imports ); // если сущность не в том же пакете, что и реализация сервиса -> добавить импорт сущности
+		addImport( entityClass.getName(), fileLines, imports ); // РµСЃР»Рё СЃСѓС‰РЅРѕСЃС‚СЊ РЅРµ РІ С‚РѕРј Р¶Рµ РїР°РєРµС‚Рµ, С‡С‚Рѕ Рё СЂРµР°Р»РёР·Р°С†РёСЏ СЃРµСЂРІРёСЃР° -> РґРѕР±Р°РІРёС‚СЊ РёРјРїРѕСЂС‚ СЃСѓС‰РЅРѕСЃС‚Рё
 
 		boolean addEjbImport = false;
 
 		if (hasAttachmentsFields(entityClass))
-		{ // если у сущности есть вложения, то нужно добавить поле attachmentService
+		{ // РµСЃР»Рё Сѓ СЃСѓС‰РЅРѕСЃС‚Рё РµСЃС‚СЊ РІР»РѕР¶РµРЅРёСЏ, С‚Рѕ РЅСѓР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ РїРѕР»Рµ attachmentService
 			addEjbImport = true;
 			addImport( AttachmentsField.SERVICE_CLASS_NAME, fileLines, imports );
 		}
 
 		if (hasPreventDeleteEntities(extEntity))
-		{ // есть связанные сущности, которые нужно проверять на существование перед удалением
+		{ // РµСЃС‚СЊ СЃРІСЏР·Р°РЅРЅС‹Рµ СЃСѓС‰РЅРѕСЃС‚Рё, РєРѕС‚РѕСЂС‹Рµ РЅСѓР¶РЅРѕ РїСЂРѕРІРµСЂСЏС‚СЊ РЅР° СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёРµ РїРµСЂРµРґ СѓРґР°Р»РµРЅРёРµРј
 			addImport(ClientException.class, fileLines, imports);
 
 			String thisServiceClassName = getServiceClassName(extEntity, entityClass);
@@ -59,13 +59,13 @@ public class DeleteMethodImplAppender extends ServiceBeanMethodAppender
 				Class preventDeleteEntityClass = getPreventDeleteEntityClass(preventDeleteEntity);
 				ExtEntity preventDeleteEntityExtEntity = getPreventDeleteEntityExtEntityAnnotation(preventDeleteEntity);
 
-				addImport( getFilterConfigClassName(preventDeleteEntityExtEntity, preventDeleteEntityClass), fileLines, imports ); // импортировать FilterConfig удаляемой сущности
+				addImport( getFilterConfigClassName(preventDeleteEntityExtEntity, preventDeleteEntityClass), fileLines, imports ); // РёРјРїРѕСЂС‚РёСЂРѕРІР°С‚СЊ FilterConfig СѓРґР°Р»СЏРµРјРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё
 
 				String serviceClassName = getServiceClassName(preventDeleteEntityExtEntity, preventDeleteEntityClass);
 				if ( !serviceClassName.equals(thisServiceClassName))
 				{
 					addEjbImport = true;
-					addImport(serviceClassName, fileLines, imports ); // импортировать сервис удаляемой сущности
+					addImport(serviceClassName, fileLines, imports ); // РёРјРїРѕСЂС‚РёСЂРѕРІР°С‚СЊ СЃРµСЂРІРёСЃ СѓРґР°Р»СЏРµРјРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё
 				}
 			}
 		}
@@ -98,7 +98,7 @@ public class DeleteMethodImplAppender extends ServiceBeanMethodAppender
 		appendEmptyLine(fileLines);
 
 		if ( hasPreventDeleteEntities(extEntity) )
-		{ // проверить связанные сущности
+		{ // РїСЂРѕРІРµСЂРёС‚СЊ СЃРІСЏР·Р°РЅРЅС‹Рµ СЃСѓС‰РЅРѕСЃС‚Рё
 			for (PreventDeleteEntity preventDeleteEntity : extEntity.preventDeleteEntities())
 			{
 				Class preventDeleteEntityClass = getPreventDeleteEntityClass(preventDeleteEntity);
@@ -112,7 +112,7 @@ public class DeleteMethodImplAppender extends ServiceBeanMethodAppender
 					"\t\t", filterConfigVarName, ".", getSetterName( getPreventDeleteEntityFilterConfigFieldName(preventDeleteEntity, entityClass) ), "(", ID_PARAM_NAME, ");"
 				) );
 
-				String countMethodPrefix = ""; // если count-метод в том же сервисе, то вызывать надо метод этого же класса
+				String countMethodPrefix = ""; // РµСЃР»Рё count-РјРµС‚РѕРґ РІ С‚РѕРј Р¶Рµ СЃРµСЂРІРёСЃРµ, С‚Рѕ РІС‹Р·С‹РІР°С‚СЊ РЅР°РґРѕ РјРµС‚РѕРґ СЌС‚РѕРіРѕ Р¶Рµ РєР»Р°СЃСЃР°
 				String preventDeleteEntityServiceClassName = getServiceClassName(preventDeleteEntityExtEntity, preventDeleteEntityClass);
 				String thisServiceClassName = getServiceClassName(extEntity, entityClass);
 				if ( !preventDeleteEntityServiceClassName.equals(thisServiceClassName) )
@@ -125,7 +125,7 @@ public class DeleteMethodImplAppender extends ServiceBeanMethodAppender
 		}
 
 		if ( hasAttachmentsFields(entityClass) )
-		{ // удалить связанные аттачменты
+		{ // СѓРґР°Р»РёС‚СЊ СЃРІСЏР·Р°РЅРЅС‹Рµ Р°С‚С‚Р°С‡РјРµРЅС‚С‹
 			fileLines.add( concat(sb, "\t\t", ATTACHMENT_SERVICE_FIELD_NAME, ".deleteAttachments(", className, ".class.getName(), ", ID_PARAM_NAME, ");") );
 			appendEmptyLine(fileLines);
 		}
@@ -152,13 +152,13 @@ public class DeleteMethodImplAppender extends ServiceBeanMethodAppender
 
 	protected void appendFields(List<String> fileLines, List<String> fields) {
 		if ( hasAttachmentsFields(entityClass) )
-		{ // добавить поле @EJB attachmentService
+		{ // РґРѕР±Р°РІРёС‚СЊ РїРѕР»Рµ @EJB attachmentService
 			appendEjbField(AttachmentsField.SERVICE_CLASS_NAME, fileLines, fields);
 		}
 
 		if ( hasPreventDeleteEntities(extEntity) )
-		{ // добавить поля сервисов связанных сущностей
-			Set<String> servicesClassNames = new HashSet<>(); // исключить задвоения добавляемых полей сервисов
+		{ // РґРѕР±Р°РІРёС‚СЊ РїРѕР»СЏ СЃРµСЂРІРёСЃРѕРІ СЃРІСЏР·Р°РЅРЅС‹С… СЃСѓС‰РЅРѕСЃС‚РµР№
+			Set<String> servicesClassNames = new HashSet<>(); // РёСЃРєР»СЋС‡РёС‚СЊ Р·Р°РґРІРѕРµРЅРёСЏ РґРѕР±Р°РІР»СЏРµРјС‹С… РїРѕР»РµР№ СЃРµСЂРІРёСЃРѕРІ
 
 			for (PreventDeleteEntity preventDeleteEntity : extEntity.preventDeleteEntities())
 			{
@@ -169,7 +169,7 @@ public class DeleteMethodImplAppender extends ServiceBeanMethodAppender
 				servicesClassNames.add(preventDeleteEntityServiceClassName);
 			}
 
-			// добавить поля накопленных сервисов
+			// РґРѕР±Р°РІРёС‚СЊ РїРѕР»СЏ РЅР°РєРѕРїР»РµРЅРЅС‹С… СЃРµСЂРІРёСЃРѕРІ
 			for (String serviceClassName : servicesClassNames)
 				appendEjbField(serviceClassName, fileLines, fields);
 		}

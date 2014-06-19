@@ -20,23 +20,23 @@ import static su.opencode.kefir.gen.field.DateField.NULL_DATE_VALUE;
 import static su.opencode.kefir.srv.renderer.RenderersFactory.FLOAT_RENDERER;
 
 /**
- * Договор аренды.
- * Заключается {@linkplain Developer застройщиком} для аренды определенного {@linkplain Parcel земельного участка}.
+ * Р”РѕРіРѕРІРѕСЂ Р°СЂРµРЅРґС‹.
+ * Р—Р°РєР»СЋС‡Р°РµС‚СЃСЏ {@linkplain Developer Р·Р°СЃС‚СЂРѕР№С‰РёРєРѕРј} РґР»СЏ Р°СЂРµРЅРґС‹ РѕРїСЂРµРґРµР»РµРЅРЅРѕРіРѕ {@linkplain Parcel Р·РµРјРµР»СЊРЅРѕРіРѕ СѓС‡Р°СЃС‚РєР°}.
  */
 @ExtEntity(
-	listWindowTitle = "Список договоров аренды",
-	notChosenTitle = "Договор аренды не выбран",
-	notChosenMessage = "Выберите договор аренды",
+	listWindowTitle = "РЎРїРёСЃРѕРє РґРѕРіРѕРІРѕСЂРѕРІ Р°СЂРµРЅРґС‹",
+	notChosenTitle = "Р”РѕРіРѕРІРѕСЂ Р°СЂРµРЅРґС‹ РЅРµ РІС‹Р±СЂР°РЅ",
+	notChosenMessage = "Р’С‹Р±РµСЂРёС‚Рµ РґРѕРіРѕРІРѕСЂ Р°СЂРµРЅРґС‹",
 
-	chooseWindowTitle = "Выбор договора аренды",
-	createWindowTitle = "Ввод договора аренды",
-	showWindowTitle = "Просмотр договора аренды",
-	updateWindowTitle = "Изменение договора аренды",
-	deleteWindowTitle = "Удаление договора аренды",
+	chooseWindowTitle = "Р’С‹Р±РѕСЂ РґРѕРіРѕРІРѕСЂР° Р°СЂРµРЅРґС‹",
+	createWindowTitle = "Р’РІРѕРґ РґРѕРіРѕРІРѕСЂР° Р°СЂРµРЅРґС‹",
+	showWindowTitle = "РџСЂРѕСЃРјРѕС‚СЂ РґРѕРіРѕРІРѕСЂР° Р°СЂРµРЅРґС‹",
+	updateWindowTitle = "РР·РјРµРЅРµРЅРёРµ РґРѕРіРѕРІРѕСЂР° Р°СЂРµРЅРґС‹",
+	deleteWindowTitle = "РЈРґР°Р»РµРЅРёРµ РґРѕРіРѕРІРѕСЂР° Р°СЂРµРЅРґС‹",
 
-	createSaveErrorMessage = "Ошибка при сохранении договора аренды",
-	updateSaveErrorMessage = "Ошибка при изменении договора аренды",
-	deleteSaveErrorMessage = "Ошибка при удалении договора аренды",
+	createSaveErrorMessage = "РћС€РёР±РєР° РїСЂРё СЃРѕС…СЂР°РЅРµРЅРёРё РґРѕРіРѕРІРѕСЂР° Р°СЂРµРЅРґС‹",
+	updateSaveErrorMessage = "РћС€РёР±РєР° РїСЂРё РёР·РјРµРЅРµРЅРёРё РґРѕРіРѕРІРѕСЂР° Р°СЂРµРЅРґС‹",
+	deleteSaveErrorMessage = "РћС€РёР±РєР° РїСЂРё СѓРґР°Р»РµРЅРёРё РґРѕРіРѕРІРѕСЂР° Р°СЂРµРЅРґС‹",
 
 	formWindowWidth = 800,
 
@@ -55,14 +55,14 @@ import static su.opencode.kefir.srv.renderer.RenderersFactory.FLOAT_RENDERER;
 	deleteServletUrl = "/leaseContractDeleteNew"//,
 
 //	listSecondRowButtons = {
-//		@SecondRowButton(text = "Просмотреть платежи за аренду", listEntityClassName = "su.opencode.minstroy.ejb.leasing.RentPayment"),
-//		@SecondRowButton(text = "Просмотреть разрешения на строительство", listEntityClassName = "su.opencode.minstroy.ejb.building.BuildingPermission"),
-//		@SecondRowButton(text = "Просмотреть строительные объекты", listEntityClassName = "su.opencode.minstroy.ejb.building.Building")
+//		@SecondRowButton(text = "РџСЂРѕСЃРјРѕС‚СЂРµС‚СЊ РїР»Р°С‚РµР¶Рё Р·Р° Р°СЂРµРЅРґСѓ", listEntityClassName = "su.opencode.minstroy.ejb.leasing.RentPayment"),
+//		@SecondRowButton(text = "РџСЂРѕСЃРјРѕС‚СЂРµС‚СЊ СЂР°Р·СЂРµС€РµРЅРёСЏ РЅР° СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІРѕ", listEntityClassName = "su.opencode.minstroy.ejb.building.BuildingPermission"),
+//		@SecondRowButton(text = "РџСЂРѕСЃРјРѕС‚СЂРµС‚СЊ СЃС‚СЂРѕРёС‚РµР»СЊРЅС‹Рµ РѕР±СЉРµРєС‚С‹", listEntityClassName = "su.opencode.minstroy.ejb.building.Building")
 //	}//,
 
 //	preventDeleteEntities = {
-//		@PreventDeleteEntity(className = "su.opencode.minstroy.ejb.leasing.RentPayment", message = "Невозможно удалить договор аренды, т.к. существуют платежи за аренду, связанные с ним."),
-//		@PreventDeleteEntity(className = "su.opencode.minstroy.ejb.building.BuildingPermission", message = "Невозможно удалить договор аренды, т.к. существуют разрешения на строительство, связанные с ним.")
+//		@PreventDeleteEntity(className = "su.opencode.minstroy.ejb.leasing.RentPayment", message = "РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРґР°Р»РёС‚СЊ РґРѕРіРѕРІРѕСЂ Р°СЂРµРЅРґС‹, С‚.Рє. СЃСѓС‰РµСЃС‚РІСѓСЋС‚ РїР»Р°С‚РµР¶Рё Р·Р° Р°СЂРµРЅРґСѓ, СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ РЅРёРј."),
+//		@PreventDeleteEntity(className = "su.opencode.minstroy.ejb.building.BuildingPermission", message = "РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРґР°Р»РёС‚СЊ РґРѕРіРѕРІРѕСЂ Р°СЂРµРЅРґС‹, С‚.Рє. СЃСѓС‰РµСЃС‚РІСѓСЋС‚ СЂР°Р·СЂРµС€РµРЅРёСЏ РЅР° СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІРѕ, СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ РЅРёРј.")
 //	}
 )
 public class LeaseContract extends JsonObject
@@ -120,64 +120,64 @@ public class LeaseContract extends JsonObject
 	private Integer id;
 
 	/**
-	 * Земельный участок
+	 * Р—РµРјРµР»СЊРЅС‹Р№ СѓС‡Р°СЃС‚РѕРє
 	 */
-	@FilterConfigField(listWindowFilterTitle = "земельный участок", listWindowTitleParamName = "cadastralNumber")
+	@FilterConfigField(listWindowFilterTitle = "Р·РµРјРµР»СЊРЅС‹Р№ СѓС‡Р°СЃС‚РѕРє", listWindowTitleParamName = "cadastralNumber")
 	@ChooseField(
-		fieldSetName = "Земельный участок",
+		fieldSetName = "Р—РµРјРµР»СЊРЅС‹Р№ СѓС‡Р°СЃС‚РѕРє",
 
 		fields = {
-			@ChooseFieldTextField(name = "cadastralNumber", label = "Кадастровый номер", formPanelWidth = 580, width = 400, maxLength = 25),
-			@ChooseFieldTextField(name = "area", label = "Площадь", formPanelWidth = 580, width = 100, maxLength = 10, renderer = FLOAT_RENDERER)
+			@ChooseFieldTextField(name = "cadastralNumber", label = "РљР°РґР°СЃС‚СЂРѕРІС‹Р№ РЅРѕРјРµСЂ", formPanelWidth = 580, width = 400, maxLength = 25),
+			@ChooseFieldTextField(name = "area", label = "РџР»РѕС‰Р°РґСЊ", formPanelWidth = 580, width = 100, maxLength = 10, renderer = FLOAT_RENDERER)
 		}
 
 	)
 	private Parcel parcel;
 
 	/**
-	 * Застройщик
+	 * Р—Р°СЃС‚СЂРѕР№С‰РёРє
 	 */
-	@FilterConfigField(listWindowFilterTitle = "застройщик")
+	@FilterConfigField(listWindowFilterTitle = "Р·Р°СЃС‚СЂРѕР№С‰РёРє")
 	@ChooseField(
-		fieldSetName = "Застройщик",
+		fieldSetName = "Р—Р°СЃС‚СЂРѕР№С‰РёРє",
 
 		fields = {
-			@ChooseFieldTextField(name = "name", label = "Наименование", formPanelWidth = 580, width = 400, maxLength = 255)
+			@ChooseFieldTextField(name = "name", label = "РќР°РёРјРµРЅРѕРІР°РЅРёРµ", formPanelWidth = 580, width = 400, maxLength = 255)
 		}
 	)
 	private Developer developer;
 
 	/**
-	 * Номер договора аренды
+	 * РќРѕРјРµСЂ РґРѕРіРѕРІРѕСЂР° Р°СЂРµРЅРґС‹
 	 */
-	@SearchField(label = "Номер:", width = 250)
-	@TextField(label = "Номер договора", width = 300, maxLength = 100) // todo: vtype
+	@SearchField(label = "РќРѕРјРµСЂ:", width = 250)
+	@TextField(label = "РќРѕРјРµСЂ РґРѕРіРѕРІРѕСЂР°", width = 300, maxLength = 100) // todo: vtype
 	private String number;
 
 	/**
-	 * Регистрационный номер договора (по Росреестру)
+	 * Р РµРіРёСЃС‚СЂР°С†РёРѕРЅРЅС‹Р№ РЅРѕРјРµСЂ РґРѕРіРѕРІРѕСЂР° (РїРѕ Р РѕСЃСЂРµРµСЃС‚СЂСѓ)
 	 */
-	@SearchField(label = "Регистрационный номер:", width = 250)
-	@TextField(label = "Регистрационный номер договора", width = 300, maxLength = 100) // todo: vtype
+	@SearchField(label = "Р РµРіРёСЃС‚СЂР°С†РёРѕРЅРЅС‹Р№ РЅРѕРјРµСЂ:", width = 250)
+	@TextField(label = "Р РµРіРёСЃС‚СЂР°С†РёРѕРЅРЅС‹Р№ РЅРѕРјРµСЂ РґРѕРіРѕРІРѕСЂР°", width = 300, maxLength = 100) // todo: vtype
 	private String registationNumber;
 
 
 	/**
-	 * Дата начала срока действия договора
+	 * Р”Р°С‚Р° РЅР°С‡Р°Р»Р° СЃСЂРѕРєР° РґРµР№СЃС‚РІРёСЏ РґРѕРіРѕРІРѕСЂР°
 	 */
-	@DateField(label = "Дата начала срока действия", maxValue = NULL_DATE_VALUE)
+	@DateField(label = "Р”Р°С‚Р° РЅР°С‡Р°Р»Р° СЃСЂРѕРєР° РґРµР№СЃС‚РІРёСЏ", maxValue = NULL_DATE_VALUE)
 	private Date beginDate;
 
 	/**
-	 * Дата окончания срока действия договора
+	 * Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ СЃСЂРѕРєР° РґРµР№СЃС‚РІРёСЏ РґРѕРіРѕРІРѕСЂР°
 	 */
-	@DateField(label = "Дата окончания срока действия", maxValue = NULL_DATE_VALUE)
+	@DateField(label = "Р”Р°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ СЃСЂРѕРєР° РґРµР№СЃС‚РІРёСЏ", maxValue = NULL_DATE_VALUE)
 	private Date endDate;
 
 	/**
-	 * Дата, до которой был продлен договор.
-	 * Обязана быть больше, чем дата окончания срока действия договора.
+	 * Р”Р°С‚Р°, РґРѕ РєРѕС‚РѕСЂРѕР№ Р±С‹Р» РїСЂРѕРґР»РµРЅ РґРѕРіРѕРІРѕСЂ.
+	 * РћР±СЏР·Р°РЅР° Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ, С‡РµРј РґР°С‚Р° РѕРєРѕРЅС‡Р°РЅРёСЏ СЃСЂРѕРєР° РґРµР№СЃС‚РІРёСЏ РґРѕРіРѕРІРѕСЂР°.
 	 */
-	@DateField(label = "Дата продления", maxValue = NULL_DATE_VALUE, allowBlank = true)
+	@DateField(label = "Р”Р°С‚Р° РїСЂРѕРґР»РµРЅРёСЏ", maxValue = NULL_DATE_VALUE, allowBlank = true)
 	private Date prolongationDate;
 }

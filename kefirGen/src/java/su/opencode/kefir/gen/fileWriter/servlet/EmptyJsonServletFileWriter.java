@@ -59,9 +59,9 @@ public class EmptyJsonServletFileWriter extends ClassFileWriter
 	}
 
 	/**
-	 * Пишет комментарий 1-го уровня вложенности в doAction (с 4 табами впереди).
-	 * @param comment значение комментария
-	 * @throws IOException при ошибке записи в файл
+	 * РџРёС€РµС‚ РєРѕРјРјРµРЅС‚Р°СЂРёР№ 1-РіРѕ СѓСЂРѕРІРЅСЏ РІР»РѕР¶РµРЅРЅРѕСЃС‚Рё РІ doAction (СЃ 4 С‚Р°Р±Р°РјРё РІРїРµСЂРµРґРё).
+	 * @param comment Р·РЅР°С‡РµРЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+	 * @throws IOException РїСЂРё РѕС€РёР±РєРµ Р·Р°РїРёСЃРё РІ С„Р°Р№Р»
 	 */
 	@Override
 	protected void writeComment(String comment) throws IOException {

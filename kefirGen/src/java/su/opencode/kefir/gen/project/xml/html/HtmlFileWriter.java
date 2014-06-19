@@ -42,7 +42,7 @@ public class HtmlFileWriter extends XmlFileWriter
 		writer.addAttribute("src", src);
 		writer.addAttribute("charset", JS_FILE_ENCODING_FOR_INCLUDE);
 
-		writer.simpleElement(SCRIPT_ELEMENT_NAME, " ", true); // пробел будет в дальнейшем удален с помощью EmptyXmlTagsFormatter
+		writer.simpleElement(SCRIPT_ELEMENT_NAME, " ", true); // РїСЂРѕР±РµР» Р±СѓРґРµС‚ РІ РґР°Р»СЊРЅРµР№С€РµРј СѓРґР°Р»РµРЅ СЃ РїРѕРјРѕС‰СЊСЋ EmptyXmlTagsFormatter
 	}
 
 	public static final String SCRIPT_ELEMENT_NAME = "script";

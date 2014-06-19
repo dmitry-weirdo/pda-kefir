@@ -77,22 +77,22 @@ public abstract class Replacer extends Appender
 	}
 
 	/**
-	 * @return маркер, означающий начало подстроки-ключа
+	 * @return РјР°СЂРєРµСЂ, РѕР·РЅР°С‡Р°СЋС‰РёР№ РЅР°С‡Р°Р»Рѕ РїРѕРґСЃС‚СЂРѕРєРё-РєР»СЋС‡Р°
 	 */
 	protected abstract String getMarkerStart();
 
 	/**
-	 * @return маркер, означающий окончание подстроки-ключа
+	 * @return РјР°СЂРєРµСЂ, РѕР·РЅР°С‡Р°СЋС‰РёР№ РѕРєРѕРЅС‡Р°РЅРёРµ РїРѕРґСЃС‚СЂРѕРєРё-РєР»СЋС‡Р°
 	 */
 	protected abstract String getMarkerEnd();
 
 	/**
-	 * @return паттерн для выделения подстрок-ключей.
+	 * @return РїР°С‚С‚РµСЂРЅ РґР»СЏ РІС‹РґРµР»РµРЅРёСЏ РїРѕРґСЃС‚СЂРѕРє-РєР»СЋС‡РµР№.
 	 */
 	protected abstract String getMarkerPattern();
 
 	/**
-	 * Заполнение мэпа values парами "ключ-значение".
+	 * Р—Р°РїРѕР»РЅРµРЅРёРµ РјСЌРїР° values РїР°СЂР°РјРё "РєР»СЋС‡-Р·РЅР°С‡РµРЅРёРµ".
 	 */
 	protected abstract void fillValues();
 

@@ -36,7 +36,7 @@
 	</target>
 
 	<target name="compile" depends="clean, init" description="compile the source">
-		<javac srcdir="${src}" destdir="${build}" debug="true" encoding="windows-1251">
+		<javac srcdir="${src}" destdir="${build}" debug="true" encoding="utf-8">
 			<classpath refid="compile.classpath"/>
 		</javac>
 	</target>

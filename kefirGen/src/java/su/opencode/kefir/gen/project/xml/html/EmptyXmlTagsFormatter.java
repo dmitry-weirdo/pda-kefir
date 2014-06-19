@@ -18,8 +18,8 @@ import java.util.List;
 import static su.opencode.kefir.gen.project.xml.XmlFileWriter.XML_FILE_ENCODING;
 
 /**
- * Удаляет пробелы в пустых простых тэгах.
- * Например "&lt;script&gt; &lt;/script&gt;" превратится в "&lt;script&gt;&lt;/script&gt;"
+ * РЈРґР°Р»СЏРµС‚ РїСЂРѕР±РµР»С‹ РІ РїСѓСЃС‚С‹С… РїСЂРѕСЃС‚С‹С… С‚СЌРіР°С….
+ * РќР°РїСЂРёРјРµСЂ "&lt;script&gt; &lt;/script&gt;" РїСЂРµРІСЂР°С‚РёС‚СЃСЏ РІ "&lt;script&gt;&lt;/script&gt;"
  */
 public class EmptyXmlTagsFormatter extends Appender
 {
@@ -49,7 +49,7 @@ public class EmptyXmlTagsFormatter extends Appender
 	}
 
 	/**
-	 * Название xml (html) файла, в котором выполняется удаление пробелов.
+	 * РќР°Р·РІР°РЅРёРµ xml (html) С„Р°Р№Р»Р°, РІ РєРѕС‚РѕСЂРѕРј РІС‹РїРѕР»РЅСЏРµС‚СЃСЏ СѓРґР°Р»РµРЅРёРµ РїСЂРѕР±РµР»РѕРІ.
 	 */
 	private String filePath;
 }

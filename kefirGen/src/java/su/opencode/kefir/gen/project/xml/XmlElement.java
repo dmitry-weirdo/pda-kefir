@@ -29,7 +29,7 @@ public class XmlElement
 		this.map = new HashMap<String, String>();
 		this.keys = new LinkedList<String>();
 	}
-	public XmlElement(String name, String key, String value) { // конструктор для хэша из 1 элемента
+	public XmlElement(String name, String key, String value) { // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ С…СЌС€Р° РёР· 1 СЌР»РµРјРµРЅС‚Р°
 		this(name);
 		this.addAttribute(key, value);
 	}
@@ -89,7 +89,7 @@ public class XmlElement
 
 	private String name;
 	private String value;
-	private List<String> keys; // сохраняет ключи в порядке их добавления
+	private List<String> keys; // СЃРѕС…СЂР°РЅСЏРµС‚ РєР»СЋС‡Рё РІ РїРѕСЂСЏРґРєРµ РёС… РґРѕР±Р°РІР»РµРЅРёСЏ
 	private Map<String, String> map;
 	private StringBuffer sb = new StringBuffer();
 

@@ -19,12 +19,12 @@ import su.opencode.kefir.gen.field.enumField.EnumFieldValue;
 )
 public enum TestEnum
 {
-	@EnumFieldValue(storeValue = "—‡ı‡"/*, hashName = "SuGaR", hashValue = "mySugar", rendererValue = "—¿’¿–"*/)
+	@EnumFieldValue(storeValue = "–°–∞—Ö–∞—Ä"/*, hashName = "SuGaR", hashValue = "mySugar", rendererValue = "–°–ê–•–ê–†"*/)
 	sugar,
 
-	@EnumFieldValue(storeValue = "—ÎË‚‡"/*, hashName = "PlUm", hashValue = "myPlum", rendererValue = "—À»¬¿"*/)
+	@EnumFieldValue(storeValue = "–°–ª–∏–≤–∞"/*, hashName = "PlUm", hashValue = "myPlum", rendererValue = "–°–õ–ò–í–ê"*/)
 	plum,
 
-	@EnumFieldValue(storeValue = "‘Âˇ"/*, hashName = "FaIrY", hashValue = "myFairy", rendererValue = "‘≈ﬂ"*/)
+	@EnumFieldValue(storeValue = "–§–µ—è"/*, hashName = "FaIrY", hashValue = "myFairy", rendererValue = "–§–ï–Ø"*/)
 	fairy
 }

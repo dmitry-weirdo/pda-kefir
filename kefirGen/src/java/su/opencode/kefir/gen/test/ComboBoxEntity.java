@@ -22,19 +22,19 @@ import java.util.List;
 import static su.opencode.kefir.srv.renderer.RenderersFactory.FLOAT_RENDERER;
 
 @ExtEntity(
-	listWindowTitle = "Список комбо сущностей",
-	notChosenTitle = "Комбо сущность не выбрана",
-	notChosenMessage = "Выберите комбо сущность",
+	listWindowTitle = "РЎРїРёСЃРѕРє РєРѕРјР±Рѕ СЃСѓС‰РЅРѕСЃС‚РµР№",
+	notChosenTitle = "РљРѕРјР±Рѕ СЃСѓС‰РЅРѕСЃС‚СЊ РЅРµ РІС‹Р±СЂР°РЅР°",
+	notChosenMessage = "Р’С‹Р±РµСЂРёС‚Рµ РєРѕРјР±Рѕ СЃСѓС‰РЅРѕСЃС‚СЊ",
 
-	chooseWindowTitle = "Выбор комбо сущности",
-	createWindowTitle = "Ввод комбо сущности",
-	showWindowTitle = "Просмотр комбо сущности",
-	updateWindowTitle = "Изменение комбо сущности",
-	deleteWindowTitle = "Удаление комбо сущности",
+	chooseWindowTitle = "Р’С‹Р±РѕСЂ РєРѕРјР±Рѕ СЃСѓС‰РЅРѕСЃС‚Рё",
+	createWindowTitle = "Р’РІРѕРґ РєРѕРјР±Рѕ СЃСѓС‰РЅРѕСЃС‚Рё",
+	showWindowTitle = "РџСЂРѕСЃРјРѕС‚СЂ РєРѕРјР±Рѕ СЃСѓС‰РЅРѕСЃС‚Рё",
+	updateWindowTitle = "РР·РјРµРЅРµРЅРёРµ РєРѕРјР±Рѕ СЃСѓС‰РЅРѕСЃС‚Рё",
+	deleteWindowTitle = "РЈРґР°Р»РµРЅРёРµ РєРѕРјР±Рѕ СЃСѓС‰РЅРѕСЃС‚Рё",
 
-	createSaveErrorMessage = "Ошибка при сохранении комбо сущности",
-	updateSaveErrorMessage = "Ошибка при изменении комбо сущности",
-	deleteSaveErrorMessage = "Ошибка при удалении комбо сущности",
+	createSaveErrorMessage = "РћС€РёР±РєР° РїСЂРё СЃРѕС…СЂР°РЅРµРЅРёРё РєРѕРјР±Рѕ СЃСѓС‰РЅРѕСЃС‚Рё",
+	updateSaveErrorMessage = "РћС€РёР±РєР° РїСЂРё РёР·РјРµРЅРµРЅРёРё РєРѕРјР±Рѕ СЃСѓС‰РЅРѕСЃС‚Рё",
+	deleteSaveErrorMessage = "РћС€РёР±РєР° РїСЂРё СѓРґР°Р»РµРЅРёРё РєРѕРјР±Рѕ СЃСѓС‰РЅРѕСЃС‚Рё",
 
 	formWindowWidth = 800,
 
@@ -44,11 +44,11 @@ import static su.opencode.kefir.srv.renderer.RenderersFactory.FLOAT_RENDERER;
 //	filterConfigClassName = "su.opencode.kefir.generated.ComboBoxEntityFilterConfig",
 
 	preventDeleteEntities = {
-		@PreventDeleteEntity(className = "su.opencode.kefir.gen.test.TestEntity", message = "Невозможно удалить комбо сущность, т.к. существует тестовая сущность, связанная с ней.")
+		@PreventDeleteEntity(className = "su.opencode.kefir.gen.test.TestEntity", message = "РќРµРІРѕР·РјРѕР¶РЅРѕ СѓРґР°Р»РёС‚СЊ РєРѕРјР±Рѕ СЃСѓС‰РЅРѕСЃС‚СЊ, С‚.Рє. СЃСѓС‰РµСЃС‚РІСѓРµС‚ С‚РµСЃС‚РѕРІР°СЏ СЃСѓС‰РЅРѕСЃС‚СЊ, СЃРІСЏР·Р°РЅРЅР°СЏ СЃ РЅРµР№.")
 	},
 
 	listSecondRowButtons = {
-		@SecondRowButton(text = "Перейти к списку тестовых сущностей", listEntityClassName = "su.opencode.kefir.gen.test.TestEntity")
+		@SecondRowButton(text = "РџРµСЂРµР№С‚Рё Рє СЃРїРёСЃРєСѓ С‚РµСЃС‚РѕРІС‹С… СЃСѓС‰РЅРѕСЃС‚РµР№", listEntityClassName = "su.opencode.kefir.gen.test.TestEntity")
 	}
 )
 public class ComboBoxEntity
@@ -82,19 +82,19 @@ public class ComboBoxEntity
 	private Integer id;
 
 	/**
-	 * Кадастровый номер. <br/>
-	 * Имеет формат АА—ББ—ВВВВВ—ГГГ—Д—ЕЕ, где <br/>
-	 * АА — код региона (как на автомобильных номерах),<br/>
-	 * ББ — код района или округа (например, в Москве 01 —ЦАО, 02 — СВАО, 09 — САО, 10 — Зеленоград);<br/>
-	 * ВВВВВ — номер квартала или земельного массива;<br/>
-	 * ГГГ — номер земельного участка или здания;<br/>
-	 * Д — номер (литера) сооружения;<br/>
-	 * ЕЕ — номер помещения в сооружении.
+	 * РљР°РґР°СЃС‚СЂРѕРІС‹Р№ РЅРѕРјРµСЂ. <br/>
+	 * РРјРµРµС‚ С„РѕСЂРјР°С‚ РђРђвЂ”Р‘Р‘вЂ”Р’Р’Р’Р’Р’вЂ”Р“Р“Р“вЂ”Р”вЂ”Р•Р•, РіРґРµ <br/>
+	 * РђРђ вЂ” РєРѕРґ СЂРµРіРёРѕРЅР° (РєР°Рє РЅР° Р°РІС‚РѕРјРѕР±РёР»СЊРЅС‹С… РЅРѕРјРµСЂР°С…),<br/>
+	 * Р‘Р‘ вЂ” РєРѕРґ СЂР°Р№РѕРЅР° РёР»Рё РѕРєСЂСѓРіР° (РЅР°РїСЂРёРјРµСЂ, РІ РњРѕСЃРєРІРµ 01 вЂ”Р¦РђРћ, 02 вЂ” РЎР’РђРћ, 09 вЂ” РЎРђРћ, 10 вЂ” Р—РµР»РµРЅРѕРіСЂР°Рґ);<br/>
+	 * Р’Р’Р’Р’Р’ вЂ” РЅРѕРјРµСЂ РєРІР°СЂС‚Р°Р»Р° РёР»Рё Р·РµРјРµР»СЊРЅРѕРіРѕ РјР°СЃСЃРёРІР°;<br/>
+	 * Р“Р“Р“ вЂ” РЅРѕРјРµСЂ Р·РµРјРµР»СЊРЅРѕРіРѕ СѓС‡Р°СЃС‚РєР° РёР»Рё Р·РґР°РЅРёСЏ;<br/>
+	 * Р” вЂ” РЅРѕРјРµСЂ (Р»РёС‚РµСЂР°) СЃРѕРѕСЂСѓР¶РµРЅРёСЏ;<br/>
+	 * Р•Р• вЂ” РЅРѕРјРµСЂ РїРѕРјРµС‰РµРЅРёСЏ РІ СЃРѕРѕСЂСѓР¶РµРЅРёРё.
 	 */
 	@ColumnModelExclude
-	@ColumnModel( header = "ИНН", renderer = FLOAT_RENDERER, sortable = false, sortParam = "dudtrsijodtiojdst" )
-	@SearchField(label = "Кадастровый номер:", width = 250)
-	@TextField(label = "Кадастровый номер", width = 200, maxLength = 25)
+	@ColumnModel( header = "РРќРќ", renderer = FLOAT_RENDERER, sortable = false, sortParam = "dudtrsijodtiojdst" )
+	@SearchField(label = "РљР°РґР°СЃС‚СЂРѕРІС‹Р№ РЅРѕРјРµСЂ:", width = 250)
+	@TextField(label = "РљР°РґР°СЃС‚СЂРѕРІС‹Р№ РЅРѕРјРµСЂ", width = 200, maxLength = 25)
 	private List cadastralNumber;
 
 	@ColumnModel(header = "combo box entity combo name")

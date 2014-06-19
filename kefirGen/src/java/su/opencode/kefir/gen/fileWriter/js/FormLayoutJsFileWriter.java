@@ -26,7 +26,7 @@ public class FormLayoutJsFileWriter extends FormJsFileWriter
 	public FormLayoutJsFileWriter(String baseDir, ExtEntity extEntity, Class entityClass) {
 		super(baseDir, extEntity, entityClass);
 
-		this.failIfFileExists = false; // если файл уже существует, это нормально, не перезаписывать его
+		this.failIfFileExists = false; // РµСЃР»Рё С„Р°Р№Р» СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚, СЌС‚Рѕ РЅРѕСЂРјР°Р»СЊРЅРѕ, РЅРµ РїРµСЂРµР·Р°РїРёСЃС‹РІР°С‚СЊ РµРіРѕ
 		this.dir = getJsDirectory(extEntity, entityClass);
 		this.fileName = getFormLayoutJsFileName(extEntity, entityClass);
 		this.extEntity = extEntity;
@@ -43,13 +43,13 @@ public class FormLayoutJsFileWriter extends FormJsFileWriter
 
 		out.writeLn(getGetFormItemsLayoutFunctionFullName(extEntity, entityClass), " = function(", paramName, ") {");
 
-		// создать переменные с колумнпанелями полей адреса
+		// СЃРѕР·РґР°С‚СЊ РїРµСЂРµРјРµРЅРЅС‹Рµ СЃ РєРѕР»СѓРјРЅРїР°РЅРµР»СЏРјРё РїРѕР»РµР№ Р°РґСЂРµСЃР°
 		writeAddressFieldsColumnPanels(paramName);
 
-		// создать переменные с филдсетами полей выбора
+		// СЃРѕР·РґР°С‚СЊ РїРµСЂРµРјРµРЅРЅС‹Рµ СЃ С„РёР»РґСЃРµС‚Р°РјРё РїРѕР»РµР№ РІС‹Р±РѕСЂР°
 		writeChooseFieldsFieldSets(paramName);
 
-		// создать переменные с филдсетами upload panel
+		// СЃРѕР·РґР°С‚СЊ РїРµСЂРµРјРµРЅРЅС‹Рµ СЃ С„РёР»РґСЃРµС‚Р°РјРё upload panel
 		writeAttachmentsFieldsFieldSets(paramName);
 
 		if (hasFieldSetsAnnotation(entityClass))
@@ -65,7 +65,7 @@ public class FormLayoutJsFileWriter extends FormJsFileWriter
 	private void writeReturn(String paramName) throws IOException {
 		out.writeLn("\treturn [");
 
-		// сначала написать id поле без запятой впереди
+		// СЃРЅР°С‡Р°Р»Р° РЅР°РїРёСЃР°С‚СЊ id РїРѕР»Рµ Р±РµР· Р·Р°РїСЏС‚РѕР№ РІРїРµСЂРµРґРё
 		out.writeLn("\t\t  ", paramName, ".", getIdHiddenFieldVarName());
 
 		Set<String> fieldSetsIds = new HashSet<>();
@@ -87,18 +87,18 @@ public class FormLayoutJsFileWriter extends FormJsFileWriter
 			}
 
 			if (hasAddressFieldAnnotation(field))
-			{ // адресное поле -> написать columnPanel
+			{ // Р°РґСЂРµСЃРЅРѕРµ РїРѕР»Рµ -> РЅР°РїРёСЃР°С‚СЊ columnPanel
 				out.writeLn("\t\t, ", getAddressFieldColumnPanelVarName(field)); // column panel
 				continue;
 			}
 			else if (hasChooseFieldAnnotation(field))
-			{ // поле выбора -> написать скрытое поле и филдсет
+			{ // РїРѕР»Рµ РІС‹Р±РѕСЂР° -> РЅР°РїРёСЃР°С‚СЊ СЃРєСЂС‹С‚РѕРµ РїРѕР»Рµ Рё С„РёР»РґСЃРµС‚
 				String hiddenIdVarName = getChooseFieldHiddenIdVarName(field);
 				String fieldSetVarName = getChooseFieldFieldSetVarName(field);
 
 				out.writeLn();
 				out.writeLn("\t\t// fields of ", field.getName());
-				out.writeLn("\t\t, ", paramName, ".", hiddenIdVarName); // скрытое поле id,
+				out.writeLn("\t\t, ", paramName, ".", hiddenIdVarName); // СЃРєСЂС‹С‚РѕРµ РїРѕР»Рµ id,
 				out.writeLn("\t\t, ", fieldSetVarName); // fieldset
 				out.writeLn();
 
@@ -110,11 +110,11 @@ public class FormLayoutJsFileWriter extends FormJsFileWriter
 				continue;
 			}
 			else if (hasIdFieldAnnotation(field))
-			{ // id - поле -> ничего не делать, оно уже написано в начале
+			{ // id - РїРѕР»Рµ -> РЅРёС‡РµРіРѕ РЅРµ РґРµР»Р°С‚СЊ, РѕРЅРѕ СѓР¶Рµ РЅР°РїРёСЃР°РЅРѕ РІ РЅР°С‡Р°Р»Рµ
 				continue;
 			}
 
-			// обычное поле -> просто написать в строчку
+			// РѕР±С‹С‡РЅРѕРµ РїРѕР»Рµ -> РїСЂРѕСЃС‚Рѕ РЅР°РїРёСЃР°С‚СЊ РІ СЃС‚СЂРѕС‡РєСѓ
 			out.writeLn("\t\t, ", paramName, ".", field.getName());
 		}
 
@@ -234,7 +234,7 @@ public class FormLayoutJsFileWriter extends FormJsFileWriter
 		// 1st row (1st field with choose and show buttons
 		ChooseFieldTextField[] textFields = chooseField.fields();
 		String firstTextFieldFormPanel = getChooseFieldTextFieldFormPanel(field, textFields[0], configParamName);
-		out.writeLn("\t\t\t  ", firstTextFieldFormPanel); // пробел для выравнивания с полями, которые стоят после запятой
+		out.writeLn("\t\t\t  ", firstTextFieldFormPanel); // РїСЂРѕР±РµР» РґР»СЏ РІС‹СЂР°РІРЅРёРІР°РЅРёСЏ СЃ РїРѕР»СЏРјРё, РєРѕС‚РѕСЂС‹Рµ СЃС‚РѕСЏС‚ РїРѕСЃР»Рµ Р·Р°РїСЏС‚РѕР№
 		out.writeLn("\t\t\t", ", ", configParamName, ".", chooseButtonVarName);
 		out.writeLn("\t\t\t", ", ", configParamName, ".", showButtonVarName);
 

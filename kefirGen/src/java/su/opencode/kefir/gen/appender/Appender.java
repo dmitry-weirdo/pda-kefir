@@ -98,17 +98,17 @@ public abstract class Appender
 		addImport(classToImport.getName(), fileLines, imports);
 	}
 	protected void addImport(String className, List<String> fileLines, List<String> imports) {
-		String packageName = getPackage(fileLines); // начальные строки заведомо содержат package
+		String packageName = getPackage(fileLines); // РЅР°С‡Р°Р»СЊРЅС‹Рµ СЃС‚СЂРѕРєРё Р·Р°РІРµРґРѕРјРѕ СЃРѕРґРµСЂР¶Р°С‚ package
 
 		if ( isInPackage(className, packageName) )
-			return; // если импортирумемый класс находится в том же пакете, что и класс, в который добавляют -> импорт не нужен
+			return; // РµСЃР»Рё РёРјРїРѕСЂС‚РёСЂСѓРјРµРјС‹Р№ РєР»Р°СЃСЃ РЅР°С…РѕРґРёС‚СЃСЏ РІ С‚РѕРј Р¶Рµ РїР°РєРµС‚Рµ, С‡С‚Рѕ Рё РєР»Р°СЃСЃ, РІ РєРѕС‚РѕСЂС‹Р№ РґРѕР±Р°РІР»СЏСЋС‚ -> РёРјРїРѕСЂС‚ РЅРµ РЅСѓР¶РµРЅ
 
 		String newImport = ClassFileWriter.getImport(sb, className);
 
 		if (imports.contains(newImport))
 		{
 			logger.info( concat(sb, "import \"", newImport, "\" is already present" ) );
-			return; // импорт уже присутствует в списке -> добавлять его повторно не нужно
+			return; // РёРјРїРѕСЂС‚ СѓР¶Рµ РїСЂРёСЃСѓС‚СЃС‚РІСѓРµС‚ РІ СЃРїРёСЃРєРµ -> РґРѕР±Р°РІР»СЏС‚СЊ РµРіРѕ РїРѕРІС‚РѕСЂРЅРѕ РЅРµ РЅСѓР¶РЅРѕ
 		}
 
 		fileLines.add(newImport);
@@ -118,7 +118,7 @@ public abstract class Appender
 		if (imports.contains(newImport))
 		{
 			logger.info( concat(sb, "import \"", newImport, "\" is already present" ) );
-			return; // импорт уже присутствует в списке -> добавлять его повторно не нужно
+			return; // РёРјРїРѕСЂС‚ СѓР¶Рµ РїСЂРёСЃСѓС‚СЃС‚РІСѓРµС‚ РІ СЃРїРёСЃРєРµ -> РґРѕР±Р°РІР»СЏС‚СЊ РµРіРѕ РїРѕРІС‚РѕСЂРЅРѕ РЅРµ РЅСѓР¶РЅРѕ
 		}
 
 		fileLines.add(newImport);
@@ -130,7 +130,7 @@ public abstract class Appender
 	protected void addField(String fieldType, String fieldName, String annotationClassName, List<String> fileLines, List<String> fields) {
 		String newField = concat(sb, "\tprivate ", fieldType, " ", fieldName, ";");
 
-		if (fields.contains(newField)) // поле уже присутствует в списке // todo: нормальная проверка (с trim итд)
+		if (fields.contains(newField)) // РїРѕР»Рµ СѓР¶Рµ РїСЂРёСЃСѓС‚СЃС‚РІСѓРµС‚ РІ СЃРїРёСЃРєРµ // todo: РЅРѕСЂРјР°Р»СЊРЅР°СЏ РїСЂРѕРІРµСЂРєР° (СЃ trim РёС‚Рґ)
 		{
 			logger.info( concat(sb, "private field \"", newField, "\" already present" ) );
 			return;
@@ -144,7 +144,7 @@ public abstract class Appender
 	protected void addPublicStringConstant(String fieldName, String fieldValue, List<String> fileLines, List<String> allFileLines) {
 		String newField = concat(sb, "\tpublic static final String ", fieldName, " = \"", fieldValue, "\";");
 
-		if (allFileLines.contains(newField)) // поле уже присутствует в списке // todo: нормальная проверка (с trim итд)
+		if (allFileLines.contains(newField)) // РїРѕР»Рµ СѓР¶Рµ РїСЂРёСЃСѓС‚СЃС‚РІСѓРµС‚ РІ СЃРїРёСЃРєРµ // todo: РЅРѕСЂРјР°Р»СЊРЅР°СЏ РїСЂРѕРІРµСЂРєР° (СЃ trim РёС‚Рґ)
 		{
 			logger.info( concat(sb, "public static final String field \"", newField, "\" already present" ) );
 			return;

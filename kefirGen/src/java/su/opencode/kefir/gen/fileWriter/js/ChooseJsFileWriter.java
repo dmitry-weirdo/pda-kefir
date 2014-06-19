@@ -168,11 +168,11 @@ public class ChooseJsFileWriter extends JsFileWriter
 
 		List<Field> searchFields = getSearchFields(entityClass);
 		if (searchFields == null || searchFields.isEmpty())
-		{ // нет полей поиска
+		{ // РЅРµС‚ РїРѕР»РµР№ РїРѕРёСЃРєР°
 			writeFunctionReturn("[]");
 		}
 		else
-		{ // есть поля поиска -> добавить их в тулбар
+		{ // РµСЃС‚СЊ РїРѕР»СЏ РїРѕРёСЃРєР° -> РґРѕР±Р°РІРёС‚СЊ РёС… РІ С‚СѓР»Р±Р°СЂ
 			if (isMultiLineToolbar(searchFields))
 			{
 				checkMultiLineToolbar(searchFields);
@@ -278,7 +278,7 @@ public class ChooseJsFileWriter extends JsFileWriter
 		config.put("width", searchField.width());
 		config.put("maxLength", getSearchFieldMaxLength(searchField, field));
 
-		if ( !searchField.uppercase() ) // todo: возможно, здесь нужно сделать обратный инверт, если в приложении не будут дефолтно большие буквы
+		if ( !searchField.uppercase() ) // todo: РІРѕР·РјРѕР¶РЅРѕ, Р·РґРµСЃСЊ РЅСѓР¶РЅРѕ СЃРґРµР»Р°С‚СЊ РѕР±СЂР°С‚РЅС‹Р№ РёРЅРІРµСЂС‚, РµСЃР»Рё РІ РїСЂРёР»РѕР¶РµРЅРёРё РЅРµ Р±СѓРґСѓС‚ РґРµС„РѕР»С‚РЅРѕ Р±РѕР»СЊС€РёРµ Р±СѓРєРІС‹
 			config.put("style", "{ textTransform: 'none' }");
 
 		if ( !searchField.mask().isEmpty() )
@@ -500,7 +500,7 @@ public class ChooseJsFileWriter extends JsFileWriter
 		dsConfig.put("autoLoad", extEntity.chooseListAutoLoad());
 
 		if ( hasFilterConfigListFilterFields(entityClass) )
-			dsConfig.put("baseParams", getDsBaseParams()); // передать параметры фильтрации
+			dsConfig.put("baseParams", getDsBaseParams()); // РїРµСЂРµРґР°С‚СЊ РїР°СЂР°РјРµС‚СЂС‹ С„РёР»СЊС‚СЂР°С†РёРё
 
 		return dsConfig;
 	}
@@ -518,11 +518,11 @@ public class ChooseJsFileWriter extends JsFileWriter
 			if (hasChooseFieldAnnotation(field))
 				fieldName = filterConfigField.chooseFieldFieldName();
 
-			if (filterConfigField.filterPassSelfAsParam()) // передается сама перемнная (актуально для примитивных фильтров)
+			if (filterConfigField.filterPassSelfAsParam()) // РїРµСЂРµРґР°РµС‚СЃСЏ СЃР°РјР° РїРµСЂРµРјРЅРЅР°СЏ (Р°РєС‚СѓР°Р»СЊРЅРѕ РґР»СЏ РїСЂРёРјРёС‚РёРІРЅС‹С… С„РёР»СЊС‚СЂРѕРІ)
 				paramValue = getFilterVarName(field);
-			else if (fieldName.equals(ID_FIELD_NAME)) // передается поле id из переменной
-				paramValue = concat(sb, GET_ID_FUNCTION_NAME, "(", getFilterVarName(field), ")"); // id получается через Kefir.getId()
-			else // передается другое поле (не id) из переменной
+			else if (fieldName.equals(ID_FIELD_NAME)) // РїРµСЂРµРґР°РµС‚СЃСЏ РїРѕР»Рµ id РёР· РїРµСЂРµРјРµРЅРЅРѕР№
+				paramValue = concat(sb, GET_ID_FUNCTION_NAME, "(", getFilterVarName(field), ")"); // id РїРѕР»СѓС‡Р°РµС‚СЃСЏ С‡РµСЂРµР· Kefir.getId()
+			else // РїРµСЂРµРґР°РµС‚СЃСЏ РґСЂСѓРіРѕРµ РїРѕР»Рµ (РЅРµ id) РёР· РїРµСЂРµРјРµРЅРЅРѕР№
 				paramValue = concat(sb, GET_VALUE_FUNCTION_NAME, "(", getFilterVarName(field), ", '", paramName, "')");
 
 			baseParams.put(paramName, paramValue);
@@ -543,7 +543,7 @@ public class ChooseJsFileWriter extends JsFileWriter
 		writeFunctionHeader(GET_WINDOW_TITLE_FUNCTION_NAME);
 
 		if ( !hasFilterConfigListFilterFields(entityClass) )
-		{ // нет фильтров -> просто вернуть название окна
+		{ // РЅРµС‚ С„РёР»СЊС‚СЂРѕРІ -> РїСЂРѕСЃС‚Рѕ РІРµСЂРЅСѓС‚СЊ РЅР°Р·РІР°РЅРёРµ РѕРєРЅР°
 			writeFunctionReturn(WINDOW_TITLE_CONSTANT_NAME);
 		}
 		else
@@ -559,15 +559,15 @@ public class ChooseJsFileWriter extends JsFileWriter
 				String filterVarName = getFilterVarName(field);
 				out.writeLn("\t\tif (", filterVarName, ")");
 
-				if (filterConfigField.listWindowTitleOnly()) // использовать только window_title для параметра-фильтра
+				if (filterConfigField.listWindowTitleOnly()) // РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ С‚РѕР»СЊРєРѕ window_title РґР»СЏ РїР°СЂР°РјРµС‚СЂР°-С„РёР»СЊС‚СЂР°
 					out.writeLn("\t\t\t", varName, " += ( ", getFilterFieldWindowTitleConstantName(field), " + ", WINDOW_TITLE_FILTERS_SEPARATOR_CONSTANT_NAME, " );");
-				else // использовать ( window_title для параметра-фильтра + ": " + значение поля из переменной фильтра)
+				else // РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ ( window_title РґР»СЏ РїР°СЂР°РјРµС‚СЂР°-С„РёР»СЊС‚СЂР° + ": " + Р·РЅР°С‡РµРЅРёРµ РїРѕР»СЏ РёР· РїРµСЂРµРјРµРЅРЅРѕР№ С„РёР»СЊС‚СЂР°)
 					out.writeLn("\t\t\t", varName, " += ( ", getFilterFieldWindowTitleConstantName(field), " + ': ' + ", GET_VALUE_FUNCTION_NAME, "(", filterVarName, ", '", filterConfigField.listWindowTitleParamName(),"') + ", WINDOW_TITLE_FILTERS_SEPARATOR_CONSTANT_NAME, " );");
 
 				out.writeLn();
 			}
 
-			out.writeLn("\t\tif (!", varName, ")"); // примененных фильтров нет -> просто вернуть имя окна
+			out.writeLn("\t\tif (!", varName, ")"); // РїСЂРёРјРµРЅРµРЅРЅС‹С… С„РёР»СЊС‚СЂРѕРІ РЅРµС‚ -> РїСЂРѕСЃС‚Рѕ РІРµСЂРЅСѓС‚СЊ РёРјСЏ РѕРєРЅР°
 			writeFunctionReturn(WINDOW_TITLE_CONSTANT_NAME, "\t\t\t");
 
 			out.writeLn();
@@ -600,18 +600,18 @@ public class ChooseJsFileWriter extends JsFileWriter
 	}
 	private void writeDefaultButton() throws IOException {
 		List<Field> searchFields = getSearchFields(entityClass);
-		if (searchFields == null || searchFields.isEmpty()) // нет полей поиска -> ничего не фокусировать
+		if (searchFields == null || searchFields.isEmpty()) // РЅРµС‚ РїРѕР»РµР№ РїРѕРёСЃРєР° -> РЅРёС‡РµРіРѕ РЅРµ С„РѕРєСѓСЃРёСЂРѕРІР°С‚СЊ
 			return;
 
 		String id = getSearchFieldIdConstantName(getDefaultFocusedSearchField(searchFields));
 		out.writeLn("\t\t\tdefaultButton: ", id, ",");
 	}
 	private Field getDefaultFocusedSearchField(List<Field> searchFields) {
-		Field defaultFocusedSearchField = getSetDefaultFocusedSearchField(searchFields); // если явно задано поле, получающее фокус, вернуть его
+		Field defaultFocusedSearchField = getSetDefaultFocusedSearchField(searchFields); // РµСЃР»Рё СЏРІРЅРѕ Р·Р°РґР°РЅРѕ РїРѕР»Рµ, РїРѕР»СѓС‡Р°СЋС‰РµРµ С„РѕРєСѓСЃ, РІРµСЂРЅСѓС‚СЊ РµРіРѕ
 		if (defaultFocusedSearchField != null)
 			return defaultFocusedSearchField;
 
-		// по умолчанию вернуть первое поле поиска в первом ряде тулбара
+		// РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ РІРµСЂРЅСѓС‚СЊ РїРµСЂРІРѕРµ РїРѕР»Рµ РїРѕРёСЃРєР° РІ РїРµСЂРІРѕРј СЂСЏРґРµ С‚СѓР»Р±Р°СЂР°
 		for (Field field : searchFields)
 			if ( getSearchFieldAnnotation(field).row() == SearchField.FIRST_ROW_NUM )
 				return field;

@@ -16,88 +16,88 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Помечает дробное поле, генерируемое в CRUD-формах сущности.
+ * РџРѕРјРµС‡Р°РµС‚ РґСЂРѕР±РЅРѕРµ РїРѕР»Рµ, РіРµРЅРµСЂРёСЂСѓРµРјРѕРµ РІ CRUD-С„РѕСЂРјР°С… СЃСѓС‰РЅРѕСЃС‚Рё.
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface NumberField
 {
 	/**
-	 * @return общее количество значащих цифр в sql-столбце для поля.
+	 * @return РѕР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ Р·РЅР°С‡Р°С‰РёС… С†РёС„СЂ РІ sql-СЃС‚РѕР»Р±С†Рµ РґР»СЏ РїРѕР»СЏ.
 	 */
 	int digits() default SqlTableField.DEFAULT_NUMERIC_FIELD_DIGITS;
 
 	/**
-	 * @return общее количество десятичных цифр в sql-столбце для поля.
+	 * @return РѕР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РґРµСЃСЏС‚РёС‡РЅС‹С… С†РёС„СЂ РІ sql-СЃС‚РѕР»Р±С†Рµ РґР»СЏ РїРѕР»СЏ.
 	 */
 	int precision() default SqlTableField.DEFAULT_NUMERIC_FIELD_PRECISION;
 
 	/**
-	 * @return код поля.
-	 * По умолчанию — ( {@linkplain su.opencode.kefir.gen.ExtEntity#jsFieldPrefix() префикс js-поля формы сущности} + "-" + название поля )
+	 * @return РєРѕРґ РїРѕР»СЏ.
+	 * РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” ( {@linkplain su.opencode.kefir.gen.ExtEntity#jsFieldPrefix() РїСЂРµС„РёРєСЃ js-РїРѕР»СЏ С„РѕСЂРјС‹ СЃСѓС‰РЅРѕСЃС‚Рё} + "-" + РЅР°Р·РІР°РЅРёРµ РїРѕР»СЏ )
 	 */
 	String id() default "";
 
 	/**
-	 * @return имя поля.
-	 *         По умолчанию — равно имени поля, на котором стоит аннотация
+	 * @return РёРјСЏ РїРѕР»СЏ.
+	 *         РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” СЂР°РІРЅРѕ РёРјРµРЅРё РїРѕР»СЏ, РЅР° РєРѕС‚РѕСЂРѕРј СЃС‚РѕРёС‚ Р°РЅРЅРѕС‚Р°С†РёСЏ
 	 */
 	String name() default "";
 
 	/**
-	 * @return метка поля
+	 * @return РјРµС‚РєР° РїРѕР»СЏ
 	 */
 	String label();
 
 	/**
-	 * @return максимальная длина поля
+	 * @return РјР°РєСЃРёРјР°Р»СЊРЅР°СЏ РґР»РёРЅР° РїРѕР»СЏ
 	 */
 	int maxLength() default 10;
 
 	/**
-	 * @return ширина поля в пикселах
+	 * @return С€РёСЂРёРЅР° РїРѕР»СЏ РІ РїРёРєСЃРµР»Р°С…
 	 */
 	int width();
 
 	/**
-	 * @return <code>true</code> — если поле можно не обязательно для заполнения, <br/>
-	 * <code>false</code> — если поле обязательно для заполнения
+	 * @return <code>true</code> вЂ” РµСЃР»Рё РїРѕР»Рµ РјРѕР¶РЅРѕ РЅРµ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ, <br/>
+	 * <code>false</code> вЂ” РµСЃР»Рё РїРѕР»Рµ РѕР±СЏР·Р°С‚РµР»СЊРЅРѕ РґР»СЏ Р·Р°РїРѕР»РЅРµРЅРёСЏ
 	 */
 	boolean allowBlank() default true;
 
 	/**
-	 * @return рендерер, выполняемый при заполнении поля.
-	 *         По умолчанию — рендерер отсутствует.
+	 * @return СЂРµРЅРґРµСЂРµСЂ, РІС‹РїРѕР»РЅСЏРµРјС‹Р№ РїСЂРё Р·Р°РїРѕР»РЅРµРЅРёРё РїРѕР»СЏ.
+	 *         РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” СЂРµРЅРґРµСЂРµСЂ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚.
 	 */
 	String renderer() default "";
 
 	/**
-	 * @return vtype поля
-	 *         По умолчанию — рендерер отсутствует
+	 * @return vtype РїРѕР»СЏ
+	 *         РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ вЂ” СЂРµРЅРґРµСЂРµСЂ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚
 	 */
 	String vtype() default "";
 
 	/**
-	 * @return <code>true</code> — если отрицательные значения разрешены, <br/>
-	 * <code>false</code> — в противном случае
+	 * @return <code>true</code> вЂ” РµСЃР»Рё РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ СЂР°Р·СЂРµС€РµРЅС‹, <br/>
+	 * <code>false</code> вЂ” РІ РїСЂРѕС‚РёРІРЅРѕРј СЃР»СѓС‡Р°Рµ
 	 */
 	boolean allowNegative() default false;
 
-	// todo: порешить, как проставлять null в minValue и maxValue (возможно, придется сделать их строками или Object), или же ставить аннотации noMaxValue, noMinValue
+	// todo: РїРѕСЂРµС€РёС‚СЊ, РєР°Рє РїСЂРѕСЃС‚Р°РІР»СЏС‚СЊ null РІ minValue Рё maxValue (РІРѕР·РјРѕР¶РЅРѕ, РїСЂРёРґРµС‚СЃСЏ СЃРґРµР»Р°С‚СЊ РёС… СЃС‚СЂРѕРєР°РјРё РёР»Рё Object), РёР»Рё Р¶Рµ СЃС‚Р°РІРёС‚СЊ Р°РЅРЅРѕС‚Р°С†РёРё noMaxValue, noMinValue
 	/**
-	 * @return минимальное значение.
+	 * @return РјРёРЅРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ.
 	 */
 	double minValue() default DEFAULT_MIN_VALUE;
 
 	/**
-	 * @return максимальное значение
+	 * @return РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ
 	 */
 	double maxValue() default DEFAULT_MAX_VALUE;
 
 	/**
-	 * @return {@linkplain su.opencode.kefir.gen.field.FieldSet#id() код} {@linkplain FieldSet филдсета}, в котором находится поле.
+	 * @return {@linkplain su.opencode.kefir.gen.field.FieldSet#id() РєРѕРґ} {@linkplain FieldSet С„РёР»РґСЃРµС‚Р°}, РІ РєРѕС‚РѕСЂРѕРј РЅР°С…РѕРґРёС‚СЃСЏ РїРѕР»Рµ.
 	 * <br/>
-	 * Код должен быть одним из кодов филдсетов, определенных в аннотации {@linkplain FieldSets FieldSets} к классу сущности.
+	 * РљРѕРґ РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РѕРґРЅРёРј РёР· РєРѕРґРѕРІ С„РёР»РґСЃРµС‚РѕРІ, РѕРїСЂРµРґРµР»РµРЅРЅС‹С… РІ Р°РЅРЅРѕС‚Р°С†РёРё {@linkplain FieldSets FieldSets} Рє РєР»Р°СЃСЃСѓ СЃСѓС‰РЅРѕСЃС‚Рё.
 	 */
 	String fieldSetId() default "";
 

@@ -42,7 +42,7 @@ public abstract class ClassFileWriter
 				throw new IllegalStateException( concat(sb, "file \"", file.getAbsolutePath(), "\" already exists") );
 			}
 			else
-			{ // оставить существующий файл как есть
+			{ // РѕСЃС‚Р°РІРёС‚СЊ СЃСѓС‰РµСЃС‚РІСѓСЋС‰РёР№ С„Р°Р№Р» РєР°Рє РµСЃС‚СЊ
 				final String overwritten = overwriteIfFileExists ? "overwritten" : "not overwritten";
 				logger.info( concat(sb, "file \"", file.getAbsolutePath(), "\" already exists. It is ", overwritten, ".") );
 
@@ -71,11 +71,11 @@ public abstract class ClassFileWriter
 		}
 	}
 
-	protected void writeSvnHeader() throws IOException { // todo: этот заголовок нужно брать из внешнего файла, а не жестко прописывать в коде
+	protected void writeSvnHeader() throws IOException { // todo: СЌС‚РѕС‚ Р·Р°РіРѕР»РѕРІРѕРє РЅСѓР¶РЅРѕ Р±СЂР°С‚СЊ РёР· РІРЅРµС€РЅРµРіРѕ С„Р°Р№Р»Р°, Р° РЅРµ Р¶РµСЃС‚РєРѕ РїСЂРѕРїРёСЃС‹РІР°С‚СЊ РІ РєРѕРґРµ
 		out.writeLn("/**");
 		out.writeLn(" Copyright 2013 LLC \"Open Code\"");
 		out.writeLn(" http://www.o-code.ru");
-		out.writeLn(" $", "HeadURL", "$"); // concat чтобы svn не заменял этот заголовок на значения класса ClassFileWriter
+		out.writeLn(" $", "HeadURL", "$"); // concat С‡С‚РѕР±С‹ svn РЅРµ Р·Р°РјРµРЅСЏР» СЌС‚РѕС‚ Р·Р°РіРѕР»РѕРІРѕРє РЅР° Р·РЅР°С‡РµРЅРёСЏ РєР»Р°СЃСЃР° ClassFileWriter
 		out.writeLn(" $", "Author", "$");
 		out.writeLn(" $", "Revision", "$");
 		out.writeLn(" $", "Date::                      ", "$");
@@ -98,7 +98,7 @@ public abstract class ClassFileWriter
 	}
 	protected final void writeImport(String className) throws IOException {
 		if ( isInPackage(className, packageName) || isInPackage(className, JAVA_LANG_PACKAGE_NAME) )
-			return; // если импортируемый класс находится в том же пакете, то импорт добавлять не надо
+			return; // РµСЃР»Рё РёРјРїРѕСЂС‚РёСЂСѓРµРјС‹Р№ РєР»Р°СЃСЃ РЅР°С…РѕРґРёС‚СЃСЏ РІ С‚РѕРј Р¶Рµ РїР°РєРµС‚Рµ, С‚Рѕ РёРјРїРѕСЂС‚ РґРѕР±Р°РІР»СЏС‚СЊ РЅРµ РЅР°РґРѕ
 
 		out.writeLn( getImport(sb, className) );
 	}
@@ -111,7 +111,7 @@ public abstract class ClassFileWriter
 	}
 	protected final void writeImportAll(String className) throws IOException {
 		if ( isInPackage(className, packageName) )
-			return; // если импортируемый класс находится в том же пакете, то импорт добавлять не надо
+			return; // РµСЃР»Рё РёРјРїРѕСЂС‚РёСЂСѓРµРјС‹Р№ РєР»Р°СЃСЃ РЅР°С…РѕРґРёС‚СЃСЏ РІ С‚РѕРј Р¶Рµ РїР°РєРµС‚Рµ, С‚Рѕ РёРјРїРѕСЂС‚ РґРѕР±Р°РІР»СЏС‚СЊ РЅРµ РЅР°РґРѕ
 
 		out.writeLn( getImportAll(sb, className) );
 	}
@@ -124,7 +124,7 @@ public abstract class ClassFileWriter
 	}
 	protected final void writeStaticImportAll(String className) throws IOException {
 		if ( isInPackage(className, packageName) )
-			return; // если импортируемый класс находится в том же пакете, то импорт добавлять не надо
+			return; // РµСЃР»Рё РёРјРїРѕСЂС‚РёСЂСѓРµРјС‹Р№ РєР»Р°СЃСЃ РЅР°С…РѕРґРёС‚СЃСЏ РІ С‚РѕРј Р¶Рµ РїР°РєРµС‚Рµ, С‚Рѕ РёРјРїРѕСЂС‚ РґРѕР±Р°РІР»СЏС‚СЊ РЅРµ РЅР°РґРѕ
 
 		out.writeLn( getStaticImportAll(sb, className) );
 	}
@@ -310,19 +310,19 @@ public abstract class ClassFileWriter
 	}
 
 	/**
-	 * Пишет комментарий с указанным отступом.
+	 * РџРёС€РµС‚ РєРѕРјРјРµРЅС‚Р°СЂРёР№ СЃ СѓРєР°Р·Р°РЅРЅС‹Рј РѕС‚СЃС‚СѓРїРѕРј.
 	 *
-	 * @param indent отступ (как правило, содержит один или несколько табов)
-	 * @param comment значение комментария
-	 * @throws IOException при ошибке записи в файл
+	 * @param indent РѕС‚СЃС‚СѓРї (РєР°Рє РїСЂР°РІРёР»Рѕ, СЃРѕРґРµСЂР¶РёС‚ РѕРґРёРЅ РёР»Рё РЅРµСЃРєРѕР»СЊРєРѕ С‚Р°Р±РѕРІ)
+	 * @param comment Р·РЅР°С‡РµРЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+	 * @throws IOException РїСЂРё РѕС€РёР±РєРµ Р·Р°РїРёСЃРё РІ С„Р°Р№Р»
 	 */
 	protected void writeComment(String indent, String comment) throws IOException {
 		out.writeLn(indent, ONE_STRING_COMMENT, " ", comment);
 	}
 	/**
-	 * Пишет комментарий 1-го уровня вложенности (с одним табом впереди).
-	 * @param comment значение комментария
-	 * @throws IOException при ошибке записи в файл
+	 * РџРёС€РµС‚ РєРѕРјРјРµРЅС‚Р°СЂРёР№ 1-РіРѕ СѓСЂРѕРІРЅСЏ РІР»РѕР¶РµРЅРЅРѕСЃС‚Рё (СЃ РѕРґРЅРёРј С‚Р°Р±РѕРј РІРїРµСЂРµРґРё).
+	 * @param comment Р·РЅР°С‡РµРЅРёРµ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
+	 * @throws IOException РїСЂРё РѕС€РёР±РєРµ Р·Р°РїРёСЃРё РІ С„Р°Р№Р»
 	 */
 	protected void writeComment(String comment) throws IOException {
 		writeComment(TAB, comment);
@@ -339,7 +339,7 @@ public abstract class ClassFileWriter
 
 	private File createClassFile(String baseDir, String packageName, String className) {
 	 	String dirPath = concat(sb, baseDir, FILE_SEPARATOR, packageName.replace(PACKAGE_SEPARATOR, FILE_SEPARATOR));
-		new File(dirPath).mkdirs(); // если директорий нет, создать их
+		new File(dirPath).mkdirs(); // РµСЃР»Рё РґРёСЂРµРєС‚РѕСЂРёР№ РЅРµС‚, СЃРѕР·РґР°С‚СЊ РёС…
 		return new File( concat(sb, dirPath, FILE_SEPARATOR, className, CLASS_FILE_EXTENSION) );
 	}
 

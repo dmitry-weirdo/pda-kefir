@@ -57,7 +57,7 @@ public class JsArray
 	}
 
 	/**
-	 * @return значение массива в строчку
+	 * @return Р·РЅР°С‡РµРЅРёРµ РјР°СЃСЃРёРІР° РІ СЃС‚СЂРѕС‡РєСѓ
 	 */
 	public String toString() {
 		if (isEmpty())

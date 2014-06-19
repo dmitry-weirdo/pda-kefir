@@ -61,7 +61,7 @@ public class ViewConfigAppender extends JsAppender
 	}
 	private void appendViewConfig(List<String> allFileLines) throws IOException {
 		for (String fileLine : allFileLines)
-		{ // åñëè ýòîò ôàéë óæå âêëþ÷åí -> íè÷åãî íå äåëàòü
+		{ // ÐµÑÐ»Ð¸ ÑÑ‚Ð¾Ñ‚ Ñ„Ð°Ð¹Ð» ÑƒÐ¶Ðµ Ð²ÐºÐ»ÑŽÑ‡ÐµÐ½ -> Ð½Ð¸Ñ‡ÐµÐ³Ð¾ Ð½Ðµ Ð´ÐµÐ»Ð°Ñ‚ÑŒ
 			if (fileLine.contains(viewConfig.viewConfig()))
 			{
 				logger.info( concat(sb, "View config \"", viewConfig, "\" is already included in file \"", filePath, "\"") );

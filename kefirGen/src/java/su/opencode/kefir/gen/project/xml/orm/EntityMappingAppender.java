@@ -106,7 +106,7 @@ public abstract class EntityMappingAppender extends Appender
 	protected void appendManyToOne(List<String> fileLines, String fieldName, String joinColumnName) {
 		fileLines.add( concat(sb, "\t\t\t<", MANY_TO_ONE_ELEMENT_NAME, " name=\"", fieldName, "\"><", JOIN_COLUMN_ELEMENT_NAME, " name=\"", joinColumnName, "\"/></", MANY_TO_ONE_ELEMENT_NAME, ">"));
 	}
-	protected void appendOneToOne(List<String> fileLines, String fieldName, String joinColumnName) { // todo: возможность передавать mappedBy
+	protected void appendOneToOne(List<String> fileLines, String fieldName, String joinColumnName) { // todo: РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїРµСЂРµРґР°РІР°С‚СЊ mappedBy
 		fileLines.add( concat(sb, "\t\t\t<", ONE_TO_ONE_ELEMENT_NAME, " name=\"", fieldName, "\"><", JOIN_COLUMN_ELEMENT_NAME, " name=\"", joinColumnName, "\"/></", ONE_TO_ONE_ELEMENT_NAME, ">"));
 	}
 
@@ -123,24 +123,24 @@ public abstract class EntityMappingAppender extends Appender
 
 	protected void appendBasic(List<String> fileLines, String fieldName) {
 		if ( isReservedWord(fieldName) )
-		{ // специальные названия полей, которые обрамляются кавычками как имена sql полей
+		{ // СЃРїРµС†РёР°Р»СЊРЅС‹Рµ РЅР°Р·РІР°РЅРёСЏ РїРѕР»РµР№, РєРѕС‚РѕСЂС‹Рµ РѕР±СЂР°РјР»СЏСЋС‚СЃСЏ РєР°РІС‹С‡РєР°РјРё РєР°Рє РёРјРµРЅР° sql РїРѕР»РµР№
 			appendBasic(fileLines, fieldName, getQuotedSqlColumnName(fieldName));
 			return;
 		}
 
-		if ( !hasUpperCaseChars(fieldName) ) // поле без больших букв называется так же, как sql поле
+		if ( !hasUpperCaseChars(fieldName) ) // РїРѕР»Рµ Р±РµР· Р±РѕР»СЊС€РёС… Р±СѓРєРІ РЅР°Р·С‹РІР°РµС‚СЃСЏ С‚Р°Рє Р¶Рµ, РєР°Рє sql РїРѕР»Рµ
 			return;
 
 		appendBasic(fileLines, fieldName, getSqlColumnName(fieldName));
 	}
 	protected void appendLobBasic(List<String> fileLines, String fieldName) {
 		if ( isReservedWord(fieldName) )
-		{ // специальные названия полей, которые обрамляются кавычками как имена sql полей
+		{ // СЃРїРµС†РёР°Р»СЊРЅС‹Рµ РЅР°Р·РІР°РЅРёСЏ РїРѕР»РµР№, РєРѕС‚РѕСЂС‹Рµ РѕР±СЂР°РјР»СЏСЋС‚СЃСЏ РєР°РІС‹С‡РєР°РјРё РєР°Рє РёРјРµРЅР° sql РїРѕР»РµР№
 			appendLobBasic(fileLines, fieldName, getQuotedSqlColumnName(fieldName));
 			return;
 		}
 
-		if ( !hasUpperCaseChars(fieldName) ) // поле без больших букв называется так же, как sql поле -> Добавить только Lob
+		if ( !hasUpperCaseChars(fieldName) ) // РїРѕР»Рµ Р±РµР· Р±РѕР»СЊС€РёС… Р±СѓРєРІ РЅР°Р·С‹РІР°РµС‚СЃСЏ С‚Р°Рє Р¶Рµ, РєР°Рє sql РїРѕР»Рµ -> Р”РѕР±Р°РІРёС‚СЊ С‚РѕР»СЊРєРѕ Lob
 		{
 			appendLobBasic(fileLines, fieldName, null);
 			return;
@@ -152,11 +152,11 @@ public abstract class EntityMappingAppender extends Appender
 		String columnName = enumFieldColumnName;
 
 		if ( isReservedWord(fieldName) )
-		{ // специальные названия полей, которые обрамляются кавычками как имена sql полей
+		{ // СЃРїРµС†РёР°Р»СЊРЅС‹Рµ РЅР°Р·РІР°РЅРёСЏ РїРѕР»РµР№, РєРѕС‚РѕСЂС‹Рµ РѕР±СЂР°РјР»СЏСЋС‚СЃСЏ РєР°РІС‹С‡РєР°РјРё РєР°Рє РёРјРµРЅР° sql РїРѕР»РµР№
 			columnName = getQuotedSqlColumnName(fieldName);
 		}
 
-		if ( !hasUpperCaseChars(fieldName) ) // поле без больших букв называется так же, как sql поле
+		if ( !hasUpperCaseChars(fieldName) ) // РїРѕР»Рµ Р±РµР· Р±РѕР»СЊС€РёС… Р±СѓРєРІ РЅР°Р·С‹РІР°РµС‚СЃСЏ С‚Р°Рє Р¶Рµ, РєР°Рє sql РїРѕР»Рµ
 			columnName = null;
 
 		String columnNameElement = isEmpty(columnName) ? "" : concat(sb, "<", COLUMN_ELEMENT_NAME, " name=\"", columnName, "\"/>");
@@ -175,7 +175,7 @@ public abstract class EntityMappingAppender extends Appender
 		{
 			char ch = fieldName.charAt(i);
 
-			if ( i != 0 && Character.isUpperCase(ch) ) // перед первым символом в строке подчеркивание не ставится
+			if ( i != 0 && Character.isUpperCase(ch) ) // РїРµСЂРµРґ РїРµСЂРІС‹Рј СЃРёРјРІРѕР»РѕРј РІ СЃС‚СЂРѕРєРµ РїРѕРґС‡РµСЂРєРёРІР°РЅРёРµ РЅРµ СЃС‚Р°РІРёС‚СЃСЏ
 				sb.append(SQL_COLUMN_NAME_SEPARATOR).append( Character.toLowerCase(ch) );
 			else
 				sb.append( Character.toLowerCase(ch) );
@@ -193,7 +193,7 @@ public abstract class EntityMappingAppender extends Appender
 		{
 			char ch = className.charAt(i);
 
-			if ( i != 0 && Character.isUpperCase(ch) ) // перед первым символом в строке подчеркивание не ставится
+			if ( i != 0 && Character.isUpperCase(ch) ) // РїРµСЂРµРґ РїРµСЂРІС‹Рј СЃРёРјРІРѕР»РѕРј РІ СЃС‚СЂРѕРєРµ РїРѕРґС‡РµСЂРєРёРІР°РЅРёРµ РЅРµ СЃС‚Р°РІРёС‚СЃСЏ
 				sb.append(SQL_TABLE_NAME_SEPARATOR).append( Character.toLowerCase(ch));
 			else
 				sb.append(ch);
@@ -212,7 +212,7 @@ public abstract class EntityMappingAppender extends Appender
 		{
 			char ch = fieldName.charAt(i);
 
-			if ( i != 0 && Character.isUpperCase(ch) ) // перед первым символом в строке подчеркивание не ставится
+			if ( i != 0 && Character.isUpperCase(ch) ) // РїРµСЂРµРґ РїРµСЂРІС‹Рј СЃРёРјРІРѕР»РѕРј РІ СЃС‚СЂРѕРєРµ РїРѕРґС‡РµСЂРєРёРІР°РЅРёРµ РЅРµ СЃС‚Р°РІРёС‚СЃСЏ
 				sb.append(SQL_SEQUENCE_NAME_SEPARATOR).append( Character.toLowerCase(ch) );
 			else
 				sb.append( Character.toLowerCase(ch) );

@@ -24,12 +24,12 @@ public class ListMethodsAppender extends ServiceMethodAppender
 	}
 
 	protected void appendImports(List<String> fileLines, List<String> imports) {
-		// íà ñëó÷àé, åñëè îíè áûëè óäàëåíû ïðè îïòèìèçàöèè èìïîðòîâ
+		// Ð½Ð° ÑÐ»ÑƒÑ‡Ð°Ð¹, ÐµÑÐ»Ð¸ Ð¾Ð½Ð¸ Ð±Ñ‹Ð»Ð¸ ÑƒÐ´Ð°Ð»ÐµÐ½Ñ‹ Ð¿Ñ€Ð¸ Ð¾Ð¿Ñ‚Ð¸Ð¼Ð¸Ð·Ð°Ñ†Ð¸Ð¸ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚Ð¾Ð²
 		addImport( SortConfig.class, fileLines, imports );
 		addImport( List.class, fileLines, imports );
 
-		addImport( getListVOClassName(extEntity, entityClass), fileLines, imports ); // åñëè VO íå â òîì æå ïàêåòå, ÷òî ñåðâèñ -> äîáàâèòü èìïîðò VO
-		addImport( getFilterConfigClassName(extEntity, entityClass), fileLines, imports ); // åñëè FilterConfig íå â òîì æå ïàêåòå, ÷òî ñåðâèñ -> äîáàâèòü èìïîðò FilterConfig
+		addImport( getListVOClassName(extEntity, entityClass), fileLines, imports ); // ÐµÑÐ»Ð¸ VO Ð½Ðµ Ð² Ñ‚Ð¾Ð¼ Ð¶Ðµ Ð¿Ð°ÐºÐµÑ‚Ðµ, Ñ‡Ñ‚Ð¾ ÑÐµÑ€Ð²Ð¸Ñ -> Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚ VO
+		addImport( getFilterConfigClassName(extEntity, entityClass), fileLines, imports ); // ÐµÑÐ»Ð¸ FilterConfig Ð½Ðµ Ð² Ñ‚Ð¾Ð¼ Ð¶Ðµ Ð¿Ð°ÐºÐµÑ‚Ðµ, Ñ‡Ñ‚Ð¾ ÑÐµÑ€Ð²Ð¸Ñ -> Ð´Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð¸Ð¼Ð¿Ð¾Ñ€Ñ‚ FilterConfig
 	}
 
 	protected List<String> getMethodSignatures() {

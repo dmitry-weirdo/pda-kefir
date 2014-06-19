@@ -14,7 +14,7 @@ import static su.opencode.kefir.util.FileUtils.FILE_SEPARATOR;
 import static su.opencode.kefir.util.StringUtils.cat;
 
 /**
- * Parameter object для передачи в функции {@linkplain su.opencode.kefir.gen.helper.GeneratorServiceHelper GeneratorServiceHelper}.
+ * Parameter object РґР»СЏ РїРµСЂРµРґР°С‡Рё РІ С„СѓРЅРєС†РёРё {@linkplain su.opencode.kefir.gen.helper.GeneratorServiceHelper GeneratorServiceHelper}.
  */
 public class HelperConfig
 {
@@ -52,139 +52,139 @@ public class HelperConfig
 	}
 
 	/**
-	 * Класс сущности. Должен иметь аннотацию {@linkplain su.opencode.kefir.gen.ExtEntity ExtEntity}.
+	 * РљР»Р°СЃСЃ СЃСѓС‰РЅРѕСЃС‚Рё. Р”РѕР»Р¶РµРЅ РёРјРµС‚СЊ Р°РЅРЅРѕС‚Р°С†РёСЋ {@linkplain su.opencode.kefir.gen.ExtEntity ExtEntity}.
 	 */
 	public Class entityClass;
 
 	/**
-	 * Класс адреса. Необходим для генерации метода update для сущности, имеющей поля адреса.
+	 * РљР»Р°СЃСЃ Р°РґСЂРµСЃР°. РќРµРѕР±С…РѕРґРёРј РґР»СЏ РіРµРЅРµСЂР°С†РёРё РјРµС‚РѕРґР° update РґР»СЏ СЃСѓС‰РЅРѕСЃС‚Рё, РёРјРµСЋС‰РµР№ РїРѕР»СЏ Р°РґСЂРµСЃР°.
 	 */
 	public Class addressClass;
 
 	/**
-	 * Класс рендереров. Используется для получения inputStream от файла renderers.properties приложения.
+	 * РљР»Р°СЃСЃ СЂРµРЅРґРµСЂРµСЂРѕРІ. РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґР»СЏ РїРѕР»СѓС‡РµРЅРёСЏ inputStream РѕС‚ С„Р°Р№Р»Р° renderers.properties РїСЂРёР»РѕР¶РµРЅРёСЏ.
 	 */
 	public Class renderersClass;
 
 	/**
-	 * Полное имя класса сервиса. Используется при {@linkplain GeneratorServiceHelper#generateLocalInterface(HelperConfig) генерации локального сервиса}.
+	 * РџРѕР»РЅРѕРµ РёРјСЏ РєР»Р°СЃСЃР° СЃРµСЂРІРёСЃР°. РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РїСЂРё {@linkplain GeneratorServiceHelper#generateLocalInterface(HelperConfig) РіРµРЅРµСЂР°С†РёРё Р»РѕРєР°Р»СЊРЅРѕРіРѕ СЃРµСЂРІРёСЃР°}.
 	 */
 	public String serviceClassName;
 
 	/**
-	 * Путь к исходникам серверной части.
+	 * РџСѓС‚СЊ Рє РёСЃС…РѕРґРЅРёРєР°Рј СЃРµСЂРІРµСЂРЅРѕР№ С‡Р°СЃС‚Рё.
 	 */
 	public String srvSrcDir;
 
 	/**
-	 * Путь к файлу orm.xml.
+	 * РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ orm.xml.
 	 */
 	public String ormXmlPath;
 
 	/**
-	 * Путь к файлу createTables.sql.
+	 * РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ createTables.sql.
 	 */
 	public String createTablesSqlPath;
 
 	/**
-	 * Путь к файлу dropTables.sql.
+	 * РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ dropTables.sql.
 	 */
 	public String dropTablesSqlPath;
 
 	/**
-	 * Путь к исходникам веб-части.
+	 * РџСѓС‚СЊ Рє РёСЃС…РѕРґРЅРёРєР°Рј РІРµР±-С‡Р°СЃС‚Рё.
 	 */
 	public String webSrcDir;
 
 	/**
-	 * Путь к файлу web.xml.
+	 * РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ web.xml.
 	 */
 	public String webXmlPath;
 
 	/**
-	 * Путь к файлу jboss-web.xml.
+	 * РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ jboss-web.xml.
 	 */
 	public String jbossWebXmlPath;
 
 	/**
-	 * Путь к исходникам js.
+	 * РџСѓС‚СЊ Рє РёСЃС…РѕРґРЅРёРєР°Рј js.
 	 */
 	public String jsDir;
 
 	/**
-	 * Путь к файлу с инклюдами js-файлов (application.jspf).
+	 * РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ СЃ РёРЅРєР»СЋРґР°РјРё js-С„Р°Р№Р»РѕРІ (application.jspf).
 	 */
 	public String jsIncludeFilePath;
 
 	/**
-	 * Базовый путь к js-файлам в &lt;script src="..."/&gt;. Как правило, равен ".js".
+	 * Р‘Р°Р·РѕРІС‹Р№ РїСѓС‚СЊ Рє js-С„Р°Р№Р»Р°Рј РІ &lt;script src="..."/&gt;. РљР°Рє РїСЂР°РІРёР»Рѕ, СЂР°РІРµРЅ ".js".
 	 */
 	public String baseJsPath;
 
 	/**
-	 * Путь к js-файлу с главным меню, куда будут добалвяться кнопки.
+	 * РџСѓС‚СЊ Рє js-С„Р°Р№Р»Сѓ СЃ РіР»Р°РІРЅС‹Рј РјРµРЅСЋ, РєСѓРґР° Р±СѓРґСѓС‚ РґРѕР±Р°Р»РІСЏС‚СЊСЃСЏ РєРЅРѕРїРєРё.
 	 */
 	public String mainMenuJsFilePath;
 
 	/**
-	 * Путь к файлу viewConfigs.js, в который будут добавляться viewConfig.
+	 * РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ viewConfigs.js, РІ РєРѕС‚РѕСЂС‹Р№ Р±СѓРґСѓС‚ РґРѕР±Р°РІР»СЏС‚СЊСЃСЏ viewConfig.
 	 */
 	public String viewConfigsJsPath;
 
 	/**
-	 * Путь к файлу main.css, в который будут добавляться стили для viewConfig и легенды.
+	 * РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ main.css, РІ РєРѕС‚РѕСЂС‹Р№ Р±СѓРґСѓС‚ РґРѕР±Р°РІР»СЏС‚СЊСЃСЏ СЃС‚РёР»Рё РґР»СЏ viewConfig Рё Р»РµРіРµРЅРґС‹.
 	 */
 	public String mainCssPath;
 
 	// for enum
 
 	/**
-	 * Класс энума. Должен быть энумом и иметь аннотацию {@linkplain su.opencode.kefir.gen.field.enumField.EnumField EnumField}
+	 * РљР»Р°СЃСЃ СЌРЅСѓРјР°. Р”РѕР»Р¶РµРЅ Р±С‹С‚СЊ СЌРЅСѓРјРѕРј Рё РёРјРµС‚СЊ Р°РЅРЅРѕС‚Р°С†РёСЋ {@linkplain su.opencode.kefir.gen.field.enumField.EnumField EnumField}
 	 */
 	public Class enumClass;
 
 	/**
-	 * Путь к файлу, куда будут добавлять js-константы.
+	 * РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ, РєСѓРґР° Р±СѓРґСѓС‚ РґРѕР±Р°РІР»СЏС‚СЊ js-РєРѕРЅСЃС‚Р°РЅС‚С‹.
 	 */
 	public String constantsJsFilePath;
 
 	/**
-	 * Путь к файлу, куда будут добавляться локальные хранилища (Ext.data.ArrayStore).
+	 * РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ, РєСѓРґР° Р±СѓРґСѓС‚ РґРѕР±Р°РІР»СЏС‚СЊСЃСЏ Р»РѕРєР°Р»СЊРЅС‹Рµ С…СЂР°РЅРёР»РёС‰Р° (Ext.data.ArrayStore).
 	 */
 	public String localStoresJsFilePath;
 
 	/**
-	 * Путь к файлу, куда будут добавляться рендереры.
+	 * РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ, РєСѓРґР° Р±СѓРґСѓС‚ РґРѕР±Р°РІР»СЏС‚СЊСЃСЏ СЂРµРЅРґРµСЂРµСЂС‹.
 	 */
 	public String renderersJsFilePath;
 
 	/**
-	 * Путь к проперти-файлу, куда будут добавляться соответствия CellRenderer-ов и jsRendererod для энумов.
+	 * РџСѓС‚СЊ Рє РїСЂРѕРїРµСЂС‚Рё-С„Р°Р№Р»Сѓ, РєСѓРґР° Р±СѓРґСѓС‚ РґРѕР±Р°РІР»СЏС‚СЊСЃСЏ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёСЏ CellRenderer-РѕРІ Рё jsRendererod РґР»СЏ СЌРЅСѓРјРѕРІ.
 	 */
 	public String rendererPropertiesFilePath;
 
 	/**
-	 * Путь к файлу Renderers.java, в который будут добавляться константы для js-рендереров.
+	 * РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ Renderers.java, РІ РєРѕС‚РѕСЂС‹Р№ Р±СѓРґСѓС‚ РґРѕР±Р°РІР»СЏС‚СЊСЃСЏ РєРѕРЅСЃС‚Р°РЅС‚С‹ РґР»СЏ js-СЂРµРЅРґРµСЂРµСЂРѕРІ.
 	 */
 	public String renderersClassFilePath;
 
 	/**
-	 * Путь к исходникам selenium страниц.
+	 * РџСѓС‚СЊ Рє РёСЃС…РѕРґРЅРёРєР°Рј selenium СЃС‚СЂР°РЅРёС†.
 	 */
 	public String seleniumSrcDir;
 
 	/**
-	 * Путь к тестам selenium страниц, куда будут добавляться TestCase и DataProvider.
+	 * РџСѓС‚СЊ Рє С‚РµСЃС‚Р°Рј selenium СЃС‚СЂР°РЅРёС†, РєСѓРґР° Р±СѓРґСѓС‚ РґРѕР±Р°РІР»СЏС‚СЊСЃСЏ TestCase Рё DataProvider.
 	 */
 	public String seleniumTestDir;
 
 	/**
-	 * Путь к тестовым данным, которые будут вводиться в формы selenium страниц.
+	 * РџСѓС‚СЊ Рє С‚РµСЃС‚РѕРІС‹Рј РґР°РЅРЅС‹Рј, РєРѕС‚РѕСЂС‹Рµ Р±СѓРґСѓС‚ РІРІРѕРґРёС‚СЊСЃСЏ РІ С„РѕСЂРјС‹ selenium СЃС‚СЂР°РЅРёС†.
 	 */
 	public String seleniumTestDataDir;
 
 	/**
-	 * Пакет для MainPage
+	 * РџР°РєРµС‚ РґР»СЏ MainPage
 	 */
 	public String seleniumMainPagePackage;
 }

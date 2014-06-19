@@ -25,11 +25,11 @@ import static su.opencode.kefir.util.FileUtils.FILE_SEPARATOR;
 import static su.opencode.kefir.util.StringUtils.concat;
 
 /**
- * Добавляет описание методов сервиса в указанный сервис.
+ * Р”РѕР±Р°РІР»СЏРµС‚ РѕРїРёСЃР°РЅРёРµ РјРµС‚РѕРґРѕРІ СЃРµСЂРІРёСЃР° РІ СѓРєР°Р·Р°РЅРЅС‹Р№ СЃРµСЂРІРёСЃ.
  * <br/>
- * Если класс сервиса не существует, он создается с помощью {@linkplain su.opencode.kefir.gen.fileWriter.LocalServiceFileWriter LocalServiceFileWriter}
+ * Р•СЃР»Рё РєР»Р°СЃСЃ СЃРµСЂРІРёСЃР° РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚, РѕРЅ СЃРѕР·РґР°РµС‚СЃСЏ СЃ РїРѕРјРѕС‰СЊСЋ {@linkplain su.opencode.kefir.gen.fileWriter.LocalServiceFileWriter LocalServiceFileWriter}
  * <br/>
- * Если класс сервиса существует, то методы добавляются в место указанное {@linkplain su.opencode.kefir.gen.fileWriter.LocalServiceFileWriter#APPEND_METHOD_DECLARATION_MARKER маркером}.
+ * Р•СЃР»Рё РєР»Р°СЃСЃ СЃРµСЂРІРёСЃР° СЃСѓС‰РµСЃС‚РІСѓРµС‚, С‚Рѕ РјРµС‚РѕРґС‹ РґРѕР±Р°РІР»СЏСЋС‚СЃСЏ РІ РјРµСЃС‚Рѕ СѓРєР°Р·Р°РЅРЅРѕРµ {@linkplain su.opencode.kefir.gen.fileWriter.LocalServiceFileWriter#APPEND_METHOD_DECLARATION_MARKER РјР°СЂРєРµСЂРѕРј}.
  */
 public abstract class ServiceMethodAppender extends Appender
 {
@@ -55,12 +55,12 @@ public abstract class ServiceMethodAppender extends Appender
 		String classSimpleName = getServiceClassSimpleName(extEntity, entityClass);
 
 		String dirPath = concat(sb, baseDir, FILE_SEPARATOR, packageName.replace(".", FILE_SEPARATOR));
-		new File(dirPath).mkdirs(); // если директорий нет, создать их
+		new File(dirPath).mkdirs(); // РµСЃР»Рё РґРёСЂРµРєС‚РѕСЂРёР№ РЅРµС‚, СЃРѕР·РґР°С‚СЊ РёС…
 		String filePath = concat(sb, dirPath, FILE_SEPARATOR, classSimpleName, ".java");
 		File file = new File(filePath);
 
 		if ( !file.exists() )
-		{ // создать класс сервиса, если он не существует
+		{ // СЃРѕР·РґР°С‚СЊ РєР»Р°СЃСЃ СЃРµСЂРІРёСЃР°, РµСЃР»Рё РѕРЅ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚
 			new LocalServiceFileWriter(baseDir, packageName, classSimpleName).createFile();
 			file = new File(filePath);
 		}
@@ -137,20 +137,20 @@ public abstract class ServiceMethodAppender extends Appender
 	}
 
 	/**
-	 * Добавляет необходимые импорты для методов сервиса.
-	 * @param fileLines строки, считанные из файла, добавлять нужно в их конец, позиция строк уже стоит перед маркером.
-	 * @param imports строки, содержащие уже имеющиеся импорты (нужно проверять, что они не совпадают с добавляемыми импортами).
+	 * Р”РѕР±Р°РІР»СЏРµС‚ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РёРјРїРѕСЂС‚С‹ РґР»СЏ РјРµС‚РѕРґРѕРІ СЃРµСЂРІРёСЃР°.
+	 * @param fileLines СЃС‚СЂРѕРєРё, СЃС‡РёС‚Р°РЅРЅС‹Рµ РёР· С„Р°Р№Р»Р°, РґРѕР±Р°РІР»СЏС‚СЊ РЅСѓР¶РЅРѕ РІ РёС… РєРѕРЅРµС†, РїРѕР·РёС†РёСЏ СЃС‚СЂРѕРє СѓР¶Рµ СЃС‚РѕРёС‚ РїРµСЂРµРґ РјР°СЂРєРµСЂРѕРј.
+	 * @param imports СЃС‚СЂРѕРєРё, СЃРѕРґРµСЂР¶Р°С‰РёРµ СѓР¶Рµ РёРјРµСЋС‰РёРµСЃСЏ РёРјРїРѕСЂС‚С‹ (РЅСѓР¶РЅРѕ РїСЂРѕРІРµСЂСЏС‚СЊ, С‡С‚Рѕ РѕРЅРё РЅРµ СЃРѕРІРїР°РґР°СЋС‚ СЃ РґРѕР±Р°РІР»СЏРµРјС‹РјРё РёРјРїРѕСЂС‚Р°РјРё).
 	 */
 	protected abstract void appendImports(List<String> fileLines, List<String> imports);
 
 	/**
-	 * @return список сигнатур методов, добавляемых в сервис.
+	 * @return СЃРїРёСЃРѕРє СЃРёРіРЅР°С‚СѓСЂ РјРµС‚РѕРґРѕРІ, РґРѕР±Р°РІР»СЏРµРјС‹С… РІ СЃРµСЂРІРёСЃ.
 	 */
 	protected abstract List<String> getMethodSignatures();
 
 	/**
-	 * Добавляет методы сервиса перед указанным маркером.
-	 * @param fileLines строки, считанные из файла, добавлять нужно в их конец, позиция строк уже стоит перед маркером.
+	 * Р”РѕР±Р°РІР»СЏРµС‚ РјРµС‚РѕРґС‹ СЃРµСЂРІРёСЃР° РїРµСЂРµРґ СѓРєР°Р·Р°РЅРЅС‹Рј РјР°СЂРєРµСЂРѕРј.
+	 * @param fileLines СЃС‚СЂРѕРєРё, СЃС‡РёС‚Р°РЅРЅС‹Рµ РёР· С„Р°Р№Р»Р°, РґРѕР±Р°РІР»СЏС‚СЊ РЅСѓР¶РЅРѕ РІ РёС… РєРѕРЅРµС†, РїРѕР·РёС†РёСЏ СЃС‚СЂРѕРє СѓР¶Рµ СЃС‚РѕРёС‚ РїРµСЂРµРґ РјР°СЂРєРµСЂРѕРј.
 	 */
 	protected abstract void appendMethods(List<String> fileLines);
 

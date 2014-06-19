@@ -27,25 +27,25 @@ import static su.opencode.kefir.srv.renderer.RenderersFactory.FLOAT_RENDERER;
 @ExtEntity(
 	sqlTableComment = "Test entity for kefir gen",
 
-	listWindowTitle = "Список тестовых сущностей",
-	listMainMenuButtonToolTip = "Тестовая сущность связана с комбо сущностью и со связанной сущностью",
-	notChosenTitle = "Тестовая сущность не выбрана",
-	notChosenMessage = "Выберите тестовую сущность",
+	listWindowTitle = "РЎРїРёСЃРѕРє С‚РµСЃС‚РѕРІС‹С… СЃСѓС‰РЅРѕСЃС‚РµР№",
+	listMainMenuButtonToolTip = "РўРµСЃС‚РѕРІР°СЏ СЃСѓС‰РЅРѕСЃС‚СЊ СЃРІСЏР·Р°РЅР° СЃ РєРѕРјР±Рѕ СЃСѓС‰РЅРѕСЃС‚СЊСЋ Рё СЃРѕ СЃРІСЏР·Р°РЅРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚СЊСЋ",
+	notChosenTitle = "РўРµСЃС‚РѕРІР°СЏ СЃСѓС‰РЅРѕСЃС‚СЊ РЅРµ РІС‹Р±СЂР°РЅР°",
+	notChosenMessage = "Р’С‹Р±РµСЂРёС‚Рµ С‚РµСЃС‚РѕРІСѓСЋ СЃСѓС‰РЅРѕСЃС‚СЊ",
 
-	chooseWindowTitle = "Выбор тестовой сущности",
+	chooseWindowTitle = "Р’С‹Р±РѕСЂ С‚РµСЃС‚РѕРІРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё",
 
-	createWindowTitle = "Ввод тестовой сущности",
-	showWindowTitle = "Просмотр тестовой сущности",
-	updateWindowTitle = "Изменение тестовой сущности",
-	deleteWindowTitle = "Удаление тестовой сущности",
+	createWindowTitle = "Р’РІРѕРґ С‚РµСЃС‚РѕРІРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё",
+	showWindowTitle = "РџСЂРѕСЃРјРѕС‚СЂ С‚РµСЃС‚РѕРІРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё",
+	updateWindowTitle = "РР·РјРµРЅРµРЅРёРµ С‚РµСЃС‚РѕРІРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё",
+	deleteWindowTitle = "РЈРґР°Р»РµРЅРёРµ С‚РµСЃС‚РѕРІРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё",
 
 	formBindMask = true,
 
 	listVoClassName = "su.TestEntityOtherVO",
 
-	createSaveErrorMessage = "Ошибка при сохранении тестовой сущности",
-	updateSaveErrorMessage = "Ошибка при изменении тестовой сущности",
-	deleteSaveErrorMessage = "Ошибка при удалении тестовой сущности",
+	createSaveErrorMessage = "РћС€РёР±РєР° РїСЂРё СЃРѕС…СЂР°РЅРµРЅРёРё С‚РµСЃС‚РѕРІРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё",
+	updateSaveErrorMessage = "РћС€РёР±РєР° РїСЂРё РёР·РјРµРЅРµРЅРёРё С‚РµСЃС‚РѕРІРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё",
+	deleteSaveErrorMessage = "РћС€РёР±РєР° РїСЂРё СѓРґР°Р»РµРЅРёРё С‚РµСЃС‚РѕРІРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё",
 
 //	serviceClassName = GeneratorRunner.SERVICE_CLASS_NAME,
 //	serviceBeanClassName = GeneratorRunner.SERVICE_BEAN_CLASS_NAME,
@@ -55,28 +55,28 @@ import static su.opencode.kefir.srv.renderer.RenderersFactory.FLOAT_RENDERER;
 	, hasListMainMenuButton = false
 )
 @ColumnGroups(groups = {
-	@ColumnGroup(id = "permission", header = "Разрешение на строительство"),
-	@ColumnGroup(id = "holdersCount", header = "Количество соинвесторов"),
-	@ColumnGroup(id = "readiness", header = "Готовность"),
-	@ColumnGroup(id = "curators", header = "Кураторы"),
-	@ColumnGroup(id = "actionTeamHead", header = "Руководитель инициативной группы")
+	@ColumnGroup(id = "permission", header = "Р Р°Р·СЂРµС€РµРЅРёРµ РЅР° СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІРѕ"),
+	@ColumnGroup(id = "holdersCount", header = "РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРѕРёРЅРІРµСЃС‚РѕСЂРѕРІ"),
+	@ColumnGroup(id = "readiness", header = "Р“РѕС‚РѕРІРЅРѕСЃС‚СЊ"),
+	@ColumnGroup(id = "curators", header = "РљСѓСЂР°С‚РѕСЂС‹"),
+	@ColumnGroup(id = "actionTeamHead", header = "Р СѓРєРѕРІРѕРґРёС‚РµР»СЊ РёРЅРёС†РёР°С‚РёРІРЅРѕР№ РіСЂСѓРїРїС‹")
 })
 @FieldSets(fieldSets = {
-	@FieldSet(id = "permission", title = "Разрешение на строительство")
-//	@FieldSet(id = "holdersCount", title = "Количество соинвесторов"),
-//	@FieldSet(id = "readiness", title = "Готовность"),
-//	@FieldSet(id = "curators", title = "Кураторы"),
-//	@FieldSet(id = "actionTeamHead", title = "Руководитель инициативной группы")
+	@FieldSet(id = "permission", title = "Р Р°Р·СЂРµС€РµРЅРёРµ РЅР° СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІРѕ")
+//	@FieldSet(id = "holdersCount", title = "РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРѕРёРЅРІРµСЃС‚РѕСЂРѕРІ"),
+//	@FieldSet(id = "readiness", title = "Р“РѕС‚РѕРІРЅРѕСЃС‚СЊ"),
+//	@FieldSet(id = "curators", title = "РљСѓСЂР°С‚РѕСЂС‹"),
+//	@FieldSet(id = "actionTeamHead", title = "Р СѓРєРѕРІРѕРґРёС‚РµР»СЊ РёРЅРёС†РёР°С‚РёРІРЅРѕР№ РіСЂСѓРїРїС‹")
 })
 @ViewConfig(
 	  viewConfig = "ru.kg.gtn.viewConfig.vehicleViewConfig"
-	, legendLabel = "Состояние машины: "
+	, legendLabel = "РЎРѕСЃС‚РѕСЏРЅРёРµ РјР°С€РёРЅС‹: "
 	, legendLabelVOField = "carNumber"
   , legendFields = {
-		  @LegendField(fieldName = "inTheft", legendLabel = "В угоне", rowClassName = "theft666", backgroundColor = "#000000", color = "#FFFFFF", legendClassName = "ffff")
-		, @LegendField(fieldName = "hasRestrictions", legendLabel = "Ограничения", rowClassName = "restricted", backgroundColor = "#00FFFF")
-		, @LegendField(fieldName = "pawned", legendLabel = "В залоге", backgroundColor = "#A6CAF0")
-		, @LegendField(fieldName = "checkupPassed", legendLabel = "Без ТО", checkTrue = false, rowClassName = "checkupNotPassed", backgroundColor = "#C0DCC0", legendClassName = "legendCheckupClass")
+		  @LegendField(fieldName = "inTheft", legendLabel = "Р’ СѓРіРѕРЅРµ", rowClassName = "theft666", backgroundColor = "#000000", color = "#FFFFFF", legendClassName = "ffff")
+		, @LegendField(fieldName = "hasRestrictions", legendLabel = "РћРіСЂР°РЅРёС‡РµРЅРёСЏ", rowClassName = "restricted", backgroundColor = "#00FFFF")
+		, @LegendField(fieldName = "pawned", legendLabel = "Р’ Р·Р°Р»РѕРіРµ", backgroundColor = "#A6CAF0")
+		, @LegendField(fieldName = "checkupPassed", legendLabel = "Р‘РµР· РўРћ", checkTrue = false, rowClassName = "checkupNotPassed", backgroundColor = "#C0DCC0", legendClassName = "legendCheckupClass")
 	}
 )
 
@@ -220,35 +220,35 @@ public class TestEntity extends JsonObject
 	@IdField()
 	private Integer id;
 
-	@SearchField(label = "Поиск по строковому полю", width = 250/*, sqlParamName = "mySuperSqlName"*/)
-	@TextField(label = "Строковое поле", width = 200, maxLength = 200/*, uppercase = false, vtype = "mySuperStrVtype",  name = "otherTextFieldName"*/, fieldSetId = "permission")
+	@SearchField(label = "РџРѕРёСЃРє РїРѕ СЃС‚СЂРѕРєРѕРІРѕРјСѓ РїРѕР»СЋ", width = 250/*, sqlParamName = "mySuperSqlName"*/)
+	@TextField(label = "РЎС‚СЂРѕРєРѕРІРѕРµ РїРѕР»Рµ", width = 200, maxLength = 200/*, uppercase = false, vtype = "mySuperStrVtype",  name = "otherTextFieldName"*/, fieldSetId = "permission")
 	private String strField; // text field
 
-	@IntegerField(label = "Целое поле", width = 100, allowZero = true/*, allowNegative = true, vtype = "mySuperIntegerVtype", minValue = -200, maxValue = 666*/, fieldSetId = "permission")
+	@IntegerField(label = "Р¦РµР»РѕРµ РїРѕР»Рµ", width = 100, allowZero = true/*, allowNegative = true, vtype = "mySuperIntegerVtype", minValue = -200, maxValue = 666*/, fieldSetId = "permission")
 	private Integer intField; // number field (integer)
 
-	@SpinnerField(label = "Целое спиннер поле"/*, minValue = -13, maxValue = 666, vtype = "mySuperSpinnerVtype", allowNegative = true, defaultValue = 13, name = "otherSpinnerFieldFormName", renderer = "mySpinnerFieldRenderer", allowBlank = true, width = 100, maxLength = 3*/)
+	@SpinnerField(label = "Р¦РµР»РѕРµ СЃРїРёРЅРЅРµСЂ РїРѕР»Рµ"/*, minValue = -13, maxValue = 666, vtype = "mySuperSpinnerVtype", allowNegative = true, defaultValue = 13, name = "otherSpinnerFieldFormName", renderer = "mySpinnerFieldRenderer", allowBlank = true, width = 100, maxLength = 3*/)
 	private Integer intSpinnerField; // spinner filed
 
 //	@FilterConfigField(/*name = "mySuperDoubleField", sqlParamName = "mySuperDoubleSqlParam", type = "MySuperDoubleType"*/)
-	@NumberField(label = "Дробное поле", width = 100/*, allowNegative = true, vtype = "mySuperIntegerVtype", minValue = -200.22, maxValue = 666.78*/)
+	@NumberField(label = "Р”СЂРѕР±РЅРѕРµ РїРѕР»Рµ", width = 100/*, allowNegative = true, vtype = "mySuperIntegerVtype", minValue = -200.22, maxValue = 666.78*/)
 	private Double doubleField; // number field (float)
 
-	@DateField(label = "Датовое поле", renderer = RenderersFactory.FLOAT_RENDERER/*, minValue = "01.01.2010", maxValue = "02.02.2012", renderer = "myDateRenderer"*/, minValue = DateField.NULL_DATE_VALUE, maxValue = DateField.NULL_DATE_VALUE)
+	@DateField(label = "Р”Р°С‚РѕРІРѕРµ РїРѕР»Рµ", renderer = RenderersFactory.FLOAT_RENDERER/*, minValue = "01.01.2010", maxValue = "02.02.2012", renderer = "myDateRenderer"*/, minValue = DateField.NULL_DATE_VALUE, maxValue = DateField.NULL_DATE_VALUE)
 	private Date dateField; // date field
 
-	@CheckboxField(label = "Булево поле", defaultValue = true)
+	@CheckboxField(label = "Р‘СѓР»РµРІРѕ РїРѕР»Рµ", defaultValue = true)
 	private Boolean booleanField; // checkbox
 
-	//	@SearchField(label = "Поиск по энумовому полю")
-//	@FilterConfigField(listWindowFilterTitle = "энумовое поле")
-	@LocalComboBoxField(label = "Энумовое поле", width = 200, maxLength = 100/*, hiddenName = "myLocalComboHiddenName", uppercase = true, editable = true, store = "myStore", displayField = "myDisplayField", valueField = "myValueField"*/)
+	//	@SearchField(label = "РџРѕРёСЃРє РїРѕ СЌРЅСѓРјРѕРІРѕРјСѓ РїРѕР»СЋ")
+//	@FilterConfigField(listWindowFilterTitle = "СЌРЅСѓРјРѕРІРѕРµ РїРѕР»Рµ")
+	@LocalComboBoxField(label = "Р­РЅСѓРјРѕРІРѕРµ РїРѕР»Рµ", width = 200, maxLength = 100/*, hiddenName = "myLocalComboHiddenName", uppercase = true, editable = true, store = "myStore", displayField = "myDisplayField", valueField = "myValueField"*/)
 	private TestEnum enumField; // local combobox
 
 	@ColumnModelExclude
-	@FilterConfigField(name = "comboBoxEntityId", type = "Integer", filterFieldName = "id", sqlParamName = "comboBoxEntity.id", listWindowFilterTitle = "комбо сущность", listWindowTitleParamName = "cadastralNumber")
+	@FilterConfigField(name = "comboBoxEntityId", type = "Integer", filterFieldName = "id", sqlParamName = "comboBoxEntity.id", listWindowFilterTitle = "РєРѕРјР±Рѕ СЃСѓС‰РЅРѕСЃС‚СЊ", listWindowTitleParamName = "cadastralNumber")
 	@ComboBoxField(
-		label = "Селект поле", url = "/comboBoxEntitysList", width = 400, maxLength = 25,
+		label = "РЎРµР»РµРєС‚ РїРѕР»Рµ", url = "/comboBoxEntitysList", width = 400, maxLength = 25,
 
 		sortBy = "cadastralNumber",
 		queryParam = "cadastralNumber",
@@ -264,22 +264,22 @@ public class TestEntity extends JsonObject
 	private ComboBoxEntity comboBoxEntity; // remote combobox
 
 	@ColumnModelExclude
-	@FilterConfigField(listWindowFilterTitle = "связанная сущность"/*chooseFieldFieldName = "name", chooseFieldFieldType = "MyGreatType"*//*, name = "mySuperChooseFieldIdFilterConfigField", sqlParamName = "chooseEntity.greatSqlParam"*/)
-	@SearchField(label = "Поиск по имени связанной сущности", width = 250, chooseFieldFieldName = "name"/*, sqlParamName = "myChooseField.mySuperChooseFieldSqlFieldName"*/)
+	@FilterConfigField(listWindowFilterTitle = "СЃРІСЏР·Р°РЅРЅР°СЏ СЃСѓС‰РЅРѕСЃС‚СЊ"/*chooseFieldFieldName = "name", chooseFieldFieldType = "MyGreatType"*//*, name = "mySuperChooseFieldIdFilterConfigField", sqlParamName = "chooseEntity.greatSqlParam"*/)
+	@SearchField(label = "РџРѕРёСЃРє РїРѕ РёРјРµРЅРё СЃРІСЏР·Р°РЅРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё", width = 250, chooseFieldFieldName = "name"/*, sqlParamName = "myChooseField.mySuperChooseFieldSqlFieldName"*/)
 	@ChooseField(
-		fieldSetName = "Связанная сущность", fieldSetId = "permission",
-//		chooseButtonText = "Выбрать связанную сущность",
+		fieldSetName = "РЎРІСЏР·Р°РЅРЅР°СЏ СЃСѓС‰РЅРѕСЃС‚СЊ", fieldSetId = "permission",
+//		chooseButtonText = "Р’С‹Р±СЂР°С‚СЊ СЃРІСЏР·Р°РЅРЅСѓСЋ СЃСѓС‰РЅРѕСЃС‚СЊ",
 //		chooseFunctionName = "myChoose.choose",
 //		chooseFunctionSuccessHandlerParamName = "chooseFieldChooseSuccessHandler",
 
-//		showButtonText = "Просмотреть связанную сущность",
+//		showButtonText = "РџСЂРѕСЃРјРѕС‚СЂРµС‚СЊ СЃРІСЏР·Р°РЅРЅСѓСЋ СЃСѓС‰РЅРѕСЃС‚СЊ",
 //		showFunctionName = "myForm.show",
 //		showFunctionIdParamName = "chooseFieldEntityIdConfigParam",
 
 		fields = {
-			@ChooseFieldTextField(name = "name", label = "Поле выбора из связанной сущности (имя)", width = 200, maxLength = 255, formPanelWidth = 450, labelWidth = 240),
-			@ChooseFieldTextField(name = "shortName", label = "Поле выбора из связанной сущности (краткое имя)", width = 200, maxLength = 255, formPanelWidth = 440, labelWidth = 150),
-			@ChooseFieldTextField(name = "correspondentAccount", label = "Поле выбора из связанной сущности (корр. счет)", width = 200, maxLength = 20, formPanelWidth = 450, labelWidth = 240)
+			@ChooseFieldTextField(name = "name", label = "РџРѕР»Рµ РІС‹Р±РѕСЂР° РёР· СЃРІСЏР·Р°РЅРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё (РёРјСЏ)", width = 200, maxLength = 255, formPanelWidth = 450, labelWidth = 240),
+			@ChooseFieldTextField(name = "shortName", label = "РџРѕР»Рµ РІС‹Р±РѕСЂР° РёР· СЃРІСЏР·Р°РЅРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё (РєСЂР°С‚РєРѕРµ РёРјСЏ)", width = 200, maxLength = 255, formPanelWidth = 440, labelWidth = 150),
+			@ChooseFieldTextField(name = "correspondentAccount", label = "РџРѕР»Рµ РІС‹Р±РѕСЂР° РёР· СЃРІСЏР·Р°РЅРЅРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё (РєРѕСЂСЂ. СЃС‡РµС‚)", width = 200, maxLength = 20, formPanelWidth = 450, labelWidth = 240)
 		}
 		, voFields = {
 			@VOField(name = "comboBoxEntity.otherChooseEntity.shortName", groupId = "actionTeamHead", tooltip = "qwerty"),
@@ -295,12 +295,12 @@ public class TestEntity extends JsonObject
 	@AttachmentsField()
 	private List<Attachment> attachmentsField;
 
-	@AttachmentsField(fieldSetTitle = "Другие файловые вложения", fieldSetId = "permission")
+	@AttachmentsField(fieldSetTitle = "Р”СЂСѓРіРёРµ С„Р°Р№Р»РѕРІС‹Рµ РІР»РѕР¶РµРЅРёСЏ", fieldSetId = "permission")
 	private List<Attachment> otherAttachmentsField;
 
 	private TestEntity testEntity;
 
-	@ColumnModel( header = "ИНН", renderer = FLOAT_RENDERER, sortable = false, sortParam = "dudtrsijodtiojdst", groupId = "readiness", tooltip = "hzhz")
+	@ColumnModel( header = "РРќРќ", renderer = FLOAT_RENDERER, sortable = false, sortParam = "dudtrsijodtiojdst", groupId = "readiness", tooltip = "hzhz")
 	@OgrnTextField(width = 150)
 	private Long ogrn;
 
@@ -312,15 +312,15 @@ public class TestEntity extends JsonObject
 	private Long inn;
 
 	@ColumnModelExclude
-	@AddressField(textFieldLabel = "Юридический адрес", addressWindowTitle = "Юридический адрес тестовой сущности", fieldSetId = "permission"/*, getAddressStrFunctionName = "getJuridicalAddressStr", initFunctionName = "initJuridicalAddress"*/)
+	@AddressField(textFieldLabel = "Р®СЂРёРґРёС‡РµСЃРєРёР№ Р°РґСЂРµСЃ", addressWindowTitle = "Р®СЂРёРґРёС‡РµСЃРєРёР№ Р°РґСЂРµСЃ С‚РµСЃС‚РѕРІРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё", fieldSetId = "permission"/*, getAddressStrFunctionName = "getJuridicalAddressStr", initFunctionName = "initJuridicalAddress"*/)
 	private Address juridicalAddress;
 
-	@AddressField(textFieldLabel = "Фактический адрес", addressWindowTitle = "Фактический адрес тестовой сущности")
+	@AddressField(textFieldLabel = "Р¤Р°РєС‚РёС‡РµСЃРєРёР№ Р°РґСЂРµСЃ", addressWindowTitle = "Р¤Р°РєС‚РёС‡РµСЃРєРёР№ Р°РґСЂРµСЃ С‚РµСЃС‚РѕРІРѕР№ СЃСѓС‰РЅРѕСЃС‚Рё")
 	private Address physicalAddress;
 
 	@ColumnModel(header = "excluded_field", renderer = FLOAT_RENDERER, sortParam = "name")
 	@SqlColumn(type = SqlTableField.VARCHAR_TYPE, length = 100)
-	private String excludedField; // поле не содержит аннотации поля формы, и поэтому не будет участвовать в CRUD-форме
+	private String excludedField; // РїРѕР»Рµ РЅРµ СЃРѕРґРµСЂР¶РёС‚ Р°РЅРЅРѕС‚Р°С†РёРё РїРѕР»СЏ С„РѕСЂРјС‹, Рё РїРѕСЌС‚РѕРјСѓ РЅРµ Р±СѓРґРµС‚ СѓС‡Р°СЃС‚РІРѕРІР°С‚СЊ РІ CRUD-С„РѕСЂРјРµ
 
 	private Collection collectionField;
 
