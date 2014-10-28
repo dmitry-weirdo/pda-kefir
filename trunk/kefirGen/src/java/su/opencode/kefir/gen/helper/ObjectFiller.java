@@ -32,6 +32,9 @@ public class ObjectFiller
 			for (Field field : objectClass.getDeclaredFields())
 			{
 				String propertyValue = properties.getProperty(field.getName());
+
+				field.setAccessible(true); // access to private field
+
 				if (field.getType().equals(Class.class) && propertyValue != null)
 					field.set(object, Class.forName(propertyValue)); // установить класс по имени
 				else
