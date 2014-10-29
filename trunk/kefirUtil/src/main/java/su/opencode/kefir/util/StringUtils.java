@@ -32,9 +32,20 @@ public class StringUtils
 	 * <br/>
 	 * <code>true</code> - если строка равна <code>null</code> или имеет нулевую длину.
 	 */
-	public static boolean empty(String str) { // todo: аналогичная функция, которая делает trim
+	public static boolean empty(String str) {
 		return (str == null || str.isEmpty());
 	}
+
+	/**
+	 * @param str строка
+	 * @return <code>false</code> - если строка непустая
+	 * <br/>
+	 * <code>true</code> - если строка равна <code>null</code> или имеет нулевую длину, или тримированная имеет нулевую длину.
+	 */
+	public static boolean emptyIfTrimmed(String str) {
+		return ( str == null || str.isEmpty() || str.trim().isEmpty() );
+	}
+
 	/**
 	 * @param str строка
 	 * @return <code>true</code> - если строка непустая
