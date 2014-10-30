@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.Properties;
 
 import static su.opencode.kefir.util.FileUtils.close;
@@ -31,6 +32,9 @@ public class ObjectFiller
 			T object = objectClass.newInstance();
 			for (Field field : objectClass.getDeclaredFields())
 			{
+				if ( Modifier.isStatic(field.getModifiers()) )
+					continue; // do not set static fields
+
 				String propertyValue = properties.getProperty(field.getName());
 
 				field.setAccessible(true); // access to private field
