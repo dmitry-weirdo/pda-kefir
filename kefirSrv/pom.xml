@@ -136,6 +136,15 @@
 			<optional>true</optional>
 		</dependency>
 
+		<!-- javax.rmi packages for Java 11 -->
+		<!-- see https://stackoverflow.com/a/56338668/8534088 -->
+		<!-- https://mvnrepository.com/artifact/org.jboss.spec.javax.rmi/jboss-rmi-api_1.0_spec -->
+		<dependency>
+			<groupId>org.jboss.spec.javax.rmi</groupId>
+			<artifactId>jboss-rmi-api_1.0_spec</artifactId>
+			<version>1.0.6.Final</version>
+		</dependency>
+
 	</dependencies>
 
 </project>
