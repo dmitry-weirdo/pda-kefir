@@ -16,7 +16,7 @@ public class InnMatcher
 			if (str.length() == NOT_JUIRISTIC_INN_SYMBOLS_COUNT)
 			{
 				String s[] = str.split("");
-				int i = 1;
+				int i = 0;
 				final int n1 = getInt(s[i++]);
 				final int n2 = getInt(s[i++]);
 				final int n3 = getInt(s[i++]);
@@ -45,7 +45,7 @@ public class InnMatcher
 			if (str.length() == JUIRISTIC_INN_SYMBOLS_COUNT)
 			{
 				String s[] = str.split("");
-				int i = 1;
+				int i = 0;
 				final int n1 = getInt(s[i++]);
 				final int n2 = getInt(s[i++]);
 				final int n3 = getInt(s[i++]);
